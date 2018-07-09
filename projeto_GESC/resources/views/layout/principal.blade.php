@@ -24,10 +24,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Bases layout GESC</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
-
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">GESC</a>
@@ -38,7 +37,7 @@
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="dashboard">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -47,7 +46,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -56,7 +55,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -65,7 +64,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="/cras">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -74,7 +73,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -83,7 +82,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -92,7 +91,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link disabled" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -141,6 +140,35 @@
 
                 </main>
 
-    </body>
+                <footer class="main-footer">
+
+                </footer>
+<script>
+$('#editar').on('show.bs.modal', function (event) {
+    console.log('modal opened');
+    var button = $(event.relatedTarget) 
+    var nome = button.data('mytitle')
+    var telefone = button.data('mytelefone') 
+    var id = button.data('myid') 
+    var modal = $(this)
+    modal.find('.modal-body #nomeCras').val(nome)
+    modal.find('.modal-body #telefone').val(telefone)
+    modal.find('.modal-body #id').val(id)
+    modal.find('.modal-body #crasId').val(id);
+
+})
+
+$('#excluir').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #id').val(id);
+    console.log(id);
+    console.log("EXCLUIR modal");
+    
+})
+</script>
+</body>
 
 </html>

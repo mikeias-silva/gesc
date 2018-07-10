@@ -15,6 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teste',function(){
+Route::get('/home', 'WelcomeController@index');
+
+Route::get('/teste1',function(){
 	return "<h1>Teste push</h1>";
 });
+Route::get('/dashboard', function(){
+    return view('dashboard.dashboard');
+});
+
+Route::get('/cras', 'CrasController@listaCras');
+
+Route::get('/modalCras','CrasController@novo');
+
+Route::post('/cras/adiciona', 'CrasController@adiciona');
+
+Route::post('/cras/remove', 'CrasController@remover');
+
+Route::post('/cras/edita', 'CrasController@editar');
+
+
+//Route::resource('cras', 'CrasController');

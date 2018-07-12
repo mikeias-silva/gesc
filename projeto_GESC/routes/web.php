@@ -24,15 +24,19 @@ Route::get('/dashboard', function(){
     return view('dashboard.dashboard');
 });
 
+//Rotas para a tela controle de CRAS
 Route::get('/cras', 'CrasController@listaCras');
-
 Route::get('/modalCras','CrasController@novo');
-
 Route::post('/cras/adiciona', 'CrasController@adiciona');
-
 Route::post('/cras/remove', 'CrasController@remover');
-
 Route::post('/cras/edita', 'CrasController@editar');
 
 
-//Route::resource('cras', 'CrasController');
+//Rotas para as telas de controle de Turmas
+Route::get('/turmas', 'TurmaController@listaTurma');
+Route::get('/turmas/adiciona', 'TurmaController@adiciona');
+Route::post('/turmas/remove', 'TurmaController@remover');
+
+Route::get('/login', function(){
+    return view('login.login');
+});

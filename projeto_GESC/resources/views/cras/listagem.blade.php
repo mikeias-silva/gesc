@@ -13,9 +13,9 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Opções</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Opções</th>
 
         </tr>
     </thead>
@@ -24,8 +24,8 @@
         <td> {{ $c->nomeCras }} </td>
         <td> {{ $c->telefone }} </td>
         <td class="col-md-3">
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c-> nomeCras }}" data-mytelefone="{{ $c-> telefone }}" data-myid="{{ $c-> id }}" data-toggle="modal" data-target="#editar">Editar</button>
-            <button type="button" class="btn btn-danger" data-mytitle="{{ $c-> nomeCras }}" data-myid="{{ $c-> id }}" data-toggle="modal" data-target="#excluir">Remover</button>
+            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c-> telefone }}" data-myid="{{ $c-> id }}" data-toggle="modal" data-target="#editar">Editar</button>
+            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" data-myid="{{ $c-> id }}" data-toggle="modal" data-target="#excluir">Remover</button>
        
 
         </td>
@@ -85,7 +85,7 @@
 
                     <input type="hidden" name="crasId" id="id" type="text" value=" ">
 
-                    <h5>Você t em certeza que deseja realmente excluir este item?</h5>
+                    <h5>Você tem certeza que deseja realmente excluir este item?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger">Deletar</button>

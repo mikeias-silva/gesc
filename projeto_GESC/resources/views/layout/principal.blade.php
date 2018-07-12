@@ -73,7 +73,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link disabled" href="#">
+                                <a class="nav-link disabled" href="/turmas">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -148,7 +148,7 @@ $('#editar').on('show.bs.modal', function (event) {
     console.log('modal opened');
     var button = $(event.relatedTarget) 
     var nome = button.data('mytitle')
-    var telefone = button.data('mytelefone') 
+    var turno = button.data('mytelefone') 
     var id = button.data('myid') 
     var modal = $(this)
     modal.find('.modal-body #nomeCras').val(nome)
@@ -167,6 +167,31 @@ $('#excluir').on('show.bs.modal', function (event) {
     console.log(id);
     console.log("EXCLUIR modal");
     
+})
+$('#excluirturma').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var IdTurma = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #IdTurma').val(IdTurma);
+    console.log(IdTurma);
+    console.log("EXCLUIR modal turma");
+    
+})
+
+$('#editarturma').on('show.bs.modal', function (event) {
+    console.log('modal opened');
+    var button = $(event.relatedTarget) 
+    var nome = button.data('mygrupo')
+    var turno = button.data('myturno')
+    var educador = button.data('myeducador')  
+    var id = button.data('myid') 
+    var modal = $(this)
+    modal.find('.modal-body #GrupoConvivencia').val(nome)
+    modal.find('.modal-body #turno').val(turno)
+    modal.find('.modal-body #educador').val(educador)
+    modal.find('.modal-body #id').val(id)
+
 })
 </script>
 </body>

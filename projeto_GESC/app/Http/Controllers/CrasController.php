@@ -45,6 +45,7 @@ class CrasController extends Controller {
     }
 
     public function remover(Request $request){
+       
         $cras = Cras::find($request->crasId);
         $cras->delete();
 

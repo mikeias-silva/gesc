@@ -170,11 +170,11 @@ $('#excluir').on('show.bs.modal', function (event) {
 })
 $('#excluirturma').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var IdTurma = button.data('myid') 
+    var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #IdTurma').val(IdTurma);
-    console.log(IdTurma);
+    modal.find('.modal-body #id').val(id);
+    console.log(id);
     console.log("EXCLUIR modal turma");
     
 })

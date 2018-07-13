@@ -3,12 +3,11 @@
 
 @if(empty($turma))
     <div class="alert alert-danger">
-        <button class="btn btn-success">CLICA AQUI</button>
-    Você não tem nenhum Grupo de Convivência cadastrado.
-   
+    
+       <span class="glyphicons glyphicons-alert"></span> Você não tem nenhum Grupo de Convivência cadastrado.
+       <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
     </div>
-@endif
-@if($turma != "")
+@elseif($turma != "")
 <h1 class="text">Gerenciamento de Turmas</h1>
 <table class="table table-striped">
     <thead>
@@ -29,10 +28,10 @@
      <!-- Adicionar regra para listar professor de cada turma -->
         <td class="col-md-3">
             <button type="button" class="btn btn-info" data-mygrupo="{{ $t->GrupoConvivencia }}" 
-                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idTurma }}" data-myeducador="{{ $t->Nome }}"
+                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->id }}" data-myeducador="{{ $t->Nome }}"
                  data-toggle="modal" data-target="#editarturma">Editar</button>
 
-            <button type="button" class="btn btn-danger" data-mygrupo="{{ $t->GrupoConvivencia }}" data-myid="{{ $t->idTurma }}" data-toggle="modal" data-target="#excluirturma">Remover</button>
+            <button type="button" class="btn btn-danger" data-mygrupo="{{ $t->GrupoConvivencia }}" data-myid="{{ $t->id }}" data-toggle="modal" data-target="#excluirturma">Remover</button>
         </td>
         @if( ($t->statusTurma) === 0)
         <td>Inativo</td>
@@ -42,6 +41,7 @@
     </tr>
     
     @endforeach
+    @endif
 </table>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novaturma">
@@ -60,10 +60,9 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/turmas/adiciona" method="get">
+                <form class="form" action="/turmas/adiciona" method="post">
 
 
-                    {{ method_field('patch') }}
                     {{ csrf_field() }}
                   <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 
@@ -74,6 +73,7 @@
                    <select class="form-control" name="turno" id="turno">
                        <option value="M">Manha</option>
                        <option value="T">Tarde</option>
+                      
                        
                    </select>
 
@@ -81,6 +81,7 @@
                     <select class="form-control" name="statusTurma" id="statusTurma">
                         <option value="1">Ativado</option>
                         <option value="0">Inativado</option>
+                 
                     </select>
                     
                     <label>Educador</label>
@@ -114,7 +115,7 @@
             <form action="turmas/remove" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" id="idTurma" name="idTurma" type="text" value="">
+                    <input type="hidden" id="id" name="id" type="text" value="">
 
                     <h5>Você tem certeza que deseja realmente excluir este item?</h5>
                     <div class="modal-footer">
@@ -140,22 +141,22 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form class="form" action="cras/edita" method="POST">
+            <form class="form" action="turmas/edita" method="post">
+               
+                {{ csrf_field() }}
                 <div class="modal-body">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    <input type="hidden" name="id" id="id" type="text" value="">
-                    
+                    <input type="hidden" name="id" id="id" value="">
                     <label>Grupo de Convivência</label>
                     <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="">
                     <label>Turno</label>
-                    <input name="turno" class="form-control" id="turno">
+                    <select name="turno" id="turno" value="" class="form-control">
+                        <option value="M">Manhã</option>
+                        <option value="T">Tarde</option>
+                    </select>
                     <label>Educador</label>
-                  <!--  <input name="educador" class="form-control" id="educador"> -->
-
-                  <select name="" id="">
+                  <select class="form-control" value="" name="educador" id="educador">
                         @foreach($educador as $e)
-                        <option selected="true" id="{{ $e->idUsuario }}" id="{{ $e->idUsuario }}">{{ $e->Nome }}</option>
+                        <option value="{{ $e->idUsuario }}">{{ $e->Nome }}</option>
                         @endforeach
                   </select>
 
@@ -170,5 +171,5 @@
         </div>
     </div>
 </div>
-@endif
+
 @stop

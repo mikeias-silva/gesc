@@ -9,4 +9,6 @@ class Turma extends Model
     protected $table = 'turma';
     public $timestamps = false;
     protected $fillable = array('GrupoConvivencia', 'Turno', 'statusTurma', 'idUsuario');
+
+    protected $guarded = ['idTurma'];
 }

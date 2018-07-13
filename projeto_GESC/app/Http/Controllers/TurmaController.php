@@ -16,7 +16,7 @@ class TurmaController extends Controller
         $profTurma = DB::select('select Nome from usuario join turma on usuario.idUsuario = turma.idUsuario;');
 
 
-   $turma = DB::select('select turma.idTurma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, usuario.Nome from usuario, turma
+   $turma = DB::select('select turma.id, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, usuario.Nome from usuario, turma
     where usuario.idUsuario = turma.idUsuario');
         // $turnoTurma = DB::select('');
         $educador = DB::select('select * from usuario where tipoUsuario = 2');
@@ -53,8 +53,17 @@ class TurmaController extends Controller
     }
 
     public function remover(Request $request){
-        $turmaid = Turma::findOrFail($request->idTurma);
+        $turmaid = Turma::findOrFail($request->id);
         $turmaid->delete();
+
+        return back();
+    }
+
+    public function editar(Request $request){
+        $turma = Turma::find($request->id);
+      
+        $turma->update($request->all());
+        
 
         return back();
     }

@@ -34,8 +34,9 @@ Route::post('/cras/edita', 'CrasController@editar');
 
 //Rotas para as telas de controle de Turmas
 Route::get('/turmas', 'TurmaController@listaTurma');
-Route::get('/turmas/adiciona', 'TurmaController@adiciona');
+Route::post('/turmas/adiciona', 'TurmaController@adiciona');
 Route::post('/turmas/remove', 'TurmaController@remover');
+Route::post('/turmas/edita', 'TurmaController@editar');
 
 Route::get('/login', function(){
     return view('login.login');

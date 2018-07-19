@@ -20,9 +20,7 @@ Route::get('/home', 'WelcomeController@index');
 Route::get('/teste1',function(){
 	return "<h1>Teste push</h1>";
 });
-Route::get('/dashboard', function(){
-    return view('dashboard.dashboard');
-});
+Route::get('/dashboard', 'DashboardController@painel');
 
 //Rotas para a tela controle de CRAS
 Route::get('/cras', 'CrasController@listaCras');
@@ -37,6 +35,14 @@ Route::get('/turmas', 'TurmaController@listaTurma');
 Route::post('/turmas/adiciona', 'TurmaController@adiciona');
 Route::post('/turmas/remove', 'TurmaController@remover');
 Route::post('/turmas/edita', 'TurmaController@editar');
+
+//Rotas para as telas de instituição
+Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');
+
+
+//Rotas para as telas de Matrícula
+Route::get('/matriculas', 'MatriculasController@listaMatriculas');
+Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
 
 Route::get('/login', function(){
     return view('login.login');

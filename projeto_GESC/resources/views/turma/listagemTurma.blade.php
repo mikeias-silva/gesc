@@ -28,10 +28,11 @@
      <!-- Adicionar regra para listar professor de cada turma -->
         <td class="col-md-3">
             <button type="button" class="btn btn-info" data-mygrupo="{{ $t->GrupoConvivencia }}" 
-                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->id }}" data-myeducador="{{ $t->Nome }}"
+                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->Nome }}"
                  data-toggle="modal" data-target="#editarturma">Editar</button>
 
-            <button type="button" class="btn btn-danger" data-mygrupo="{{ $t->GrupoConvivencia }}" data-myid="{{ $t->id }}" data-toggle="modal" data-target="#excluirturma">Remover</button>
+            <button type="button" class="btn btn-danger" data-mygrupo="{{ $t->GrupoConvivencia }}" 
+                data-myid="{{ $t->idturma }}" data-toggle="modal" data-target="#excluirturma">Remover</button>
         </td>
         @if( ($t->statusTurma) === 0)
         <td>Inativo</td>

@@ -24,8 +24,11 @@
         <td> {{ $c->nomeCras }} </td>
         <td> {{ $c->telefone }} </td>
         <td class="col-md-3">
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c-> telefone }}" data-myid="{{ $c-> id }}" data-toggle="modal" data-target="#editar">Editar</button>
-            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" data-myid="{{ $c-> id }}" data-toggle="modal" data-target="#excluir">Remover</button>
+            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
+                 data-myid="{{ $c->idcras }}" data-toggle="modal" data-target="#editar">Editar</button>
+                 
+            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" data-myid="{{ $c->idcras }}" 
+                data-toggle="modal" data-target="#excluir">Remover</button>
        
 
         </td>

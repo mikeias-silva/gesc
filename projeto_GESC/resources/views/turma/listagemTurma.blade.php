@@ -22,11 +22,11 @@
     </thead>
     @foreach ($turma as $t)
     <tr>
-        <td> {{ $t->GrupoConvivencia }} </td>
+        <td>{{ $t->GrupoConvivencia }}</td>
         <td>{{ $t->Turno }}</td> 
         <td>{{ $t->Nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
-        <td class="col-md-3">
+        <td>
             <button type="button" class="btn btn-info" data-mygrupo="{{ $t->GrupoConvivencia }}" 
                 data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->Nome }}"
                  data-toggle="modal" data-target="#editarturma">Editar</button>

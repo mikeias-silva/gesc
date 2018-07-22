@@ -13,9 +13,9 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Opções</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Opções</th>
 
         </tr>
     </thead>
@@ -23,7 +23,7 @@
     <tr>
         <td> {{ $c->nomeCras }} </td>
         <td> {{ $c->telefone }} </td>
-        <td class="col-md-3">
+        <td>
             <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-toggle="modal" data-target="#editar">Editar</button>
                  

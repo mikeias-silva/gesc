@@ -1,36 +1,50 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+<div class="container py-5">
+  <div class="row">
+      <div class="col-md-12">
+          <h2 class="text-center text-white mb-4">Bootstrap 4 Login Form</h2>
+          <div class="row">
+              <div class="col-md-6 mx-auto">
 
-    <title>Signin Template for Bootstrap</title>
+                  <!-- form card login -->
+                  <div class="card rounded-0">
+                      <div class="card-header">
+                          <h3 class="mb-0">Login</h3>
+                      </div>
+                      <div class="card-body">
+                          <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                              <div class="form-group">
+                                  <label for="uname1">Username</label>
+                                  <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
+                                  <div class="invalid-feedback">Oops, you missed this one.</div>
+                              </div>
+                              <div class="form-group">
+                                  <label>Password</label>
+                                  <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
+                                  <div class="invalid-feedback">Enter your password too!</div>
+                              </div>
+                              <div>
+                                  <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description small text-dark">Remember me on this computer</span>
+                                  </label>
+                              </div>
+                              <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+                          </form>
+                      </div>
+                      <!--/card-block-->
+                  </div>
+                  <!-- /form card login -->
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+              </div>
 
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-  </head>
 
-  <body class="text-center">
-    <form class="form-signin">
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+          </div>
+          <!--/row-->
+
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-  </body>
-</html>
+      <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->

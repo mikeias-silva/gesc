@@ -146,7 +146,7 @@
                
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
+                    <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
                     <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="">
                     <label>Turno</label>

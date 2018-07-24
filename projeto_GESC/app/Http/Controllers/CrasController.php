@@ -17,6 +17,7 @@ class CrasController extends Controller {
         $cras = cras::all();
         
         //$cras = [];
+        //return $cras;
         return view('cras.listagem')->with('cras', $cras);
     }
 

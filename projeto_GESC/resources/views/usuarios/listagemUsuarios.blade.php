@@ -59,21 +59,22 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/usuarios/adiciona" method="post">
+                <form class="form" action="/usuarios/adiciona" method="post" name="incluirUsuario">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statususuario" value="1">
                     <label>Nome</label>
-                    <input name="nome" class="form-control" type="text" value="">
+                    <input name="nome" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label>E-mail</label>
-                    <input name="email" class="form-control" type="text" value="">
-                    <label>Senha</label>
-                    <input name="senha" class="form-control" type="text" value="">
+                    <input name="email" onblur="validacaoEmail(incluirUsuario.email)" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
+                    <label id="msgemail"></label>
+                    <label>Senha</label></br>
+                    <input name="senha" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     <label>Nome de Usuário</label>
-                    <input name="nomeusuario" class="form-control" type="text" value="">
+                    <input name="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     </br>
                     <label>Perfil:</label>
-                    <label><input type="radio" name="tipousuario" value="Administrador" checked> Administrador</label>
-                    <label><input type="radio" name="tipousuario" value="Educador"> Educador</label>
+                    <label><input type="radio" name="tipousuario" id="adm" value="Administrador" checked> Administrador</label>
+                    <label><input type="radio" name="tipousuario" id="edu" value="Educador"> Educador</label>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Confirmar</button>
@@ -103,13 +104,13 @@
                     <input type="hidden" name="id" id="id" type="text" value="">
                     
                     <label>Nome</label>
-                    <input name="nome" id="nome" class="form-control" type="text" value="">
+                    <input name="nome" id="nome" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label>E-mail</label>
-                    <input name="email" id="email" class="form-control" type="text" value="">
+                    <input name="email" id="email" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label>Senha</label>
-                    <input name="senha" id="senha" class="form-control" type="text" value="">
+                    <input name="senha" id="senha" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     <label>Nome de Usuário</label>
-                    <input name="nomeusuario" id="nomeusuario" class="form-control" type="text" value="">
+                    <input name="nomeusuario" id="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     </br>
                     <label>Perfil:</label>
                     <label><input type="radio" name="tipousuario" id="adm" value="Administrador"> Administrador</label>

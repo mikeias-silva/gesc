@@ -45,6 +45,13 @@ Route::get('/matriculas', 'MatriculasController@listaMatriculas');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
 Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
 
+//Rotas para a tela controle de Usuarios
+Route::get('/usuarios', 'UsuariosController@listaUsuarios');
+Route::post('/usuarios/adiciona', 'UsuariosController@adiciona');
+Route::post('/usuarios/edita', 'UsuariosController@edita');
+Route::post('/usuarios/inativa', 'UsuariosController@inativa');
+Route::post('/usuarios/ativa', 'UsuariosController@ativa');
+
 Route::get('/login', function(){
     return view('login.login');
 });

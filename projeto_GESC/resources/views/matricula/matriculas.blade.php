@@ -31,8 +31,8 @@
                 <tbody>
                     <tr>
                         @foreach($matAtivas as $matA)
-                        <td>{{ $matA->datasairespera }}</td>
-                        <td></td>
+                        <td>{{ $matA->idcrianca }}</td>
+                        <td>{{ $matA-> }}</td>
                         <td></td>
                         <td></td>
                         <td></td>

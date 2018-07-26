@@ -15,30 +15,39 @@
             </ul>
 
             <div class="tab-content" id="myTabContent">
+                <!--ABA IDENTIFICAÇÃO -->
               <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
                 
                   
                 <div id="identmatricula">
 
                
-                      <form class="form-group " action="matricula/adiciona">
-                        
+                      <form class="form-group " action="/novaMatricula/adiciona" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-group" >
                             <label>Nome</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="nome">
                         </div>
 
                          
                         <div class="form-group">
                             <label>Nascimento</label>
-                            <input type="date" class="form-control ">
+                            <input type="date" class="form-control" name="datanascimento">
                         </div>
 
                         <div class="form-group">
                             <label>Sexo</label>
-                            <select name="sexo" id="" class="custom-select">
+                            <select name="sexo" id="" class="custom-select" value="">
                               <option value="M">Masculino</option>
                               <option value="F">Feminino</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>status</label>
+                            <select name="statusmatricula" id="" class="custom-select" value="">
+                                <option value="0">Inativo</option>
+                                <option value="1">Ativo</option>
                             </select>
                         </div>
 
@@ -48,7 +57,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>CPG</label>
+                            <label>CPF</label>
                             <input type="text" class="form-control ">
                         </div>
 
@@ -119,7 +128,7 @@
                             <textarea name="" id="" cols="10" rows="2" class="form-control"></textarea>
                         </div>
 
-                     
+                     <button type="submit" class="btn btn-success">Salvar</button>
                         
                       </form>
                 </div>
@@ -128,6 +137,7 @@
 
               </div>
 
+              <!-- ABA RESPONSÁVEL -->
               <div class="tab-pane fade" id="responsavel" role="tabpanel" aria-labelledby="responsavel-tab">
                  <form class="form" action="..fazer func para add resp">
                      <h2>Responsável 01</h2>
@@ -235,6 +245,7 @@
                  </form>
               </div>
 
+              <!-- ABA FAMILIA -->
               <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
                  <form action="...inserir regra constituição familiar">
                     <label>Número do NIS</label>

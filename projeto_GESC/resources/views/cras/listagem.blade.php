@@ -2,11 +2,11 @@
 @section('conteudo')
 
 <h1 class="text">CRAS E CREAS </h1>
-@if($cras = "[]")
+@if(empty($cras))
     <div class="alert alert-danger">
         Você não tem nenhum CRAS ou CREAS cadastrado.
     </div>
-@elseif($cras != "[]")
+@elseif(!empty($cras))
 <table class="table table-striped">
     <thead>
         <tr>

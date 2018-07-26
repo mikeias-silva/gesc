@@ -43,6 +43,7 @@ Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');
 //Rotas para as telas de Matrícula
 Route::get('/matriculas', 'MatriculasController@listaMatriculas');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
+Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
 
 Route::get('/login', function(){
     return view('login.login');

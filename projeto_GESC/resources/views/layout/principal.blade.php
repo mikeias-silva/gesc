@@ -92,7 +92,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link disabled" href="#">
+                                <a class="nav-link disabled" href="/usuarios">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -192,6 +192,50 @@ $('#editarturma').on('show.bs.modal', function (event) {
     modal.find('.modal-body #id').val(id)
 
 });
+
+$('#editarusuario').on('show.bs.modal', function (event) {
+    console.log('modal opened');
+    var button = $(event.relatedTarget) 
+    var nome = button.data('mynome')  
+    var id = button.data('myid')
+    var nomeusuario = button.data('mynomeusuario')
+    var senha = button.data('mysenha')
+    var tipousuario = button.data('mytipousuario') 
+    var email = button.data('myemail') 
+    var modal = $(this)
+    modal.find('.modal-body #nome').val(nome)
+    modal.find('.modal-body #senha').val(senha)
+    modal.find('.modal-body #nomeusuario').val(nomeusuario)
+    modal.find('.modal-body #email').val(email)
+    modal.find('.modal-body #id').val(id)
+    if (tipousuario=="Administrador"){
+        document.getElementById("adm").checked = true;
+        console.log("ADM");
+    }else if (tipousuario=="Educador"){
+        console.log("EDU");
+        document.getElementById("edu").checked = true;
+    }});
+
+$('#inativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #id').val(id);
+    
+    console.log(id);
+});
+
+    $('#ativar').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #id').val(id);
+    console.log(id);
+});
+
 </script>
 </body>
 

@@ -8,7 +8,7 @@ class Usuario extends Model
 {
     protected $table = 'usuario';
     public $timestamps = false;
-    protected $fillable = array('nome', 'email', 'statusUsuario', 'senha', 'nomeUsuario', 'tipoUsuario');
+    protected $fillable = array('nome', 'email', 'statususuario', 'senha', 'nomeusuario', 'tipousuario');
 
     /*protected $guarded = ['id'];
 

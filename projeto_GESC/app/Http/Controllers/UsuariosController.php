@@ -17,14 +17,30 @@ class UsuariosController extends Controller {
     }
 
     public function adiciona(Request $request){
-        dump("Save");
+        $usuario = new usuario($request->all());
+        $usuario->save();
+        return redirect()->action('UsuariosController@listaUsuarios');
+        //dump($usuario);
     }
 
-    public function novo(){
-    
+    public function edita(Request $request){
+        $usuario = Usuario::find($request->id);
+        $usuario->update($request->all());
+        return redirect()->action('UsuariosController@listaUsuarios');
+        //dump($usuario);
     }
 
-    public function editar(Request $request){
+    public function inativa(Request $request){
+        $usuario = Usuario::find($request->id);
+        $usuario->statususuario='0';
+        $usuario->update($request->all());
+        return redirect()->action('UsuariosController@listaUsuarios');
+    }
 
+    public function ativa(Request $request){
+        $usuario = Usuario::find($request->id);
+        $usuario->statususuario='1';
+        $usuario->update($request->all());
+        return redirect()->action('UsuariosController@listaUsuarios');
     }
 }

@@ -148,13 +148,12 @@ $('#editar').on('show.bs.modal', function (event) {
     console.log('modal opened');
     var button = $(event.relatedTarget) 
     var nome = button.data('mytitle')
-    var turno = button.data('mytelefone') 
+    var telefone = button.data('mytelefone') 
     var id = button.data('myid') 
     var modal = $(this)
     modal.find('.modal-body #nomeCras').val(nome)
     modal.find('.modal-body #telefone').val(telefone)
-    modal.find('.modal-body #id').val(id)
-    modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #id').val(id);
 
 })
 

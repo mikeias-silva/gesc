@@ -10,10 +10,10 @@ class Cras extends Model
     public $timestamps = false;
     protected $fillable = array('nomeCras', 'telefone');
 
-    /*protected $guarded = ['id'];
+    protected $guarded = ['idcras'];
 
    public function post()
     {
         return $this->belongsTo(Post::class);
-    }*/
+    }
 }

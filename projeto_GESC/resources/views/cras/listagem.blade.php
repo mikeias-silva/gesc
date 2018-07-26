@@ -1,21 +1,18 @@
 @extends('layout.principal') 
 @section('conteudo')
 
-@if(empty($cras))
-    <div class="alert alert-danger">
-        <button class="btn btn-success">CLICA AQUI</button>
-    Você não tem nenhum CRAS ou CREAS cadastrado.
-    echo("    Você não tem nenhum CRAS ou CREAS cadastrado.    ")
-    </div>
-@endif
-@if($cras != "")
 <h1 class="text">CRAS E CREAS </h1>
+@if($cras = "[]")
+    <div class="alert alert-danger">
+        Você não tem nenhum CRAS ou CREAS cadastrado.
+    </div>
+@elseif($cras != "[]")
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Opções</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Opções</th>
 
         </tr>
     </thead>
@@ -23,11 +20,12 @@
     <tr>
         <td> {{ $c->nomeCras }} </td>
         <td> {{ $c->telefone }} </td>
-        <td class="col-md-3">
+        <td>
             <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
-                 data-myid="{{ $c->idcras }}" data-toggle="modal" data-target="#editar">Editar</button>
+                 data-myid="{{ $c->id }}" data-toggle="modal" data-target="#editar">Editar</button>
                  
-            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" data-myid="{{ $c->idcras }}" 
+            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" 
+                data-myid="{{ $c->id }}" 
                 data-toggle="modal" data-target="#excluir">Remover</button>
        
 
@@ -35,6 +33,7 @@
     </tr>
     @endforeach
 </table>
+@endif
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Novo
@@ -71,7 +70,7 @@
     </div>
 </div>
 
-<!-- Modal Center -->
+<!-- Modal Center modal de exclusão-->
 <div class="modal fade" id="excluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -86,7 +85,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="crasId" id="id" type="text" value=" ">
+                    <input type="hidden" name="id" id="id" type="text" value="">
 
                     <h5>Você tem certeza que deseja realmente excluir este item?</h5>
                     <div class="modal-footer">
@@ -116,7 +115,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="crasId" id="id" type="text" value="">
+                    <input type="hidden" name="id" id="id" type="text" value="">
                     
                     <label>Nome</label>
                     <input name="nomeCras" class="form-control" id="nomeCras" value="">
@@ -134,5 +133,5 @@
         </div>
     </div>
 </div>
-@endif
+
 @stop

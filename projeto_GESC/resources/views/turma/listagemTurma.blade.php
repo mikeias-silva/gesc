@@ -22,11 +22,11 @@
     </thead>
     @foreach ($turma as $t)
     <tr>
-        <td> {{ $t->GrupoConvivencia }} </td>
+        <td>{{ $t->GrupoConvivencia }}</td>
         <td>{{ $t->Turno }}</td> 
         <td>{{ $t->Nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
-        <td class="col-md-3">
+        <td>
             <button type="button" class="btn btn-info" data-mygrupo="{{ $t->GrupoConvivencia }}" 
                 data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->Nome }}"
                  data-toggle="modal" data-target="#editarturma">Editar</button>
@@ -146,7 +146,7 @@
                
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id" value="">
+                    <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
                     <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="">
                     <label>Turno</label>

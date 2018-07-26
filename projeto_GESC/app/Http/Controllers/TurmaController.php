@@ -60,11 +60,11 @@ class TurmaController extends Controller
     }
 
     public function editar(Request $request){
-        $turma = Turma::find($request->id);
+        $turma = Turma::find($request->idturma);
       
         $turma->update($request->all());
         
-
+        
         return back();
     }
 

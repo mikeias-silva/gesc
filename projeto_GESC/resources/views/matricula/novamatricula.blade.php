@@ -26,18 +26,18 @@
                         {{ csrf_field() }}
                         <div class="form-group" >
                             <label>Nome</label>
-                            <input type="text" class="form-control" name="nome">
+                            <input type="text" class="form-control" name="nomecrianca">
                         </div>
 
                          
                         <div class="form-group">
                             <label>Nascimento</label>
-                            <input type="date" class="form-control" name="datanascimento">
+                            <input type="date" class="form-control" name="datanascimentocrianca">
                         </div>
 
                         <div class="form-group">
                             <label>Sexo</label>
-                            <select name="sexo" id="" class="custom-select" value="">
+                            <select name="sexocrianca" id="" class="custom-select" value="">
                               <option value="M">Masculino</option>
                               <option value="F">Feminino</option>
                             </select>
@@ -53,82 +53,81 @@
 
                         <div class="form-group">
                             <label>RG</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="rgcrianca">
                         </div>
 
                         <div class="form-group">
                             <label>CPF</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="cpfcrianca" >
                         </div>
 
                         <div class="form-group">
                             <label>CEP</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="cep">
                         </div>
 
                         <div class="form-group">
                             <label>Endereço</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="logradouro">
                         </div>
 
                         <div class="form-group">
                             <label>Bairro</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="bairro">
                         </div>
 
                         <div class="form-group ">
                             <label>Complemento</label>
-                            <input type="text" class="form-control ">
+                            <input type="text" class="form-control" name="complemento">
                         </div>
 
                         <div class="form-group">
                             <label>CRAS/CREAS</label>
-                            <select name="cras" id="" class="custom-select">
-                              <option value="M">Implementar logica dos cras aqui</option>
-                             
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>publico priritario</label>
-                            <select name="cras" id="" class="custom-select">
-                              <option value="M">Implementar logica dos publicos prioritarios aqui</option>
-                             
+                            <select name="cras" id="" class="custom-select" name="cras">
+                                @foreach($cras as $c)
+                                    <option value="{{ $c->id}}">{{ $c->nomeCras }}</option>
+                                @endforeach
                             </select>
                         </div>
 
-                        <div class="form-group ">
-                            <label>Telefone</label>
-                            <input type="number" class="form-control ">
+                        <div class="form-group">
+                            <label>publico priritario</label>
+                            <select name="pprioritario" id="" class="custom-select">
+                                @foreach($pprioritario as $p)
+                                    <option value="{{ $p->idpublicoprioritario }}">{{ $p->publicoprioritario }}</option>
+                                @endforeach
+
+                               
+                            </select>
                         </div>
-                        <div class="form-group ">
-                            <label>Telefone 2</label>
-                            <input type="number" class="form-control ">
-                        </div>
+
+                        
 
                         <div class="form-group">
                             <label>Escola</label>
-                            <select name="cras" id="" class="custom-select">
-                              <option value="M">Implementar logica das escolas aqui</option>
-                             
+                            <select name="escola" id="" class="custom-select" >
+                                @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                @endforeach
                             </select>
 
                         </div>
 
                         <div class="form-group">
                             <label>Serie Escolar</label>
-                            <select name="cras" id="" class="custom-select">
-                              <option value="M">Implementar logica das series aqui</option>
+                            <select name="serie" id="" class="custom-select">
+                              <option value="3">Implementar logica das series aqui</option>
                              
-                            </select>
+                        </select>
 
                         </div>
 
                         <div class="form-group ">
                             <label>Observações de Saúde</label>
-                            <textarea name="" id="" cols="10" rows="2" class="form-control"></textarea>
+                            <textarea name="obssaude" id="" cols="10" rows="2" class="form-control"></textarea>
                         </div>
 
-                     <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
                         
                       </form>
                 </div>
@@ -140,56 +139,65 @@
               <!-- ABA RESPONSÁVEL -->
               <div class="tab-pane fade" id="responsavel" role="tabpanel" aria-labelledby="responsavel-tab">
                  <form class="form" action="..fazer func para add resp">
-                     <h2>Responsável 01</h2>
-                     <label>Nome:</label>
-                     <input class="form-control" type="text" name="nomeresp" id="nomeresp">
+                    <h2>Responsável 01</h2>
+                    <label>Nome:</label>
+                    <input class="form-control" type="text" name="nomeresp" id="nomeresp">
 
-                     <div class="form-group" >
-                            <label>Sexo</label>
-                            <select class="form-control" name="" id="">
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
-                            </select>
-                     </div>
-    
-                     <label>Data de Nascimento</label>
-                     <input type="date" class="form-control">
+                    <div class="form-group" >
+                        <label>Sexo</label>
+                        <select class="form-control" name="" id="">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </div>
 
-                     <label>RG</label>
-                     <input type="text" class="form-control">
+                    <label>Data de Nascimento</label>
+                    <input type="date" class="form-control">
 
-                     <label>CPF</label>
-                     <input type="text" class="form-control">
-                     
-                     <label>Estado Civil</label>
-                     <select class="form-control" name="" id="">
-                         <option value=""></option>
-                     </select>
+                    <label>RG</label>
+                    <input type="text" class="form-control">
 
-                     <label>Profissão</label>
-                     <input type="text" class="form-control">
+                    <label>CPF</label>
+                    <input type="text" class="form-control">
+                    
+                    <label>Estado Civil</label>
+                    <select class="form-control" name="" id="">
+                        <option value=""></option>
+                    </select>
 
-                     <label>Salário</label>
-                     <input type="number" class="form-control">
+                    <div class="form-group ">
+                        <label>Telefone</label>
+                        <input type="number" class="form-control" name="tel1">
+                    </div>
+                    <div class="form-group ">
+                        <label>Telefone 2</label>
+                        <input type="number" class="form-control" name="tel2">
+                    </div>
 
-                     <label>Local de Trabalho</label>
-                     <input type="text" class="form-control">
+                    <label>Profissão</label>
+                    <input type="text" class="form-control">
 
-                     <label>Escolaridade</label>
-                     <select class="form-control" name="" id="">
-                         <option value="">Ensino Médio</option>
-                     </select>
+                    <label>Salário</label>
+                    <input type="number" class="form-control">
 
-                     <label>Telefone 1</label>
-                     <input type="tel" class="form-control">
+                    <label>Local de Trabalho</label>
+                    <input type="text" class="form-control">
 
-                     <label>Telefone 2</label>
-                     <input type="tel" class="form-control">
+                    <label>Escolaridade</label>
+                    <select class="form-control" name="" id="">
+                        <option value="">Ensino Médio</option>
+                    </select>
 
-                     <label>Observações</label>
-                     <textarea name="" id="" cols="10" rows="2" class="form-control"></textarea>
-                
-                     <div class="container" id="meio">
+                    <label>Telefone 1</label>
+                    <input type="tel" class="form-control">
+
+                    <label>Telefone 2</label>
+                    <input type="tel" class="form-control">
+
+                    <label>Observações</label>
+                    <textarea name="" id="" cols="10" rows="2" class="form-control"></textarea>
+            
+                    <div class="container" id="meio">
 
                     </div>
                      

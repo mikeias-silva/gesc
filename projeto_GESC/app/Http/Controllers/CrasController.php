@@ -12,7 +12,12 @@ class CrasController extends Controller {
     public function listaCras(){
 
     //  $cras = DB::select('select * from cras');
+
+        
         $cras = cras::all();
+        
+        //$cras = [];
+        //return $cras;
         return view('cras.listagem')->with('cras', $cras);
     }
 
@@ -45,14 +50,15 @@ class CrasController extends Controller {
     }
 
     public function remover(Request $request){
-        $cras = Cras::find($request->crasId);
+       
+        $cras = Cras::find($request->id);
         $cras->delete();
 
         return back();
     }
 
     public function editar(Request $request){
-        $cras = Cras::find($request->crasId);
+        $cras = Cras::find($request->id);
       
         $cras->update($request->all());
         

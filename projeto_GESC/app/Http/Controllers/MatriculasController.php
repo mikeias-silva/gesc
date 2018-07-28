@@ -53,6 +53,12 @@ class MatriculasController extends Controller
         DB::insert('insert into cras(nomeCras, telefone) values(?, ?)',
         array($nome, $telefone));*/
 
+        //endereço para matricula
+        $cep = Request::input('cep');
+        $bairro = Request::input('bairro');
+        $logradouro = Request::input('logradouro');
+        $complemento = Request::input('complemento');
+        
         
 
         $nomecrianca = Request::input('nomecrianca');
@@ -61,10 +67,6 @@ class MatriculasController extends Controller
         $statusmatricula = Request::input('statusmatricula');
         $rgcrianca = Request::input('rgcrianca');
         $cpfcrianca = Request::input('cpfcrianca');
-        $cep = Request::input('cep');
-        $bairro = Request::input('bairro');
-        $logradouro = Request::input('logradouro');
-        $complemento = Request::input('complemento');
         
        /* $pessoacrianca = new Pessoa(
            $nomecrianca, $datanascimentocrianca, $sexocrianca,
@@ -79,9 +81,8 @@ class MatriculasController extends Controller
 
 
        
-       
+       //criança
         $idpublicoprioritario = Request::input('pprioritario');
-        
         $idescola = Request::input('escola');
         $pprioritario = Request::input('pprioritario');
         $obssaude = Request::input('obssaude');
@@ -97,8 +98,88 @@ class MatriculasController extends Controller
         values(?, ?, ?, ?, ?)',
         array($obssaude, $datacadastro, $idpessoa, $idescola, $idpublicoprioritario));
 
+        //-------------------------------
+         	
+        //--------------------------------------------------
+        //responsavel 01
+        $nomeresp1 = Request::input('nomeresp1');	
+        $sexoresp1 = Request::input('sexoresp1');	
+        $datanascimentoresp1 = Request::input('datanascimentoresp1');
+        $rgresp1 = Request::input('rgresp1');
+        $cpfresp1 = Request::input('cpfresp1');	
+        
+        DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
+        values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        array($nomeresp1, $datanascimentoresp1,  $sexoresp1, $rgresp1, $cpfresp1, $cep, $bairro, $logradouro, $complemento));
+
+        
+        $estadocivilresp1 = Request::input('estadocivilresp1');	
+        $profissaoresp1 = Request::input('profissaoresp1');	
+        $salarioresp1 = Request::input('salarioresp1');
+        $trabalhoresp1 = Request::input('trabalhoresp1');	
+        $escolaridaderesp1 = Request::input('escolaridaderesp1');	
+        $tel1resp1 = Request::input('tel1resp1');	
+        $tel2resp1 = Request::input('tel2resp1');
+        $obsresp1 = Request::input('obsresp1');
+
+        DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
+        salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
+        array($escolaridaderesp1, $profissaoresp1, $salarioresp1, $trabalhoresp1, $escolaridaderesp1, $tel1resp1, $tel2resp1, $obsresp1));
+        //------------------------------------------------------
+
+        //--------------------------------------------------
+        //responsavel 02
+        $nomeresp2 = Request::input('nomeresp2');	
+        $sexoresp2 = Request::input('sexoresp2');	
+        $datanascimentoresp2 = Request::input('datanascimentoresp2');
+        $rgresp2 = Request::input('rgresp2');
+        $cpfresp2 = Request::input('cpfresp2');	
+        
+        DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
+        values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        array($nomeresp2, $datanascimentoresp2, $sexoresp2, $rgresp2, $cpfresp2, $cep, $bairro, $logradouro, $complemento));
+
+        
+        $estadocivilresp2 = Request::input('estadocivilresp2');	
+        $profissaoresp2 = Request::input('profissaoresp2');	
+        $salarioresp2 = Request::input('salarioresp2');
+        $trabalhoresp2 = Request::input('trabalhoresp2');	
+        $escolaridaderesp2 = Request::input('escolaridaderesp2');	
+        $tel1resp2 = Request::input('tel1resp2');	
+        $tel2resp2 = Request::input('tel2resp2');
+        $obsresp2 = Request::input('obsresp2');
+
+        DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
+        salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
+        array($escolaridaderesp2, $profissaoresp2, $salarioresp2, $trabalhoresp2, 
+        $escolaridaderesp2, $tel1resp2, $tel2resp2, $obsresp2));
+        //------------------------------------------------------
+
+        //---------------------------------------------
+        //membro familia
+        //-------------
+
+        //familia
+        $moradia = Request::input('moradia');
+        $arearisco = Request::input('arearisco');
+        $tipohabitacao = Request::input('tipohabitacao');
+        $numnis = Request::input('numnis');
+        $beneficiopc = Request::input('beneficiopc');
+        $bolsafamilia = Request::input('bolsafamilia');
+        $cras = Request::input('cras');
+       // $membrofamilia
+        // $rendapercapta
+        //
+        
+        DB::insert('insert into familia(moradia, arearisco, tipohabitacao, numnis, beneficiopc, bolsafamilia, idcras)
+        values(?, ?, ?, ?, ?, ?, ?)',
+        array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
+        //---------------------------------------------------
+
+        
         return redirect()->action('MatriculasController@listaMatriculas');
      }
+
 /*
      public funcion mostraEscolas(){
         $escola = escola::all();

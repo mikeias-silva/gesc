@@ -2,11 +2,11 @@
 @section('conteudo')
 
 <h1 class="text">CRAS E CREAS </h1>
-@if($cras = "[]")
+@if(empty($cras))
     <div class="alert alert-danger">
         Você não tem nenhum CRAS ou CREAS cadastrado.
     </div>
-@elseif($cras != "[]")
+@else
 <table class="table table-striped">
     <thead>
         <tr>
@@ -18,13 +18,13 @@
     </thead>
     @foreach ($cras as $c)
     <tr>
-        <td> {{ $c->nomeCras }} </td>
+        <td> {{ $c->nomecras }} </td>
         <td> {{ $c->telefone }} </td>
         <td>
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
+            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->id }}" data-toggle="modal" data-target="#editar">Editar</button>
                  
-            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" 
+            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->id }}" 
                 data-toggle="modal" data-target="#excluir">Remover</button>
        

@@ -193,10 +193,26 @@ $('#editarturma').on('show.bs.modal', function (event) {
 
 });
 
+/*
+    Valicações de usuários
+
+*/
+
 $('#incluirusuario').on('hidden.bs.modal', function (event) {
     $(this).find('input:text').val('');
     document.getElementById("adm").checked = true;
     document.getElementById("msgemail").innerHTML="";
+    document.getElementById("msgnomeusuario").innerHTML="";
+    document.getElementById("msgsenha").innerHTML="";
+    document.getElementById("msgnome").innerHTML="";
+});
+
+$('#editarusuario').on('hidden.bs.modal', function (event) {
+    $(this).find('input:text').val('');
+    document.getElementById("msgemail_edit").innerHTML="";
+    document.getElementById("msgnomeusuario_edit").innerHTML="";
+    document.getElementById("msgsenha_edit").innerHTML="";
+    document.getElementById("msgnome_edit").innerHTML="";
 });
 
 $('#editarusuario').on('show.bs.modal', function (event) {
@@ -208,18 +224,20 @@ $('#editarusuario').on('show.bs.modal', function (event) {
     var senha = button.data('mysenha')
     var tipousuario = button.data('mytipousuario') 
     var email = button.data('myemail') 
+    console.log(tipousuario);
     var modal = $(this)
     modal.find('.modal-body #nome').val(nome)
     modal.find('.modal-body #senha').val(senha)
     modal.find('.modal-body #nomeusuario').val(nomeusuario)
+    modal.find('.modal-body #nomeUsuarioAtual').val(nomeusuario)
     modal.find('.modal-body #email').val(email)
     modal.find('.modal-body #id').val(id)
     if (tipousuario=="Administrador"){
-        document.getElementById("adm").checked = true;
+        document.getElementById("Admin").checked = true;
         console.log("ADM");
     }else if (tipousuario=="Educador"){
         console.log("EDU");
-        document.getElementById("edu").checked = true;
+        document.getElementById("Edu").checked = true;
     }});
 
 $('#inativar').on('show.bs.modal', function (event) {
@@ -242,7 +260,156 @@ $('#inativar').on('show.bs.modal', function (event) {
     console.log(id);
 });
 
-function validacaoEmail(field) {
+function validar(nome, senha, email, nomeusuario, listaUsuario) {
+    //console.log(listaUsuario.value);
+    var i, array_user;
+    var cont=0;
+    array_user = listaUsuario.value.split("|");
+    var permissao = true;
+    var formulario = document.register;
+    var tesNome = nome.value;
+    var tesSenha = senha.value;
+    var tesEmail = email.value;
+    var tesNomeUsuario = nomeusuario.value;
+    usuario = email.value.substring(0, email.value.indexOf("@"));
+    dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length);
+
+    for (i in array_user){
+        if(array_user[i]==tesNomeUsuario){
+            console.log(array_user[i]);
+            cont++;
+        }
+    }
+
+    if (tesNome == "") {
+        document.getElementById("msgnome").innerHTML="<font color='red'>Preencha o campo com seu nome</font>";
+        console.log('Preencha o campo com seu nome');
+        //alert('Preencha o campo com seu nome');
+        //document.getElementById("msgnome").innerHTML="O campo nome é obrigatório";
+        permissao = false;
+    } else {
+        document.getElementById("msgnome").innerHTML="";
+    }
+
+    if (tesSenha == "") {
+        document.getElementById("msgsenha").innerHTML="<font color='red'>Preencha o campo senha</font>";
+        console.log('Preencha o campo senha');
+        permissao = false;
+    } else {
+        document.getElementById("msgsenha").innerHTML="";
+    }
+
+    if (tesEmail == "") {
+        document.getElementById("msgemail").innerHTML="<font color='red'>Informe o email</font>";
+        //console.log('Preencha o campo senha');
+        permissao = false;
+    } else if ((usuario.length >=1) &&
+            (dominio.length >=3) && 
+            (usuario.search("@")==-1) && 
+            (dominio.search("@")==-1) &&
+            (usuario.search(" ")==-1) && 
+            (dominio.search(" ")==-1) &&
+            (dominio.search(".")!=-1) &&      
+            (dominio.indexOf(".") >=1)&& 
+            (dominio.lastIndexOf(".") < dominio.length - 1)) {
+                document.getElementById("msgemail").innerHTML="";
+                //alert("E-mail valido");
+                console.log("E-mail valido");
+    } else {
+        document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido </font>";
+        permissao = false;
+    }
+
+    if (tesNomeUsuario == "") {
+        document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Informe o nome de usuário</font>";
+        console.log('Preencha o campo nome usuário');
+        permissao = false;
+    } else if (cont>0){
+        document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Nome de usuário já cadastrado, por favor informe outro</font>";
+        console.log('Nome de usuário repetido');
+        permissao = false;
+    } else {
+        document.getElementById("msgnomeusuario").innerHTML="";
+    }
+
+    return permissao;
+}
+
+function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuarioAtual) {
+    var i, array_user;
+    var cont=0;
+    array_user = listaUsuario.value.split("|");
+    var permissao = true;
+    var formulario = document.register;
+    var tesNome = nome.value;
+    var tesSenha = senha.value;
+    var tesEmail = email.value;
+    var tesNomeUsuario = nomeusuario.value;
+    var tesNomeUsuarioAtual = nomeUsuarioAtual.value;
+    usuario = email.value.substring(0, email.value.indexOf("@"));
+    dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length);
+    console.log(tesNomeUsuarioAtual);
+    for (i in array_user){
+        if(array_user[i]==tesNomeUsuario){
+            console.log(array_user[i]);
+            cont++;
+        }
+    }
+    if (tesNome == "") {
+        document.getElementById("msgnome_edit").innerHTML="<font color='red'>Preencha o campo com seu nome</font>";
+        console.log('Preencha o campo com seu nome');
+        //alert('Preencha o campo com seu nome');
+        //document.getElementById("msgnome").innerHTML="O campo nome é obrigatório";
+        permissao = false;
+    } else {
+        document.getElementById("msgnome_edit").innerHTML="";
+    }
+
+    if (tesSenha == "") {
+        document.getElementById("msgsenha_edit").innerHTML="<font color='red'>Preencha o campo senha</font>";
+        console.log('Preencha o campo senha');
+        permissao = false;
+    } else {
+        document.getElementById("msgsenha_edit").innerHTML="";
+    }
+
+    if (tesEmail == "") {
+        document.getElementById("msgemail_edit").innerHTML="<font color='red'>Informe o email</font>";
+        //console.log('Preencha o campo senha');
+        permissao = false;
+    } else if ((usuario.length >=1) &&
+            (dominio.length >=3) && 
+            (usuario.search("@")==-1) && 
+            (dominio.search("@")==-1) &&
+            (usuario.search(" ")==-1) && 
+            (dominio.search(" ")==-1) &&
+            (dominio.search(".")!=-1) &&      
+            (dominio.indexOf(".") >=1)&& 
+            (dominio.lastIndexOf(".") < dominio.length - 1)) {
+                document.getElementById("msgemail_edit").innerHTML="";
+                //alert("E-mail valido");
+                console.log("E-mail valido");
+    } else {
+        document.getElementById("msgemail_edit").innerHTML="<font color='red'>E-mail inválido </font>";
+        permissao = false;
+    }
+
+    if (tesNomeUsuario == "") {
+        document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Informe o nome de usuário</font>";
+        console.log('Preencha o campo nome usuário');
+        permissao = false;
+    } else if(cont>1 && tesNomeUsuarioAtual!=tesNomeUsuario){
+        document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Nome de usuário já cadastrado, por favor informe outro</font>";
+        console.log('Nome de usuário repetido');
+        permissao = false;
+    } else {
+        document.getElementById("msgnomeusuario_edit").innerHTML="";
+    }
+
+    return permissao;
+}
+
+/*function validacaoEmail(field) {
     usuario = field.value.substring(0, field.value.indexOf("@"));
     dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
     
@@ -255,15 +422,21 @@ function validacaoEmail(field) {
         (dominio.search(".")!=-1) &&      
         (dominio.indexOf(".") >=1)&& 
         (dominio.lastIndexOf(".") < dominio.length - 1)) {
-    document.getElementById("msgemail").innerHTML="E-mail válido";
+    document.getElementById("msgemail").innerHTML="";
+    document.getElementById("salvar").disabled=false;
     //alert("E-mail valido");
     console.log("E-mail valido");
     }
     else{
     document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido </font>";
+    if(!document.getElementById("salvar").disabled) document.getElementById("salvar").disabled=true;
     //alert("E-mail invalido");
 }
-}
+}*/
+
+/*
+    validações de cras e cras
+*/
 
 </script>
 </body>

@@ -12,8 +12,18 @@ class UsuariosController extends Controller {
     public function listaUsuarios(){
         //echo "ola";
         $usuario = usuario::all();
+        $nomeUsuarios=[];
+        $i=0;
         //$usuario = [];
-        return view('usuarios.listagemUsuarios')->with('usuario', $usuario);
+        foreach($usuario as $c){
+            $nomeUsuarios[$i]=$c->nomeusuario;
+            $i++;
+        }
+
+        $string = implode('|', $nomeUsuarios);
+
+
+        return view('usuarios.listagemUsuarios')->with('usuario', $usuario) ->with('string', $string);
     }
 
     public function adiciona(Request $request){

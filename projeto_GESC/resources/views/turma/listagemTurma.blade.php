@@ -71,9 +71,9 @@
                     <input name="GrupoConvivencia" class="form-control" type="text" value="">
                     
                     <label>Turno</label>
-                   <select class="form-control" name="turno" id="turno">
-                       <option value="M">Manha</option>
-                       <option value="T">Tarde</option>
+                   <select class="form-control" name="turno" id="turno" value="">
+                       <option value="m">Manha</option>
+                       <option value="t">Tarde</option>
                       
                        
                    </select>
@@ -88,7 +88,7 @@
                     <label>Educador</label>
                     <select class="form-control" name="idUsuario" id="idUsuario">
                         @foreach($educador as $e)
-                        <option value="{{ $e->idUsuario }}">{{ $e->Nome }}</option>
+                        <option value="{{ $e->idusuario }}">{{ $e->nome }}</option>
                         @endforeach
                     </select>
                     <div class="modal-footer">
@@ -155,9 +155,9 @@
                         <option value="T">Tarde</option>
                     </select>
                     <label>Educador</label>
-                  <select class="form-control" value="" name="educador" id="educador">
+                  <select class="form-control" name="educador" id="educador">
                         @foreach($educador as $e)
-                        <option value="{{ $e->idUsuario }}">{{ $e->Nome }}</option>
+                        <option value="{{ $e->idusuario }}">{{ $e->nomeusuario }}</option>
                         @endforeach
                   </select>
 

@@ -52,8 +52,8 @@ class TurmaController extends Controller
         return redirect()->action('TurmaController@listaTurma');
     }
 
-    public function remover(Request $request){
-        $turmaid = Turma::findOrFail($request->id);
+    public function remover($id){
+        $turmaid = Turma::findOrFail($id);
         $turmaid->delete();
 
         return back();

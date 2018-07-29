@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Cras;
 
+
 class CrasController extends Controller {
 
     public function listaCras(){
@@ -18,14 +19,14 @@ class CrasController extends Controller {
         
         //$cras = [];
         //return $cras;
+
         return view('cras.listagem')->with('cras', $cras);
     }
 
     public function adiciona(Request $request){
 
         $cras = new Cras(
-        $request->all()
-        );
+        $request->all());
         $cras->save();
 /*
         /*$nome = Request::input('nome');
@@ -55,6 +56,22 @@ class CrasController extends Controller {
         $cras->delete();
 
         return back();
+    }
+
+    public function inativar(Request $request){
+       
+        $cras = Cras::find($request->id);
+        $cras->statuscras='0';
+        $cras->update($request->all());
+        return redirect()->action('CrasController@listaCras');
+    }
+
+    public function ativar(Request $request){
+       
+        $cras = Cras::find($request->id);
+        $cras->statuscras='1';
+        $cras->update($request->all());
+        return redirect()->action('CrasController@listaCras');
     }
 
     public function editar(Request $request){

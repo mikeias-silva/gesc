@@ -47,15 +47,6 @@
             </div>
 
             <div class="form-group">
-                <label>status</label>
-                <select name="statuscadastro" id="" class="custom-select" value="">
-                    <option value="1">Ativo</option>
-                    <option value="2">Espera</option>
-                    <option value="3">Inativo</option>
-                </select>
-            </div>
-
-            <div class="form-group">
                 <label>RG</label>
                 <input type="text" class="form-control" name="rgcrianca">
             </div>

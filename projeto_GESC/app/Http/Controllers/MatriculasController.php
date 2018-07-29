@@ -20,6 +20,7 @@ use App\Familia;
 use App\Crianca;
 use App\Turma;
 use App\Vaga;
+
 use Request;
 
 use Illuminate\Support\Carbon;
@@ -51,6 +52,8 @@ class MatriculasController extends Controller
     }
 
     public function adicionaMatricula(){
+        
+       
         $hoje = Carbon::now();
         /*$nome = Request::input('nome');
         $telefone = Request::input('telefone');
@@ -250,7 +253,7 @@ class MatriculasController extends Controller
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('cras');
         //$familia->idmembro = 
-        $familia->save();
+       // $familia->save();
         //add familia aos responsavels adicionados por ultimo
         $responsavel1->update(array('idfamilia' =>$familia->id));
         $responsavel2->update(array('idfamilia' =>$familia->id));
@@ -264,40 +267,61 @@ class MatriculasController extends Controller
         $dataespera = Carbon::now();
        // $datasairespera;
 
-        $idade = $hoje->diffInYears($datanascimentocrianca);
+       $idade = $hoje->diffInYears($datanascimentocrianca);
+        
         //$vagas = DB::select('select * from vagas where ? >= idademin and ? <= idademax', [$idade, $idade]); 
         $vagas = Vaga::all();
-        //lógica para pegar vaga de acorodo com a idade da criança
-        foreach($vagas as $vaga){
-            if($idade >= $vaga->idademin and $idade <= $vaga->idademax){
-                $vaga->idvaga;
-                $vaga->idademin;
-                $vaga->idademax;
-                $vaga->numvaga;
-                $vaga->anovaga;
-            }   
+        //lógica para pegar vaga de acordo com a idade da criança
+       foreach($vagas as $vaga){
+           
+            if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
+               
+               $vaga->idademin;
+               $vaga->idademax;
+               $vaga->numvaga;
+               $vaga->anovaga;
+               $vaga->idvaga;
+               echo 'id do if'.$vaga->idvaga;
+               $essavaga = $vaga->idvaga;
+               $essanumvaga = $vaga->numvaga;
+            }
         }
+
         $pessoas = Pessoa::all();
         $criancas = Crianca::all();
 
         foreach($pessoas as $pessoa){
             foreach($criancas as $crianca){
                 if($pessoa->idpessoa == $crianca->idpessoa){
-                    return $pessoa->datanascimento;    
+                   // return $pessoa->datanascimento;    
                 }
             }
             
         }
+       
 
-         $vaga->numvaga;
-
-       // $statuscadastro =  ; 
-      
-        /* $serieescolar = Request::input('serie');*/
-        $anomatricula = Carbon::now()->year;
+        $anomatricula = Carbon::now();
         $idturma = Request::input('turma');
+
+        $matricula = new Matricula();
+        $matricula->anomatricula = $hoje;
+        $matricula->idturma = Request::input('turma');
+        $matricula->serieescolar = Request::input('serie');
+        $matricula->idcrianca = $crianca->id;
+       
+        $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
+       // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
+             
+        if($matAtivas < $essanumvaga){
+            $matricula->statuscadastro = 'Ativo';
+            
+        }elseif($matAtivas > $essanumvaga){
+            $matricula->statuscadastro = 'Espera';
+            
+        }
         
-       // $idcrianca
+        $matricula->save();
+
        
 /*
         DB::insert('insert into Matricula(datasairespera, satuscadastro, dataespera, serieescolar, 

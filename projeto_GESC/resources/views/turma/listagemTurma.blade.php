@@ -116,7 +116,7 @@
             <form action="turmas/remove" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" id="id" name="id" type="text" value="">
+                    <input type="hidden" id="idturma" name="idturma" type="text" value="">
 
                     <h5>Você tem certeza que deseja realmente excluir este item?</h5>
                     <div class="modal-footer">

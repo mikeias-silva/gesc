@@ -153,7 +153,7 @@ $('#editar').on('show.bs.modal', function (event) {
     var modal = $(this)
     modal.find('.modal-body #nomeCras').val(nome)
     modal.find('.modal-body #telefone').val(telefone)
-    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #idcras').val(id);
 
 })
 
@@ -162,7 +162,7 @@ $('#excluir').on('show.bs.modal', function (event) {
     var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #idcras').val(id);
     console.log(id);
     console.log("EXCLUIR modal");
     
@@ -172,7 +172,7 @@ $('#excluirturma').on('show.bs.modal', function (event) {
     var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #idturma').val(id);
     console.log(id);
     console.log("EXCLUIR modal turma");
     
@@ -189,7 +189,7 @@ $('#editarturma').on('show.bs.modal', function (event) {
     modal.find('.modal-body #GrupoConvivencia').val(nome)
     modal.find('.modal-body #turno').val(turno)
     modal.find('.modal-body #educador').val(educador)
-    modal.find('.modal-body #id').val(id)
+    modal.find('.modal-body #idturma').val(id)
 
 });
 

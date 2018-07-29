@@ -10,7 +10,7 @@ class Cras extends Model
     public $timestamps = false;
     protected $fillable = array('nomeCras', 'telefone');
 
-    protected $guarded = ['idcras'];
+    protected $primaryKey = 'idcras';
 
    public function post()
     {

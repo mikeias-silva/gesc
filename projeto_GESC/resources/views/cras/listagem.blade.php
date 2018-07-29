@@ -10,6 +10,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>#</th>
             <th>Nome</th>
             <th>Telefone</th>
             <th>Opções</th>
@@ -18,14 +19,16 @@
     </thead>
     @foreach ($cras as $c)
     <tr>
+        
         <td> {{ $c->nomeCras }} </td>
         <td> {{ $c->telefone }} </td>
+        
         <td>
             <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
-                 data-myid="{{ $c->id }}" data-toggle="modal" data-target="#editar">Editar</button>
+                 data-myid="{{ $c->idcras }}" data-toggle="modal" data-target="#editar">Editar</button>
                  
             <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomeCras }}" 
-                data-myid="{{ $c->id }}" 
+                data-myid="{{ $c->idcras }}" 
                 data-toggle="modal" data-target="#excluir">Remover</button>
        
 
@@ -85,8 +88,8 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="id" id="id" type="text" value="">
-
+                    <input type="hidden" name="idcras" id="idcras" value="">
+                 
                     <h5>Você tem certeza que deseja realmente excluir este item?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -115,7 +118,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="id" id="id" type="text" value="">
+                    <input type="hidden" name="idcras" id="idcras" value="">
                     
                     <label>Nome</label>
                     <input name="nomeCras" class="form-control" id="nomeCras" value="">

@@ -12,6 +12,9 @@
     <li class="nav-item">
         <a class="nav-link" id="familia-tab" data-toggle="tab" href="#familia" role="tab" aria-controls="familia" aria-selected="false">Constituição Familiar</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="conclusao-tab" data-toggle="tab" href="#conclusao" role="tab" aria-controls="conclusao" aria-selected="false">Conclusao</a>
+    </li>
 </ul>
 
 <div class="tab-content" id="myTabContent">
@@ -45,9 +48,10 @@
 
             <div class="form-group">
                 <label>status</label>
-                <select name="statusmatricula" id="" class="custom-select" value="">
-                    <option value="0">Inativo</option>
+                <select name="statuscadastro" id="" class="custom-select" value="">
                     <option value="1">Ativo</option>
+                    <option value="2">Espera</option>
+                    <option value="3">Inativo</option>
                 </select>
             </div>
 
@@ -116,9 +120,21 @@
             <div class="form-group">
                 <label>Serie Escolar</label>
                 <select name="serie" id="" class="custom-select">
-                    <option value="3">Implementar logica das series aqui</option>
                     
-            </select>
+                    <option value="1">1º Fundamental</option>
+                    <option value="2">2º Fundamental</option>
+                    <option value="3">3º Fundamental</option>
+                    <option value="4">4º Fundamental</option>
+                    <option value="5">5º Fundamental</option>
+                    <option value="6">6º Fundamental</option>
+                    <option value="7">7º Fundamental</option>
+                    <option value="8">8º Fundamental</option>
+                    <option value="9">9º Fundamental</option>
+                    <option value="10">1º Médio</option>
+                    <option value="11">2º Médio</option>
+                    <option value="12">3º Médio</option>
+                        
+                </select>
 
             </div>
 
@@ -127,12 +143,8 @@
                 <textarea name="obssaude" id="" cols="10" rows="2" class="form-control"></textarea>
             </div>
 
-            
-            
         </div>
     </div>
-        
-        
 
     </div>
 
@@ -141,15 +153,14 @@
         <div class="form">
         <h2>Responsável 01</h2>
         <label>Nome</label>
-        <input class="form-control" type="text" name="nomeresp1" id="nomeresp">
-
-        <div class="form-group" >
-            <label>Sexo</label>
-            <select class="form-control" name="sexoresp1" id="">
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-            </select>
-        </div>
+        <input class="form-control" type="text" name="nomeresp1" >
+        
+        <label>Sexo</label>
+        <select class="form-control" name="sexoresp1" id="">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+        </select>
+        
 
         <label>Data de Nascimento</label>
         <input type="date" class="form-control" name="datanascimentoresp1">
@@ -274,9 +285,9 @@
 
         <label>Moradia</label>
         <select class="form-control" name="moradia" id="">
-            <option value="alugada">Alugada</option>
-            <option value="cedida">Cedida</option>
-            <option value="propria">Prórpia</option>
+            <option value="1">Alugada</option>
+            <option value="2">Cedida</option>
+            <option value="3">Prórpia</option>
         </select>
 
         
@@ -302,25 +313,36 @@
         <span>Programas Sociais</span>
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="arearisco" value="true">Area de risco
+                <input type="checkbox" class="form-check-input" name="arearisco" value="1">Area de risco
             </label>
         </div>
 
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="bolsafamilia" value="true">Bolsa Familia
+                <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Bolsa Familia
             </label>
         </div>
 
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="beneficiopc" value="true">Benefício Pessoa Continuada
+                <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
             </label>
         </div>
         
         </div>
     </div>
+
+    <!-- CONCLUSÃO -->
+    <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+        <span>Turma</span>
+        <select name="turma" id="" class="form-control">
+            @foreach($turmas as $t)
+            <option value="{{ $t->idturma }}">{{ $t->GrupoConvivencia }}</option>
+            @endforeach
+        </select>
+    </div>
 </div>
+
 
     <a href="/matriculas">
         <button class="btn btn-default" id="btn-mat">Cancelar</button>

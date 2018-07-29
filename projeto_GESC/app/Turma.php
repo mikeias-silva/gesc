@@ -10,5 +10,5 @@ class Turma extends Model
     public $timestamps = false;
     protected $fillable = array('GrupoConvivencia', 'turno', 'statusTurma', 'idUsuario');
 
-    protected $guarded = ['idturma'];
+    protected $primaryKey = 'idturma';
 }

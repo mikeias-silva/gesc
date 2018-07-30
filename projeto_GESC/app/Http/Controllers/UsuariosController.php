@@ -34,7 +34,7 @@ class UsuariosController extends Controller {
     }
 
     public function edita(Request $request){
-        $usuario = Usuario::find($request->id);
+        $usuario = Usuario::find($request->idusuario);
         $usuario->update($request->all());
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);

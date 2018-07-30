@@ -23,15 +23,15 @@
         <td> {{ $c->telefone }} </td>
         <td>
             <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
-                 data-myid="{{ $c->id }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
+                 data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
 
             @if($c->statuscras=='1')     
             <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
-                data-myid="{{ $c->id }}" 
+                data-myid="{{ $c->idcras }}" 
                 data-toggle="modal" data-target="#inativar">Inativar</button>
             @else
             <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
-                data-myid="{{ $c->id }}" 
+                data-myid="{{ $c->idcras }}" 
                 data-toggle="modal" data-target="#ativar">Ativar</button>
             @endif
        
@@ -94,11 +94,11 @@
             </button>
             </div>
             
-            <form action="cras/remove" method="post">
+            <form action="cras/inativar" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="id" id="id" type="text" value="">
+                    <input type="hidden" name="idcras" id="idcras" type="text" value="">
 
                     <h5>Você tem certeza que deseja realmente inativar este CRAS/CREAS?</h5>
                     <div class="modal-footer">
@@ -129,7 +129,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="id" id="id" type="text" value="">
+                    <input type="hidden" name="idcras" id="idcras" type="text" value="">
 
                     <h5>Você tem certeza que deseja realmente ativar este CRAS/CREAS?</h5>
                     <div class="modal-footer">
@@ -160,7 +160,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="id" id="id" type="text" value="">
+                    <input type="hidden" name="idcras" id="idcras" type="text" value="">
                     <input type="hidden" name="statuscras" id="statuscras" type="text" value="">
                     
                     <label>Nome</label>
@@ -274,6 +274,25 @@
     
     }
 
+    $('#inativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idcras').val(id);
+    
+    console.log(id);
+});
+
+    $('#ativar').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idcras').val(id);
+    console.log(id);
+});
         
 </script>
 

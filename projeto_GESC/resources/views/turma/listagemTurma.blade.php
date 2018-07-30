@@ -23,21 +23,29 @@
     @foreach ($turma as $t)
     <tr>
         <td>{{ $t->GrupoConvivencia }}</td>
-        <td>{{ $t->Turno }}</td> 
+        @if($t->Turno=="M")
+            <td>Manhã</td>
+        @else 
+            <td>Tarde</td>
+        
+        @endif 
         <td>{{ $t->Nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
         <td>
             <button type="button" class="btn btn-info" data-mygrupo="{{ $t->GrupoConvivencia }}" 
-                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->Nome }}"
+                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
                  data-toggle="modal" data-target="#editarturma">Editar</button>
-
-            <button type="button" class="btn btn-danger" data-mygrupo="{{ $t->GrupoConvivencia }}" 
-                data-myid="{{ $t->idturma }}" data-toggle="modal" data-target="#excluirturma">Remover</button>
         </td>
         @if( ($t->statusTurma) === 0)
-        <td>Inativo</td>
+        <td>
+        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusTurma }}" 
+                data-toggle="modal" data-target="#ativarturma">Ativar</button>
+        </td>
         @elseif(($t->statusTurma) >0)
-        <td>Ativo</td>
+        <td>
+        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusTurma }}" 
+                data-toggle="modal" data-target="#inativarturma">Inativar</button>
+        </td>
         @endif
     </tr>
     
@@ -61,30 +69,25 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/turmas/adiciona" method="post">
+                <form class="form" action="/turmas/adiciona" method="post" name="incluirTurma" 
+                onsubmit="return validarInclusaoTurma(incluirTurma.GrupoConvivencia);">
 
 
                     {{ csrf_field() }}
                   <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 
                     <label>Grupo de Convivência</label>
-                    <input name="GrupoConvivencia" class="form-control" type="text" value="">
-                    
+                    <input name="GrupoConvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
+                    <label id="meggrupo"></label>
+                    </br>
                     <label>Turno</label>
                    <select class="form-control" name="turno" id="turno" value="">
-                       <option value="m">Manha</option>
-                       <option value="t">Tarde</option>
-                      
-                       
+                       <option value="m">Manhã</option>
+                       <option value="t">Tarde</option> 
                    </select>
 
-                    <label>Turma ativado?</label>
-                    <select class="form-control" name="statusTurma" id="statusTurma">
-                        <option value="1">Ativado</option>
-                        <option value="0">Inativado</option>
-                 
-                    </select>
-                    
+                    <input type="hidden" name="statusTurma" id="statusTurma" value="1">
+
                     <label>Educador</label>
                     <select class="form-control" name="idUsuario" id="idUsuario">
                         @foreach($educador as $e)
@@ -132,6 +135,64 @@
     </div>
 </div>
 
+<!-- Modal Ativar -->
+<div class="modal fade" id="ativarturma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form action="/turmas/ativa" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="idturma" name="idturma" type="text" value="">
+
+                    <h5>Você tem certeza que deseja realmente ativar esta turma?</h5>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Ativar</button>
+            
+                    </div>
+                </div>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
+
+<!-- Modal Inativar -->
+<div class="modal fade" id="inativarturma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form action="/turmas/inativa" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="idturma" name="idturma" type="text" value="">
+
+                    <h5>Você tem certeza que deseja realmente inativar esta turma?</h5>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Inativar</button>
+            
+                    </div>
+                </div>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
+
 <!-- Modal para edição -->
 <div class="modal fade" id="editarturma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -142,13 +203,16 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form class="form" action="turmas/edita" method="post">
+            <form class="form" action="turmas/edita" method="post" name="editarTurma"
+            onsubmit="return validarEdicaoTurma(editarTurma.GrupoConvivencia);">
                
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
-                    <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="">
+                    <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
+                    <label id="meggrupo_edit"></label>
+                    </br>
                     <label>Turno</label>
                     <select name="turno" id="turno" value="" class="form-control">
                         <option value="M">Manhã</option>
@@ -157,7 +221,7 @@
                     <label>Educador</label>
                   <select class="form-control" name="educador" id="educador">
                         @foreach($educador as $e)
-                        <option value="{{ $e->idusuario }}">{{ $e->nomeusuario }}</option>
+                        <option value="{{ $e->idusuario }}">{{ $e->nome }}</option>
                         @endforeach
                   </select>
 
@@ -172,5 +236,65 @@
         </div>
     </div>
 </div>
+
+<script>
+    function validarInclusaoTurma(nomeGrupo) {
+        var permissao = true;
+        var formulario = document.register;
+        var tesNome = nomeGrupo.value;
+
+        if (tesNome == "") {
+        document.getElementById("meggrupo").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("meggrupo").innerHTML="";
+    }
+    return permissao;
+    }
+
+    $('#novaturma').on('hidden.bs.modal', function (event) {
+    $(this).find('input:text').val('');
+    document.getElementById("meggrupo").innerHTML="";
+    });
+
+    function validarEdicaoTurma(nomeGrupo) {
+        var permissao = true;
+        var formulario = document.register;
+        var tesNome = nomeGrupo.value;
+
+        if (tesNome == "") {
+        document.getElementById("meggrupo_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("meggrupo_edit").innerHTML="";
+    }
+    return permissao;
+    }
+
+    $('#editarturma').on('hidden.bs.modal', function (event) {
+    $(this).find('input:text').val('');
+    document.getElementById("meggrupo_edit").innerHTML="";
+    });
+
+    $('#ativarturma').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idturma').val(id);
+    
+    });
+
+    $('#inativarturma').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idturma').val(id);
+    
+    });
+
+
+</script>
 
 @stop

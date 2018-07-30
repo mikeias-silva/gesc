@@ -60,7 +60,7 @@ class CrasController extends Controller {
 
     public function inativar(Request $request){
        
-        $cras = Cras::find($request->id);
+        $cras = Cras::find($request->idcras);
         $cras->statuscras='0';
         $cras->update($request->all());
         return redirect()->action('CrasController@listaCras');
@@ -68,14 +68,14 @@ class CrasController extends Controller {
 
     public function ativar(Request $request){
        
-        $cras = Cras::find($request->id);
+        $cras = Cras::find($request->idcras);
         $cras->statuscras='1';
         $cras->update($request->all());
         return redirect()->action('CrasController@listaCras');
     }
 
     public function editar(Request $request){
-        $cras = Cras::find($request->id);
+        $cras = Cras::find($request->idcras);
       
         $cras->update($request->all());
         

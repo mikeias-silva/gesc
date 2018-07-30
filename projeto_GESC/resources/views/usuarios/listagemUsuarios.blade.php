@@ -26,16 +26,16 @@
         <td>{{ $c->tipousuario }}</td>
         <td>{{ $c->statususuario }}</td>
         <td>
-            <button type="button" class="btn btn-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
+            <button type="button" class="btn btn-info" data-myid="{{ $c->idusuario }}" data-mynome="{{ $c->nome }}" 
                 data-myemail="{{ $c->email }}" data-mysenha="{{ $c->senha }}" data-mytipousuario="{{ $c->tipousuario }}" 
                 data-mynomeusuario="{{ $c->nomeusuario }}" 
                 data-toggle="modal" data-target="#editarusuario">Editar</button>
 
             @if($c->statususuario=='1')       
-            <button type="button" class="btn btn-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+            <button type="button" class="btn btn-danger" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
                 data-toggle="modal" data-target="#inativar">Inativar</button>
             @else
-            <button type="button" class="btn btn-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+            <button type="button" class="btn btn-danger" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
                 data-toggle="modal" data-target="#ativar">Ativar</button>
             @endif
 
@@ -113,7 +113,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="id" id="id" type="text" value="">
+                    <input type="hidden" name="idusuario" id="idusuario" type="text" value="">
                     <input name="listaNomeUsuarios" class="form-control" type="hidden" value="{{$string}}" maxlength="255" autocomplete="off">
                     <input name="nomeUsuarioAtual" id="nomeUsuarioAtual" class="form-control" type="hidden" value="{{$string}}" maxlength="255" autocomplete="off">
                     

@@ -37,6 +37,8 @@ Route::get('/turmas', 'TurmaController@listaTurma');
 Route::post('/turmas/adiciona', 'TurmaController@adiciona');
 Route::post('/turmas/remove', 'TurmaController@remover');
 Route::post('/turmas/edita', 'TurmaController@editar');
+Route::post('/turmas/inativa', 'TurmaController@inativar');
+Route::post('/turmas/ativa', 'TurmaController@ativar');
 
 //Rotas para as telas de instituição
 Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');

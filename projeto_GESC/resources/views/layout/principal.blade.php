@@ -156,7 +156,7 @@ $('#editar').on('show.bs.modal', function (event) {
     modal.find('.modal-body #nomeCras').val(nome)
     modal.find('.modal-body #telefone').val(telefone)
     modal.find('.modal-body #statuscras').val(statuscras)
-    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #idcras').val(id);
 
 })
 
@@ -189,10 +189,11 @@ $('#editarturma').on('show.bs.modal', function (event) {
     var educador = button.data('myeducador')  
     var id = button.data('myid') 
     var modal = $(this)
+    console.log(educador.value);
     modal.find('.modal-body #GrupoConvivencia').val(nome)
     modal.find('.modal-body #turno').val(turno)
     modal.find('.modal-body #educador').val(educador)
-    modal.find('.modal-body #id').val(id)
+    modal.find('.modal-body #idturma').val(id)
 
 });
 
@@ -234,7 +235,7 @@ $('#editarusuario').on('show.bs.modal', function (event) {
     modal.find('.modal-body #nomeusuario').val(nomeusuario)
     modal.find('.modal-body #nomeUsuarioAtual').val(nomeusuario)
     modal.find('.modal-body #email').val(email)
-    modal.find('.modal-body #id').val(id)
+    modal.find('.modal-body #idusuario').val(id)
     if (tipousuario=="Administrador"){
         document.getElementById("Admin").checked = true;
         console.log("ADM");

@@ -36,8 +36,12 @@ class MatriculasController extends Controller
 
         //$matAtivas =  DB::select('select * from matricula where statuscadastro = 1');
 
-        $matAtivas = DB::select('select * from matriculas');
-       
+       // $matAtivas = DB::select('select * from matriculas where statuscadastro = ');
+
+        $matAtivas = Matricula::all();
+        /*dd($matAtivas);
+        return;*/
+       // return $matAtivas;
         return view('matricula.matriculas')->with('matAtivas', $matAtivas);
     }
 
@@ -87,7 +91,7 @@ class MatriculasController extends Controller
         $pessoacrianca->logradouro = $logradouro;
         $pessoacrianca->complementoendereco = $complemento;
         $pessoacrianca->save();
-        $ultimapessoa = $pessoacrianca->id;
+        
        /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
          values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
         array($nomecrianca, $datanascimentocrianca, $sexocrianca, $rgcrianca, $cpfcrianca, $cep, $bairro,
@@ -110,6 +114,8 @@ class MatriculasController extends Controller
         $crianca->idpublicoprioritario = Request::input('pprioritario');
         $crianca->idpessoa = $pessoacrianca->id;
         $crianca->save();
+        
+       
 /*
         DB::insert('insert into crianca(obssaude, datacadastro, idpessoa, idescola, idpublicoprioritario) 
         values(?, ?, ?, ?, ?)',
@@ -253,7 +259,7 @@ class MatriculasController extends Controller
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('cras');
         //$familia->idmembro = 
-       // $familia->save();
+        $familia->save();
         //add familia aos responsavels adicionados por ultimo
         $responsavel1->update(array('idfamilia' =>$familia->id));
         $responsavel2->update(array('idfamilia' =>$familia->id));
@@ -273,18 +279,21 @@ class MatriculasController extends Controller
         $vagas = Vaga::all();
         //lógica para pegar vaga de acordo com a idade da criança
        foreach($vagas as $vaga){
-           
+           echo '[passou aqui, ]';
             if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
-               
-               $vaga->idademin;
-               $vaga->idademax;
+               echo '[ e aqui 1...]';
+               $idademin = $vaga->idademin;
+               $idademax = $vaga->idademax;
+               echo $vaga->idademax;
                $vaga->numvaga;
                $vaga->anovaga;
                $vaga->idvaga;
                echo 'id do if'.$vaga->idvaga;
                $essavaga = $vaga->idvaga;
                $essanumvaga = $vaga->numvaga;
+            
             }
+            
         }
 
         $pessoas = Pessoa::all();
@@ -307,7 +316,7 @@ class MatriculasController extends Controller
         $matricula->anomatricula = $hoje;
         $matricula->idturma = Request::input('turma');
         $matricula->serieescolar = Request::input('serie');
-        $matricula->idcrianca = $crianca->id;
+        $matricula->idcrianca = $crianca->idcrianca;;
        
         $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
        // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);

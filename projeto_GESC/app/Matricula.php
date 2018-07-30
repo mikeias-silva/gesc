@@ -14,4 +14,8 @@ class Matricula extends Model
     'idturma', 'idvaga', 'idcrianca');
 
     protected $primaryKey = 'idmatricula';
+
+    public function nomeMatricula(){
+        return;
+    }
 }

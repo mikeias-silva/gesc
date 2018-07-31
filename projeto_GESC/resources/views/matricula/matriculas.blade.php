@@ -24,27 +24,24 @@
                         <th>Turma</th>
                         <th>Idade</th>
                         <th>Data Matricula</th>
-                        <th>Ações</th>
+                        
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                    
+                    @foreach($matAtivas as $matA)
                     <tr>
-                        @foreach($matAtivas as $matA)
                         <td>{{ $matA->idcrianca }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        @endforeach
+                        <td>{{ $matA->idturma }}</td>
+                        <td>{{ $matA->idcrianca }}</td>
+                        <td>{{ $matA->anomatricula }}</td>
+                        <td>{{ $matA->statuscadastro }}</td>
                     </tr>
-                </tbody>
+                    @endforeach
+                    
             </table>
             
-      
     </div>
-
 
     <!--ABA INATIVAS-->
     <div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">

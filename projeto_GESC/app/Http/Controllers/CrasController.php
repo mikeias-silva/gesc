@@ -52,7 +52,7 @@ class CrasController extends Controller {
 
     public function remover(Request $request){
        
-        $cras = Cras::find($request->id);
+        $cras = Cras::find($request->idcras);
         $cras->delete();
 
         return back();

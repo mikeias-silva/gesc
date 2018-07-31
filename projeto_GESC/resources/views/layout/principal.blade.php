@@ -165,7 +165,7 @@ $('#excluir').on('show.bs.modal', function (event) {
     var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #idcras').val(id);
     console.log(id);
     console.log("EXCLUIR modal");
     
@@ -175,7 +175,7 @@ $('#excluirturma').on('show.bs.modal', function (event) {
     var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #idturma').val(id);
     console.log(id);
     console.log("EXCLUIR modal turma");
     

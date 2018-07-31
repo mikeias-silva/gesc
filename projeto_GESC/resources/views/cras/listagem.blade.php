@@ -21,6 +21,7 @@
     <tr>
         <td> {{ $c->nomecras }} </td>
         <td> {{ $c->telefone }} </td>
+        
         <td>
             <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
@@ -34,8 +35,6 @@
                 data-myid="{{ $c->idcras }}" 
                 data-toggle="modal" data-target="#ativar">Ativar</button>
             @endif
-       
-
         </td>
     </tr>
     @endforeach
@@ -132,6 +131,7 @@
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
 
                     <h5>Você tem certeza que deseja realmente ativar este CRAS/CREAS?</h5>
+
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger">Ativar</button>

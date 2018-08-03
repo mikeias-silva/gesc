@@ -53,7 +53,7 @@ class TurmaController extends Controller
     }
 
     public function remover(Request $request){
-        $turmaid = Turma::findOrFail($request->id);
+        $turmaid = Turma::find($request->idturma);
         $turmaid->delete();
 
         return back();

@@ -13,7 +13,7 @@
         </li>
 </ul>
 
-
+<!--ABA ATIVAS-->
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
         <h2>Matriculas ativas</h2>
@@ -24,28 +24,26 @@
                         <th>Turma</th>
                         <th>Idade</th>
                         <th>Data Matricula</th>
-                        <th>Ações</th>
+                        
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                    
+                    @foreach($matAtivas as $matA)
                     <tr>
-                        @foreach($matAtivas as $matA)
+                        <td>{{ $matA->nomeMatricula() }}</td>
+                        <td>{{ $matA->idturma }}</td>
                         <td>{{ $matA->idcrianca }}</td>
-                        <td>{{ $matA-> }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        @endforeach
+                        <td>{{ $matA->anomatricula }}</td>
+                        <td>{{ $matA->statuscadastro }}</td>
                     </tr>
-                </tbody>
+                    @endforeach
+                    
             </table>
             
-      
     </div>
 
-
+    <!--ABA INATIVAS-->
     <div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
         <h2>Matriculas inativas</h2>
         <table class="table table-hover">
@@ -75,6 +73,8 @@
          
     </div>
 
+    
+<!--ABA ESPERA-->
     <div class="tab-pane fade" id="espera" role="tabpanel" aria-labelledby="espera-tab">
         <h2>Matriculas em espera</h2>
         <table class="table table-hover">

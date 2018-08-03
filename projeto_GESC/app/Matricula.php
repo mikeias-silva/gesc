@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Carbon;
 class Matricula extends Model
 {
     protected $table = 'matriculas';
@@ -16,7 +17,7 @@ class Matricula extends Model
     'idturma', 'idvaga', 'idcrianca');
 
     protected $primaryKey = 'idmatricula';
-
+/*
     public function nomeMatricula(){
             $id = $this->idcrianca;
             
@@ -25,7 +26,7 @@ class Matricula extends Model
             and crianca.idpessoa = ?', array($id, $id));
 
             foreach($nomecrianca as $nome){
-                echo $nome->nomepessoa;
+               return $nome->nomepessoa;
             }
             //dd($nomecrianca->nomepessoa);
            // return implode("", $nomecrianca );
@@ -43,4 +44,18 @@ class Matricula extends Model
            // $this->idcrianca = $pessoas->idpessoa = $criancas->idpessoa;
       //  return;
     }
+
+    public function idadeMatricula(){
+        $id = $this->idcrianca;
+            
+        $hoje = Carbon::now();
+        $nascimentocrianca = DB::select('select datanascimento from pessoa, crianca where pessoa.idpessoa = ? 
+        and crianca.idpessoa = ?', array($id, $id));
+
+        foreach($nascimentocrianca as $nasc){
+            $idade = $hoje->diffInYears($nasc->datanascimento);
+            return $idade;
+        }
+        
+    }*/
 }

@@ -38,6 +38,7 @@ Route::post('/turmas/edita', 'TurmaController@editar');
 
 //Rotas para as telas de instituição
 Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');
+Route::post('/instituicao/edita', 'InstituicaoController@editar');
 
 
 //Rotas para as telas de Matrícula

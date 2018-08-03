@@ -9,7 +9,7 @@ class Instituicao extends Model
     protected $table = 'instituicao';
     public $timestamps = false;
     protected $fillable = array('nomeinstituicao', 'logradouro', 'email', 'telefone', 'nummetasmensais', 'numtermocolaboradorformento',
-                                    'numplanotrabalho', 'entidademantenedora', 'entidadeexecutora');
+                                    'numplanotrabalho', 'entidademantenedora', 'entidadeexecutora', 'cep', 'cnpj');
     protected $primaryKey = 'idinstituicao';
 
     public function post()

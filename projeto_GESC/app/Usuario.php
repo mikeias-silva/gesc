@@ -10,8 +10,8 @@ class Usuario extends Model
     public $timestamps = false;
     protected $fillable = array('nome', 'email', 'statususuario', 'senha', 'nomeusuario', 'tipousuario');
 
-    /*protected $guarded = ['id'];
-
+    protected $primaryKey = 'idusuario';
+    /*
    public function post()
     {
         return $this->belongsTo(Post::class);

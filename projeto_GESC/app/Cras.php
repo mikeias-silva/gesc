@@ -8,7 +8,7 @@ class Cras extends Model
 {
     protected $table = 'cras';
     public $timestamps = false;
-    protected $fillable = array('nomeCras', 'telefone');
+    protected $fillable = array('nomecras', 'telefone', 'statuscras');
 
     protected $primaryKey = 'idcras';
 

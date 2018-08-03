@@ -31,7 +31,7 @@
                     
                     @foreach($matAtivas as $matA)
                     <tr>
-                        <td>{{ $matA->idcrianca }}</td>
+                        <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->idturma }}</td>
                         <td>{{ $matA->idcrianca }}</td>
                         <td>{{ $matA->anomatricula }}</td>

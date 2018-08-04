@@ -57,7 +57,7 @@ class MatriculasController extends Controller
 
     public function novaMatricula(){
 
-       
+        $cras = Cras::all();
         $escola = escola::all();
         $pprioritario = PublicoPrioritario::all();
         $turmas  = Turma::all();

@@ -29,15 +29,19 @@
                     </tr>
                 </thead>
                     
-                    @foreach($matAtivas as $matA)
-                    <tr>
-                        <td>{{ $matA->nomeMatricula() }}</td>
-                        <td>{{ $matA->idturma }}</td>
-                        <td>{{ $matA->idcrianca }}</td>
-                        <td>{{ $matA->anomatricula }}</td>
-                        <td>{{ $matA->statuscadastro }}</td>
-                    </tr>
-                    @endforeach
+                  
+                        @foreach($matAtivas as $matA)
+                    
+                        <tr>
+                            <td>{{ $matA->nomeMatricula() }}</td>
+                            <td>{{ $matA->nomeTurma() }}</td>
+                            <td>{{ $matA->idadeMatricula() }}</td>
+                            <td>{{ $matA->anomatricula }}</td>
+                            <td>{{ $matA->statuscadastro }}</td>
+                        </tr>
+                        @endforeach 
+                    
+                  
                     
             </table>
             

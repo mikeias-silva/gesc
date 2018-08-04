@@ -17,7 +17,7 @@ class Matricula extends Model
     'idturma', 'idvaga', 'idcrianca');
 
     protected $primaryKey = 'idmatricula';
-/*
+
     public function nomeMatricula(){
             $id = $this->idcrianca;
             
@@ -57,5 +57,24 @@ class Matricula extends Model
             return $idade;
         }
         
-    }*/
+    }
+
+    static function matriculasAtiva(){
+        //)->get();
+        //DB::select('select * from matriculas where idmatricula = ?', 1);
+        
+        //return DB::table('matriculas')->where('statuscadastro', 'Ativo')->get();
+        return Matricula::where('statuscadastro', 'Ativo')->get();
+    }
+
+    public function nomeTurma(){
+        $id = $this->idturma;
+
+        $nometurma = DB::select('select GrupoConvivencia from turma where idturma = ?', array($id));
+
+        foreach($nometurma as $nometurma){
+            return $nometurma->GrupoConvivencia;
+            
+        }
+    }
 }

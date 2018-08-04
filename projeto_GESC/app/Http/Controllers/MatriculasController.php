@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Matricula;
 use App\Cras;
@@ -34,20 +34,30 @@ class MatriculasController extends Controller
     
     public function listaMatriculas(){
 
-        //$matAtivas =  DB::select('select * from matricula where statuscadastro = 1');
+       // $matAtivas =  DB::select('select * from matriculas where statuscadastro = ?', ['Ativo']);
+        //dd($matAtivas);
+       //$matAtivas = DB::select('select * from matriculas where statuscadastro = ');
 
-       // $matAtivas = DB::select('select * from matriculas where statuscadastro = ');
+//        $matAtivas = Matricula::where('statuscadastro', 'ativo');
 
-        $matAtivas = Matricula::all();
-        /*dd($matAtivas);
-        return;*/
-       // return $matAtivas;
-        return view('matricula.matriculas')->with('matAtivas', $matAtivas);
+        $matAtivas = Matricula::matriculasAtiva();
+       // dd($matAtivas);
+        //return;
+
+        $matInativas = Matricula::matriculasInativas();
+       // return $matInativas;
+
+       $matEspera = Matricula::matriculasEspera();
+        return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
+        ->with('matEspera', $matEspera);
+
+       
     }
+
 
     public function novaMatricula(){
 
-        $cras = cras::all();
+        $cras = Cras::all();
         $escola = escola::all();
         $pprioritario = PublicoPrioritario::all();
         $turmas  = Turma::all();
@@ -115,13 +125,12 @@ class MatriculasController extends Controller
         $crianca->idpessoa = $pessoacrianca->id;
         $crianca->save();
         
-       
-/*
+       /*
         DB::insert('insert into crianca(obssaude, datacadastro, idpessoa, idescola, idpublicoprioritario) 
         values(?, ?, ?, ?, ?)',
         array($obssaude, $datacadastro, $idpessoa, $idescola, $idpublicoprioritario));
 
-        //-------------------------------*/
+        //-------------------------------*
              
         
         //--------------------------------------------------

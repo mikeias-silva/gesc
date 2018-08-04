@@ -28,24 +28,7 @@ class Matricula extends Model
          //   dd($nomecrianca);
             foreach($nomecrianca as $nome){
                return $nome->nomepessoa;
-               //print('aquiii');
-             //  dd($nome->nomepessoa);
-            }
-            //dd($nomecrianca->nomepessoa);
-           // return implode("", $nomecrianca );
-          // $teste = $nomecrianca[0];
-          // dd($teste);
-           // return $teste ;
-
-            //select nomepessoa from pessoa, crianca where pessoa.idpessoa = 1 and crianca.idpessoa = 1;
-
-
-//            $pessoas = Pessoa::all();
-
-  //          $criancas = Criacas::all();
-
-           // $this->idcrianca = $pessoas->idpessoa = $criancas->idpessoa;
-      //  return;
+                   }
     }
 
 

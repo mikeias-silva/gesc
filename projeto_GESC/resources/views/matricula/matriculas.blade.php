@@ -24,23 +24,22 @@
                         <th>Turma</th>
                         <th>Idade</th>
                         <th>Data Matricula</th>
-                        
-                        <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                     
-                  
-                        @foreach($matAtivas as $matA)
-                    
-                        <tr>
-                            <td>{{ $matA->nomeMatricula() }}</td>
-                            <td>{{ $matA->nomeTurma() }}</td>
-                            <td>{{ $matA->idadeMatricula() }}</td>
-                            <td>{{ $matA->anomatricula }}</td>
-                            <td>{{ $matA->statuscadastro }}</td>
-                        </tr>
-                        @endforeach 
-                    
+                
+                    @foreach($matAtivas as $matA)
+                
+                    <tr>
+                        <td>{{ $matA->nomeMatricula() }}</td>
+                        <td>{{ $matA->nomeTurma() }}</td>
+                        <td>{{ $matA->idadeMatricula() }}</td>
+                        <td>{{ $matA->anoMatricula() }}</td>
+                        <td></td>
+                    </tr>
+                    @endforeach 
+                
                   
                     
             </table>
@@ -58,20 +57,21 @@
                         <th>Idade</th>
                         <th>Data Matricula</th>
                         <th>Ações</th>
-                        <th>Status</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        @foreach($matAtivas as $matA)
-                        <td>{{ $matA->datasairespera }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    
+                        @foreach($matInativas as $matI)
+                        <tr>
+                            <td>{{ $matI->nomeMatricula() }}</td>
+                            <td>{{ $matI->nomeTurma() }}</td>
+                            <td>{{ $matI->idadeMatricula() }}</td>
+                            <td>{{ $matI->anoMatricula() }}</td>
+                            <td></td>
+                        </tr>
                         @endforeach
-                    </tr>
+                    
                 </tbody>
             </table>
          
@@ -89,18 +89,19 @@
                         <th>Idade</th>
                         <th>Data Matricula</th>
                         <th>Ações</th>
-                        <th>Status</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach($matAtivas as $matA)
-                        <td>{{ $matA->datasairespera }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        @foreach($matEspera as $matE)
+                        <tr>
+                            <td>{{ $matE->nomeMatricula() }}</td>
+                            <td>{{ $matE->nomeTurma() }}</td>
+                            <td>{{ $matE->idadeMatricula() }}</td>
+                            <td>{{ $matE->anoMatricula() }}</td>
+                            <td></td>
+                        </tr>
                         @endforeach
                     </tr>
                 </tbody>

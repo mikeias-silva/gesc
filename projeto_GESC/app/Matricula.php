@@ -25,8 +25,11 @@ class Matricula extends Model
             $nomecrianca = DB::select('select nomepessoa from pessoa, crianca where pessoa.idpessoa = ? 
             and crianca.idpessoa = ?', array($id, $id));
 
+         //   dd($nomecrianca);
             foreach($nomecrianca as $nome){
                return $nome->nomepessoa;
+               //print('aquiii');
+             //  dd($nome->nomepessoa);
             }
             //dd($nomecrianca->nomepessoa);
            // return implode("", $nomecrianca );
@@ -44,6 +47,8 @@ class Matricula extends Model
            // $this->idcrianca = $pessoas->idpessoa = $criancas->idpessoa;
       //  return;
     }
+
+
 
     public function idadeMatricula(){
         $id = $this->idcrianca;
@@ -67,6 +72,16 @@ class Matricula extends Model
         return Matricula::where('statuscadastro', 'Ativo')->get();
     }
 
+    static function matriculasInativas(){
+
+        return Matricula::where('statuscadastro', 'Inativo')->get();
+    }
+
+    static function matriculasEspera(){
+
+        return Matricula::where('statuscadastro', 'Espera')->get();
+    }
+
     public function nomeTurma(){
         $id = $this->idturma;
 
@@ -76,5 +91,12 @@ class Matricula extends Model
             return $nometurma->GrupoConvivencia;
             
         }
+
+    }
+
+    public function anoMatricula(){
+       
+       return Carbon::parse($this->anomatricula)->format('d-m-y');
+       
     }
 }

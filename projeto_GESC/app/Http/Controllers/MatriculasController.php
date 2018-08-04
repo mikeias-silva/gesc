@@ -44,12 +44,16 @@ class MatriculasController extends Controller
        // dd($matAtivas);
         //return;
 
-     
+        $matInativas = Matricula::matriculasInativas();
+       // return $matInativas;
 
-        return view('matricula.matriculas')->with('matAtivas', $matAtivas);
+       $matEspera = Matricula::matriculasEspera();
+        return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
+        ->with('matEspera', $matEspera);
 
        
     }
+
 
     public function novaMatricula(){
 

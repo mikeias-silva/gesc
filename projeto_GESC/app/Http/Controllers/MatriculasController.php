@@ -25,6 +25,7 @@ use Request;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Database\MySqlConnection;
+use App\membro_familia;
 
 
 
@@ -50,7 +51,6 @@ class MatriculasController extends Controller
        $matEspera = Matricula::matriculasEspera();
         return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
         ->with('matEspera', $matEspera);
-
        
     }
 
@@ -275,6 +275,14 @@ class MatriculasController extends Controller
         //---------------------------------------------------
         //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
 
+        $membro = new Membro_Familia();
+        $membro->nomemembro = Request::input('nomemembro1');
+        $membro->datanascimento = Request::input('nascimentomembro1');
+        $membro->localtrabalha = Request::input('trabmembro1');
+        $membro->salario = Request::input('salariomembro1');
+        $membro->idescola = Request::input('escolamembro1');
+        $membro->idfamilia = $familia->id;
+        $membro->save();
       
         //-----------------------------------
         //MATRICULA
@@ -338,7 +346,7 @@ class MatriculasController extends Controller
             
         }
         
-        $matricula->save();
+      //  $matricula->save();
 
        
 /*

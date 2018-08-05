@@ -28,7 +28,7 @@ class Matricula extends Model
          //   dd($nomecrianca);
             foreach($nomecrianca as $nome){
                return $nome->nomepessoa;
-                   }
+            }
     }
 
 

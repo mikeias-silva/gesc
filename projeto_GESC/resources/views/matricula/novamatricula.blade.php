@@ -22,10 +22,10 @@
     <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
     
         
-    <div id="identmatricula">
+    <div  class="d-flex p-2">
 
     <form action="/novaMatricula/adiciona" method="POST">
-            <div class="form-group ">
+            <div class="form-group">
             {{ csrf_field() }}
             <div class="form-group" >
                 <label>Nome</label>
@@ -271,55 +271,100 @@
     <!-- ABA FAMILIA -->
     <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
         <div>
-        <label>Número do NIS</label>
-        <input type="text" class="form-control" name="numnis">
+            <label>Número do NIS</label>
+            <input type="text" class="form-control" name="numnis">
 
-        <label>Moradia</label>
-        <select class="form-control" name="moradia" id="">
-            <option value="1">Alugada</option>
-            <option value="2">Cedida</option>
-            <option value="3">Prórpia</option>
-        </select>
+            <label>Moradia</label>
+            <select class="form-control" name="moradia" id="">
+                <option value="1">Alugada</option>
+                <option value="2">Cedida</option>
+                <option value="3">Prórpia</option>
+            </select>
 
-        
-        <!-- radio buttons -->
-        <span>Tipo Habitação</span>
-        <div class="form-check">
-            <label class="form-check-label" for="rd-alvenaria">
-                <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria">Alvenaria
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label" for="rd-madeira">
-                <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label" for="rd-mista">
-                <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-            </label>
-        </div>
-                
-        <!-- checkboxes -->
-        <span>Programas Sociais</span>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="arearisco" value="1">Area de risco
-            </label>
-        </div>
+            
+            <!-- radio buttons -->
+            <span>Tipo Habitação</span>
+            <div class="form-check">
+                <label class="form-check-label" for="rd-alvenaria">
+                    <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria">Alvenaria
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="rd-madeira">
+                    <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="rd-mista">
+                    <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
+                </label>
+            </div>
+                    
+            <!-- checkboxes -->
+            <span>Programas Sociais</span>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="arearisco" value="1">Area de risco
+                </label>
+            </div>
 
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Bolsa Familia
-            </label>
-        </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Bolsa Familia
+                </label>
+            </div>
 
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
-            </label>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
+                </label>
+            </div>
+
+            <!--GRID MEMBRO FAMILIA-->
+            <!--<h5 class="text-center font-weight-bold text-uppercase py-5">Membros Familia</h5>-->
+            <div class="">
+                <div id="table" class="table-editable">
+                    <span class="table-add float-right mb-3 mr-2">
+                        <a href="#!" class="text-success">
+                            <i class="fa fa-plus fa-2x"></i>
+                        </a>
+                    </span>
+                       
+                    <table class="table table-bordered table-responsive-md text-center">
+                        <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
+                        <!-- <h5 class="text-center text-uppercase font-weight-bold">Membros Familia</h5>-->
+                        <tr>
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">Data Nascimento</th>
+                            <th class="text-center">Local Trabalha</th>
+                            <th class="text-center">Salário</th>
+                            <th class="text-center">Escola</th>
+                        </tr>
+                        
+                        <!-- This is our clonable table line -->
+                        
+                        @php($linha = 0)
+                        
+                        <tr class="hide">
+                           @php($linha == $linha++)
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="nomemembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" name="nascimentomembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro{{ $linha }}"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+
+                    </table>
+                    
+                </div>
         </div>
-        
+        <!-- Editable table -->
         </div>
     </div>
 
@@ -331,9 +376,12 @@
             <option value="{{ $t->idturma }}">{{ $t->GrupoConvivencia }}</option>
             @endforeach
         </select>
+   
+       
     </div>
-</div>
-
+    
+    </div>
+ 
 
     <a href="/matriculas">
         <button class="btn btn-default" id="btn-mat">Cancelar</button>

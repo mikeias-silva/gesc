@@ -51,3 +51,12 @@ main {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.pt-3-half {
+    padding-top: 1.4rem;
+}
+
+#tdedit {
+    border: 0 none;
+    outline: 0;
+}

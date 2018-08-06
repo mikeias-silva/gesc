@@ -23,9 +23,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
+    
     <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
     <body>
@@ -39,90 +41,53 @@
                         <ul class="nav flex-column">
                             <li>
                                 <a class="nav-link disabled" href="dashboard">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                    </svg> Dashboard
+                                        <i class="fa fa-home fa-2x"></i> Dashboard
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link disabled" href="matriculas">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                        </svg> Matriculas
+                                        <i class="fa fa-address-book fa-2x"></i>
+                                        Matriculas
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link disabled" href="instituicao">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                                </svg> Instituição
+                                        <i class="fa fa-bank fa-2x"></i>
+                                         Instituição
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link disabled" href="/cras">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                                    </svg> CRAS/CREAS
+                                    <i class="fa fa-university fa-2x"></i>
+                                     CRAS/CREAS
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link disabled" href="/turmas">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                                        </svg> Turmas
+                                    <i class="fa fa-teacher fa-2x"></i>
+                                     Turmas
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link disabled" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                                    </svg> Controle de Frequência
+                                        <i class="fa fa-file-signature fa-2x"></i>
+                                         Controle de Frequência
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="nav-link disabled" href="/usuarios">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                                        </svg> Gerenciamento de Usuário
+                                    <i class="fa fa-user-plus fa-2x" ></i>
+                                     Gerenciamento de Usuário
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li class="menu-item has-child" style="">
-                                <a href="#" class="menu-link">
-                                    <span class="menu-icon oi oi-pencil"></span>
-                                    <span class="menu-text">Forms</span>
-                                </a>
-                                <!-- child menu -->
-                                <ul class="menu collapse" id=" navbarToggleExternalContent">
-                                    <li class="menu-subhead">Forms</li>
-                                    <li class="menu-item">
-                                        <a href="form-basic.html" class="menu-link" tabindex="-1">Basic Elements</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="form-autocompletes.html" class="menu-link" tabindex="-1">Autocompletes</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="form-pickers.html" class="menu-link" tabindex="-1">Pickers</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="form-editors.html" class="menu-link" tabindex="-1">Editors</a>
-                                    </li>
-                                </ul>
-                            
-                            </li>
+                           
                         </ul>
 
                     </div>
@@ -141,8 +106,6 @@
 
             </main>
 
-            
-
 <script>
 
 $('#editar').on('show.bs.modal', function (event) {
@@ -158,7 +121,7 @@ $('#editar').on('show.bs.modal', function (event) {
     modal.find('.modal-body #statuscras').val(statuscras)
     modal.find('.modal-body #idcras').val(id);
 
-})
+});
 
 $('#excluir').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
@@ -169,7 +132,7 @@ $('#excluir').on('show.bs.modal', function (event) {
     console.log(id);
     console.log("EXCLUIR modal");
     
-})
+});
 $('#excluirturma').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
     var id = button.data('myid') 
@@ -179,7 +142,7 @@ $('#excluirturma').on('show.bs.modal', function (event) {
     console.log(id);
     console.log("EXCLUIR modal turma");
     
-})
+});
 
 $('#editarturma').on('show.bs.modal', function (event) {
     console.log('modal opened');
@@ -443,6 +406,8 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
 */
 
 </script>
+<script src="js/membro_familia.js"></script>
+
 </body>
 
 </html>

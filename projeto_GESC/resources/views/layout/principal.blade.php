@@ -87,6 +87,13 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
+                            <li>
+                                <a class="nav-link disabled" href="/vagas">
+                                    <i class="fa fa-user-plus fa-2x" ></i>
+                                     Gerenciamento de Vagas
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
                            
                         </ul>
 

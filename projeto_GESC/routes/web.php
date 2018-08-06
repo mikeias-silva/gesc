@@ -43,6 +43,7 @@ Route::post('/turmas/ativa', 'TurmaController@ativar');
 //Rotas para as telas de instituição
 Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');
 Route::post('/instituicao/edita', 'InstituicaoController@editar');
+Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias');
 
 
 //Rotas para as telas de Matrícula

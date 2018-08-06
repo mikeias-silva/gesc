@@ -96,12 +96,14 @@
     
 
     <div class="container" id="meio"></div>
-    <select name="" id="" class="form-control col-md-1">
-        <option value="">2017</option>
-        <option value="">2018</option>
-    </select>
+    <h4 class="text">Número de dias de funcionamento por mês</h4>
+    <form class="form" action="/instituicao/diasFuncionamento" method="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="idano" value="{{$ano}}">
+    <h5 value="{{$ano}}" name="idano">Ano - {{$ano}}</h5>
 
-    <table class="table table-striped container col-md-6" align="center">
+    </br>
+    <table class="table table-striped container col-md-4" align="center">
         <thead>
             <tr align="center">
                 <th>Mês</th>
@@ -111,60 +113,110 @@
     
             <tr>
                 <td align="center">Janeiro</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->jan) || $diasFuncionamento[0]->jan==0)
+                    <td align="center"><input name="jan" id="jan" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input type="number" id="jan" class="combo-box col-2" name="jan" value="{{$diasFuncionamento[0]->jan}}" ></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Fevereiro</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->fev) || $diasFuncionamento[0]->fev==0)
+                    <td align="center" ><input type="number" id="fev" class="combo-box col-2" name="fev"></td>
+                @else
+                    <td align="center"><input type="number" name="fev" id="fev" value="{{$diasFuncionamento[0]->fev}}" class="combo-box col-2"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Março</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->mar) || $diasFuncionamento[0]->mar==0)
+                    <td align="center"><input name="mar" id="mar" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input type="number" name="mar" id="mar" value="{{$diasFuncionamento[0]->mar}}" class="combo-box col-2"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Abril</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->abr) || $diasFuncionamento[0]->abr==0)
+                    <td align="center"><input  name="abr" id="abr" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input class="combo-box col-2" type="number" id="abr" name="abr" value="{{$diasFuncionamento[0]->abr}}" ></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Maio</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->mai) || $diasFuncionamento[0]->mai==0)
+                    <td align="center" ><input name="mai" type="number" id="mai" class="combo-box col-2"></td>
+                @else
+                    <td align="center" ><input  name="mai" value="{{$diasFuncionamento[0]->mai}}" id="mai" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Junho</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->jun) || $diasFuncionamento[0]->jun==0)
+                    <td align="center" ><input name="jun" id="jun" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input name="jun" id="jun" value="{{$diasFuncionamento[0]->jun}}" type="number" class="combo-box col-2"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Julho</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->jul) || $diasFuncionamento[0]->jul==0)
+                    <td align="center" ><input name="jul" id="jul" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center" ><input name="jul" id="jul" value="{{$diasFuncionamento[0]->jul}}" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Agosto</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->ago) || $diasFuncionamento[0]->ago==0)
+                    <td align="center"><input name="ago" id="ago" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input name="ago" id="ago" value="{{$diasFuncionamento[0]->ago}}" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Setembro</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->set) || $diasFuncionamento[0]->set==0)
+                    <td align="center"><input  name="set" id="set" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input name="set" id="set" value="{{$diasFuncionamento[0]->set}}" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Outubro</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->out) || $diasFuncionamento[0]->out==0)
+                    <td align="center"><input name="out" id="out" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input name="out" id="out" value="{{$diasFuncionamento[0]->out}}" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Novembro</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->nov) || $diasFuncionamento[0]->nov==0)
+                    <td align="center"><input name="nov" id="nov" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input name="nov" id="nov" value="{{$diasFuncionamento[0]->nov}}" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
             <tr>
                 <td align="center">Dezembro</td>
-                <td align="center"><input type="combo-box col-2"></td>
+                @if(empty($diasFuncionamento[0]->dez) || $diasFuncionamento[0]->dez==0)
+                    <td align="center"><input  name="dez" id="dez" class="combo-box col-2" type="number"></td>
+                @else
+                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-2" type="number"></td>
+                @endif
             </tr>
         
             
     </table>
-    <div class="container">
-        <button class="btn btn-primary"  id="btn_instituicao">Salvar</button>
+    <div class="row">
+        <button type="submit" class="btn btn-primary"  id="btn_instituicao">Salvar</button>
     </div>
+    </form>
 
 <script>
+
 
     function validarInstituicao(nome, cnpj, endereco, cep, email, telefone, metasMensais, numTermoColab, numTermoTrab, 
     entidadeMant, entidadeExec){
@@ -310,6 +362,7 @@
     function id( el ){
         return document.getElementById( el );
     }
+
     window.onload = function(){
         id('cep').onkeyup = function(){
             mascara( this, Cep );
@@ -325,6 +378,44 @@
 
         id('nummetasmensais').onkeyup = function(){
             mascara( this, retiraLetras );
+        }
+
+        var data = new Date();
+        if(data.getMonth()>0){
+            document.getElementById("jan").disabled = true;
+        }
+        if(data.getMonth()>1){
+            document.getElementById("fev").disabled = true;
+        }
+        if(data.getMonth()>2){
+            document.getElementById("mar").disabled = true;
+        }
+        if(data.getMonth()>3){
+            document.getElementById("abr").disabled = true;
+        }
+        if(data.getMonth()>4){
+            document.getElementById("mai").disabled = true;
+        }
+        if(data.getMonth()>5){
+            document.getElementById("jun").disabled = true;
+        }
+        if(data.getMonth()>6){
+            document.getElementById("jul").disabled = true;
+        }
+        if(data.getMonth()>7){
+            document.getElementById("ago").disabled = true;
+        }
+        if(data.getMonth()>8){
+            document.getElementById("set").disabled = true;
+        }
+        if(data.getMonth()>9){
+            document.getElementById("out").disabled = true;
+        }
+        if(data.getMonth()>10){
+            document.getElementById("nov").disabled = true;
+        }
+        if(data.getMonth()>11){
+            document.getElementById("dez").disabled = true;
         }
 
 

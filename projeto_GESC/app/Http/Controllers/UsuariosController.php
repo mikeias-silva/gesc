@@ -12,8 +12,18 @@ class UsuariosController extends Controller {
     public function listaUsuarios(){
         //echo "ola";
         $usuario = usuario::all();
+        $nomeUsuarios=[];
+        $i=0;
         //$usuario = [];
-        return view('usuarios.listagemUsuarios')->with('usuario', $usuario);
+        foreach($usuario as $c){
+            $nomeUsuarios[$i]=$c->nomeusuario;
+            $i++;
+        }
+
+        $string = implode('|', $nomeUsuarios);
+
+
+        return view('usuarios.listagemUsuarios')->with('usuario', $usuario) ->with('string', $string);
     }
 
     public function adiciona(Request $request){
@@ -24,7 +34,7 @@ class UsuariosController extends Controller {
     }
 
     public function edita(Request $request){
-        $usuario = Usuario::find($request->id);
+        $usuario = Usuario::find($request->idusuario);
         $usuario->update($request->all());
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);

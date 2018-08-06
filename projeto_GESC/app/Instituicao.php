@@ -8,6 +8,14 @@ class Instituicao extends Model
 {
     protected $table = 'instituicao';
     public $timestamps = false;
+    protected $fillable = array('nomeinstituicao', 'logradouro', 'email', 'telefone', 'nummetasmensais', 'numtermocolaboradorformento',
+                                    'numplanotrabalho', 'entidademantenedora', 'entidadeexecutora', 'cep', 'cnpj');
+    protected $primaryKey = 'idinstituicao';
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
    // protected $fillable = array('GrupoConvivencia', 'Turno', 'statusTurma', 'idUsuario');
 
 }

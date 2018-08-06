@@ -175,7 +175,7 @@ class MatriculasController extends Controller
         $responsavel1->localtrabalho = Request::input('trabalhoresp1');
         $responsavel1->telefone = Request::input('tel1resp1');
         $responsavel1->telefone2 = Request::input('tel2resp1');
-        $responsavel1->escolaridade = Request::input('escolaridaderesp1');
+        //$responsavel1->escolaridade = Request::input('escolaridaderesp1');
         $responsavel1->outrasobs = Request::input('obsresp1');
         $responsavel1->idpessoa = $pessoaresponsavel1->id;
         $responsavel1->save();
@@ -227,7 +227,7 @@ class MatriculasController extends Controller
         $responsavel2->localtrabalho = Request::input('trabalhoresp2');
         $responsavel2->telefone = Request::input('tel1resp2');
         $responsavel2->telefone2 = Request::input('tel2resp2');
-        $responsavel2->escolaridade = Request::input('escolaridaderesp2');
+        //$responsavel2->escolaridade = Request::input('escolaridaderesp2');
         $responsavel2->outrasobs = Request::input('obsresp2');
         $responsavel2->idpessoa = $pessoaresponsavel2->id;
         $responsavel2->save();

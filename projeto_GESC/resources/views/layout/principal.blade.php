@@ -156,7 +156,7 @@ $('#editarturma').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
     var nome = button.data('mygrupo')
     var turno = button.data('myturno')
-    var educador = button.data('myeducador')  
+    var educador = button.data('myeducador') 
     var id = button.data('myid') 
     var modal = $(this)
     console.log(educador.value);

@@ -345,9 +345,16 @@
                         
                         @php($linha = 0)
                         
+                        <script>
+                            function linha(){
+                                var linha = 1;
+                                return linha;
+                            }
+                            
+                        </script>
                         <tr class="hide">
                            @php($linha == $linha++)
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="nomemembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="nomemembro"/></td>
                             <td class="pt-3-half"><input id="tdedit" type="date" name="nascimentomembro{{ $linha }}"/></td>
                             <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro{{ $linha }}"/></td>
                             <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro{{ $linha }}"/></td>
@@ -370,14 +377,14 @@
 
     <!-- CONCLUSÃO -->
     <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+        
         <span>Turma</span>
         <select name="turma" id="" class="form-control">
             @foreach($turmas as $t)
             <option value="{{ $t->idturma }}">{{ $t->GrupoConvivencia }}</option>
             @endforeach
         </select>
-   
-       
+        
     </div>
     
     </div>
@@ -387,7 +394,11 @@
         <button class="btn btn-default" id="btn-mat">Cancelar</button>
     </a>
                 
-        <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
     
+        <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
+
+        
+  
     </form>
+    
 @stop

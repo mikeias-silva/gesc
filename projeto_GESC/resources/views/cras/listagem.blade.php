@@ -10,7 +10,6 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>#</th>
             <th>Nome</th>
             <th>Telefone</th>
             <th>Opções</th>

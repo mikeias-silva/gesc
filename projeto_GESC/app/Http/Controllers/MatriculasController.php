@@ -20,14 +20,13 @@ use App\Familia;
 use App\Crianca;
 use App\Turma;
 use App\Vaga;
-
 use Request;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Database\MySqlConnection;
 use App\membro_familia;
 
-
+use PDF;
 
 class MatriculasController extends Controller
 {
@@ -52,6 +51,7 @@ class MatriculasController extends Controller
         return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
         ->with('matEspera', $matEspera);
        
+      //return view('matricula.matriculas');
     }
 
 
@@ -64,6 +64,19 @@ class MatriculasController extends Controller
         return view('matricula.novaMatricula')->with('cras', $cras)->with('escola', $escola)
         ->with('pprioritario', $pprioritario)->with('turmas', $turmas);
     }
+
+    public function imprime(){
+        $matAtivas = Matricula::matriculasAtiva();
+        $matInativas = Matricula::matriculasInativas();
+        $matEspera = Matricula::matriculasEspera();
+        $hoje = Carbon::now()->year;
+        $dados = ['ano' => $hoje];
+        
+
+
+       $impressao = PDF::loadView('matricula.impressao', $dados);
+       return $impressao->stream('Matricula');
+     }
 
     public function adicionaMatricula(){
         
@@ -100,7 +113,7 @@ class MatriculasController extends Controller
         $pessoacrianca->bairro = $bairro;
         $pessoacrianca->logradouro = $logradouro;
         $pessoacrianca->complementoendereco = $complemento;
-        $pessoacrianca->save();
+       // $pessoacrianca->save();
         
        /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
          values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -123,7 +136,7 @@ class MatriculasController extends Controller
         $crianca->idescola = Request::input('escola');;
         $crianca->idpublicoprioritario = Request::input('pprioritario');
         $crianca->idpessoa = $pessoacrianca->id;
-        $crianca->save();
+       // $crianca->save();
         
        /*
         DB::insert('insert into crianca(obssaude, datacadastro, idpessoa, idescola, idpublicoprioritario) 
@@ -156,7 +169,7 @@ class MatriculasController extends Controller
         $pessoaresponsavel1->bairro = $bairro;
         $pessoaresponsavel1->logradouro = $logradouro;
         $pessoaresponsavel1->complementoendereco = $complemento;
-        $pessoaresponsavel1->save();
+      //  $pessoaresponsavel1->save();
         
         
         /*$estadocivilresp1 = Request::input('estadocivilresp1');	
@@ -178,7 +191,7 @@ class MatriculasController extends Controller
         $responsavel1->escolaridade = Request::input('escolaridaderesp1');
         $responsavel1->outrasobs = Request::input('obsresp1');
         $responsavel1->idpessoa = $pessoaresponsavel1->id;
-        $responsavel1->save();
+        //$responsavel1->save();
         //$responsavel1->idfamilia = 
         /*DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
         salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
@@ -204,7 +217,7 @@ class MatriculasController extends Controller
         $pessoaresponsavel2->bairro = $bairro;
         $pessoaresponsavel2->logradouro = $logradouro;
         $pessoaresponsavel2->complementoendereco = $complemento;
-        $pessoaresponsavel2->save();
+       // $pessoaresponsavel2->save();
         /*
         DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
         values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -230,7 +243,7 @@ class MatriculasController extends Controller
         $responsavel2->escolaridade = Request::input('escolaridaderesp2');
         $responsavel2->outrasobs = Request::input('obsresp2');
         $responsavel2->idpessoa = $pessoaresponsavel2->id;
-        $responsavel2->save();
+       // $responsavel2->save();
         /*
         DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
         salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
@@ -268,10 +281,10 @@ class MatriculasController extends Controller
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('cras');
         //$familia->idmembro = 
-        $familia->save();
+       // $familia->save();
         //add familia aos responsavels adicionados por ultimo
-        $responsavel1->update(array('idfamilia' =>$familia->id));
-        $responsavel2->update(array('idfamilia' =>$familia->id));
+      //  $responsavel1->update(array('idfamilia' =>$familia->id));
+      //  $responsavel2->update(array('idfamilia' =>$familia->id));
         //---------------------------------------------------
         //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
 
@@ -282,7 +295,7 @@ class MatriculasController extends Controller
         $membro->salario = Request::input('salariomembro1');
         $membro->idescola = Request::input('escolamembro1');
         $membro->idfamilia = $familia->id;
-        $membro->save();
+       // $membro->save();
       
         //-----------------------------------
         //MATRICULA
@@ -335,7 +348,7 @@ class MatriculasController extends Controller
         $matricula->serieescolar = Request::input('serie');
         $matricula->idcrianca = $crianca->idcrianca;;
        
-        $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
+      /*  $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
        // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
              
         if($matAtivas < $essanumvaga){
@@ -344,7 +357,7 @@ class MatriculasController extends Controller
         }elseif($matAtivas > $essanumvaga){
             $matricula->statuscadastro = 'Espera';
             
-        }
+        }*/
         
       //  $matricula->save();
 
@@ -359,6 +372,8 @@ class MatriculasController extends Controller
         //return $idade;
         return redirect()->action('MatriculasController@listaMatriculas');
      }
+
+    
 
 /*
      public funcion mostraEscolas(){

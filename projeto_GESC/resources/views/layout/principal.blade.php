@@ -87,6 +87,13 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
+                            <li>
+                                <a class="nav-link disabled" href="/vagas">
+                                    <i class="fa fa-user-plus fa-2x" ></i>
+                                     Gerenciamento de Vagas
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
                            
                         </ul>
 
@@ -149,7 +156,7 @@ $('#editarturma').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
     var nome = button.data('mygrupo')
     var turno = button.data('myturno')
-    var educador = button.data('myeducador')  
+    var educador = button.data('myeducador') 
     var id = button.data('myid') 
     var modal = $(this)
     console.log(educador.value);

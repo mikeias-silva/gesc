@@ -293,6 +293,12 @@
     modal.find('.modal-body #idcras').val(id);
     console.log(id);
 });
+
+$('#editar').on('hidden.bs.modal', function (event) {
+        $(this).find('input:text').val('');
+        document.getElementById("msgcras_edit").innerHTML="";
+        document.getElementById("msgtelefone_edit").innerHTML="";
+    });
         
 </script>
 

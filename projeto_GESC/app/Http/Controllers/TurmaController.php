@@ -42,9 +42,7 @@ class TurmaController extends Controller
 */
     /* DB::insert('insert into Turma(GrupoConvivencia, Turno, statusTurma, idUsuario,) values(?, ?, ?, ?)',
     array($grupoConvi, $turno, $status, $educ));*/
-        $turma = new Turma(
-        $request->all()
-        );
+        $turma = new Turma($request->all());
         $turma->save();
         // Turma::create($request->all());
 

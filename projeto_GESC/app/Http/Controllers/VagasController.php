@@ -4,8 +4,10 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SetTimezone;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use App\Vaga;
+use App\Instituicao;
 
 class VagasController extends Controller {
 
@@ -37,8 +39,9 @@ class VagasController extends Controller {
     }
 
     public function adiciona(Request $request){
-        $vaga = new Vaga(
-        $request->all());
+        $vaga = new Vaga($request->all());
+        $teste=DB::select('select min(idinstituicao) AS idinstituicao from instituicao;');
+        $vaga->idinstituicao = $teste[0]->idinstituicao;
         $vaga->save();
         return redirect()->action('VagasController@listaVagas');
     }

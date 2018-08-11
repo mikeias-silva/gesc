@@ -1,8 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
-{{$teste=''}}
 <h1 class="text">Gerenciamento de vagas</h1>
-@if(empty($vaga))
+@if(count($vaga)==0)
     <div class="alert alert-danger">
         Você não tem nenhuma faixa etária cadastrada.
     </div>
@@ -259,7 +258,11 @@
 
         if(tesIdadeMin.length==2&&tesIdadeMax.length==1){
             tesIdadeMax='0'+tesIdadeMax;
-            console.log(tesIdadeMax);
+            //console.log(tesIdadeMax);
+        }
+        if(tesIdadeMax.length==2&&tesIdadeMin.length==1){
+            tesIdadeMin='0'+tesIdadeMin;
+            //console.log(tesIdadeMax);
         }
         
         
@@ -343,7 +346,11 @@
 
         if(tesIdadeMin.length==2&&tesIdadeMax.length==1){
             tesIdadeMax='0'+tesIdadeMax;
-            console.log(tesIdadeMax);
+            //console.log(tesIdadeMax);
+        }
+        if(tesIdadeMax.length==2&&tesIdadeMin.length==1){
+            tesIdadeMin='0'+tesIdadeMin;
+            //console.log(tesIdadeMax);
         }
         
         

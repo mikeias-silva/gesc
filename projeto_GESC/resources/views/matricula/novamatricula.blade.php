@@ -446,46 +446,18 @@
                 </div>
             </div>
         </div>
-                
-        <!-- checkboxes -->
-        <span>Programas Sociais</span>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" name="arearisco" value="1">Area de risco
-            </label>
-        </div>
-
-
-            
-            <!-- radio buttons -->
-            <span>Tipo Habitação</span>
-            <div class="form-check">
-                <label class="form-check-label" for="rd-alvenaria">
-                    <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria">Alvenaria
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="rd-madeira">
-                    <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="rd-mista">
-                    <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-                </label>
-            </div>
                     
             <!-- checkboxes -->
-            <span>Programas Sociais</span>
+            <!--<span>Programas Sociais</span>-->
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="arearisco" value="1">Area de risco
+                    <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
                 </label>
             </div>
 
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Bolsa Familia
+                    <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
                 </label>
             </div>
 

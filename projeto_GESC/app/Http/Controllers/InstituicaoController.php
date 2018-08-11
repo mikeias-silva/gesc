@@ -29,18 +29,28 @@ class InstituicaoController extends Controller
     }
 
     public function editar(Request $request){
-        $instituicao = instituicao::find($request->idinstituicao);
-      
-        $instituicao->update($request->all());
-        
-
+        $teste = $request->idinstituicao;
+        if($teste==""){
+            $instituicao = new Instituicao($request->all());
+            $instituicao->save();
+        } else {
+            $instituicao = instituicao::find($request->idinstituicao);
+            $instituicao->update($request->all());
+        }
         return redirect()->action('InstituicaoController@mostraInstituicao');
     }
 
     public function difinirDias(Request $request){
-        $diasFuncionamento = dias_funcionamento::find($request->idano);
-        $diasFuncionamento->update($request->all());
-
+        $ano = date('Y');
+        $diasFuncionamento_teste = dias_funcionamento::find($request->idano);
+        if($diasFuncionamento_teste==null){
+            $diasFuncionamento = new dias_funcionamento($request->all());
+            $diasFuncionamento->idano = $ano;
+            $diasFuncionamento->save();
+        } else {
+            $diasFuncionamento = dias_funcionamento::find($request->idano);
+            $diasFuncionamento->update($request->all());
+        }
         return redirect()->action('InstituicaoController@mostraInstituicao');
     }
 }

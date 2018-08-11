@@ -94,7 +94,15 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                           
+
+                            <li>
+                                <a class="nav-link disabled" href="/controle_frequencia">
+                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                     Gerenciamento de Frequência
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

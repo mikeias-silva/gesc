@@ -258,11 +258,11 @@
 
         if(tesIdadeMin.length==2&&tesIdadeMax.length==1){
             tesIdadeMax='0'+tesIdadeMax;
-            console.log(tesIdadeMax);
+            //console.log(tesIdadeMax);
         }
         if(tesIdadeMax.length==2&&tesIdadeMin.length==1){
             tesIdadeMin='0'+tesIdadeMin;
-            console.log(tesIdadeMax);
+            //console.log(tesIdadeMax);
         }
         
         
@@ -346,7 +346,11 @@
 
         if(tesIdadeMin.length==2&&tesIdadeMax.length==1){
             tesIdadeMax='0'+tesIdadeMax;
-            console.log(tesIdadeMax);
+            //console.log(tesIdadeMax);
+        }
+        if(tesIdadeMax.length==2&&tesIdadeMin.length==1){
+            tesIdadeMin='0'+tesIdadeMin;
+            //console.log(tesIdadeMax);
         }
         
         

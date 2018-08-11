@@ -19,11 +19,11 @@
     </thead>
     @foreach ($cras as $c)
     <tr>
-        <td> {{ $c->nomecras }} </td>
+        <td> {{ $c->nomeCras }} </td>
         <td> {{ $c->telefone }} </td>
         
         <td>
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
 
             @if($c->statuscras=='1')     
@@ -194,7 +194,7 @@
         //document.getElementById("msgsenha").innerHTML="";
         //document.getElementById("msgnome").innerHTML="";
     });
-
+/*
     function mascara(o,f){
         v_obj=o
         v_fun=f
@@ -217,7 +217,7 @@
             mascara( this, mtel );
         }
     }
-
+/*
     function validarInclusao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
@@ -244,8 +244,8 @@
 
     return permissao;
     
-    }
-
+    }*/
+/*
     function validarEdicao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
@@ -273,7 +273,7 @@
     return permissao;
     
     }
-
+*/
     $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 

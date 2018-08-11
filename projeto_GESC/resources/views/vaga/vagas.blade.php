@@ -1,6 +1,6 @@
 @extends('layout.principal') 
 @section('conteudo')
-
+{{$teste=''}}
 <h1 class="text">Gerenciamento de vagas</h1>
 @if(empty($vaga))
     <div class="alert alert-danger">
@@ -46,15 +46,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Novo faixa etária de vagas</h5>
+                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
+            
+            </div>
+            <div class ="row">
+            <spam id="msgiadadessobre" class="col-sm-12"></br></spam>
+            <spam id="msgintervaloinvalido" class="col-sm-12"></br></spam>
             </div>
             <div class="modal-body">
 
                 <form class="form" action="/vagas/adiciona" method="post" name="incluirVagas"
-                onsubmit="return incluirVaga(incluirVagas.idademin, incluirVagas.idademax, incluirVagas.numvaga);">
+                onsubmit="return incluirVaga(incluirVagas.idademin, incluirVagas.idademax, incluirVagas.numvaga, 
+                incluirVagas.listaAno, incluirVagas.listaIdadeMin, incluirVagas.listaIdadeMax, incluirVagas.anovaga);">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="listaAno" value="{{ $listaAno }}">
+                    <input type="hidden" name="listaIdadeMax" value="{{ $listaIdadeMax }}">
+                    <input type="hidden" name="listaIdadeMin" value="{{ $listaIdadeMin }}">
                     <div class="row">
                         <div class="col-sm-6">
                             <label>Idade Mínima</label>
@@ -106,11 +116,19 @@
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
+            <div class ="row">
+            <spam id="msgiadadessobre_edit" class="col-sm-12"></br></spam>
+            <spam id="msgintervaloinvalido_edit" class="col-sm-12"></br></spam>
+            </div>
             <div class="modal-body">
 
                 <form class="form" action="/vagas/editar" method="post" name="editarVagas"
-                onsubmit="return editarVaga(editarVagas.idademin, editarVagas.idademax, editarVagas.numvaga);">
+                onsubmit="return editarVaga(editarVagas.idademin, editarVagas.idademax, editarVagas.numvaga,
+                editarVagas.listaAno, editarVagas.listaIdadeMin, editarVagas.listaIdadeMax, editarVagas.anovaga);">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="listaAno" value="{{ $listaAno }}">
+                    <input type="hidden" name="listaIdadeMax" value="{{ $listaIdadeMax }}">
+                    <input type="hidden" name="listaIdadeMin" value="{{ $listaIdadeMin }}">
                     <input type="hidden" name="idvaga" id="idvaga" type="text" value="">
                     <div class="row">
                         <div class="col-sm-6">
@@ -226,12 +244,65 @@
     
 });
 
-    function incluirVaga(idademin, idademax, numvaga){
+    function incluirVaga(idademin, idademax, numvaga, listaAno, listaIdadeMin, listaIdadeMax, anovaga){
         var permissao = true;
+        var cont=0, tes=0;
+        var teslistaAno, teslistaIdadeMin, teslistaIdadeMax, i;
         var formulario = document.register;
         var tesIdadeMin = idademin.value;
         var tesIdadeMax = idademax.value;
         var tesNumVgagas = numvaga.value;
+        var tesAnoVaga = anovaga.value;
+        teslistaAno = listaAno.value.split("|");
+        teslistaIdadeMin = listaIdadeMin.value.split("|");
+        teslistaIdadeMax = listaIdadeMax.value.split("|");
+
+        if(tesIdadeMin.length==2&&tesIdadeMax.length==1){
+            tesIdadeMax='0'+tesIdadeMax;
+            console.log(tesIdadeMax);
+        }
+        
+        
+        if(tesIdadeMin>tesIdadeMax){
+            document.getElementById("msgintervaloinvalido").innerHTML="<font color='red'>A idade mínima não pode ser maior que a máxima, por favor verifique</font>";
+            permissao = false;
+        }else {
+            document.getElementById("msgintervaloinvalido").innerHTML="";
+        }
+
+
+        if(tesIdadeMin != "" && tesIdadeMax != ""){
+            for (i in teslistaAno, teslistaIdadeMin){
+                //tes++;
+                if(teslistaAno[i]==tesAnoVaga){
+                    //console.log(tesIdadeMin);
+                    //console.log(teslistaIdadeMin[i]);
+                    //console.log(tesIdadeMax);
+                    //console.log(teslistaIdadeMax[i]);
+                    if((tesIdadeMin<=teslistaIdadeMin[i]&&tesIdadeMax>=teslistaIdadeMin[i])
+                        ||(tesIdadeMin>=teslistaIdadeMin[i]&&tesIdadeMax<=teslistaIdadeMax[i])
+                        || (tesIdadeMax>=teslistaIdadeMax[i]&&tesIdadeMin<=teslistaIdadeMax[i])){
+                            cont++;
+                            //console.log("Entra 1");
+                        }/*else if(teslistaIdadeMax[i]<=tesIdadeMax){
+                        if(tesIdadeMin<=teslistaIdadeMax[i]){
+                            cont++;
+                            console.log("Entra 2");
+                        }
+                    }*/
+                }
+            }
+        }
+        
+        //console.log(cont);
+        if(cont>0){
+            //console.log("Entra");
+            document.getElementById("msgiadadessobre").innerHTML="<font color='red'>A faixa etária informada sobrepõe a autra cadastrada, por favor verifique</font>";
+            permissao = false;
+        } else {
+            document.getElementById("msgiadadessobre").innerHTML="";
+        }
+
 
         if (tesIdadeMin == "") {
             document.getElementById("msgidademin").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
@@ -257,12 +328,51 @@
         return permissao;
     }
 
-     function editarVaga(idademin, idademax, numvaga){
+     function editarVaga(idademin, idademax, numvaga, listaAno, listaIdadeMin, listaIdadeMax, anovaga){
         var permissao = true;
+        var cont=0, tes=0;
+        var teslistaAno, teslistaIdadeMin, teslistaIdadeMax, i;
         var formulario = document.register;
         var tesIdadeMin = idademin.value;
         var tesIdadeMax = idademax.value;
         var tesNumVgagas = numvaga.value;
+        var tesAnoVaga = anovaga.value;
+        teslistaAno = listaAno.value.split("|");
+        teslistaIdadeMin = listaIdadeMin.value.split("|");
+        teslistaIdadeMax = listaIdadeMax.value.split("|");
+
+        if(tesIdadeMin.length==2&&tesIdadeMax.length==1){
+            tesIdadeMax='0'+tesIdadeMax;
+            console.log(tesIdadeMax);
+        }
+        
+        
+        if(tesIdadeMin>tesIdadeMax){
+            document.getElementById("msgintervaloinvalido_edit").innerHTML="<font color='red'>A idade mínima não pode ser maior que a máxima, por favor verifique</font>";
+            permissao = false;
+        }else {
+            document.getElementById("msgintervaloinvalido_edit").innerHTML="";
+        }
+
+
+        if(tesIdadeMin != "" && tesIdadeMax != ""){
+            for (i in teslistaAno, teslistaIdadeMin){
+                if(teslistaAno[i]==tesAnoVaga){
+                    if((tesIdadeMin<=teslistaIdadeMin[i]&&tesIdadeMax>=teslistaIdadeMin[i])
+                        ||(tesIdadeMin>=teslistaIdadeMin[i]&&tesIdadeMax<=teslistaIdadeMax[i])
+                        || (tesIdadeMax>=teslistaIdadeMax[i]&&tesIdadeMin<=teslistaIdadeMax[i])){
+                            cont++;
+                    }
+                }
+            }
+        }
+        
+        if(cont>1){
+            document.getElementById("msgiadadessobre_edit").innerHTML="<font color='red'>A faixa etária informada sobrepõe a autra cadastrada, por favor verifique</font>";
+            permissao = false;
+        } else {
+            document.getElementById("msgiadadessobre_edit").innerHTML="";
+        }
 
         if (tesIdadeMin == "") {
             document.getElementById("msgidademin_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
@@ -298,6 +408,8 @@
         document.getElementById("msgnumvagas").innerHTML="";
         document.getElementById("msgidademax").innerHTML="";
         document.getElementById("msgidademin").innerHTML="";
+        document.getElementById("msgiadadessobre").innerHTML="";
+        document.getElementById("msgintervaloinvalido").innerHTML="";
     });
 
     $('#editarVagas').on('hidden.bs.modal', function (event) {
@@ -305,6 +417,8 @@
         document.getElementById("msgnumvagas_edit").innerHTML="";
         document.getElementById("msgidademax_edit").innerHTML="";
         document.getElementById("msgidademin_edit").innerHTML="";
+        document.getElementById("msgiadadessobre_edit").innerHTML="";
+        document.getElementById("msgintervaloinvalido_edit").innerHTML="";
     });
 
     function mascara(o,f){
@@ -319,6 +433,13 @@
     function retiraLetra(v){
         v=v.replace(/\D/g,"");
         return v;
+    }
+
+    window.onload = function(){
+        document.getElementById("msgiadadessobre_edit").innerHTML="";
+        document.getElementById("msgintervaloinvalido_edit").innerHTML="";
+        document.getElementById("msgiadadessobre").innerHTML="";
+        document.getElementById("msgintervaloinvalido").innerHTML="";
     }
 
 </script>

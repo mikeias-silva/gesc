@@ -11,8 +11,29 @@ class VagasController extends Controller {
 
     public function listaVagas(){
         $vaga = vaga::all();
+        $idadeMin=[];
+        $idadeMax=[];
+        $anoLista=[];
+        $i=0;
         $ano = date('Y');
-        return view('vaga.vagas')->with('vaga', $vaga)->with('ano', $ano);
+        foreach($vaga as $c){
+            $idadeMin[$i]=$c->idademin;
+            $i++;
+        }
+        $i=0;
+        foreach($vaga as $b){
+            $idadeMax[$i]=$b->idademax;
+            $i++;
+        }
+        $i=0;
+        foreach($vaga as $a){
+            $anoLista[$i]=$a->anovaga;
+            $i++;
+        }
+        $listaIdadeMin = implode('|', $idadeMin);
+        $listaIdadeMax = implode('|', $idadeMax);
+        $listaAno = implode('|', $anoLista);
+        return view('vaga.vagas')->with('vaga', $vaga)->with('ano', $ano)->with('listaAno', $listaAno)->with('listaIdadeMax', $listaIdadeMax)->with('listaIdadeMin', $listaIdadeMin);
     }
 
     public function adiciona(Request $request){
@@ -33,6 +54,11 @@ class VagasController extends Controller {
         $vaga->delete();
         return redirect()->action('VagasController@listaVagas');
     }
+
+    public function consulta($ano){
+        $teste = 'oi';
+        return $teste;
+    } 
 
 
 }

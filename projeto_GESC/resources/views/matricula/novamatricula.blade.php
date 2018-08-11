@@ -2,6 +2,8 @@
 @extends('matricula.identificacao')
 @section('conteudo')
 
+<h2>Nova Matrícula</h2>
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="identificacao-tab" data-toggle="tab" href="#identificacao" role="tab" aria-controls="identificacao" aria-selected="true">Identificação</a>
@@ -287,66 +289,105 @@
         </div>
             
         <h2>Responsável 02</h2>
-        <label>Nome:</label>
-        <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
-        <spam id="msgNomeResp2"></spam></br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-8">
+                    <label>Nome:</label>
+                    <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
+                    <spam id="msgNomeResp2"></spam>
+                </div>
 
-        <div class="form-group" >
-                <label>Sexo</label>
-                <select class="form-control" name="sexoresp2" id="">
-                    <option value="M">Masculino</option>
-                    <option value="F">Feminino</option>
-                </select>
+                <div class="col-sm-2">
+                    <label>Data de Nascimento</label>
+                    <input type="date" class="form-control" name="datanascimentoresp2">
+                    <spam id="msgDataResp2"></spam>
+                </div>
+
+                <div class="col-sm-2">
+                        <label>Sexo</label>
+                        <select class="form-control" name="sexoresp2" id="">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                </div>
+            </div>
         </div>
 
-        <label>Data de Nascimento</label>
-        <input type="date" class="form-control" name="datanascimentoresp2">
-        <spam id="msgDataResp2"></spam></br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>RG</label>
+                    <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="8">
+                    <spam id="msgRgResp2"></spam>
+                </div>
 
-        <label>RG</label>
-        <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="8">
-        <spam id="msgRgResp2"></spam></br>
+                <div class="col-sm-4">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
+                    <spam id="msgCpfResp2"></spam>
+                </div>
+                
+                <div class="col-sm-4">
+                    <label>Estado Civil</label>
+                    <select class="form-control" id="" name="estadocivilresp2">
+                        <option value="1">Solteiro</option>
+                        <option value="2">Casado</option>
+                        <option value="3">Divorciado</option>
+                        <option value="4">Viúvo</option>
+                        <option value="5">Separado</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-        <label>CPF</label>
-        <input type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
-        <spam id="msgCpfResp2"></spam></br>
-        
-        <label>Estado Civil</label>
-        <select class="form-control" id="" name="estadocivilresp2">
-            <option value="1">Solteiro</option>
-            <option value="2">Casado</option>
-            <option value="3">Divorciado</option>
-            <option value="4">Viúvo</option>
-            <option value="5">Separado</option>
-        </select>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-8">
+                    <label>Profissão</label>
+                    <input type="text" class="form-control" name="profissaoresp2">
+                </div>
+                <div class="col-sm-4">
+                    <label>Salário</label>
+                    <input type="text" class="form-control" name="salarioresp2" id="salarioresp2" onkeyup="mascara(this, Moeda);">
+                    <spam id="msgSalarioResp2"></spam>
+                </div>
+            </div>
+        </div>
 
-        <label>Profissão</label>
-        <input type="text" class="form-control" name="profissaoresp2">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-8">
+                    <label>Local de Trabalho</label>
+                    <input type="text" class="form-control" name="trabalhoresp2">
+                </div>
+                <div class="col-sm-4">
+                    <label>Escolaridade</label>
+                    <select class="form-control" id="" name="escolaridaderesp2">
+                            <option value="1">Ensino Fundamental Incompleto</option>
+                            <option value="2">Ensino Fundamental Completo</option>
+                            <option value="3">Ensino Médio Incompleto</option>
+                            <option value="4">Ensino Médio Completo</option>
+                            <option value="5">Ensino Superior Incompleto</option>
+                            <option value="6">Ensino Superior Completo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-        <label>Salário</label>
-        <input type="text" class="form-control" name="salarioresp2" id="salarioresp2" onkeyup="mascara(this, Moeda);">
-        <spam id="msgSalarioResp2"></spam></br>
-
-        <label>Local de Trabalho</label>
-        <input type="text" class="form-control" name="trabalhoresp2">
-
-        <label>Escolaridade</label>
-        <select class="form-control" id="" name="escolaridaderesp2">
-                <option value="1">Ensino Fundamental Incompleto</option>
-                <option value="2">Ensino Fundamental Completo</option>
-                <option value="3">Ensino Médio Incompleto</option>
-                <option value="4">Ensino Médio Completo</option>
-                <option value="5">Ensino Superior Incompleto</option>
-                <option value="6">Ensino Superior Completo</option>
-        </select>
-
-        <label>Telefone 1</label>
-        <input type="tel" class="form-control" name="tel1resp2" id="tel1resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
-        <spam id="msgTel1Resp2"></spam></br>
-
-        <label>Telefone 2</label>
-        <input type="tel" class="form-control" name="tel2resp2" id="tel2resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
-        <spam id="msgTel2Resp2"></spam></br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Telefone 1</label>
+                    <input type="tel" class="form-control" name="tel1resp2" id="tel1resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
+                    <spam id="msgTel1Resp2"></spam>
+                </div>
+                <div class="col-sm-4">
+                    <label>Telefone 2</label>
+                    <input type="tel" class="form-control" name="tel2resp2" id="tel2resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
+                    <spam id="msgTel2Resp2"></spam>
+                </div>
+            </div>
+        </div>
 
         <label>Observações</label>
         <textarea name="obsresp2" id="" cols="10" rows="2" class="form-control"></textarea>
@@ -357,35 +398,53 @@
     <!-- ABA FAMILIA -->
     <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
         <div>
-
-        <label>Número do NIS</label>
-        <input type="text" class="form-control" name="numnis">
-        <spam id="msgNumNis"></spam></br>
-
-        <label>Moradia</label>
-        <select class="form-control" name="moradia" id="">
-            <option value="1">Alugada</option>
-            <option value="2">Cedida</option>
-            <option value="3">Prórpia</option>
-        </select>
+        </br>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-8">
+                    <label>Número do NIS</label>
+                    <input type="text" class="form-control" name="numnis">
+                    <spam id="msgNumNis"></spam>
+                </div>
+                <div class="col-sm-4">
+                    <label>Moradia</label>
+                    <select class="form-control" name="moradia" id="">
+                        <option value="1">Alugada</option>
+                        <option value="2">Cedida</option>
+                        <option value="3">Prórpia</option>
+                    </select>
+                </div>
+            </div>
+        </dvi>
+        </br>
 
         
         <!-- radio buttons -->
-        <span>Tipo Habitação</span>
-        <div class="form-check">
-            <label class="form-check-label" for="rd-alvenaria">
-                <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label" for="rd-madeira">
-                <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label" for="rd-mista">
-                <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-            </label>
+        <div class="form-group">
+            <span>Tipo Habitação</span>
+            <div class="row">
+                <div class="col-sm-1">
+                    <div class="form-check">
+                        <label class="form-check-label" for="rd-alvenaria">
+                            <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-check">
+                        <label class="form-check-label" for="rd-madeira">
+                            <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-check">
+                        <label class="form-check-label" for="rd-mista">
+                            <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
                 
         <!-- checkboxes -->

@@ -260,6 +260,10 @@
             tesIdadeMax='0'+tesIdadeMax;
             console.log(tesIdadeMax);
         }
+        if(tesIdadeMax.length==2&&tesIdadeMin.length==1){
+            tesIdadeMin='0'+tesIdadeMin;
+            console.log(tesIdadeMax);
+        }
         
         
         if(tesIdadeMin>tesIdadeMax){

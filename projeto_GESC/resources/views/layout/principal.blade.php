@@ -73,14 +73,6 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link disabled" href="#">
-                                        <i class="fa fa-file-signature fa-2x"></i>
-                                         Controle de Frequência
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a class="nav-link disabled" href="/usuarios">
                                     <i class="fa fa-user-plus fa-2x" ></i>
                                      Gerenciamento de Usuário
@@ -98,7 +90,7 @@
                             <li>
                                 <a class="nav-link disabled" href="/controle_frequencia">
                                     <i class="fa fa-graduation-cap fa-2x" ></i>
-                                     Gerenciamento de Frequência
+                                     Controle de Frequência
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>

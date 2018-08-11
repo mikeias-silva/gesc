@@ -58,6 +58,11 @@ Route::post('/usuarios/edita', 'UsuariosController@edita');
 Route::post('/usuarios/inativa', 'UsuariosController@inativa');
 Route::post('/usuarios/ativa', 'UsuariosController@ativa');
 
+Route::get('/vagas', 'VagasController@listaVagas');
+Route::post('/vagas/adiciona', 'VagasController@adiciona');
+Route::post('/vagas/editar', 'VagasController@edita');
+Route::post('/vagas/excluir', 'VagasController@exclui');
+
 Route::get('/login', function(){
     return view('login.login');
 });

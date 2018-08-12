@@ -297,7 +297,7 @@ class MatriculasController extends Controller
         $membro->salario = Request::input('salariomembro1');
         $membro->idescola = Request::input('escolamembro1');
         $membro->idfamilia = $familia->id;
-        //$membro->save();
+        $membro->save();
       
         //-----------------------------------
         //MATRICULA

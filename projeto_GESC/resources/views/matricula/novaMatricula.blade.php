@@ -240,7 +240,7 @@
                 </div>
                 <div class="col-sm-4">
                     <label>Salário</label>
-                    <input type="number" class="form-control" name="salarioresp1" id="salarioresp1" onkeyup="mascara(this, Moeda);">
+                    <input type="text" class="form-control" name="salarioresp1" id="salarioresp1" onkeyup="mascara(this, Moeda);">
                     <spam id="msgSalarioResp1"></spam>
                 </div>
             </div>
@@ -355,7 +355,7 @@
                                 }
                                 
                             </script><label>Salário</label>
-                    <input type="number" class="form-control" name="salarioresp2" id="salarioresp2" onkeyup="mascara(this, Moeda);">
+                    <input type="text" class="form-control" name="salarioresp2" id="salarioresp2" onkeyup="mascara(this, Moeda);">
                     <spam id="msgSalarioResp2"></spam>
                 </div>
             </div>

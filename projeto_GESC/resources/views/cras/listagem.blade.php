@@ -205,8 +205,8 @@
     }/*
     function mtel(v){
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
-        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-        v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+        //v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+        //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         return v;
     }*/
     function id( el ){
@@ -234,7 +234,7 @@
     if (tesTelefone == "") {
         document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
-    } else if(tesTelefone.length<14){
+    } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
         permissao = false;
     }
@@ -262,7 +262,7 @@
     if (tesTelefone == "") {
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
-    } else if(tesTelefone.length<14){
+    } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
         permissao = false;
     }

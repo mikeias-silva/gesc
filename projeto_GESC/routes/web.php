@@ -64,6 +64,7 @@ Route::post('/vagas/editar', 'VagasController@edita');
 Route::post('/vagas/excluir', 'VagasController@exclui');
 
 Route::get('/controle_frequencia', 'ControleFrequanciaController@listaTurmas');
+Route::get('/controle_frequencia/{idturma}/turma', 'ControleFrequanciaController@listaAlunos');
 
 Route::get('/login', function(){
     return view('login.login');

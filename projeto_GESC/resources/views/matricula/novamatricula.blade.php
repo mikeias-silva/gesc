@@ -108,7 +108,7 @@
                         <label>CRAS/CREAS</label>
                         <select name="cras" id="" class="custom-select" name="cras">
                             @foreach($cras as $c)
-                                <option value="{{ $c->id}}">{{ $c->nomeCras }}</option>
+                                <option value="{{ $c->id}}">{{ $c->nomecras }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -208,7 +208,7 @@
             <div class="row">
                     <div class="col-sm-4">
                     <label>RG</label>
-                    <input type="text" class="form-control" name="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="8"> 
+                    <input type="text" class="form-control" name="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
                     <spam id="msgRgResp1"></spam>
                 </div>
 
@@ -317,7 +317,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <label>RG</label>
-                    <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="8">
+                    <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9">
                     <spam id="msgRgResp2"></spam>
                 </div>
 

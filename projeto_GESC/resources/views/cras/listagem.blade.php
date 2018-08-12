@@ -23,7 +23,7 @@
         <td> {{ $c->telefone }} </td>
         
         <td>
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
 
             @if($c->statuscras=='1')     
@@ -194,7 +194,7 @@
         //document.getElementById("msgsenha").innerHTML="";
         //document.getElementById("msgnome").innerHTML="";
     });
-
+/*
     function mascara(o,f){
         v_obj=o
         v_fun=f
@@ -202,13 +202,13 @@
     }
     function execmascara(){
         v_obj.value=v_fun(v_obj.value)
-    }
+    }/*
     function mtel(v){
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
         //v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
         //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         return v;
-    }
+    }*/
     function id( el ){
         return document.getElementById( el );
     }
@@ -217,7 +217,7 @@
             mascara( this, mtel );
         }
     }
-
+/*
     function validarInclusao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
@@ -244,8 +244,8 @@
 
     return permissao;
     
-    }
-
+    }*/
+/*
     function validarEdicao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
@@ -273,7 +273,7 @@
     return permissao;
     
     }
-
+*/
     $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 

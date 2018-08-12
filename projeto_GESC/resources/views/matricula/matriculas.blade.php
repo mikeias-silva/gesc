@@ -36,7 +36,8 @@
                         <td>{{ $matA->nomeTurma() }}</td>
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
-                        <td></td>
+                        <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a>
+                        </td>
                     </tr>
                     @endforeach 
                 
@@ -68,7 +69,7 @@
                             <td>{{ $matI->nomeTurma() }}</td>
                             <td>{{ $matI->idadeMatricula() }}</td>
                             <td>{{ $matI->anoMatricula() }}</td>
-                            <td></td>
+                            <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a></td>
                         </tr>
                         @endforeach
                     
@@ -100,7 +101,7 @@
                             <td>{{ $matE->nomeTurma() }}</td>
                             <td>{{ $matE->idadeMatricula() }}</td>
                             <td>{{ $matE->anoMatricula() }}</td>
-                            <td></td>
+                            <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a></td>
                         </tr>
                         @endforeach
                     </tr>

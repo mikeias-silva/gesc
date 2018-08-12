@@ -28,8 +28,12 @@ class ControleFrequanciaController extends Controller {
     public function listaAlunos($idturma){
         $nomeTurma = DB::select("select turma.GrupoConvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
-        //$listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from pessoa, matricula, crianca where 
-       // crianca.idcriaca==matricula.idcriaca";)
+        
+        $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from ((matriculas, pessoa, crianca
+        INNER JOIN matriculas as matriuca01 on matriuca01.idcrianca=crianca.idcrianca)
+        INNER JOIN crianca as crianca01 on crianca01.idpessoa=pessoa.idpessoa) where matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
+        GROUP BY idmatricula");
+
         return view('frequencia.lista_alunos')->with("nomeTurma", $nomeTurma);
     }
 }

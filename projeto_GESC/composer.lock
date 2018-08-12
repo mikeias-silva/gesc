@@ -1083,7 +1083,6 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
-
         },
         {
             "name": "psr/container",
@@ -1231,7 +1230,6 @@
         },
         {
             "name": "psy/psysh",
-
              "version": "v0.9.7",
             "source": {
                 "type": "git",

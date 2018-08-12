@@ -9,7 +9,7 @@ use App\ControleFrequancia;
 use App\Turma;
 
 
-class ControleFrequanciaController extends Controller {
+class ControleFrequenciaController extends Controller {
 
     public function listaTurmas(){
         $aux=0;

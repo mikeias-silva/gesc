@@ -19,7 +19,7 @@
     </thead>
     @foreach ($cras as $c)
     <tr>
-        <td> {{ $c->nomeCras }} </td>
+        <td> {{ $c->nomecras }} </td>
         <td> {{ $c->telefone }} </td>
         
         <td>

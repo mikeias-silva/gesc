@@ -51,6 +51,7 @@ Route::get('/matriculas', 'MatriculasController@listaMatriculas');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
 Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
 Route::get('/pdfmatricula', 'MatriculasController@imprime');
+
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');
 Route::post('/usuarios/adiciona', 'UsuariosController@adiciona');

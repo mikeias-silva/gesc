@@ -28,6 +28,8 @@ Route::get('/modalCras','CrasController@novo');
 Route::post('/cras/adiciona', 'CrasController@adiciona');
 Route::post('/cras/remove', 'CrasController@remover');
 Route::post('/cras/edita', 'CrasController@editar');
+Route::post('/cras/ativar', 'CrasController@ativar');
+Route::post('/cras/inativar', 'CrasController@inativar');
 
 
 //Rotas para as telas de controle de Turmas
@@ -35,9 +37,13 @@ Route::get('/turmas', 'TurmaController@listaTurma');
 Route::post('/turmas/adiciona', 'TurmaController@adiciona');
 Route::post('/turmas/remove', 'TurmaController@remover');
 Route::post('/turmas/edita', 'TurmaController@editar');
+Route::post('/turmas/inativa', 'TurmaController@inativar');
+Route::post('/turmas/ativa', 'TurmaController@ativar');
 
 //Rotas para as telas de instituição
 Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');
+Route::post('/instituicao/edita', 'InstituicaoController@editar');
+Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias');
 
 
 //Rotas para as telas de Matrícula

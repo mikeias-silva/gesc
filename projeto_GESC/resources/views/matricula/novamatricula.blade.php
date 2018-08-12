@@ -456,9 +456,6 @@
         
   
     </form>
-<<<<<<< HEAD
-    
-=======
 
 <script>
     function validarMatricula(nomeCrianca, dataNascimentoCrianca, rgCrianca, cpfCrianca, cep, endereco, bairro, nomeResp1, dataNascResp1,
@@ -851,5 +848,4 @@
     
 
 </script>
->>>>>>> 6b6abaf8c8e03d66f115e37974b6fe3dc281ffff
 @stop

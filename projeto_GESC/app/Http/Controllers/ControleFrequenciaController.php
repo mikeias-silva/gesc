@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\ControleFrequancia;
 
 
-class ControleFrequanciaController extends Controller {
+class ControleFrequenciaController extends Controller {
 
     public function listaTurmas(){
         $listaTurmas=["teste"];

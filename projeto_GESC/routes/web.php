@@ -51,12 +51,20 @@ Route::get('/matriculas', 'MatriculasController@listaMatriculas');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
 Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
 Route::get('/pdfmatricula', 'MatriculasController@imprime');
+
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');
 Route::post('/usuarios/adiciona', 'UsuariosController@adiciona');
 Route::post('/usuarios/edita', 'UsuariosController@edita');
 Route::post('/usuarios/inativa', 'UsuariosController@inativa');
 Route::post('/usuarios/ativa', 'UsuariosController@ativa');
+
+Route::get('/vagas', 'VagasController@listaVagas');
+Route::post('/vagas/adiciona', 'VagasController@adiciona');
+Route::post('/vagas/editar', 'VagasController@edita');
+Route::post('/vagas/excluir', 'VagasController@exclui');
+
+Route::get('/controle_frequencia', 'ControleFrequanciaController@listaTurmas');
 
 Route::get('/login', function(){
     return view('login.login');

@@ -41,7 +41,7 @@ class MatriculasController extends Controller
 //        $matAtivas = Matricula::where('statuscadastro', 'ativo');
 
         $matAtivas = Matricula::matriculasAtiva();
-       // dd($matAtivas);
+        //return $matAtivas;
         //return;
 
         $matInativas = Matricula::matriculasInativas();
@@ -94,7 +94,21 @@ class MatriculasController extends Controller
         $logradouro = Request::input('logradouro');
         $complemento = Request::input('complemento');
         
-        
+        $familia = new Familia();
+        $familia->moradia = Request::input('moradia');
+        $familia->arearisco = Request::input('arearisco');
+        $familia->tipohabitacao = Request::input('tipohabitacao');
+        $familia->numnis = Request::input('numnis');
+        $familia->beneficiopc = Request::input('beneficiopc');
+        $familia->bolsafamilia = Request::input('bolsafamilia');
+        $familia->idcras = Request::input('cras');
+        //$familia->idmembro = 
+        $familia->save();
+        //add familia aos responsavels adicionados por ultimo
+      //  $responsavel1->update(array('idfamilia' =>$familia->id));
+      //  $responsavel2->update(array('idfamilia' =>$familia->id));
+        //---------------------------------------------------
+        //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
 
         $nomecrianca = Request::input('nomecrianca');
         $datanascimentocrianca = Request::input('datanascimentocrianca');
@@ -113,7 +127,7 @@ class MatriculasController extends Controller
         $pessoacrianca->bairro = $bairro;
         $pessoacrianca->logradouro = $logradouro;
         $pessoacrianca->complementoendereco = $complemento;
-       // $pessoacrianca->save();
+        $pessoacrianca->save();
         
        /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
          values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -136,7 +150,7 @@ class MatriculasController extends Controller
         $crianca->idescola = Request::input('escola');;
         $crianca->idpublicoprioritario = Request::input('pprioritario');
         $crianca->idpessoa = $pessoacrianca->id;
-       // $crianca->save();
+        $crianca->save();
         
        /*
         DB::insert('insert into crianca(obssaude, datacadastro, idpessoa, idescola, idpublicoprioritario) 
@@ -169,7 +183,7 @@ class MatriculasController extends Controller
         $pessoaresponsavel1->bairro = $bairro;
         $pessoaresponsavel1->logradouro = $logradouro;
         $pessoaresponsavel1->complementoendereco = $complemento;
-      //  $pessoaresponsavel1->save();
+        $pessoaresponsavel1->save();
         
         
         /*$estadocivilresp1 = Request::input('estadocivilresp1');	
@@ -188,10 +202,11 @@ class MatriculasController extends Controller
         $responsavel1->localtrabalho = Request::input('trabalhoresp1');
         $responsavel1->telefone = Request::input('tel1resp1');
         $responsavel1->telefone2 = Request::input('tel2resp1');
-        //$responsavel1->escolaridade = Request::input('escolaridaderesp1');
+        $responsavel1->escolaridade = Request::input('escolaridaderesp1');
         $responsavel1->outrasobs = Request::input('obsresp1');
         $responsavel1->idpessoa = $pessoaresponsavel1->id;
-        //$responsavel1->save();
+        $responsavel1->idfamilia = $familia->id;
+        $responsavel1->save();
         //$responsavel1->idfamilia = 
         /*DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
         salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
@@ -217,7 +232,7 @@ class MatriculasController extends Controller
         $pessoaresponsavel2->bairro = $bairro;
         $pessoaresponsavel2->logradouro = $logradouro;
         $pessoaresponsavel2->complementoendereco = $complemento;
-       // $pessoaresponsavel2->save();
+        $pessoaresponsavel2->save();
         /*
         DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
         values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -240,10 +255,11 @@ class MatriculasController extends Controller
         $responsavel2->localtrabalho = Request::input('trabalhoresp2');
         $responsavel2->telefone = Request::input('tel1resp2');
         $responsavel2->telefone2 = Request::input('tel2resp2');
-        //$responsavel2->escolaridade = Request::input('escolaridaderesp2');
+        $responsavel2->escolaridade = Request::input('escolaridaderesp2');
         $responsavel2->outrasobs = Request::input('obsresp2');
         $responsavel2->idpessoa = $pessoaresponsavel2->id;
-       // $responsavel2->save();
+        $responsavel2->idfamilia = $familia->id;
+        $responsavel2->save();
         /*
         DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
         salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
@@ -264,7 +280,7 @@ class MatriculasController extends Controller
         $beneficiopc = Request::input('beneficiopc');
         $bolsafamilia = Request::input('bolsafamilia');
         $cras = Request::input('cras');
-       // $membrofamilia
+       // $membrofamilia->save();
         // $rendapercapta
         //
         
@@ -272,21 +288,7 @@ class MatriculasController extends Controller
         values(?, ?, ?, ?, ?, ?, ?)',
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
 */
-        $familia = new Familia();
-        $familia->moradia = Request::input('moradia');
-        $familia->arearisco = Request::input('arearisco');
-        $familia->tipohabitacao = Request::input('tipohabitacao');
-        $familia->numnis = Request::input('numnis');
-        $familia->beneficiopc = Request::input('beneficiopc');
-        $familia->bolsafamilia = Request::input('bolsafamilia');
-        $familia->idcras = Request::input('cras');
-        //$familia->idmembro = 
-       // $familia->save();
-        //add familia aos responsavels adicionados por ultimo
-      //  $responsavel1->update(array('idfamilia' =>$familia->id));
-      //  $responsavel2->update(array('idfamilia' =>$familia->id));
-        //---------------------------------------------------
-        //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
+        
 
         $membro = new Membro_Familia();
         $membro->nomemembro = Request::input('nomemembro1');
@@ -295,7 +297,7 @@ class MatriculasController extends Controller
         $membro->salario = Request::input('salariomembro1');
         $membro->idescola = Request::input('escolamembro1');
         $membro->idfamilia = $familia->id;
-       // $membro->save();
+        //$membro->save();
       
         //-----------------------------------
         //MATRICULA
@@ -344,11 +346,11 @@ class MatriculasController extends Controller
 
         $matricula = new Matricula();
         $matricula->anomatricula = $hoje;
-        $matricula->idturma = Request::input('turma');
+        $matricula->idturma = 1; //Request::input('turma');
         $matricula->serieescolar = Request::input('serie');
         $matricula->idcrianca = $crianca->idcrianca;;
        
-      /*  $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
+        $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
        // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
              
         if($matAtivas < $essanumvaga){
@@ -357,9 +359,12 @@ class MatriculasController extends Controller
         }elseif($matAtivas > $essanumvaga){
             $matricula->statuscadastro = 'Espera';
             
-        }*/
-        
-      //  $matricula->save();
+        }
+        $matricula->datasairespera = $hoje;
+        $matricula->dataespera = $hoje;
+        $matricula->idvaga = $essavaga;
+
+        $matricula->save();
 
        
 /*

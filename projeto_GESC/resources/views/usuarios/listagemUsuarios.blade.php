@@ -70,11 +70,11 @@
                     <label id="msgnome"></label>
                     </br>
                     <label>E-mail</label>
-                    <input name="email" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
+                    <input name="email" class="form-control" type="email" value="" maxlength="255" autocomplete="off">
                     <label id="msgemail"></label>
                     </br>
                     <label>Senha</label>
-                    <input name="senha" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
+                    <input name="senha" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
                     <label id="msgsenha"></label>
                     </br>
                     <label>Nome de Usuário</label>
@@ -122,15 +122,18 @@
                     <label id="msgnome_edit"></label>
                     </br>
                     <label>E-mail</label>
-                    <input name="email" id="email" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
+                    <input name="email" id="email" class="form-control" type="email" value="" maxlength="255" autocomplete="off">
                     <label id="msgemail_edit"></label>
                     </br>
+                    <div class="form-group">
                     <label>Senha</label>
-                    <input name="senha" id="senha" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
+                    <input name="senha" id="senha" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
                     <label id="msgsenha_edit"></label>
+                    </div>
+                    
                     </br>
                     <label>Nome de Usuário</label>
-                    <input name="nomeusuario" id="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
+                    <input placeholder="Senha" name="nomeusuario" id="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     <label id="msgnomeusuario_edit"></label>
                     </br>
                     </br>

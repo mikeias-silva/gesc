@@ -60,3 +60,8 @@ main {
     border: 0 none;
     outline: 0;
 }
+
+#btn-imprimir {
+    text-decoration: none;
+    color: black;
+}

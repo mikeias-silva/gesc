@@ -24,9 +24,10 @@ class Matricula extends Model
             
             $nomecrianca = DB::select('select nomepessoa from pessoa, crianca where pessoa.idpessoa = ? 
             and crianca.idpessoa = ?', array($id, $id));
-
+           
          //   dd($nomecrianca);
             foreach($nomecrianca as $nome){
+                
                return $nome->nomepessoa;
             }
     }

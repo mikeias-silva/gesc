@@ -83,4 +83,9 @@ class Matricula extends Model
        return Carbon::parse($this->anomatricula)->format('d-m-y');
        
     }
+
+
+    public function vagasOcupadas(){
+        
+    }
 }

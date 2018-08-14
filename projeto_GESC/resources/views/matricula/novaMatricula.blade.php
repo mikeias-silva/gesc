@@ -478,11 +478,7 @@
             <!--<h5 class="text-center font-weight-bold text-uppercase py-5">Membros Familia</h5>-->
             <div class="">
                 <div id="table" class="table-editable">
-                    <span class="table-add float-right mb-3 mr-2">
-                        <a href="#!" class="text-success">
-                            <i class="fa fa-plus fa-2x"></i>
-                        </a>
-                    </span>
+                    
                        
                     <table class="table table-bordered table-responsive-md text-center">
                         <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
@@ -494,18 +490,19 @@
                             <th class="text-center">Salário</th>
                             <th class="text-center">Escola</th>
                         </tr>
-                        
-                        <!-- This is our clonable table line -->
-                        
-                        @php($linha = 0)
-                        
                         <tr class="hide">
-                           @php($linha == $linha++)
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="nomemembro"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" name="nascimentomembro{{ $linha }}"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro{{ $linha }}"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro{{ $linha }}"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                           <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   <option value="">Não estuda</option>
+                                    @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
                             <td>
                                 <span class="table-remove">
                                     <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
@@ -513,7 +510,123 @@
                             </td>
                             
                         </tr>
-
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro[]"/></td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
                     </table>
                     
                 </div>
@@ -548,6 +661,7 @@
   
     </form>
     
-
-<script src="js/nova_matricula.js"></script>
+  <!--  <script src="js/nova_matricula.js"></script>
+  -->
+    <script src="js/membro_familia.js"></script>
 @stop

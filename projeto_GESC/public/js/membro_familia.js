@@ -1,3 +1,4 @@
+
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
@@ -71,4 +72,4 @@ $BTN.click(function() {
 
     // Output the result
     $EXPORT.text(JSON.stringify(data));
-})
+});

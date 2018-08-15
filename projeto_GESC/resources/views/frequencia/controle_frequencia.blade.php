@@ -30,7 +30,7 @@
                 <td>{{ $c->Nome }}</td>
                 <td>{{$numeroAlunos[$cont]}}</td>
                 <td>
-                    <a class="btn btn-info" href="{{"/controle_frequencia/{$c->idturma }/turma"}}">Lançar faltas</a>
+                    <a class="btn btn-info" href="{{"/controle_frequencia/{$c->idturma }/turma/{$mes}"}}">Lançar faltas</a>
                 </td>
             </tr>
             {{$cont++}}

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\ControleFrequancia;
 use App\Turma;
+use App\Dias_funcionamento;
 
 
 class ControleFrequenciaController extends Controller {
@@ -20,31 +21,84 @@ class ControleFrequenciaController extends Controller {
         $aux = DB::select("select count(idturma) as numero from gesc_dois.`matriculas` where idturma='{$c->idturma}'");
         array_push($numeroAlunos, $aux[0]->numero);
         }
+
+        $mes= date("m");
         
         //$listaTurmas=[];
-        return view('frequencia.controle_frequencia')->with('listaTurmas', $listaTurmas)->with('numeroAlunos', $numeroAlunos);
+        return view('frequencia.controle_frequencia')->with('listaTurmas', $listaTurmas)->with('numeroAlunos', $numeroAlunos)
+        ->with('mes', $mes);
     }
 
-    public function listaAlunos($idturma){
+    public function listaAlunos($idturma, $mes){
+        $mesSelect = $mes;
+        $ano= date("Y");
+        //$mesString;
+        if(date("m")==1 && $mesSelect==12){
+            $ano=$ano-1;
+        }
         $nomeTurma = DB::select("select turma.GrupoConvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
         
-        $listaAlunos = DB::select("select * from (select pessoa.nomepessoa, matriculas.idmatricula from ((matriculas, pessoa, crianca
-        INNER JOIN matriculas as matriuca01 on matriuca01.idcrianca=crianca.idcrianca)
-        INNER JOIN crianca as crianca01 on crianca01.idpessoa=pessoa.idpessoa) where matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1) as tes
-        GROUP BY idmatricula");
+        $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa
+        where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
+        && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
+        && EXTRACT(MONTH FROM crianca.datacadastro)<='{$mes}' && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
 
-        $ano= date("Y");
+        
         $mes= date("m");
-        $m = $mes-1;
+        $teste= date("M");
+        $teste_aux= [];
+        //$dias_funcionamento = Dias_funcionamento::find($ano);
+        //$dias_funcionamento = DB::select("select jan, frv, mar, mai, abr, jun, jul, ago, set, out, nov, dez from dias_funcionamento where idano={$ano}");
+        if($mesSelect==1){
+            $dias_funcionamento = DB::select("select jan as numero from dias_funcionamento where idano='{$ano}'");
+        }elseif($mesSelect==2){
+            $dias_funcionamento = DB::select("select fev as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==3){
+            $dias_funcionamento = DB::select("select mar as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==4){
+            $dias_funcionamento = DB::select("select abr as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==5){
+            $dias_funcionamento = DB::select("select mar as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==6){
+            $dias_funcionamento = DB::select("select jun as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==7){
+            $dias_funcionamento = DB::select("select jul as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==8){
+            $dias_funcionamento = DB::select("select ago as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==9){
+            $dias_funcionamento = DB::select("select set as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==10){
+            $dias_funcionamento = DB::select("select out as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==11){
+            $dias_funcionamento = DB::select("select nov as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mesSelect==12){
+            $dias_funcionamento = DB::select("select dez as numero from dias_funcionamento where idano='{$ano}'");
+        }
+
+        
+        
+
+        //$m = $mes-1;
 
         $frequenciaAtual = DB::select("select idfrequencia, totalfaltas, idmatricula from frequencia 
-        where anofrequencia='{$ano}' && mesfrequencia='{$mes}'");
-        $frequenciaAnterior = DB::select("select idfrequencia, totalfaltas, idmatricula from frequencia 
-        where anofrequencia='{$ano}' && mesfrequencia='{$m}'");
+        where anofrequencia='{$ano}' && mesfrequencia='{$mesSelect}'");
+        /*$frequenciaAnterior = DB::select("select idfrequencia, totalfaltas, idmatricula from frequencia 
+        where anofrequencia='{$ano}' && mesfrequencia='{$m}'");*/
+        /*
+        $vetFrequenciaAtual=[];
+        $i=0;
+
+        foreach($frequenciaAtual as $c){
+            $vetFrequenciaAtual[$i]=$c->totalfaltas;
+            $i++;
+        }
+
+        $vetFrequenciaAtual=implode("|", )*/
 
         return view('frequencia.lista_alunos')->with("nomeTurma", $nomeTurma)->with("listaAlunos", $listaAlunos)
-        ->with("ano", $ano)->with("mes", $mes)->with("frequenciaAtual", $frequenciaAtual)->with("frequenciaAnterior", $frequenciaAnterior);
+        ->with("ano", $ano)->with("mes", $mes)->with("frequenciaAtual", $frequenciaAtual)->with("idturma", $idturma)
+        ->with("mesSelect", $mesSelect)->with("dias_funcionamento", $dias_funcionamento);
     }
 
     public function lancaFrequancia(Request $request){

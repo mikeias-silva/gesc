@@ -38,7 +38,7 @@ class MatriculasController extends Controller
         //dd($matAtivas);
        //$matAtivas = DB::select('select * from matriculas where statuscadastro = ');
 
-//        $matAtivas = Matricula::where('statuscadastro', 'ativo');
+        //$matAtivas = Matricula::where('statuscadastro', 'ativo');
 
         $matAtivas = Matricula::matriculasAtiva();
         //return $matAtivas;

@@ -35,7 +35,7 @@
             <button type="button" class="btn btn-danger" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
                 data-toggle="modal" data-target="#inativar">Inativar</button>
             @else
-            <button type="button" class="btn btn-danger" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
+            <button type="button" class="btn btn-success" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
                 data-toggle="modal" data-target="#ativar">Ativar</button>
             @endif
 

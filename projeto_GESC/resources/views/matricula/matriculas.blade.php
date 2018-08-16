@@ -38,6 +38,7 @@
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a>
+                            <a href="/inativarMatricula" class="text text-danger" data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">inativar</a>
                         </td>
                     </tr>
                     @endforeach 
@@ -110,7 +111,39 @@
             </table>
          
     </div>  
-</div>    
+</div>   
+
+<!-- Modal Center modal de ativacao-->
+<div class="modal fade" id="inativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            
+            <form action="/inativarMatricula" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
+
+                    <h5>Você tem certeza que deseja realmente inativar esta Matrícula?</h5>
+
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Inativar</button>
+            
+                    </div>
+                </div>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
 
 <form action="/novaMatricula">
     <button class="btn btn-secondary">Nova Matrícula</button>

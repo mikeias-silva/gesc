@@ -23,7 +23,7 @@
         <td> {{ $c->telefone }} </td>
         
         <td>
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomeCras }}" data-mytelefone="{{ $c->telefone }}"
+            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
 
             @if($c->statuscras=='1')     
@@ -31,7 +31,7 @@
                 data-myid="{{ $c->idcras }}" 
                 data-toggle="modal" data-target="#inativar">Inativar</button>
             @else
-            <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
+            <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
                 data-toggle="modal" data-target="#ativar">Ativar</button>
             @endif
@@ -164,7 +164,7 @@
                     <input type="hidden" name="statuscras" id="statuscras" type="text" value="">
                     
                     <label>Nome</label>
-                    <input name="nomecras" value="" class="form-control" id="nomeCras" value="" maxlength="255" autocomplete="off">
+                    <input name="nomecras" value="" class="form-control" id="nomecras" value="" maxlength="255" autocomplete="off">
                     <label id="msgcras_edit"></label>
                     </br>
                     <label>Telefone</label>

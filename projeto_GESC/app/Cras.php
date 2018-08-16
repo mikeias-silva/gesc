@@ -16,4 +16,9 @@ class Cras extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    static function crasAtivos(){
+
+        return Cras::where('statuscras', '1')->get();
+    }
 }

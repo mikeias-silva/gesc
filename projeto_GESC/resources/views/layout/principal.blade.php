@@ -141,7 +141,7 @@ $('#editar').on('show.bs.modal', function (event) {
     var id = button.data('myid')
     var statuscras = button.data('mystatuscras')
     var modal = $(this)
-    modal.find('.modal-body #nomeCras').val(nome)
+    modal.find('.modal-body #nomecras').val(nome)
     modal.find('.modal-body #telefone').val(telefone)
     modal.find('.modal-body #statuscras').val(statuscras)
     modal.find('.modal-body #idcras').val(id);
@@ -429,6 +429,16 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
 /*
     validações de cras e cras
 */
+
+$('#inativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idmatricula').val(id);
+    
+});
 
 </script>
 

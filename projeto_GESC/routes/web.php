@@ -68,7 +68,10 @@ Route::post('/vagas/excluir', 'VagasController@exclui');
 
 //rotas para a tela de frequencia
 Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas');
-
+/*
 Route::get('/login', function(){
     return view('login.login');
-});
+});*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1083,7 +1083,6 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
-
         },
         {
             "name": "phenx/php-font-lib",
@@ -1161,7 +1160,6 @@
             "description": "A library to read, parse and export to PDF SVG files.",
             "homepage": "https://github.com/PhenX/php-svg-lib",
             "time": "2018-06-03T10:10:03+00:00"
-
         },
         {
             "name": "psr/container",
@@ -1309,7 +1307,6 @@
         },
         {
             "name": "psy/psysh",
-
             "version": "v0.9.7",
             "source": {
                 "type": "git",
@@ -1320,17 +1317,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4f5b6c090948773a8bfeea6a0f07ab7d0b24e932",
                 "reference": "4f5b6c090948773a8bfeea6a0f07ab7d0b24e932",
-
-            "version": "v0.9.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "4a2ce86f199d51b6e2524214dc06835e872f4fce"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4a2ce86f199d51b6e2524214dc06835e872f4fce",
-                "reference": "4a2ce86f199d51b6e2524214dc06835e872f4fce",
                 "shasum": ""
             },
             "require": {
@@ -1391,15 +1377,7 @@
                 "interactive",
                 "shell"
             ],
-
             "time": "2018-08-11T15:54:43+00:00"
-
-            "time": "2018-06-10T17:57:20+00:00"
-
-
-            "time": "2018-08-11T15:54:43+00:00"
-
-
         },
         {
             "name": "ramsey/uuid",
@@ -4312,3 +4290,5 @@
     },
     "platform-dev": []
 }
+
+

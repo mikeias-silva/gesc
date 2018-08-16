@@ -14,6 +14,7 @@
 </ul>
 
 <!--ABA ATIVAS-->
+<h1 id="atencao">colocar campo de filtro aqui</h1>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
         <h2>Matriculas ativas</h2>

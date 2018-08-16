@@ -18,6 +18,7 @@
 
 body {
     font-size: .875rem;
+    background-color: white; 
 }
 
 main {
@@ -64,4 +65,8 @@ main {
 #btn-imprimir {
     text-decoration: none;
     color: black;
+}
+
+#atencao {
+    color: red;
 }

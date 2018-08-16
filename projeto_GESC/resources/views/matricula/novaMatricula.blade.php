@@ -107,7 +107,7 @@
                     <div class="col-sm-6">
                         <label>CRAS/CREAS</label>
                         <select name="cras" id="" class="custom-select" name="cras">
-                            <option value="">Selecione um Cras</option>
+                            <option value="">Nenhum</option>
                             @foreach($cras as $c)
                                 <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
                             @endforeach
@@ -119,8 +119,9 @@
             <div class="form-group " >
                 <div class="row" >
                     <div class="col-sm-6">
-                        <label>Público priritario</label>
+                        <label>Público Prioritário</label>
                         <select name="pprioritario" id="" class="custom-select">
+                            <option value="">Nenhum</option>
                             @foreach($pprioritario as $p)
                                 <option value="{{ $p->idpublicoprioritario }}">{{ $p->publicoprioritario }}</option>
                             @endforeach
@@ -135,6 +136,7 @@
                     <div class="col-sm-6">
                         <label>Escola</label>
                         <select name="escola" id="" class="custom-select" >
+                           
                             @foreach($escola as $e)
                                 <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                             @endforeach
@@ -148,6 +150,7 @@
                     <div class="col-sm-3">
                         <label>Serie Escolar</label>
                         <select name="serie" id="" class="custom-select"> 
+                            <option value="">...</option>
                             <option value="1">1º Fundamental</option>
                             <option value="2">2º Fundamental</option>
                             <option value="3">3º Fundamental</option>
@@ -238,11 +241,7 @@
                     <label>Profissão</label>
                     <input type="text" class="form-control" name="profissaoresp1">
                 </div>
-                <div class="col-sm-4">
-                    <label>Salário</label>
-                    <input type="text" class="form-control" name="salarioresp1" id="salarioresp1" onkeyup="mascara(this, Moeda);">
-                    <spam id="msgSalarioResp1"></spam>
-                </div>
+                
             </div>
         </div>
 
@@ -347,17 +346,7 @@
                     <label>Profissão</label>
                     <input type="text" class="form-control" name="profissaoresp2">
                 </div>
-                <div class="col-sm-4">
-                        <script>
-                                function linha(){
-                                    var linha = 1;
-                                    return linha;
-                                }
-                                
-                            </script><label>Salário</label>
-                    <input type="text" class="form-control" name="salarioresp2" id="salarioresp2" onkeyup="mascara(this, Moeda);">
-                    <spam id="msgSalarioResp2"></spam>
-                </div>
+               
             </div>
         </div>
 
@@ -418,11 +407,11 @@
                     <select class="form-control" name="moradia" id="">
                         <option value="1">Alugada</option>
                         <option value="2">Cedida</option>
-                        <option value="3">Prórpia</option>
+                        <option value="3">Própria</option>
                     </select>
                 </div>
             </div>
-        </dvi>
+        </div>
         </br>
 
         
@@ -455,7 +444,7 @@
         </div>
                     
             <!-- checkboxes -->
-            <!--<span>Programas Sociais</span>-->
+            <span>Programas Sociais</span>
             <div class="form-check">
                 <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
@@ -478,11 +467,7 @@
             <!--<h5 class="text-center font-weight-bold text-uppercase py-5">Membros Familia</h5>-->
             <div class="">
                 <div id="table" class="table-editable">
-                    <span class="table-add float-right mb-3 mr-2">
-                        <a href="#!" class="text-success">
-                            <i class="fa fa-plus fa-2x"></i>
-                        </a>
-                    </span>
+                    
                        
                     <table class="table table-bordered table-responsive-md text-center">
                         <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
@@ -491,21 +476,21 @@
                             <th class="text-center">Nome</th>
                             <th class="text-center">Data Nascimento</th>
                             <th class="text-center">Local Trabalha</th>
-                            <th class="text-center">Salário</th>
+                            
                             <th class="text-center">Escola</th>
                         </tr>
-                        
-                        <!-- This is our clonable table line -->
-                        
-                        @php($linha = 0)
-                        
                         <tr class="hide">
-                           @php($linha == $linha++)
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="nomemembro"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" name="nascimentomembro{{ $linha }}"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro{{ $linha }}"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="number" name="salariomembro{{ $linha }}"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="escolamembro{{ $linha }}"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   <option value="">Não estuda</option>
+                                    @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
                             <td>
                                 <span class="table-remove">
                                     <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
@@ -513,41 +498,128 @@
                             </td>
                             
                         </tr>
-
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   <option value="">Não estuda</option>
+                                    @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   <option value="">Não estuda</option>
+                                    @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   <option value="">Não estuda</option>
+                                    @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="hide">
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   <option value="">Não estuda</option>
+                                    @foreach($escola as $e)
+                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">-</button>
+                                </span>
+                            </td>
+                            
+                        </tr>
                     </table>
                     
                 </div>
-        </div>
-        <!-- Editable table -->
-        </div>
-    </div>
-
-    <!-- CONCLUSÃO -->
-    <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+            
+           </div>
         
-        <span>Turma</span>
-        <select name="turma" id="" class="form-control">
-            @foreach($turmas as $t)
-            <option value="{{ $t->idturma }}">{{ $t->GrupoConvivencia }}</option>
-            @endforeach
-        </select>
         
-    </div>
+        </div>
+    
     
     </div>
+    
+    <!-- CONCLUSÃO -->
+    <div class="tab-pane fade active show" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+        <div class="tab-pane fade active show" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+            <div>
+                <span>Turma</span>
+                <select name="turma" id="" class="form-control">
+                    @foreach($turmas as $t)
+                    <option value="{{ $t->idturma }}">{{ $t->grupoconvivencia }}</option>
+                    @endforeach
+                </select>
+                
+            </div>
+        
+        </div>
+    </div>
+   
+</div> 
+<a href="/matriculas">
+    <button class="btn btn-default" id="btn-mat">Cancelar</button>
+</a>
+            
+
+    <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
+
+
+
+</form>
+
+
+
+
  
 
-    <a href="/matriculas">
-        <button class="btn btn-default" id="btn-mat">Cancelar</button>
-    </a>
-                
-    
-        <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
-
-        
-  
-    </form>
-    
-
-<script src="js/nova_matricula.js"></script>
+  <!--  <script src="js/nova_matricula.js"></script>
+  -->
+    <script src="js/membro_familia.js"></script>
 @stop

@@ -11,6 +11,8 @@ class DashboardController extends Controller
     public function painel(){
         $vagas = DB::select('select * from vagas');
 
+        
+
         return view('dashboard.dashboard')->with('vagas', $vagas);
     }
 }

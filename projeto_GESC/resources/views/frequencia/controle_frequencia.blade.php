@@ -17,7 +17,9 @@
             <th>Número de Alunos</th>
             <th>Lançar número de faltas</th>
         </tr>
-        {{$cont=0}}
+        <?php
+            $cont=0;
+        ?>
         @foreach ($listaTurmas as $c)
             <tr>
                 <td> {{ $c->GrupoConvivencia }} </td>
@@ -33,7 +35,9 @@
                     <a class="btn btn-info" href="{{"/controle_frequencia/{$c->idturma }/turma/{$mes}"}}">Lançar faltas</a>
                 </td>
             </tr>
-            {{$cont++}}
+            <?php
+                $cont++;
+            ?>
         @endforeach
     </thead>
 </table>

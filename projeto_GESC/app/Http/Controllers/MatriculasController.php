@@ -217,7 +217,6 @@ class MatriculasController extends Controller
         $responsavel1 = new Responsavel();
         $responsavel1->estadocivil = Request::input('estadocivilresp1');
         $responsavel1->profissao = Request::input('profissaoresp1');
-        $responsavel1->salario = Request::input('salarioresp1');
         $responsavel1->localtrabalho = Request::input('trabalhoresp1');
         $responsavel1->telefone = Request::input('tel1resp1');
         $responsavel1->telefone2 = Request::input('tel2resp1');
@@ -280,7 +279,6 @@ class MatriculasController extends Controller
             $responsavel2 = new Responsavel();
             $responsavel2->estadocivil = Request::input('estadocivilresp2');
             $responsavel2->profissao = Request::input('profissaoresp2');
-            $responsavel2->salario = Request::input('salarioresp2');
             $responsavel2->localtrabalho = Request::input('trabalhoresp2');
             $responsavel2->telefone = Request::input('tel1resp2');
             $responsavel2->telefone2 = Request::input('tel2resp2');
@@ -332,7 +330,6 @@ class MatriculasController extends Controller
         $membro->nomemembro = Request::input('nomemembro1');
         $membro->datanascimento = Request::input('nascimentomembro1');
         $membro->localtrabalha = Request::input('trabmembro1');
-        $membro->salario = Request::input('salariomembro1');
         $membro->idescola = Request::input('escolamembro1');
         $membro->idfamilia = $familia->id;
         //$membro->save();

@@ -411,7 +411,7 @@
                     </select>
                 </div>
             </div>
-        </dvi>
+        </div>
         </br>
 
         
@@ -444,7 +444,7 @@
         </div>
                     
             <!-- checkboxes -->
-            <!--<span>Programas Sociais</span>-->
+            <span>Programas Sociais</span>
             <div class="form-check">
                 <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
@@ -577,51 +577,48 @@
                     </table>
                     
                 </div>
-            </div>
+            
+           </div>
+        
+        
         </div>
-        <!-- CONCLUSÃO -->
-        <div >
-            </div>
+    
+    
+    </div>
+    
+    <!-- CONCLUSÃO -->
+    <div class="tab-pane fade active show" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+        <div class="tab-pane fade active show" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
+            <div>
                 <span>Turma</span>
                 <select name="turma" id="" class="form-control">
                     @foreach($turmas as $t)
-                    <option value="{{ $t->idturma }}">{{ $t->GrupoConvivencia }}</option>
+                    <option value="{{ $t->idturma }}">{{ $t->grupoconvivencia }}</option>
                     @endforeach
                 </select>
                 
             </div>
         
         </div>
-
     </div>
+   
+</div> 
+<a href="/matriculas">
+    <button class="btn btn-default" id="btn-mat">Cancelar</button>
+</a>
+            
+
+    <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
+
+
+
+</form>
+
+
+
+
  
 
-    colocar aqui datanascimentores
-    <div>
-            <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
-                </div>
-                    <span>Turma</span>
-                    <select name="turma" id="" class="form-control">
-                        @foreach($turmas as $t)
-                        <option value="{{ $t->idturma }}">{{ $t->GrupoConvivencia }}</option>
-                        @endforeach
-                    </select>
-                    
-                </div>
-            
-            </div>
-    </div>
-        <a href="/matriculas">
-        <button class="btn btn-default" id="btn-mat">Cancelar</button>
-    </a>
-                
-    
-        <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
-
-        </div>
-  
-    </form>
-    
   <!--  <script src="js/nova_matricula.js"></script>
   -->
     <script src="js/membro_familia.js"></script>

@@ -36,7 +36,7 @@
                         <td>{{ $matA->nomeTurma() }}</td>
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
-                        <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a>
+                        <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
                         </td>
                     </tr>
                     @endforeach 

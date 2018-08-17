@@ -16,27 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `familia`
+-- Table structure for table `vagas`
 --
 
-DROP TABLE IF EXISTS `familia`;
+DROP TABLE IF EXISTS `vagas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `familia` (
-  `idfamilia` int(10) NOT NULL AUTO_INCREMENT,
-  `rendapercapta` float(10,2) NOT NULL DEFAULT '0.00',
-  `moradia` enum('Cedida','Propria','Alugada') DEFAULT NULL,
-  `arearisco` tinyint(1) DEFAULT '0',
-  `tipohabitacao` enum('Alvenaria','Madeira','mista') DEFAULT NULL,
-  `numnis` varchar(50) DEFAULT NULL,
-  `beneficiopc` tinyint(1) NOT NULL DEFAULT '0',
-  `bolsafamilia` tinyint(1) NOT NULL DEFAULT '0',
-  `idcras` int(10) NOT NULL,
-  `idmatricula` int(10) DEFAULT NULL,
-  PRIMARY KEY (`idfamilia`),
-  KEY `idcras` (`idcras`),
-  KEY `fk_familia_1_idx` (`idmatricula`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+CREATE TABLE `vagas` (
+  `idvaga` int(10) NOT NULL AUTO_INCREMENT,
+  `idademin` int(2) NOT NULL,
+  `idademax` int(2) NOT NULL,
+  `numvaga` int(3) NOT NULL,
+  `anovaga` int(10) NOT NULL,
+  `idinstituicao` int(10) NOT NULL,
+  PRIMARY KEY (`idvaga`),
+  KEY `vagas_ibfk_1` (`idinstituicao`),
+  CONSTRAINT `vagas_ibfk_1` FOREIGN KEY (`idinstituicao`) REFERENCES `instituicao` (`idinstituicao`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -47,12 +43,13 @@ CREATE TABLE `familia` (
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER familia_rendapercapta AFTER INSERT ON familia FOR EACH ROW
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER valida_idademi_menor_idademax BEFORE INSERT ON vagas FOR EACH ROW
 BEGIN
-	if((new.rendapercapta < 0) = true)then
+	if((new.idademin > new.idademax) = true) then 
     begin 
 		SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Renda percapta não pode ser menor que zero';
+        SET MESSAGE_TEXT = 
+        'Idade minima não pode ser menor que a idade máxima da faixa etaria';
 	end;
     end if;
 END */;;
@@ -70,12 +67,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `gesc`.`familia_AFTER_UPDATE` AFTER UPDATE ON `familia` FOR EACH ROW
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER vagas_update_idademin_idademax BEFORE UPDATE ON vagas FOR EACH ROW
 BEGIN
-	if((new.rendapercapta < 0) = true)then
+	if((new.idademin > new.idademax) = true) then 
     begin 
 		SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Renda percapta não pode ser menor que zero';
+        SET MESSAGE_TEXT = 
+        'Idade minima não pode ser menor que a idade máxima da faixa etaria';
 	end;
     end if;
 END */;;
@@ -94,4 +92,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:53
+-- Dump completed on 2018-08-17 20:57:55

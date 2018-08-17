@@ -16,30 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `dias_funcionamento`
+-- Table structure for table `frequencia`
 --
 
-DROP TABLE IF EXISTS `dias_funcionamento`;
+DROP TABLE IF EXISTS `frequencia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `dias_funcionamento` (
-  `idano` int(4) NOT NULL,
-  `jan` int(2) DEFAULT NULL,
-  `fev` int(2) DEFAULT NULL,
-  `mar` int(2) DEFAULT NULL,
-  `mai` int(2) DEFAULT NULL,
-  `abr` int(2) DEFAULT NULL,
-  `jun` int(2) DEFAULT NULL,
-  `jul` int(2) DEFAULT NULL,
-  `ago` int(2) DEFAULT NULL,
-  `set` int(2) DEFAULT NULL,
-  `out` int(2) DEFAULT NULL,
-  `nov` int(2) DEFAULT NULL,
-  `dez` int(2) DEFAULT NULL,
-  `idinstituicao` int(4) NOT NULL,
-  PRIMARY KEY (`idano`),
-  KEY `fk_idinstituicao` (`idinstituicao`),
-  CONSTRAINT `dias_funcionamento_ibfk_1` FOREIGN KEY (`idinstituicao`) REFERENCES `instituicao` (`idInstituicao`)
+CREATE TABLE `frequencia` (
+  `idfrequencia` int(10) NOT NULL AUTO_INCREMENT,
+  `anofrequencia` date NOT NULL,
+  `mesfrequencia` date NOT NULL,
+  `totalfaltas` int(10) NOT NULL,
+  `idmatricula` int(10) NOT NULL,
+  PRIMARY KEY (`idfrequencia`),
+  KEY `idmatricula` (`idmatricula`),
+  CONSTRAINT `frequencia_ibfk_1` FOREIGN KEY (`idmatricula`) REFERENCES `matriculas` (`idmatricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +43,4 @@ CREATE TABLE `dias_funcionamento` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:54
+-- Dump completed on 2018-08-17 20:57:56

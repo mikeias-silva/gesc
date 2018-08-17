@@ -16,18 +16,17 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `parentesco`
+-- Table structure for table `escola`
 --
 
-DROP TABLE IF EXISTS `parentesco`;
+DROP TABLE IF EXISTS `escola`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `parentesco` (
-  `idresponsavel` int(10) NOT NULL,
-  `idcrianca` int(10) NOT NULL,
-  KEY `idresponsavel` (`idresponsavel`),
-  KEY `idcrianca` (`idcrianca`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `escola` (
+  `idescola` int(10) NOT NULL AUTO_INCREMENT,
+  `nomeescola` varchar(255) NOT NULL,
+  PRIMARY KEY (`idescola`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -39,4 +38,4 @@ CREATE TABLE `parentesco` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:52
+-- Dump completed on 2018-08-17 20:57:56

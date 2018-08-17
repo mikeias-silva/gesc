@@ -16,21 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `frequencia`
+-- Table structure for table `estado`
 --
 
-DROP TABLE IF EXISTS `frequencia`;
+DROP TABLE IF EXISTS `estado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `frequencia` (
-  `idfrequencia` int(10) NOT NULL AUTO_INCREMENT,
-  `anofrequencia` date NOT NULL,
-  `mesfrequencia` date NOT NULL,
-  `totalfaltas` int(10) NOT NULL,
-  `idmatricula` int(10) NOT NULL,
-  PRIMARY KEY (`idfrequencia`),
-  KEY `idmatricula` (`idmatricula`),
-  CONSTRAINT `frequencia_ibfk_1` FOREIGN KEY (`idmatricula`) REFERENCES `matriculas` (`idmatricula`)
+CREATE TABLE `estado` (
+  `iduf` int(10) NOT NULL AUTO_INCREMENT,
+  `siglaestado` varchar(2) NOT NULL DEFAULT 'PR',
+  PRIMARY KEY (`iduf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -43,4 +38,4 @@ CREATE TABLE `frequencia` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:53
+-- Dump completed on 2018-08-12  0:04:32

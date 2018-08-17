@@ -16,24 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `crianca`
+-- Table structure for table `turma`
 --
 
-DROP TABLE IF EXISTS `crianca`;
+DROP TABLE IF EXISTS `turma`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `crianca` (
-  `idcrianca` int(10) NOT NULL AUTO_INCREMENT,
-  `obssaude` varchar(255) DEFAULT NULL,
-  `datacadastro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `idpessoa` int(10) DEFAULT NULL,
-  `idescola` int(10) DEFAULT NULL,
-  `idpublicoprioritario` int(10) DEFAULT NULL,
-  PRIMARY KEY (`idcrianca`),
-  KEY `idpessoa` (`idpessoa`),
-  KEY `idescola` (`idescola`),
-  KEY `idpublicoprioritario` (`idpublicoprioritario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+CREATE TABLE `turma` (
+  `idturma` int(10) NOT NULL AUTO_INCREMENT,
+  `grupoconvivencia` varchar(40) NOT NULL,
+  `turno` enum('m','t') DEFAULT NULL,
+  `statusturma` tinyint(1) NOT NULL,
+  `idusuario` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idturma`),
+  KEY `IdUsuario` (`idusuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -45,4 +42,4 @@ CREATE TABLE `crianca` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:53
+-- Dump completed on 2018-08-12  0:04:32

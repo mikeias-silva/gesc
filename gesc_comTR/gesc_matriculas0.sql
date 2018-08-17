@@ -16,21 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `matriculas`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `matriculas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
-  `idusuario` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `statususuario` tinyint(1) NOT NULL,
-  `senha` varchar(10) NOT NULL,
-  `nomeusuario` varchar(10) NOT NULL,
-  `tipousuario` enum('Administrador','Educador','SuperUser') NOT NULL,
-  PRIMARY KEY (`idusuario`)
+CREATE TABLE `matriculas` (
+  `idmatricula` int(10) NOT NULL AUTO_INCREMENT,
+  `datasairespera` datetime NOT NULL,
+  `statuscadastro` enum('Ativo','Espera','Inativo') NOT NULL,
+  `dataespera` datetime NOT NULL,
+  `serieescolar` enum('1º Fundamental','2º Fundamental','3º Fundamental','4º Fundamental','5º Fundamental','6º Fundamental','7º Fundamental','8º Fundamental','9º Fundamental','1º Médio','2º Médio','3º Médio') DEFAULT NULL,
+  `anomatricula` date NOT NULL,
+  `idturma` int(10) NOT NULL,
+  `idvaga` int(10) NOT NULL,
+  `idcrianca` int(10) NOT NULL,
+  PRIMARY KEY (`idmatricula`),
+  KEY `idturma` (`idturma`),
+  KEY `idvaga` (`idvaga`),
+  KEY `idcrianca` (`idcrianca`),
+  CONSTRAINT `matriculas_ibfk_1` FOREIGN KEY (`idturma`) REFERENCES `turma` (`idturma`),
+  CONSTRAINT `matriculas_ibfk_2` FOREIGN KEY (`idvaga`) REFERENCES `vagas` (`idvaga`),
+  CONSTRAINT `matriculas_ibfk_3` FOREIGN KEY (`idcrianca`) REFERENCES `crianca` (`idcrianca`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -42,15 +50,20 @@ CREATE TABLE `usuario` (
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger tr_email before insert on usuario for each row
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER historico_matricula_dataativacao AFTER INSERT ON matriculas FOR EACH ROW
+BEGIN
+
+if((select last_insert_id() from matriculas where statuscadastro = 'ativo') = true) then
 begin
-if ((select fn_validaemail(NEW.email)) = false) then
-begin 
-signal sqlstate'45000'
-set message_text = 'Email invalido';
-end;
+
+	insert into historico_matricula(dataativacao, idmatricula)
+    values(now(), 
+    (select last_insert_id()
+    from matriculas
+    where statuscadastro = 'ativo'));
+	end;
 end if;
-end */;;
+END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -65,15 +78,38 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger tr_emailupdate before update on usuario for each row
-begin
-if ((select fn_validaemail(NEW.email)) = false) then
-begin 
-signal sqlstate'45000'
-set message_text = 'Email invalido';
-end;
-end if;
-end */;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER matriculas_datainativacao
+ AFTER UPDATE ON matriculas FOR EACH ROW
+BEGIN
+	
+    if((select datainativacao from historico_matricula 
+    where datainativacao = null
+    and idmatricula = new.idmatricula) = true) then 
+    begin
+    
+    update historico_matricula set datainativacao = now() 
+        where idmatricula = new.idmatricula;
+	
+    end;
+    else
+    
+		insert into historico_matricula(datainativacao, idmatricula)
+		values(datainativacao = now(), new.idmatricula);
+    
+    begin
+    
+		
+    end;
+    end if;
+    
+    if((select datainativacao from historico_matricula 
+    where datainativacao is not null and idmatricula = new.idmatricula) = true) then 
+    begin
+		insert into historico_matricula(dataativacao, idmatricula)
+        values(dataativacao = now(), new.idmatricula);
+	end;
+    end if;
+END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -89,4 +125,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:53
+-- Dump completed on 2018-08-17 20:57:55

@@ -16,31 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `instituicao`
+-- Table structure for table `familia`
 --
 
-DROP TABLE IF EXISTS `instituicao`;
+DROP TABLE IF EXISTS `familia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `instituicao` (
-  `idinstituicao` int(10) NOT NULL AUTO_INCREMENT,
-  `cnpj` varchar(14) DEFAULT NULL,
-  `numplanotrabalho` varchar(255) DEFAULT NULL,
-  `logradouro` varchar(255) DEFAULT NULL,
-  `cep` varchar(10) DEFAULT NULL,
-  `nummetasmensais` int(10) DEFAULT NULL,
-  `entidademantenedora` varchar(255) DEFAULT NULL,
-  `numtermocolaboradorformento` varchar(255) NOT NULL,
-  `nomeinstituicao` varchar(255) NOT NULL,
-  `telefone` varchar(255) DEFAULT NULL,
-  `entidadeexecutora` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `idcidade` int(10) NOT NULL,
-  PRIMARY KEY (`idinstituicao`),
-  UNIQUE KEY `Cnpj` (`cnpj`),
-  KEY `idCidade` (`idcidade`),
-  CONSTRAINT `instituicao_ibfk_1` FOREIGN KEY (`idcidade`) REFERENCES `cidade` (`idcidade`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+CREATE TABLE `familia` (
+  `idfamilia` int(10) NOT NULL AUTO_INCREMENT,
+  `rendapercapta` float(10,2) NOT NULL DEFAULT '0.00',
+  `moradia` enum('Cedida','Propria','Alugada') DEFAULT NULL,
+  `arearisco` tinyint(1) DEFAULT NULL,
+  `tipohabitacao` enum('Alvenaria','Madeira','mista') DEFAULT NULL,
+  `numnis` varchar(100) DEFAULT NULL,
+  `beneficiopc` tinyint(1) NOT NULL,
+  `bolsafamilia` tinyint(1) NOT NULL,
+  `idcras` int(10) NOT NULL,
+  `idmatricula` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idfamilia`),
+  KEY `idcras` (`idcras`),
+  KEY `fk_familia_1_idx` (`idmatricula`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +48,4 @@ CREATE TABLE `instituicao` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:53
+-- Dump completed on 2018-08-12  0:04:32

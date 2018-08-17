@@ -16,17 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `publicoprioritario`
+-- Table structure for table `cidade`
 --
 
-DROP TABLE IF EXISTS `publicoprioritario`;
+DROP TABLE IF EXISTS `cidade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `publicoprioritario` (
-  `idpublicoprioritario` int(10) NOT NULL AUTO_INCREMENT,
-  `publicoprioritario` varchar(50) NOT NULL,
-  PRIMARY KEY (`idpublicoprioritario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+CREATE TABLE `cidade` (
+  `idcidade` int(10) NOT NULL AUTO_INCREMENT,
+  `nomecidade` varchar(100) NOT NULL,
+  `idUF` int(10) NOT NULL,
+  PRIMARY KEY (`idcidade`),
+  KEY `idUF` (`idUF`),
+  CONSTRAINT `cidade_ibfk_1` FOREIGN KEY (`idUF`) REFERENCES `estado` (`iduf`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -38,4 +41,4 @@ CREATE TABLE `publicoprioritario` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-15  0:06:53
+-- Dump completed on 2018-08-12  0:04:32

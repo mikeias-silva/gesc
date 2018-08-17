@@ -65,9 +65,12 @@ Route::post('/vagas/adiciona', 'VagasController@adiciona');
 Route::post('/vagas/editar', 'VagasController@edita');
 Route::post('/vagas/excluir', 'VagasController@exclui');
 
-
-//rotas para a tela de frequencia
 Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas');
+
+//Route::get('/controle_frequencia/{idturma}/turma', 'ControleFrequenciaController@listaAlunos');
+Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos');
+Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia');
+
 /*
 Route::get('/login', function(){
     return view('login.login');

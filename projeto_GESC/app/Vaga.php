@@ -12,4 +12,5 @@ class Vaga extends Model
 
     protected $primaryKey = 'idvaga';
 
+    
 }

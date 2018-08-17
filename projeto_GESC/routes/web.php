@@ -66,10 +66,15 @@ Route::post('/vagas/editar', 'VagasController@edita');
 Route::post('/vagas/excluir', 'VagasController@exclui');
 
 Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas');
+
 //Route::get('/controle_frequencia/{idturma}/turma', 'ControleFrequenciaController@listaAlunos');
 Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos');
 Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia');
 
+/*
 Route::get('/login', function(){
     return view('login.login');
-});
+});*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

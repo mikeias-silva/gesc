@@ -50,8 +50,8 @@
     </div>
 @endif
 
-<spam id="msgCampoVazio"></br></spam>
-<spam id="msgFaltasMaior"></br></spam>
+<spam id="msgCampoVazio"></spam>
+<spam id="msgFaltasMaior"></spam>
 
     </br>
     @if(empty($listaAlunos))

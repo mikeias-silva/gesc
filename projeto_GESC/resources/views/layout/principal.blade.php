@@ -113,6 +113,14 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a class="nav-link disabled" href="/transferencia_alunos">
+                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                     Transferencia de Alunos
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

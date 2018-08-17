@@ -14,11 +14,11 @@
 </ul>
 
 <!--ABA ATIVAS-->
-<h1 id="atencao">colocar campo de filtro aqui</h1>
+
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
         <h2>Matriculas ativas</h2>
-        <table class="table table-hover">
+        <table id="dtBasicExample" class="table table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -37,7 +37,7 @@
                         <td>{{ $matA->nomeTurma() }}</td>
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
-                        <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a>
+                        <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
                             <a href="/inativarMatricula" class="text text-danger" data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">inativar</a>
                         </td>
                     </tr>
@@ -46,6 +46,51 @@
                   
                     
             </table>
+        <!--
+       
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th class="th-sm">Name
+                      <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    </th>
+                    <th class="th-sm">Position
+                      <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    </th>
+                    <th class="th-sm">Office
+                      <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    </th>
+                    <th class="th-sm">Age
+                      <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    </th>
+                    <th class="th-sm">Start date
+                      <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    </th>
+                    <th class="th-sm">Salary
+                      <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                  </tr>
+                  <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                  </tr>
+                </tbody>
+            </table>
+        -->
             
     </div>
 
@@ -71,7 +116,11 @@
                             <td>{{ $matI->nomeTurma() }}</td>
                             <td>{{ $matI->idadeMatricula() }}</td>
                             <td>{{ $matI->anoMatricula() }}</td>
-                            <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a></td>
+                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
+                                <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+
+                            </td>
+                            
                         </tr>
                         @endforeach
                     
@@ -103,7 +152,7 @@
                             <td>{{ $matE->nomeTurma() }}</td>
                             <td>{{ $matE->idadeMatricula() }}</td>
                             <td>{{ $matE->anoMatricula() }}</td>
-                            <td><a id="btn-imprimir" href="/pdfmatricula"><i class="fa fa-print fa-2x"></i></a></td>
+                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a></td>
                         </tr>
                         @endforeach
                     </tr>
@@ -113,11 +162,11 @@
     </div>  
 </div>   
 
-<!-- Modal Center modal de ativacao-->
+<!-- Modal Center modal de inativacao-->
 <div class="modal fade" id="inativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content panel-warning">
+            <div class="modal-header panel-heading">
                 <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -145,9 +194,41 @@
     </div>
 </div>
 
+<!-- Modal Center modal de ativacao-->
+<div class="modal fade" id="ativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            
+            <form action="/ativarMatricula" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
+
+                    <h5>Você tem certeza que deseja realmente Ativar esta Matrícula?</h5>
+
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
+            
+                    </div>
+                </div>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
+
+
 <form action="/novaMatricula">
     <button class="btn btn-secondary">Nova Matrícula</button>
 </form>
-
 
 @stop

@@ -153,9 +153,7 @@ $('#excluir').on('show.bs.modal', function (event) {
     var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #idcras').val(id);
-    console.log(id);
-    console.log("EXCLUIR modal");
+   
     
 });
 $('#excluirturma').on('show.bs.modal', function (event) {
@@ -357,7 +355,7 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
         document.getElementById("msgnome_edit").innerHTML="";
     }
 
-    if (tesSenha == "") {
+        if (tesSenha == "") {
         document.getElementById("msgsenha_edit").innerHTML="<font color='red'>Preencha o campo senha</font>";
         console.log('Preencha o campo senha');
         permissao = false;
@@ -439,9 +437,48 @@ $('#inativar').on('show.bs.modal', function (event) {
     modal.find('.modal-body #idmatricula').val(id);
     
 });
+$('#ativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idmatricula').val(id);
+    
+});
 
 </script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
+<script>
+    $(document).ready(function () {
+    $('#dtBasicExample').DataTable();
+    $('.dataTables_length').addClass('bs-select');
+  });
+
+  
+</script>
+
+<script>
+        $('#dtBasicExample').DataTable({
+            "language": {
+                "zeroRecords": "nada encontrado",
+                "infoEmpty": "Não há nenhum registro",
+                "lengthMenu": "Itens por página _MENU_ ",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoFiltered": "(Total de registros _MAX_)",
+                "search": "Busca",
+                "paginate": {
+                    "first": "Primeira",
+                    "last": "Última",
+                    "next": "Próxima",
+                    "previous": "Anterior"
+                },
+                "loadingRecords": "Carregando"
+            }
+        });
+</script>
 
 </body>
 

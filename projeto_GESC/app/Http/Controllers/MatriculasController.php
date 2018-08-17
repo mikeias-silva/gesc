@@ -79,13 +79,13 @@ class MatriculasController extends Controller
 
        $impressao = PDF::loadView('matricula.impressao', $dados);
        return $impressao->stream('Matricula');
-     }
+    }
 
     public function adicionaMatricula(){
 
         //return Request::all();
-       
-       
+        
+        
         $hoje = Carbon::now();
         /*$nome = Request::input('nome');
         $telefone = Request::input('telefone');
@@ -109,8 +109,8 @@ class MatriculasController extends Controller
         $familia->idcras = Request::input('cras');
         $familia->save();
         //add familia aos responsavels adicionados por ultimo
-      //  $responsavel1->update(array('idfamilia' =>$familia->id));
-      //  $responsavel2->update(array('idfamilia' =>$familia->id));
+        //  $responsavel1->update(array('idfamilia' =>$familia->id));
+        //  $responsavel2->update(array('idfamilia' =>$familia->id));
         //---------------------------------------------------
         //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
 
@@ -164,7 +164,7 @@ class MatriculasController extends Controller
             $membro->idfamilia = $familia->id;
             $membro->save();
         }
-           
+            
 
 
         //---------------------------------------------
@@ -188,15 +188,15 @@ class MatriculasController extends Controller
         $pessoacrianca->complementoendereco = $complemento;
         $pessoacrianca->save();
         
-       /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
-         values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
+            values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
         array($nomecrianca, $datanascimentocrianca, $sexocrianca, $rgcrianca, $cpfcrianca, $cep, $bairro,
                 $logradouro, $complemento));*/
 
 
-       
-       //criança
-      /*  $idpublicoprioritario = Request::input('pprioritario');
+        
+        //criança
+        /*  $idpublicoprioritario = Request::input('pprioritario');
         $idescola = Request::input('escola');
         $pprioritario = Request::input('pprioritario');
         $obssaude = Request::input('obssaude');
@@ -211,14 +211,14 @@ class MatriculasController extends Controller
         $crianca->idpessoa = $pessoacrianca->id;
         $crianca->save();
 
-       
-       /*
+        
+        /*
         DB::insert('insert into crianca(obssaude, datacadastro, idpessoa, idescola, idpublicoprioritario) 
         values(?, ?, ?, ?, ?)',
         array($obssaude, $datacadastro, $idpessoa, $idescola, $idpublicoprioritario));
 
         //-------------------------------*
-             
+                
         
         //--------------------------------------------------
         //responsavel 01
@@ -228,10 +228,10 @@ class MatriculasController extends Controller
         $rgresp1 = Request::input('rgresp1');
         $cpfresp1 = Request::input('cpfresp1');	*/
         
-      /*  DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
+        /*  DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
         values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
         array($nomeresp1, $datanascimentoresp1,  $sexoresp1, $rgresp1, $cpfresp1, $cep, $bairro, $logradouro, $complemento));
-*/
+    */
         
         $pessoaresponsavel1 = new Pessoa();
         $pessoaresponsavel1->nomepessoa = Request::input('nomeresp1');
@@ -306,7 +306,7 @@ class MatriculasController extends Controller
         DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
         values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
         array($nomeresp2, $datanascimentoresp2, $sexoresp2, $rgresp2, $cpfresp2, $cep, $bairro, $logradouro, $complemento));
-*/
+    */
         
         /*$estadocivilresp2 = Request::input('estadocivilresp2');	
         $profissaoresp2 = Request::input('profissaoresp2');	
@@ -356,38 +356,38 @@ class MatriculasController extends Controller
         $beneficiopc = Request::input('beneficiopc');
         $bolsafamilia = Request::input('bolsafamilia');
         $cras = Request::input('cras');
-       // $membrofamilia->save();
+        // $membrofamilia->save();
         // $rendapercapta
         //
         
-       /* DB::insert('insert into familia(moradia, arearisco, tipohabitacao, numnis, beneficiopc, bolsafamilia, idcras)
+        /* DB::insert('insert into familia(moradia, arearisco, tipohabitacao, numnis, beneficiopc, bolsafamilia, idcras)
         values(?, ?, ?, ?, ?, ?, ?)',
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
-*/
+    */
         
 
         //-----------------------------------
         //MATRICULA
         
         $dataespera = Carbon::now();
-       // $datasairespera;
+        // $datasairespera;
 
         $idade = $hoje->diffInYears($datanascimentocrianca);
         
         //$vagas = DB::select('select * from vagas where ? >= idademin and ? <= idademax', [$idade, $idade]); 
         $vagas = Vaga::all();
         //lógica para pegar vaga de acordo com a idade da criança
-       foreach($vagas as $vaga){
-           echo '[passou aqui, ]';
+        foreach($vagas as $vaga){
+            echo '[passou aqui, ]';
             if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
-               echo '[ e aqui 1...]';
-               $idademin = $vaga->idademin;
-               $idademax = $vaga->idademax; 
-               $vaga->numvaga;
-               $vaga->anovaga;
-               $vaga->idvaga;
-               $essavaga = $vaga->idvaga;
-               $essanumvaga = $vaga->numvaga;
+                echo '[ e aqui 1...]';
+                $idademin = $vaga->idademin;
+                $idademax = $vaga->idademax; 
+                $vaga->numvaga;
+                $vaga->anovaga;
+                $vaga->idvaga;
+                $essavaga = $vaga->idvaga;
+                $essanumvaga = $vaga->numvaga;
             
             }
             
@@ -399,12 +399,12 @@ class MatriculasController extends Controller
         foreach($pessoas as $pessoa){
             foreach($criancas as $crianca){
                 if($pessoa->idpessoa == $crianca->idpessoa){
-                   // return $pessoa->datanascimento;    
+                    // return $pessoa->datanascimento;    
                 }
             }
             
         }
-       
+        
 
         $anomatricula = Carbon::now();
         $idturma = Request::input('turma');
@@ -414,9 +414,9 @@ class MatriculasController extends Controller
         $matricula->idturma = Request::input('turma');
         $matricula->serieescolar = Request::input('serie');
         $matricula->idcrianca = $crianca->idcrianca;;
-       
+        
         $matAtivas = Matricula::where('statuscadastro', 'ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
-       // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
+        // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
         
         $historico_matricula = new Historico_matricula(); 
 
@@ -436,29 +436,43 @@ class MatriculasController extends Controller
         $matricula->save();
         $historico_matricula->idmatricula = $matricula->id;
         $historico_matricula->save();
-       
-/*
+        
+    /*
         DB::insert('insert into Matricula(datasairespera, satuscadastro, dataespera, serieescolar, 
         anomatricula, idturma, idvaga, idcrianca)
         values(?, ?, ?, ?, ?, ?, ?, ?)',
         array(, , , , , , ,));
 
-*/
+    */
         //return $idade;
         return redirect()->action('MatriculasController@listaMatriculas');
-     }
+    }
 
     
 
 
-     public function inativaMatricula(Request $request){
+    public function inativaMatricula(Request $request){
         $matricula = Matricula::find(
         $request->input('idmatricula'));
 
         $matricula->update(['statuscadastro'=>'Inativo']);
 
 
+    
+    return back();
+    }
+
+    public function reativarMatricula(Request $request){
         
-        return back();
-     }
+        $matricula = Matricula::find(
+            $request->input('idmatricula'));
+        
+
+       // $idadedessamatricula = Matricula::idadeMatricula($matricula);
+
+        $matricula->update(['statuscadastro'=>'Ativo']);
+
+
+    return back();
+    }
 }

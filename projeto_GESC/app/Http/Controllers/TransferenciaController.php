@@ -46,5 +46,28 @@ class TransferenciaController extends Controller {
         ->with('listaAlunos', $listaAlunos);
     }
 
+    public function transfereAlunos(Request $request){
+        //$checkTransferencia = $_POST['verificaTransferencia'];
+       // $checkTransferencia = (isset($_POST["verificaTransferencia"])) ? $_POST["verificaTransferencia"] : "0";
+        $idMatricula = $_POST['idmatricula'];
+        $novaTurma = $_POST['novaTurma'];
+
+        for ($i=0; $i<count($idMatricula); $i++){
+            $checkTransferencia[$i] = isset($_POST['verificaTransferencia'][$i]) ? $_POST['verificaTransferencia'][$i] : "0";
+        }
+
+        for ($i=0; $i<count($idMatricula); $i++){
+            if($checkTransferencia[$i]=="1"){
+                $matricula = Matricula::find($idMatricula[$i]);
+                $matricula->idturma = $novaTurma[0];
+                $matricula->update();
+            }
+        }
+
+        return redirect()->action('TransferenciaController@listaTurmasDois');
+
+
+    }
+
 
 }

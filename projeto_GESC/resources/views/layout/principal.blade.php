@@ -45,12 +45,18 @@
    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
    
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--webService CEP-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
     
     <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">GESC</a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><h3>GESC</h3></a>
         </nav>
         <div class="container-fluid">
             <div class="row">
@@ -141,7 +147,7 @@ $('#editar').on('show.bs.modal', function (event) {
     var id = button.data('myid')
     var statuscras = button.data('mystatuscras')
     var modal = $(this)
-    modal.find('.modal-body #nomeCras').val(nome)
+    modal.find('.modal-body #nomecras').val(nome)
     modal.find('.modal-body #telefone').val(telefone)
     modal.find('.modal-body #statuscras').val(statuscras)
     modal.find('.modal-body #idcras').val(id);
@@ -153,9 +159,7 @@ $('#excluir').on('show.bs.modal', function (event) {
     var id = button.data('myid') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #idcras').val(id);
-    console.log(id);
-    console.log("EXCLUIR modal");
+   
     
 });
 $('#excluirturma').on('show.bs.modal', function (event) {
@@ -357,7 +361,7 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
         document.getElementById("msgnome_edit").innerHTML="";
     }
 
-    if (tesSenha == "") {
+        if (tesSenha == "") {
         document.getElementById("msgsenha_edit").innerHTML="<font color='red'>Preencha o campo senha</font>";
         console.log('Preencha o campo senha');
         permissao = false;
@@ -429,6 +433,25 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
 /*
     validações de cras e cras
 */
+
+$('#inativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idmatricula').val(id);
+    
+});
+$('#ativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idmatricula').val(id);
+    
+});
 
 </script>
 

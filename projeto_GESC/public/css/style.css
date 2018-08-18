@@ -25,6 +25,7 @@ main {
     padding-top: 80px;
 }
 
+
 #footer {
     margin-top: 100%;
     background-color: #343a40 !important;
@@ -66,3 +67,8 @@ main {
     text-decoration: none;
     color: black;
 }
+
+#atencao {
+    color: red;
+}
+

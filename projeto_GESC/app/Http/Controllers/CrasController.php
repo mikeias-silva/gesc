@@ -20,7 +20,7 @@ class CrasController extends Controller {
         //$cras = [];
         //return $cras;
 
-        return view('cras.listagem')->with('cras', $cras);
+        return view('cras.listagemCras')->with('cras', $cras);
     }
 
     public function adiciona(Request $request){

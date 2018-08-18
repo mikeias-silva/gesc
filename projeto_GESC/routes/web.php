@@ -51,6 +51,9 @@ Route::get('/matriculas', 'MatriculasController@listaMatriculas');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
 Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
 Route::get('/pdfmatricula', 'MatriculasController@imprime');
+Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula');
+Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula');
+Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma');
 
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');
@@ -78,3 +81,4 @@ Route::get('/login', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

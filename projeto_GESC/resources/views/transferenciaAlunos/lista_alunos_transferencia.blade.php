@@ -55,7 +55,7 @@
                 <tr>
                     <td><input type="checkbox" value="1" name="verificaTransferencia[]"></td>
                     <td>{{$c->nomepessoa}}</td>
-                    <td></td>
+                    <td>{{$c->datanascimento}}</td>
                     <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">
                 </tr>
                 @endforeach
@@ -85,6 +85,10 @@
             document.getElementById("msgNenhumSelc").innerHTML="<font color='red'>É necessário seleciona ao menos um aluno para efetuar a transferência</br></font>";
         }
         return permissao;
+     }
+
+     function calculaIdade(){
+
      }
 </script>
 

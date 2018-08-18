@@ -12,6 +12,40 @@ use App\Matricula;
 
 class TransferenciaController extends Controller {
 
+    function calculaIdade($dataNasc){
+        $dia = date('d');
+        $mes = date('m');
+        $ano = date('Y');
+        //Data do aniversário
+        $nascimento = explode('-', $dataNasc);
+        $dianasc = ($nascimento[2]);
+        $mesnasc = ($nascimento[1]);
+        $anonasc = ($nascimento[0]);
+        // se for formato do banco, use esse código em vez do de cima!
+        /*
+        $nascimento = explode('-', $nascimento);
+        $dianasc = ($nascimento[2]);
+        $mesnasc = ($nascimento[1]);
+        $anonasc = ($nascimento[0]);
+        */
+        //Calculando sua idade
+        $idade = $ano - $anonasc; // simples, ano- nascimento!
+        if ($mes < $mesnasc) // se o mes é menor, só subtrair da idade
+        {
+            $idade--;
+            return $idade;
+        }
+        elseif ($mes == $mesnasc && $dia <= $dianasc) // se esta no mes do aniversario mas não passou ou chegou a data, subtrai da idade
+        {
+            $idade--;
+            return $idade;
+        }
+        else // ja fez aniversario no ano, tudo certo!
+        {
+            return $idade;
+        }
+    }
+
     public function listaTurmasDois(){
         $aux=0;
         $numeroAlunos=[];
@@ -38,10 +72,19 @@ class TransferenciaController extends Controller {
             $aux = DB::select("select count(idturma) as numero from gesc_dois.`matriculas` where idturma='{$c->idturma}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
-        $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula, crianca.idcrianca from matriculas, crianca, pessoa
+        $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula, pessoa.datanascimento from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
         && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
         && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
+
+        for ($i=0; $i<count($listaAlunos); $i++){
+            //calculaIdade("2000-02-20");
+            //$aux=TransferenciaController::calculaIdade($listaAlunos[$i]->datanascimento);
+            $listaAlunos[$i]->datanascimento=TransferenciaController::calculaIdade($listaAlunos[$i]->datanascimento);
+        }
+
+
+
         return view('transferenciaAlunos.lista_alunos_transferencia')->with('nomeTurma', $nomeTurma)->with('listaTurmas', $listaTurmas)->with('numeroAlunos', $numeroAlunos)
         ->with('listaAlunos', $listaAlunos);
     }
@@ -68,6 +111,8 @@ class TransferenciaController extends Controller {
 
 
     }
+
+    
 
 
 }

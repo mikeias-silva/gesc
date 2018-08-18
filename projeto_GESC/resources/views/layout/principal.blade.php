@@ -45,12 +45,18 @@
    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
    
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--webService CEP-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
     
     <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">GESC</a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><h3>GESC</h3></a>
         </nav>
         <div class="container-fluid">
             <div class="row">
@@ -448,37 +454,7 @@ $('#ativar').on('show.bs.modal', function (event) {
 });
 
 </script>
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
-<script>
-    $(document).ready(function () {
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-  });
-
-  
-</script>
-
-<script>
-        $('#dtBasicExample').DataTable({
-            "language": {
-                "zeroRecords": "nada encontrado",
-                "infoEmpty": "Não há nenhum registro",
-                "lengthMenu": "Itens por página _MENU_ ",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoFiltered": "(Total de registros _MAX_)",
-                "search": "Busca",
-                "paginate": {
-                    "first": "Primeira",
-                    "last": "Última",
-                    "next": "Próxima",
-                    "previous": "Anterior"
-                },
-                "loadingRecords": "Carregando"
-            }
-        });
-</script>
 
 </body>
 

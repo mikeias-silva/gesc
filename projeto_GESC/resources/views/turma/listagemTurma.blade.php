@@ -81,9 +81,9 @@
                     <label id="meggrupo"></label>
                     </br>
                     <label>Turno</label>
-                   <select class="form-control" name="turno" id="turno" value="">
-                       <option value="m">Manhã</option>
-                       <option value="t">Tarde</option> 
+                   <select class="form-control" name="turno" id="turno">
+                       <option value="1">Manhã</option>
+                       <option value="2">Tarde</option> 
                    </select>
 
                     <input type="hidden" name="statusTurma" id="statusTurma" value="1">

@@ -24,7 +24,7 @@
     <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
     
         
-    <div >
+    <div>
     </br>
 
     <form  action="/novaMatricula/adiciona" method="POST" 
@@ -83,15 +83,24 @@
 
             <div class="form-group ">
                 <div class="row" >
-                    <div class="col-sm-8">
+                    <div class="col-sm-5">
                         <label>Endereço</label>
-                        <input type="text" class="form-control" name="logradouro" maxlength="255" autocomplete="off">
+                        <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
                         <spam id="msgEndereco"></spam>
                     </div>
 
+                    <div class="col-sm-1">
+                        <label>Nº</label>
+                        <input class="form-control" type="text" name="ncasa"/>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label>Cidade</label>
+                        <input disabled class="form-control" type="text" id="cidade"/>
+                    </div>
                     <div class="col-sm-4">
                         <label>Bairro</label>
-                        <input type="text" class="form-control" name="bairro" maxlength="255" autocomplete="off">
+                        <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                         <spam id="msgBairro"></spam>
                     </div>
                 </div>
@@ -136,7 +145,7 @@
                     <div class="col-sm-6">
                         <label>Escola</label>
                         <select name="escola" id="" class="custom-select" >
-                           
+                           <option value="">Nenhum</option>
                             @foreach($escola as $e)
                                 <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                             @endforeach
@@ -566,27 +575,24 @@
     
  
     <!-- CONCLUSÃO -->
-        <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
-            <div>
-                <span>Turma</span>
-                <select name="turma" id="" class="form-control">
-                    @foreach($turmas as $t)
-                    <option value="{{ $t->idturma }}">{{ $t->grupoconvivencia }}</option>
-                    @endforeach
-                </select>
-                
-            </div>
+    <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
         
-        </div>
+        
+       
+           <button type="submit" class="btn btn-primary" id="btn-mat"
+        data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
+    
 
-   
+    </div>
+
+  
+    
+    
 </div> 
 <a href="/matriculas">
     <button class="btn btn-default" id="btn-mat">Cancelar</button>
 </a>
             
-
-    <button type="submit" class="btn btn-primary" id="btn-mat">Confirmar Matricula</button>
 
 
 
@@ -594,7 +600,7 @@
 
 
 
-
+<script src="js/buscaCep.js"></script>
  
 
   <!--  <script src="js/nova_matricula.js"></script>

@@ -16,7 +16,7 @@ class Historico_Matricula extends Model
 
 
     public function dataInativar(){
-
+        
         
     }
 

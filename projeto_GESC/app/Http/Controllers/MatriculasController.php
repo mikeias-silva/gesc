@@ -115,7 +115,7 @@ class MatriculasController extends Controller
 
         
 
-        if(!empty(Request::input('nomemembro1'))) {
+        /*if(!empty(Request::input('nomemembro1'))) {
             $membro = new Membro_Familia();
             $membro->nomemembro = Request::input('nomemembro1');
             $membro->datanascimento = Request::input('nascimentomembro1');
@@ -162,7 +162,7 @@ class MatriculasController extends Controller
             $membro->save();
         }
             
-
+        */
 
         //---------------------------------------------
 

@@ -72,3 +72,10 @@ main {
     color: red;
 }
 
+label{
+    font-weight: bold;
+}
+
+#campoobrigatorio{
+    color: red;
+}

@@ -426,55 +426,56 @@
         
         <!-- radio buttons -->
         <div class="form-group">
-            <span>Tipo Habitação</span>
+            <label>Tipo Habitação</label>
             <div class="row">
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <label class="form-check-label" for="rd-alvenaria">
+                        <span class="form-check-label" for="rd-alvenaria">
                             <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
-                        </label>
+                        </span>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <label class="form-check-label" for="rd-madeira">
+                        <span class="form-check-label" for="rd-madeira">
                             <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-                        </label>
+                        </span>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <label class="form-check-label" for="rd-mista">
+                        <span class="form-check-label" for="rd-mista">
                             <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-                        </label>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
                     
             <!-- checkboxes -->
-            <span>Programas Sociais</span>
-            <div class="form-check">
-                <label class="form-check-label">
+            <label>Programas Sociais</label>
+            <div class="form-inline">
+            <div class="form-check col-sm-2">
+                <span class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
-                </label>
+                </span>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
+            <div class="form-check col-sm-2">
+                <span class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
-                </label>
+                </span>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
+            <div class="form-check col-sm-2">
+                <span class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
-                </label>
+                </span>
             </div>
-
+        </div>
             <!--GRID MEMBRO FAMILIA-->
             <!--<h5 class="text-center font-weight-bold text-uppercase py-5">Membros Familia</h5>-->
-            <div class="">
+     <!--       <div class="">
                 <div id="table" class="table-editable">
                     
                        
@@ -568,7 +569,7 @@
                 </div>
             
            </div>
-        
+        -->
         
         </div>
     

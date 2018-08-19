@@ -81,7 +81,7 @@
                     <label id="meggrupo"></label>
                     </br>
                     <label>Turno</label>
-                   <select class="form-control" name="turno" id="turno">
+                   <select class="form-control" name="turno" id="turno" value="">
                        <option value="1">Manhã</option>
                        <option value="2">Tarde</option> 
                    </select>
@@ -210,7 +210,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
-                    <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
+                    <input name="grupoconvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo_edit"></label>
                     </br>
                     <label>Turno</label>

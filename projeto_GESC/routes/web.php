@@ -74,6 +74,10 @@ Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas');
 Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos');
 Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia');
 
+Route::get('/transferencia_alunos', 'TransferenciaController@listaTurmasDois');
+Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlunos');
+Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos');
+
 /*
 Route::get('/login', function(){
     return view('login.login');

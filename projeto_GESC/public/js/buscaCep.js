@@ -23,9 +23,9 @@ $(document).ready(function() {
             if(validacep.test(cep)) {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
-                $("#logradouro").val("...");
-                $("#bairro").val("...");
-                $("#cidade").val("...");
+                $("#logradouro").val("Buscando...");
+                $("#bairro").val("Buscando...");
+                $("#cidade").val("Buscando...");
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 

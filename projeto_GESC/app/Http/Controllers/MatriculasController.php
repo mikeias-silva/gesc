@@ -430,8 +430,8 @@ class MatriculasController extends Controller
         $matricula->idvaga = $essavaga;
 
         $matricula->save();
-        $historico_matricula->idmatricula = $matricula->id;
-       $historico_matricula->save();
+        $historico_matricula->idmatricula = $matricula->idmatricula;
+        $historico_matricula->save();
         
     /*
         DB::insert('insert into Matricula(datasairespera, satuscadastro, dataespera, serieescolar, 
@@ -474,25 +474,52 @@ class MatriculasController extends Controller
 
 
     public function inativaMatricula(Request $request){
-        $matricula = Matricula::find(
-        $request->input('idmatricula'));
+            $hoje = Carbon::now();
 
-        $matricula->update(['statuscadastro'=>'Inativo']);
+            $matricula = Matricula::find(
+            Request::input('idmatricula'));
+
+            $motivoinativacao = Request::input('motivoinativacao');
+          
+            $historico_matricula = DB::select('select * from historico_matricula 
+            where idmatricula = ?', array($matricula->idmatricula));
+
+            //return $historico_matricula;
+
+            foreach ($historico_matricula as $ht) {
+                if($ht->datainativacao == null){
+                   $essehistorico = $ht->idhistoricomatricula;
+                }
+            }
+           
+            $atualizahistorico = Historico_Matricula::find($essehistorico);
+            $atualizahistorico->update(['datainativacao'=>$hoje],
+                    ['motivoinativacao'=>$motivoinativacao]);
+            
+
+            $matricula->update(['statuscadastro'=>'Inativo']);
 
 
     
-        return back();
+        return redirect()->action('MatriculasController@listaMatriculas');
     }
 
     public function reativarMatricula(Request $request){
-        
-        $matricula = Matricula::find(
-            $request->input('idmatricula'));
-        
+            $hoje = Carbon::now();
 
-       // $idadedessamatricula = Matricula::idadeMatricula($matricula);
+            $matricula = Matricula::find(
+                Request::input('idmatricula'));
+            
 
-        $matricula->update(['statuscadastro'=>'Ativo']);
+        // $idadedessamatricula = Matricula::idadeMatricula($matricula);
+
+            $matricula->update(['statuscadastro'=>'Ativo']);
+
+            $historico_matricula = new Historico_Matricula();
+
+            $historico_matricula->dataativacao = $hoje;
+            $historico_matricula->idmatricula = Request::input('idmatricula');
+            $historico_matricula->save();
 
 
         return back();

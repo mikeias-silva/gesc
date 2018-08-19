@@ -1,4 +1,4 @@
-@extends('layout.principal') 
+ @extends('layout.principal') 
 @section('conteudo')
 <h2>Matriculas - APAM</h2>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -150,6 +150,11 @@
 
                     <h5>Você tem certeza que deseja realmente inativar esta Matrícula?</h5>
 
+                    <label>Motivo<span id="campoobrigatorio">*</span></label>
+                    <textarea class="form-control" type="text" name="motivoinativacao" id="" 
+                    placeholder="Infome o motivo da inativação dessa matricula">
+
+                    </textarea>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger">Inativar</button>

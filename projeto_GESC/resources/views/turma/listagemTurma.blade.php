@@ -23,7 +23,7 @@
     @foreach ($turma as $t)
     <tr>
         <td>{{ $t->GrupoConvivencia }}</td>
-        @if($t->Turno=="M")
+        @if($t->Turno=="m")
             <td>Manhã</td>
         @else 
             <td>Tarde</td>
@@ -215,8 +215,8 @@
                     </br>
                     <label>Turno</label>
                     <select name="turno" id="turno" value="" class="form-control">
-                        <option value="M">Manhã</option>
-                        <option value="T">Tarde</option>
+                        <option value="m" id="manha">Manhã</option>
+                        <option value="t" id="tarde">Tarde</option>
                     </select>
                     <label>Educador</label>
                   <select class="form-control" name="educador" id="educador">

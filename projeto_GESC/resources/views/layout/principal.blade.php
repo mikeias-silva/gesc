@@ -189,7 +189,7 @@ $('#editarturma').on('show.bs.modal', function (event) {
     var educador = button.data('myeducador') 
     var id = button.data('myid') 
     var modal = $(this)
-    console.log(educador.value);
+    console.log(turno.value);
     modal.find('.modal-body #GrupoConvivencia').val(nome)
     modal.find('.modal-body #turno').val(turno)
     modal.find('.modal-body #educador').val(educador)

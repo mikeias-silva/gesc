@@ -109,14 +109,14 @@
                 </thead>
                 <tbody>
                     
-                        @foreach($matInativas as $matI)
+                        @foreach($matEspera as $matE)
                         <tr>
-                            <td>{{ $matI->nomeMatricula() }}</td>
-                            <td>{{ $matI->nomeTurma() }}</td>
-                            <td>{{ $matI->idadeMatricula() }}</td>
-                            <td>{{ $matI->anoMatricula() }}</td>
+                            <td>{{ $matE->nomeMatricula() }}</td>
+                            <td>{{ $matE->nomeTurma() }}</td>
+                            <td>{{ $matE->idadeMatricula() }}</td>
+                            <td>{{ $matE->anoMatricula() }}</td>
                             <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
-                                <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+                                <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
 
                             </td>
                             

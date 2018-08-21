@@ -374,6 +374,7 @@ class MatriculasController extends Controller
         
         //$vagas = DB::select('select * from vagas where ? >= idademin and ? <= idademax', [$idade, $idade]); 
         $vagas = Vaga::all();
+        //return  $vagas;
         //lógica para pegar vaga de acordo com a idade da criança
         foreach($vagas as $vaga){
             if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
@@ -405,33 +406,33 @@ class MatriculasController extends Controller
         $anomatricula = Carbon::now();
         $idturma = Request::input('turma');
 
-        $matricula = new Matricula();
+         $matricula = new Matricula();
+        
         $matricula->anomatricula = $hoje;
+        $matricula->idvaga = $essavaga;
         
         $matricula->serieescolar = Request::input('serie');
         $matricula->idcrianca = $crianca->idcrianca;;
         
-        $matAtivas = Matricula::where('statuscadastro', 'ativo')
-        ->where('idvaga', $essavaga)->sum('statuscadastro');
+        $matAtivas = Matricula::where('statuscadastro', 'Ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
         // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
         
-        $historico_matricula = new Historico_matricula(); 
+        $historico_matricula = new Historico_matricula();
 
         if($matAtivas < $essanumvaga){
             $matricula->statuscadastro = 'Ativo';
             $historico_matricula->dataativacao = $hoje;
             
-        }elseif($matAtivas > $essanumvaga){
-            $matricula->statuscadastro = 'Espera';
+        }elseif($matAtivas >= $essanumvaga){
+           $estaemespera = $matricula->statuscadastro = 'Espera';
             $matricula->dataespera = $hoje;
                 
         }
         
-        $matricula->idvaga = $essavaga;
-
+        
+        //return $matricula;
         $matricula->save();
-        $historico_matricula->idmatricula = $matricula->idmatricula;
-        $historico_matricula->save();
+        
         
     /*
         DB::insert('insert into Matricula(datasairespera, satuscadastro, dataespera, serieescolar, 
@@ -445,7 +446,10 @@ class MatriculasController extends Controller
         if($matricula->statuscadastro = 'Espera'){
 
             return redirect()->action('MatriculasController@listaMatriculas');
-        }else{
+        }elseif($matricula->statuscadastro = 'Ativo'){
+            $historico_matricula->idmatricula = $matricula->idmatricula;
+            $historico_matricula->save(); 
+
         
             /*$oldMatricula = $matricula->id;
 
@@ -488,13 +492,14 @@ class MatriculasController extends Controller
 
             foreach ($historico_matricula as $ht) {
                 if($ht->datainativacao == null){
-                   $essehistorico = $ht->idhistoricomatricula;
+                    $essehistorico = $ht->idhistoricomatricula;
+                    $atualizahistorico = Historico_Matricula::find($essehistorico);
+                    $atualizahistorico->update(['datainativacao'=>$hoje],
+                    ['motivoinativacao'=>$motivoinativacao]);
                 }
             }
            
-            $atualizahistorico = Historico_Matricula::find($essehistorico);
-            $atualizahistorico->update(['datainativacao'=>$hoje],
-                    ['motivoinativacao'=>$motivoinativacao]);
+            
             
 
             $matricula->update(['statuscadastro'=>'Inativo']);

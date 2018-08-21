@@ -52,7 +52,7 @@ class TransferenciaController extends Controller {
         $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.statusTurma = 1');
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from gesc_dois.`matriculas` where idturma='{$c->idturma}'");
+            $aux = DB::select("select count(idturma) as numero from gesc.`matriculas` where idturma='{$c->idturma}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
 
@@ -69,7 +69,7 @@ class TransferenciaController extends Controller {
         $listaTurmas = DB::select("select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.statusTurma = 1 && turma.idturma!='{$idturma}'");
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from gesc_dois.`matriculas` where idturma='{$c->idturma}'");
+            $aux = DB::select("select count(idturma) as numero from gesc.`matriculas` where idturma='{$c->idturma}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula, pessoa.datanascimento from matriculas, crianca, pessoa

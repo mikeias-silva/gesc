@@ -78,6 +78,8 @@ Route::get('/transferencia_alunos', 'TransferenciaController@listaTurmasDois');
 Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlunos');
 Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos');
 
+Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia');
+
 /*
 Route::get('/login', function(){
     return view('login.login');

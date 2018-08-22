@@ -127,6 +127,14 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a class="nav-link disabled" href="/fichaFrequencia">
+                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                     Ficha de Frequência
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

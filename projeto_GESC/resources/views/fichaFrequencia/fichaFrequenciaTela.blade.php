@@ -160,6 +160,7 @@
             if(validaCPF(cpf)){
                 document.getElementById('cpfresponsavel').style.border = 'solid 1px red';
                 document.getElementById("cpfInvalido").innerHTML="<font color='red'>O CPF informado não é válido, por favor verifique</br></font>";
+                permissao=false;
             }else{
                 document.getElementById('cpfresponsavel').style.border = 'solid 1px #808080';
                 document.getElementById("cpfInvalido").innerHTML="";
@@ -226,11 +227,12 @@
 
         if(cont>0){
             document.getElementById("campoObrigatorio").innerHTML="<font color='red'>Existem campos obrigatórios não preenchidos, por favor verifique</br></font>";
+            permissao=false;
         }else{
             document.getElementById("campoObrigatorio").innerHTML="";
         }
         //var tesTelefone = telefone.value;
-        return false;
+        return permissao;
     }
 
     function validaCPF(cpf){

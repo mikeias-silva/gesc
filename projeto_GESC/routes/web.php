@@ -84,7 +84,8 @@ Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequenc
 Route::get('/login', function(){
     return view('login.login');
 });*/
-Auth::routes();
+//Auth::routes();
+Route::get('/login', 'LoginController@login');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

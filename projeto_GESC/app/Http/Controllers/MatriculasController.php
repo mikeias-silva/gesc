@@ -529,4 +529,53 @@ class MatriculasController extends Controller
 
         return back();
     }
+
+    public function sairEspera(){
+
+       
+        $hoje = Carbon::now();
+
+        $matricula = Matricula::find(
+            Request::input('idmatricula'));
+
+        $matricula->datasairespera = $hoje;
+
+        $datanasci = DB::select('select datanascimento from nomeidadematricula where idmatricula = ?',
+        array(Request::input('idmatricula')));
+
+        $idade = $hoje->diffInYears($datanascimentocrianca);
+
+        $vagas = Vaga::all();
+        foreach($vagas as $vaga){
+            if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
+                $idademin = $vaga->idademin;
+                $idademax = $vaga->idademax; 
+                $vaga->numvaga;
+                $vaga->anovaga;
+                $vaga->idvaga;
+                $essavaga = $vaga->idvaga;
+                $essanumvaga = $vaga->numvaga;
+            
+            }
+            
+        }
+
+        $matAtivas = Matricula::where('statuscadastro', 'Ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
+       
+        $historico_matricula = new Historico_Matricula();
+        if($matAtivas < $essanumvaga){
+            $matricula->statuscadastro = 'Ativo';
+            $historico_matricula->dataativacao = $hoje;
+            $matricula->update();
+            
+        }elseif($matAtivas >= $essanumvaga){
+            return redirect()->action('MatriculasController@listaMatriculas')->with('');
+                
+        }
+
+
+        
+
+
+    }
 }

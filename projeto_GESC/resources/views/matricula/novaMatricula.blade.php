@@ -38,7 +38,7 @@
             <div class="form-group ">
                 <div class="row">
                     <div class="col-sm-8" >
-                        <label>Nome</label>
+                        <label>Nome<span id="campoobrigatorio">*</span></label>
                         <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
                         <spam id="msgNomeCrianca"></spam>
                     </div>

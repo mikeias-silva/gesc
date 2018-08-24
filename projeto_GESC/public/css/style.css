@@ -1,12 +1,13 @@
 .sidebar-sticky {
     top: 0;
     height: calc(100vh - 48px);
-    padding-top: .5rem;
+    padding-top: 2.5rem;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .sidebar {
+    
     position: fixed;
     top: 0;
     bottom: 0;
@@ -18,11 +19,13 @@
 
 body {
     font-size: .875rem;
+    background-color: white; 
 }
 
 main {
     padding-top: 80px;
 }
+
 
 #footer {
     margin-top: 100%;
@@ -64,4 +67,16 @@ main {
 #btn-imprimir {
     text-decoration: none;
     color: black;
+}
+
+#atencao {
+    color: red;
+}
+
+label{
+    font-weight: bold;
+}
+
+#campoobrigatorio{
+    color: red;
 }

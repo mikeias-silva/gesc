@@ -12,5 +12,5 @@ class Pessoa extends Model
     protected $fillable = array('nomepessoa', 'datanascimento','rg', 'emissorrg', 'cpf', 'sexo', 'cep', 'logradouro',
     'ncasa', 'bairro', 'complementoendereco');
 
-    protected $pimaryKey = 'idpessoa';
+   // protected $pimaryKey = 'idpessoa';
 }

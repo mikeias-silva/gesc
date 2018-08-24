@@ -51,6 +51,9 @@ Route::get('/matriculas', 'MatriculasController@listaMatriculas');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
 Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
 Route::get('/pdfmatricula', 'MatriculasController@imprime');
+Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula');
+Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula');
+Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma');
 
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');
@@ -59,13 +62,29 @@ Route::post('/usuarios/edita', 'UsuariosController@edita');
 Route::post('/usuarios/inativa', 'UsuariosController@inativa');
 Route::post('/usuarios/ativa', 'UsuariosController@ativa');
 
+//Rotas para a tela de vagas
 Route::get('/vagas', 'VagasController@listaVagas');
 Route::post('/vagas/adiciona', 'VagasController@adiciona');
 Route::post('/vagas/editar', 'VagasController@edita');
 Route::post('/vagas/excluir', 'VagasController@exclui');
 
-Route::get('/controle_frequencia', 'ControleFrequanciaController@listaTurmas');
+Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas');
 
+//Route::get('/controle_frequencia/{idturma}/turma', 'ControleFrequenciaController@listaAlunos');
+Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos');
+Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia');
+
+Route::get('/transferencia_alunos', 'TransferenciaController@listaTurmasDois');
+Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlunos');
+Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos');
+
+Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia');
+
+/*
 Route::get('/login', function(){
     return view('login.login');
-});
+});*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

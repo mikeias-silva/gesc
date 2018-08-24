@@ -19,11 +19,11 @@ class Matricula extends Model
     protected $primaryKey = 'idmatricula';
 
     public function nomeMatricula(){
-            $id = $this->idcrianca;
+            $id = $this->idmatricula;
             
             
-            $nomecrianca = DB::select('select nomepessoa from pessoa, crianca where pessoa.idpessoa = ? 
-            and crianca.idpessoa = ?', array($id, $id));
+            $nomecrianca = DB::select('select nomepessoa from nomeidadematricula where idmatricula
+             = ?', array($id));
            
          //   dd($nomecrianca);
             foreach($nomecrianca as $nome){
@@ -35,11 +35,11 @@ class Matricula extends Model
 
 
     public function idadeMatricula(){
-        $id = $this->idcrianca;
+        $id = $this->idmatricula;
             
         $hoje = Carbon::now();
-        $nascimentocrianca = DB::select('select datanascimento from pessoa, crianca where pessoa.idpessoa = ? 
-        and crianca.idpessoa = ?', array($id, $id));
+        $nascimentocrianca = DB::select('select datanascimento from nomeidadematricula where idmatricula
+        = ?', array($id));
 
         foreach($nascimentocrianca as $nasc){
             $idade = $hoje->diffInYears($nasc->datanascimento);
@@ -49,7 +49,7 @@ class Matricula extends Model
     }
 
     static function matriculasAtiva(){
-        //)->get();
+      
         //DB::select('select * from matriculas where idmatricula = ?', 1);
         
         //return DB::table('matriculas')->where('statuscadastro', 'Ativo')->get();
@@ -82,5 +82,10 @@ class Matricula extends Model
        
        return Carbon::parse($this->anomatricula)->format('d-m-y');
        
+    }
+
+
+    public function vagasOcupadas(){
+        
     }
 }

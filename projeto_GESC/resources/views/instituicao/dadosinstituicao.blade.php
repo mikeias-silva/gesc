@@ -469,40 +469,40 @@
         }
 
         var data = new Date();
-        if(data.getMonth()>0){
+        if(data.getMonth()>1){
             document.getElementById("jan").disabled = true;
         }
-        if(data.getMonth()>1){
+        if(data.getMonth()>2){
             document.getElementById("fev").disabled = true;
         }
-        if(data.getMonth()>2){
+        if(data.getMonth()>3){
             document.getElementById("mar").disabled = true;
         }
-        if(data.getMonth()>3){
+        if(data.getMonth()>4){
             document.getElementById("abr").disabled = true;
         }
-        if(data.getMonth()>4){
+        if(data.getMonth()>5){
             document.getElementById("mai").disabled = true;
         }
-        if(data.getMonth()>5){
+        if(data.getMonth()>6){
             document.getElementById("jun").disabled = true;
         }
-        if(data.getMonth()>6){
+        if(data.getMonth()>7){
             document.getElementById("jul").disabled = true;
         }
-        if(data.getMonth()>7){
+        if(data.getMonth()>8){
             document.getElementById("ago").disabled = true;
         }
-        if(data.getMonth()>8){
+        if(data.getMonth()>9){
             document.getElementById("set").disabled = true;
         }
-        if(data.getMonth()>9){
+        if(data.getMonth()>10){
             document.getElementById("out").disabled = true;
         }
-        if(data.getMonth()>10){
+        if(data.getMonth()>11){
             document.getElementById("nov").disabled = true;
         }
-        if(data.getMonth()>11){
+        if(data.getMonth()>12){
             document.getElementById("dez").disabled = true;
         }
 

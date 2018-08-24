@@ -23,7 +23,7 @@
     @foreach ($turma as $t)
     <tr>
         <td>{{ $t->GrupoConvivencia }}</td>
-        @if($t->Turno=="M")
+        @if($t->Turno=="m")
             <td>Manhã</td>
         @else 
             <td>Tarde</td>
@@ -82,8 +82,8 @@
                     </br>
                     <label>Turno</label>
                    <select class="form-control" name="turno" id="turno" value="">
-                       <option value="m">Manhã</option>
-                       <option value="t">Tarde</option> 
+                       <option value="1">Manhã</option>
+                       <option value="2">Tarde</option> 
                    </select>
 
                     <input type="hidden" name="statusTurma" id="statusTurma" value="1">
@@ -210,13 +210,13 @@
                 <div class="modal-body">
                     <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
-                    <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
+                    <input name="grupoconvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo_edit"></label>
                     </br>
                     <label>Turno</label>
                     <select name="turno" id="turno" value="" class="form-control">
-                        <option value="M">Manhã</option>
-                        <option value="T">Tarde</option>
+                        <option value="m" id="manha">Manhã</option>
+                        <option value="t" id="tarde">Tarde</option>
                     </select>
                     <label>Educador</label>
                   <select class="form-control" name="educador" id="educador">

@@ -248,11 +248,11 @@ $('#editarusuario').on('show.bs.modal', function (event) {
     console.log(tipousuario);
     var modal = $(this)
     modal.find('.modal-body #nome').val(nome)
-    modal.find('.modal-body #senha').val(senha)
+    //modal.find('.modal-body #password').val(senha)
     modal.find('.modal-body #nomeusuario').val(nomeusuario)
     modal.find('.modal-body #nomeUsuarioAtual').val(nomeusuario)
     modal.find('.modal-body #email').val(email)
-    modal.find('.modal-body #idusuario').val(id)
+    modal.find('.modal-body #id').val(id)
     if (tipousuario=="Administrador"){
         document.getElementById("Admin").checked = true;
         console.log("ADM");
@@ -386,13 +386,13 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
         document.getElementById("msgnome_edit").innerHTML="";
     }
 
-        if (tesSenha == "") {
+    /*if (tesSenha == "") {
         document.getElementById("msgsenha_edit").innerHTML="<font color='red'>Preencha o campo senha</font>";
         console.log('Preencha o campo senha');
         permissao = false;
     } else {
         document.getElementById("msgsenha_edit").innerHTML="";
-    }
+    }*/
 
     if (tesEmail == "") {
         document.getElementById("msgemail_edit").innerHTML="<font color='red'>Informe o email</font>";

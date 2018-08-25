@@ -22,28 +22,28 @@
     </thead>
     @foreach ($turma as $t)
     <tr>
-        <td>{{ $t->GrupoConvivencia }}</td>
-        @if($t->Turno=="m")
+        <td>{{ $t->grupoconvivencia }}</td>
+        @if($t->turno=="m")
             <td>Manhã</td>
         @else 
             <td>Tarde</td>
         
         @endif 
-        <td>{{ $t->Nome }}</td>
+        <td>{{ $t->nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
         <td>
-            <button type="button" class="btn btn-info" data-mygrupo="{{ $t->GrupoConvivencia }}" 
-                data-myturno="{{ $t->Turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
+            <button type="button" class="btn btn-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
+                data-myturno="{{ $t->turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
                  data-toggle="modal" data-target="#editarturma">Editar</button>
         </td>
-        @if( ($t->statusTurma) === 0)
+        @if( ($t->statusturma) === 0)
         <td>
-        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusTurma }}" 
+        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
                 data-toggle="modal" data-target="#ativarturma">Ativar</button>
         </td>
-        @elseif(($t->statusTurma) >0)
+        @elseif(($t->statusturma) >0)
         <td>
-        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusTurma }}" 
+        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
                 data-toggle="modal" data-target="#inativarturma">Inativar</button>
         </td>
         @endif
@@ -79,7 +79,7 @@
                     <label>Grupo de Convivência</label>
                     <input name="GrupoConvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo"></label>
-                    </br>
+                    <br>
                     <label>Turno</label>
                    <select class="form-control" name="turno" id="turno" value="">
                        <option value="1">Manhã</option>
@@ -212,7 +212,7 @@
                     <label>Grupo de Convivência</label>
                     <input name="grupoconvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo_edit"></label>
-                    </br>
+                    <br>
                     <label>Turno</label>
                     <select name="turno" id="turno" value="" class="form-control">
                         <option value="m" id="manha">Manhã</option>

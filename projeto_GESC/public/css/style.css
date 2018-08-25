@@ -80,3 +80,7 @@ label{
 #campoobrigatorio{
     color: red;
 }
+
+#tituloimpressao{
+    padding-bottom: 80px;
+}

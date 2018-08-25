@@ -1,4 +1,4 @@
- @extends('layout.principal') 
+@extends('layout.principal') 
 @section('conteudo')
 <h2>Matriculas - APAM</h2>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -42,7 +42,9 @@
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
-                            <a href="/inativarMatricula" class="text text-danger" data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">inativar</a>
+                            <a href="/inativarMatricula" class="text text-danger" 
+                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">inativar</a>
+                            <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
                         </td>
                     </tr>
                     @endforeach 
@@ -115,8 +117,12 @@
                             <td>{{ $matE->nomeTurma() }}</td>
                             <td>{{ $matE->idadeMatricula() }}</td>
                             <td>{{ $matE->anoMatricula() }}</td>
-                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
-                                <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+                            <td>
+                                
+                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
+                                
+                                <a href="/ativarMatricula" class="text text-danger" 
+                                data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
 
                             </td>
                             
@@ -200,6 +206,38 @@
     </div>
 </div>
 
+
+<!-- Modal  impressão-->
+<div class="modal fade" id="imprimir" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            
+            <form action="/pdfmatricula" method="get">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
+
+                    <h5>Imprimir?</h5>
+
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success" formtarget="_blank">Imprimir</button>
+            
+                    </div>
+                </div>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
 
 <form action="/novaMatricula">
     <button class="btn btn-secondary">Nova Matrícula</button>
@@ -293,5 +331,15 @@
             }
         });
 </script>
+
+<script>
+    $('#imprimir').on('show.bs.modal', function (event) {
+        console.log('modal opened');
+        var button = $(event.relatedTarget) 
+        var id = button.data('myid')
+        var modal = $(this)
+        modal.find('.modal-body #idmatricula').val(id);
+    
+    });</script>
 
 @stop

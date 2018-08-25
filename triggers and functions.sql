@@ -43,28 +43,27 @@ END IF;
 END$$ 
 DELIMITER ; 
 
+DROP TRIGGER IF EXISTS `gesc`.`tr_valida_cpf`;
 
-drop trigger if exists tr_valida_cpf;
--- gatilho cpf
-DELIMITER $$  
-CREATE TRIGGER `tr_valida_cpf` BEFORE INSERT ON `pessoa`
+DELIMITER $$
+USE `gesc`$$
+CREATE DEFINER=`root`@`localhost` TRIGGER `tr_valida_cpf` BEFORE update ON `pessoa`
 FOR EACH ROW 
 BEGIN
 IF(NEW.cpf = '')THEN BEGIN
-signal sqlstate '45000'
-set message_text = 'cadastrado com sucesso';
 END;
-elseIF ((SELECT count(*) from pessoa where pessoa.cpf = '11') > 0) then begin 
+ELSEIF (((SELECT count(*) from pessoa where pessoa.cpf = '11') > 0)) THEN BEGIN
 SIGNAL SQLSTATE '45000'  
 SET MESSAGE_TEXT = 'Erro: CPF ja cadastrado';
-end;
+END;  
 ELSEIF ((SELECT validaCPF(NEW.cpf)) = false) THEN BEGIN  
 SIGNAL SQLSTATE '45000'  
-SET MESSAGE_TEXT = 'Erro: CPF nao inválido';  
+SET MESSAGE_TEXT = 'Erro: CPF inválido';  
 END;
 END IF; 
-END $$
+END$$
 DELIMITER ;
+
 
 drop trigger if exists tr_valida_cpfupd;
 -- gatilho cpf

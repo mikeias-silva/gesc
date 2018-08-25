@@ -28,6 +28,7 @@ class UsuariosController extends Controller {
 
     public function adiciona(Request $request){
         $usuario = new usuario($request->all());
+        $usuario->password=bcrypt($request->password);
         $usuario->save();
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);

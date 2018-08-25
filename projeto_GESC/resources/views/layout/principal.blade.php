@@ -58,6 +58,7 @@
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><h3>GESC</h3></a>
         </nav>
+        @yield('login')
         <div class="container-fluid">
             <div class="row">
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
@@ -131,6 +132,14 @@
                                 <a class="nav-link disabled" href="/fichaFrequencia">
                                     <i class="fa fa-graduation-cap fa-2x" ></i>
                                      Ficha de Frequência
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="nav-link disabled" href="/logout">
+                                    <i class="fa fa-sign-out fa-2x" ></i>
+                                     Sair
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>

@@ -74,7 +74,7 @@
                     <label id="msgemail"></label>
                     </br>
                     <label>Senha</label>
-                    <input name="senha" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
+                    <input name="password" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
                     <label id="msgsenha"></label>
                     </br>
                     <label>Nome de Usuário</label>

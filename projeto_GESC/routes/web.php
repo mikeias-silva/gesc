@@ -20,7 +20,9 @@ Route::get('/home', 'WelcomeController@index');
 Route::get('/teste1',function(){
 	return "<h1>Teste push</h1>";
 });
-Route::get('/dashboard', 'DashboardController@painel');
+
+
+Route::get('/dashboard', 'DashboardController@painel')->middleware('auth');
 
 //Rotas para a tela controle de CRAS
 Route::get('/cras', 'CrasController@listaCras');
@@ -85,7 +87,9 @@ Route::get('/login', function(){
     return view('login.login');
 });*/
 //Auth::routes();
-Route::get('/login', 'LoginController@login');
+Route::get('/login', 'LoginController@login')->name('login');
+Route::post('/login/autenticar', 'LoginController@tentativaLogin');
+Route::get('/logout', 'LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

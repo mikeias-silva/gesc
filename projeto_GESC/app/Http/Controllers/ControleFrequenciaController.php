@@ -36,8 +36,10 @@ class ControleFrequenciaController extends Controller {
         if(date("m")==1 && $mesSelect==12){
             $ano=$ano-1;
         }
-        $nomeTurma = DB::select("select grupoconvivencia, turno, id, usuario.nome from usuario, turma
+
+        $nomeTurma = DB::select("select turma.grupoconvivencia, turma.turno, turma.idusuario, usuario.nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
+
         
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 

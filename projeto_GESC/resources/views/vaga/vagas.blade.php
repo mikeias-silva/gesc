@@ -12,7 +12,7 @@
         <tr>
             <th>Idade Mínima</th>
             <th>Idade Máxima</th>
-            <th>Númaro de Vagas</th>
+            <th>Número de Vagas</th>
             <th>Ano</th>
             <th>Opções</th>
 

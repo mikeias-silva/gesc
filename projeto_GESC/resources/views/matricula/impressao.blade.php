@@ -9,20 +9,24 @@
             <span>1- IDENTIFICAÇÃO</span>
         </div>
         <div >
-            @foreach ($nome as $n)
+           
             
-                <label>NOME: {{$n->nomepessoa }}</label>
+                <label>NOME: {{   }}</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <label>DATA DE NASCIMENTO:{{ $datanasc }}</label>
+                <label>DATA DE NASCIMENTO:</label>
             
-            @endforeach
+           
         
         </div>
         <div>
-            <label>ENDEREÇO:{{ $logradouro }}</label>
+            <label>ENDEREÇO:</label>
+            <label>BAIRR}</label>
         </div>
     </div>
     
+    @foreach ($responsaveis as $responsavel)
+           <label> {{ $responsavel->nomeresponsavel }}</label>
+    @endforeach
 
     
 @stop

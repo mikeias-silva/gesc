@@ -13,13 +13,13 @@ class TurmaController extends Controller
     //  $cras = DB::select('select * from cras');
         //$turma = turma::where('statusTuma', '=', 1)->firstOrFail();
       //  $turma = DB::select('select * from turma where statusTurma = 1');
-        $profTurma = DB::select('select Nome from usuario join turma on usuario.idUsuario = turma.idUsuario;');
+        $profTurma = DB::select('select Nome from usuario join turma on usuario.id = turma.idUsuario;');
 
 
-   $turma = DB::select('select turma.idturma, turma.grupoconvivencia, turma.statusturma, turma.turno, turma.idusuario, usuario.nome 
-   from usuario, turma
-    where usuario.idusuario = turma.idusuario');
-    
+
+   $turma = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+    where usuario.id = turma.idUsuario');
+
         // $turnoTurma = DB::select('');
         $educador = DB::select('select * from usuario where tipoUsuario = 2');
 
@@ -65,7 +65,7 @@ class TurmaController extends Controller
         $turma->update($request->all());
         
         
-        return back();
+        return redirect()->action('TurmaController@listaTurma');
     }
 
     public function inativar(Request $request){

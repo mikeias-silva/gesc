@@ -75,25 +75,25 @@ class MatriculasController extends Controller
         $matricula = Request::input('idmatricula');
 
 
-        $dadosmatricula = DB::select('select * from identificacao where idmatricula
+        $dadosmatricula = DB::select('select * from dadoscrianca where idmatricula
         = ?', array($matricula));
 
     
         //return $dadosmatricula;
-        foreach($dadosmatricula as $identificacao){
+        foreach($dadoscrianca as $dadoscrianca){
             $nascimentocrianca = Carbon::parse($nomemt->nascimentocrianca)->format('d/m/y');
-            $logradouro = $identificacao->logradouro;
-            $bairro = $identificacao->bairro;
-            $ncasa = $identificacao->ncasa;
-            $cep = $identificacao->cep;
-            $complemento = $identificacao->complementoendereco;
-            $nomecrianca = $identificacao->nomecrianca;
-            $cpfcrianca = $identificacao->cpfcrianca;
-            $rgcrianca = $identificacao->rgcrianca;
-            $emissorcrianca = $identificacao->emissorcrianca;
-            $sexocrianca = $identificacao->sexocrianca;
-            $escolacrianca = $identificacao->nomeescola;
-            $nomeresp1 = $identificacao->nomeresponsavel;
+            $logradouro = $dadoscrianca->logradouro;
+            $bairro = $dadoscrianca->bairro;
+            $ncasa = $dadoscrianca->ncasa;
+            $cep = $dadoscrianca->cep;
+            $complemento = $dadoscrianca->complementoendereco;
+            $nomecrianca = $dadoscrianca->nomecrianca;
+            $cpfcrianca = $dadoscrianca->cpfcrianca;
+            $rgcrianca = $dadoscrianca->rgcrianca;
+            $emissorcrianca = $dadoscrianca->emissorcrianca;
+            $sexocrianca = $dadoscrianca->sexocrianca;
+            $escolacrianca = $dadoscrianca->nomeescola;
+            $nomeresp1 = $dadoscrianca->nomeresponsavel;
         
         }
             

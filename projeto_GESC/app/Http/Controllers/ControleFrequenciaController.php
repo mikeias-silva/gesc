@@ -37,7 +37,7 @@ class ControleFrequenciaController extends Controller {
             $ano=$ano-1;
         }
 
-        $nomeTurma = DB::select("select turma.grupoconvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+        $nomeTurma = DB::select("select turma.grupoconvivencia, turma.turno, turma.idusuario, usuario.nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
 
         

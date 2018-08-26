@@ -25,37 +25,37 @@ Route::get('/teste1',function(){
 Route::get('/dashboard', 'DashboardController@painel')->middleware('auth');
 
 //Rotas para a tela controle de CRAS
-Route::get('/cras', 'CrasController@listaCras');
-Route::get('/modalCras','CrasController@novo');
-Route::post('/cras/adiciona', 'CrasController@adiciona');
-Route::post('/cras/remove', 'CrasController@remover');
-Route::post('/cras/edita', 'CrasController@editar');
-Route::post('/cras/ativar', 'CrasController@ativar');
-Route::post('/cras/inativar', 'CrasController@inativar');
+Route::get('/cras', 'CrasController@listaCras')->middleware('auth');
+Route::get('/modalCras','CrasController@novo')->middleware('auth');
+Route::post('/cras/adiciona', 'CrasController@adiciona')->middleware('auth');
+Route::post('/cras/remove', 'CrasController@remover')->middleware('auth');
+Route::post('/cras/edita', 'CrasController@editar')->middleware('auth');
+Route::post('/cras/ativar', 'CrasController@ativar')->middleware('auth');
+Route::post('/cras/inativar', 'CrasController@inativar')->middleware('auth');
 
 
 //Rotas para as telas de controle de Turmas
-Route::get('/turmas', 'TurmaController@listaTurma');
-Route::post('/turmas/adiciona', 'TurmaController@adiciona');
-Route::post('/turmas/remove', 'TurmaController@remover');
-Route::post('/turmas/edita', 'TurmaController@editar');
-Route::post('/turmas/inativa', 'TurmaController@inativar');
-Route::post('/turmas/ativa', 'TurmaController@ativar');
+Route::get('/turmas', 'TurmaController@listaTurma')->middleware('auth');
+Route::post('/turmas/adiciona', 'TurmaController@adiciona')->middleware('auth');
+Route::post('/turmas/remove', 'TurmaController@remover')->middleware('auth');
+Route::post('/turmas/edita', 'TurmaController@editar')->middleware('auth');
+Route::post('/turmas/inativa', 'TurmaController@inativar')->middleware('auth');
+Route::post('/turmas/ativa', 'TurmaController@ativar')->middleware('auth');
 
 //Rotas para as telas de instituição
-Route::get('/instituicao', 'InstituicaoController@mostraInstituicao');
-Route::post('/instituicao/edita', 'InstituicaoController@editar');
-Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias');
+Route::get('/instituicao', 'InstituicaoController@mostraInstituicao')->middleware('auth');
+Route::post('/instituicao/edita', 'InstituicaoController@editar')->middleware('auth');
+Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias')->middleware('auth');
 
 
 //Rotas para as telas de Matrícula
-Route::get('/matriculas', 'MatriculasController@listaMatriculas');
-Route::get('/novaMatricula', 'MatriculasController@novaMatricula');
-Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula');
-Route::get('/pdfmatricula', 'MatriculasController@imprime');
-Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula');
-Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula');
-Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma');
+Route::get('/matriculas', 'MatriculasController@listaMatriculas')->middleware('auth');
+Route::get('/novaMatricula', 'MatriculasController@novaMatricula')->middleware('auth');
+Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
+Route::get('/pdfmatricula', 'MatriculasController@imprime')->middleware('auth');
+Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula')->middleware('auth');
+Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middleware('auth');
+Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middleware('auth');
 
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');
@@ -65,22 +65,22 @@ Route::post('/usuarios/inativa', 'UsuariosController@inativa');
 Route::post('/usuarios/ativa', 'UsuariosController@ativa');
 
 //Rotas para a tela de vagas
-Route::get('/vagas', 'VagasController@listaVagas');
-Route::post('/vagas/adiciona', 'VagasController@adiciona');
-Route::post('/vagas/editar', 'VagasController@edita');
-Route::post('/vagas/excluir', 'VagasController@exclui');
+Route::get('/vagas', 'VagasController@listaVagas')->middleware('auth');
+Route::post('/vagas/adiciona', 'VagasController@adiciona')->middleware('auth');
+Route::post('/vagas/editar', 'VagasController@edita')->middleware('auth');
+Route::post('/vagas/excluir', 'VagasController@exclui')->middleware('auth');
 
-Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas');
+Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas')->middleware('auth');
 
 //Route::get('/controle_frequencia/{idturma}/turma', 'ControleFrequenciaController@listaAlunos');
-Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos');
-Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia');
+Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos')->middleware('auth');
+Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia')->middleware('auth');
 
-Route::get('/transferencia_alunos', 'TransferenciaController@listaTurmasDois');
-Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlunos');
-Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos');
+Route::get('/transferencia_alunos', 'TransferenciaController@listaTurmasDois')->middleware('auth');
+Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlunos')->middleware('auth');
+Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos')->middleware('auth');
 
-Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia');
+Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia')->middleware('auth');
 
 /*
 Route::get('/login', function(){
@@ -89,7 +89,7 @@ Route::get('/login', function(){
 //Auth::routes();
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login/autenticar', 'LoginController@tentativaLogin');
-Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

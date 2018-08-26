@@ -134,7 +134,7 @@
 
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger">Ativar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
             
                     </div>
                 </div>

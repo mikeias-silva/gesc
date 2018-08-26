@@ -16,8 +16,10 @@ class TurmaController extends Controller
         $profTurma = DB::select('select Nome from usuario join turma on usuario.id = turma.idUsuario;');
 
 
+
    $turma = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
     where usuario.id = turma.idUsuario');
+
         // $turnoTurma = DB::select('');
         $educador = DB::select('select * from usuario where tipoUsuario = 2');
 

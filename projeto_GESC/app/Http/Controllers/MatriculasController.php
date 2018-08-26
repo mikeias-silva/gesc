@@ -61,7 +61,7 @@ class MatriculasController extends Controller
         $escola = escola::all();
         $pprioritario = PublicoPrioritario::all();
         $turmas  = Turma::all();
-        return view('matricula.novaMatricula')->with('cras', $cras)->with('escola', $escola)
+    return view('matricula.novaMatricula')->with('cras', $cras)->with('escola', $escola)
         ->with('pprioritario', $pprioritario)->with('turmas', $turmas);
     }
 
@@ -70,11 +70,31 @@ class MatriculasController extends Controller
         $matInativas = Matricula::matriculasInativas();
         $matEspera = Matricula::matriculasEspera();
         $hoje = Carbon::now()->year;
-        $dados = ['ano' => $hoje];
+    
+
+        $matricula = Request::input('idmatricula');
+
+
+        $nomematricula = DB::select('select * from dadoscrianca where idmatricula
+        = ?', array($matricula));
+
+    
+
+        foreach($nomematricula as $nomemt){
+            $nascimento = Carbon::parse($nomemt->datanascimento)->format('d/m/y');
+            $logradouro = $nomemt->logradouro;
+        }
+        //return $nomematricula;
+        $dados = [
+                'nome'=>$nomematricula,
+                'datanasc'=>$nascimento,
+                'logradouro'=>$logradouro
+                
+            ];
         
 
 
-       $impressao = PDF::loadView('matricula.impressao', $dados);
+        $impressao = PDF::loadView('matricula.impressao', $dados);
        return $impressao->stream('Matricula');
     }
 
@@ -271,6 +291,8 @@ class MatriculasController extends Controller
         $parentesco->idresponsavel = $responsavel1->idresponsavel;
         $parentesco->save();
 
+       
+
         //$responsavel1->idfamilia = 
         /*DB::insert('insert into responsavel(estadocivil, localtrabalho, telefone, telefone2, escolaridade, profissao,
         salario, outrasobs) values(?, ?, ?, ?, ?, ?, ?, ?)',
@@ -329,8 +351,8 @@ class MatriculasController extends Controller
 
 
             $parentesco = new Parentesco();
-            $parentesco->idcrianca = $crianca->idcrianca;
-            $parentesco->idresponsavel = $responsavel2->idresponsavel;
+            $parentesco->idcrianca = $crianca->id;
+            $parentesco->idresponsavel = $responsavel2->id;
             $parentesco->save();
         }
 

@@ -13,8 +13,8 @@ use App\User;
 class LoginController extends Controller {
 
     public function login(){
-
-        return view('login.login');
+        $fail="";
+        return view('login.login')->with('fail',$fail);
     }
 
     public function tentativaLogin(Request $request){
@@ -29,12 +29,14 @@ class LoginController extends Controller {
 
         $credenciais= $request->only(['nomeusuario', 'password', 'statususuario']);
         //$lembra = $request->has('remember');
+        $fail="As credenciais informadas não estão corretas, ou seu usuário está inativo, por favor verifique";
 
         try{
             if(Auth::attempt($credenciais, false)){
                 return redirect('dashboard');
             }else{
-                return redirect()->back();
+                return redirect()->back()->with('fail', $fail)
+                ->withInput();
             }
             
         } catch (Exception $e) {

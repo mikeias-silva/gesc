@@ -26,16 +26,16 @@
         <td>{{ $c->tipousuario }}</td>
         <td>{{ $c->statususuario }}</td>
         <td>
-            <button type="button" class="btn btn-info" data-myid="{{ $c->idusuario }}" data-mynome="{{ $c->nome }}" 
-                data-myemail="{{ $c->email }}" data-mysenha="{{ $c->senha }}" data-mytipousuario="{{ $c->tipousuario }}" 
+            <button type="button" class="btn btn-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
+                data-myemail="{{ $c->email }}" data-mysenha="{{ $c->password }}" data-mytipousuario="{{ $c->tipousuario }}" 
                 data-mynomeusuario="{{ $c->nomeusuario }}" 
                 data-toggle="modal" data-target="#editarusuario">Editar</button>
 
             @if($c->statususuario=='1')       
-            <button type="button" class="btn btn-danger" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
+            <button type="button" class="btn btn-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
                 data-toggle="modal" data-target="#inativar">Inativar</button>
             @else
-            <button type="button" class="btn btn-success" data-myid="{{ $c->idusuario }}" data-mystatususuario="{{ $c->statususuario }}" 
+            <button type="button" class="btn btn-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
                 data-toggle="modal" data-target="#ativar">Ativar</button>
             @endif
 
@@ -61,7 +61,7 @@
             <div class="modal-body">
 
                 <form class="form" action="/usuarios/adiciona" method="post" name="incluirUsuario" 
-                onsubmit="return validar(incluirUsuario.nome, incluirUsuario.senha, incluirUsuario.email, incluirUsuario.nomeusuario, incluirUsuario.listaNomeUsuarios);">
+                onsubmit="return validar(incluirUsuario.nome, incluirUsuario.password, incluirUsuario.email, incluirUsuario.nomeusuario, incluirUsuario.listaNomeUsuarios);">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statususuario" value="1">
                     <input name="listaNomeUsuarios" class="form-control" type="hidden" value="{{$string}}" maxlength="255" autocomplete="off">
@@ -74,7 +74,7 @@
                     <label id="msgemail"></label>
                     </br>
                     <label>Senha</label>
-                    <input name="senha" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
+                    <input name="password" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
                     <label id="msgsenha"></label>
                     </br>
                     <label>Nome de Usuário</label>
@@ -108,12 +108,12 @@
             </button>
             </div>
             <form class="form" action="/usuarios/edita" method="POST" name="editarUsuario"
-            onsubmit="return validarEditar(editarUsuario.nome, editarUsuario.senha, editarUsuario.email, editarUsuario.nomeusuario, 
+            onsubmit="return validarEditar(editarUsuario.nome, editarUsuario.password, editarUsuario.email, editarUsuario.nomeusuario, 
             editarUsuario.listaNomeUsuarios, editarUsuario.nomeUsuarioAtual);">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="idusuario" id="idusuario" type="text" value="">
+                    <input type="hidden" name="id" id="id" type="text" value="">
                     <input name="listaNomeUsuarios" class="form-control" type="hidden" value="{{$string}}" maxlength="255" autocomplete="off">
                     <input name="nomeUsuarioAtual" id="nomeUsuarioAtual" class="form-control" type="hidden" value="{{$string}}" maxlength="255" autocomplete="off">
                     
@@ -127,11 +127,9 @@
                     </br>
                     <div class="form-group">
                     <label>Senha</label>
-                    <input name="senha" id="senha" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
+                    <input name="password" id="password" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
                     <label id="msgsenha_edit"></label>
                     </div>
-                    
-                    </br>
                     <label>Nome de Usuário</label>
                     <input placeholder="Senha" name="nomeusuario" id="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     <label id="msgnomeusuario_edit"></label>

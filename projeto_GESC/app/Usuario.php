@@ -8,9 +8,9 @@ class Usuario extends Model
 {
     protected $table = 'usuario';
     public $timestamps = false;
-    protected $fillable = array('nome', 'email', 'statususuario', 'senha', 'nomeusuario', 'tipousuario');
+    protected $fillable = array('nome', 'email', 'statususuario', 'password', 'nomeusuario', 'tipousuario');
 
-    protected $primaryKey = 'idusuario';
+    protected $primaryKey = 'id';
     /*
    public function post()
     {

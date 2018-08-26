@@ -16,10 +16,10 @@ class ControleFrequenciaController extends Controller {
         $aux=0;
         $numeroAlunos=[];
         $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
-        where usuario.idUsuario = turma.idUsuario && turma.statusTurma = 1');
+        where usuario.id = turma.idUsuario && turma.statusTurma = 1');
         foreach($listaTurmas as $c){
-        $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}'");
-        array_push($numeroAlunos, $aux[0]->numero);
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}'");
+            array_push($numeroAlunos, $aux[0]->numero);
         }
 
         $mes= date("m");
@@ -36,8 +36,13 @@ class ControleFrequenciaController extends Controller {
         if(date("m")==1 && $mesSelect==12){
             $ano=$ano-1;
         }
+<<<<<<< HEAD
         $nomeTurma = DB::select("select turma.grupoconvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
+=======
+        $nomeTurma = DB::select("select turma.GrupoConvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+        where usuario.id = turma.idUsuario && turma.idturma='{$idturma}'");
+>>>>>>> d1adfc7008735f75b1d96d9e9a730b3a4b66fdca
         
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 

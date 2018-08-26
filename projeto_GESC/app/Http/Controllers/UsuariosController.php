@@ -28,14 +28,22 @@ class UsuariosController extends Controller {
 
     public function adiciona(Request $request){
         $usuario = new usuario($request->all());
+        $usuario->password=bcrypt($request->password);
         $usuario->save();
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);
     }
 
     public function edita(Request $request){
-        $usuario = Usuario::find($request->idusuario);
-        $usuario->update($request->all());
+        $usuario = Usuario::find($request->id);
+        if ($request->password != ''){
+            $usuario->password=bcrypt($request->password);
+        }
+        $usuario->nome=($request->nome);
+        $usuario->email=($request->email);
+        $usuario->nomeusuario=($request->nomeusuario);
+        $usuario->tipousuario=($request->tipousuario);
+        $usuario->update();
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);
     }

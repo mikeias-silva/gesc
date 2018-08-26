@@ -50,11 +50,13 @@ class TransferenciaController extends Controller {
         $aux=0;
         $numeroAlunos=[];
         $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
-        where usuario.idUsuario = turma.idUsuario && turma.statusTurma = 1');
+        where usuario.id = turma.idUsuario && turma.statusTurma = 1');
+
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from gesc.`matriculas` where idturma='{$c->idturma}'");
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
+
 
         return view('transferenciaAlunos.lista_turma_transferencia')->with('listaTurmas', $listaTurmas)->with('numeroAlunos', $numeroAlunos);
     }
@@ -63,15 +65,17 @@ class TransferenciaController extends Controller {
         //echo($idturma);
         $ano= date("Y");
         $nomeTurma = DB::select("select turma.GrupoConvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
-        where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
+        where usuario.id = turma.idUsuario && turma.idturma='{$idturma}'");
         $aux=0;
         $numeroAlunos=[];
         $listaTurmas = DB::select("select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
-        where usuario.idUsuario = turma.idUsuario && turma.statusTurma = 1 && turma.idturma!='{$idturma}'");
+        where usuario.id = turma.idUsuario && turma.statusTurma = 1 && turma.idturma!='{$idturma}'");
+
         foreach($listaTurmas as $c){
             $aux = DB::select("select count(idturma) as numero from gesc.`matriculas` where idturma='{$c->idturma}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
+
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula, pessoa.datanascimento from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
         && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1

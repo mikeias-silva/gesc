@@ -18,7 +18,7 @@ class ControleFrequenciaController extends Controller {
         $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.statusTurma = 1');
         foreach($listaTurmas as $c){
-        $aux = DB::select("select count(idturma) as numero from gesc_dois.`matriculas` where idturma='{$c->idturma}'");
+        $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}'");
         array_push($numeroAlunos, $aux[0]->numero);
         }
 
@@ -36,7 +36,7 @@ class ControleFrequenciaController extends Controller {
         if(date("m")==1 && $mesSelect==12){
             $ano=$ano-1;
         }
-        $nomeTurma = DB::select("select turma.GrupoConvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+        $nomeTurma = DB::select("select turma.grupoconvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.idUsuario = turma.idUsuario && turma.idturma='{$idturma}'");
         
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa

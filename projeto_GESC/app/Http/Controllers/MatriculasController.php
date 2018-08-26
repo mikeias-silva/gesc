@@ -75,24 +75,36 @@ class MatriculasController extends Controller
         $matricula = Request::input('idmatricula');
 
 
-        $nomematricula = DB::select('select * from dadoscrianca where idmatricula
+        $dadosmatricula = DB::select('select * from identificacao where idmatricula
         = ?', array($matricula));
 
     
-
-        foreach($nomematricula as $nomemt){
-            $nascimento = Carbon::parse($nomemt->datanascimento)->format('d/m/y');
-            $logradouro = $nomemt->logradouro;
+        //return $dadosmatricula;
+        foreach($dadosmatricula as $identificacao){
+            $nascimentocrianca = Carbon::parse($nomemt->nascimentocrianca)->format('d/m/y');
+            $logradouro = $identificacao->logradouro;
+            $bairro = $identificacao->bairro;
+            $ncasa = $identificacao->ncasa;
+            $cep = $identificacao->cep;
+            $complemento = $identificacao->complementoendereco;
+            $nomecrianca = $identificacao->nomecrianca;
+            $cpfcrianca = $identificacao->cpfcrianca;
+            $rgcrianca = $identificacao->rgcrianca;
+            $emissorcrianca = $identificacao->emissorcrianca;
+            $sexocrianca = $identificacao->sexocrianca;
+            $escolacrianca = $identificacao->nomeescola;
+            $nomeresp1 = $identificacao->nomeresponsavel;
+        
         }
+            
         //return $nomematricula;
         $dados = [
-                'nome'=>$nomematricula,
-                'datanasc'=>$nascimento,
-                'logradouro'=>$logradouro
                 
+            'nascimentocrianca'=>$nascimento
             ];
-        
+        //return $dadosmatricula;
 
+        
 
         $impressao = PDF::loadView('matricula.impressao', $dados);
        return $impressao->stream('Matricula');
@@ -349,10 +361,10 @@ class MatriculasController extends Controller
             $responsavel2->idfamilia = $familia->id;
             $responsavel2->save();
 
-
+            
             $parentesco = new Parentesco();
-            $parentesco->idcrianca = $crianca->id;
-            $parentesco->idresponsavel = $responsavel2->id;
+            $parentesco->idcrianca = $crianca->idcrianca;
+            $parentesco->idresponsavel = $responsavel2->idresponsavel;
             $parentesco->save();
         }
 
@@ -446,7 +458,7 @@ class MatriculasController extends Controller
             $historico_matricula->dataativacao = $hoje;
             
         }elseif($matAtivas >= $essanumvaga){
-           $estaemespera = $matricula->statuscadastro = 'Espera';
+            $matricula->statuscadastro = 'Espera';
             $matricula->dataespera = $hoje;
                 
         }
@@ -468,19 +480,10 @@ class MatriculasController extends Controller
         if($matricula->statuscadastro = 'Espera'){
 
             return redirect()->action('MatriculasController@listaMatriculas');
-        }elseif($matricula->statuscadastro = 'Ativo'){
+        }else{
             $historico_matricula->idmatricula = $matricula->idmatricula;
             $historico_matricula->save(); 
-
-        
-            /*$oldMatricula = $matricula->id;
-
-            $oldMatricula->update(['idturma'=>Request::input('turma')]);
-       
             
-      
-        }*/
-
             $turmas = Turma::all();
             return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
             $nomecrianca)->with('idmatricula', $matricula->id);

@@ -25,7 +25,8 @@
     
         
     <div>
-    </br>
+    <br>
+    
 
     <form  action="/novaMatricula/adiciona" method="POST" 
     onsubmit="return validarMatricula(matriculaNova.nomecrianca, matriculaNova.datanascimentocrianca, matriculaNova.rgcrianca,
@@ -40,13 +41,13 @@
                     <div class="col-sm-8" >
                         <label>Nome<span id="campoobrigatorio">*</span></label>
                         <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
-                        <spam id="msgNomeCrianca"></spam>
+                        <span id="msgNomeCrianca"></span>
                     </div>
                         
                     <div class="col-sm-2">
                         <label>Nascimento</label>
                         <input type="date" class="form-control" name="datanascimentocrianca">
-                        <spam id="msgDataNascimento"></spam>
+                        <span id="msgDataNascimento"></span>
                     </div>
 
                     <div class="col-sm-2">
@@ -64,19 +65,19 @@
                     <div class="col-sm-4">
                         <label>RG</label>
                         <input type="text" class="form-control" id="rgcrianca" name="rgcrianca" onkeyup="mascara(this, Rg);" maxlength="9" autocomplete="off">
-                        <spam id="msgRg"></spam>
+                        <span id="msgRg"></span>
                     </div>
 
                     <div class="col-sm-4">
                         <label>CPF</label>
                         <input type="text" class="form-control" name="cpfcrianca" id="cpfcrianca" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
-                        <spam id="msgCpf"></spam>
+                        <span id="msgCpf"></span>
                     </div>
 
                     <div class="col-sm-4">
                         <label>CEP</label>
                         <input type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
-                        <spam id="msgCep"></spam>
+                        <span id="msgCep"></span>
                     </div>
                 </div>
             </div>
@@ -86,7 +87,7 @@
                     <div class="col-sm-5">
                         <label>Endereço</label>
                         <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
-                        <spam id="msgEndereco"></spam>
+                        <span id="msgEndereco"></span>
                     </div>
 
                     <div class="col-sm-1">
@@ -101,7 +102,7 @@
                     <div class="col-sm-4">
                         <label>Bairro</label>
                         <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
-                        <spam id="msgBairro"></spam>
+                        <span id="msgBairro"></span>
                     </div>
                 </div>
             </div>
@@ -190,7 +191,7 @@
     <!-- ABA RESPONSÁVEL -->
     <div class="tab-pane fade" id="responsavel" role="tabpanel" aria-labelledby="responsavel-tab">
         <div class="form">
-        </br>
+        <br>
         <h2>Responsável 01</h2>
 
         <div class="form-group">
@@ -198,13 +199,13 @@
                 <div class="col-sm-8">
                     <label>Nome</label>
                     <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
-                    <spam id="msgNomeResp1"></spam>
+                    <span id="msgNomeResp1"></span>
                 </div>
                 
                 <div class="col-sm-2">
                     <label>Data de Nascimento</label>
                     <input type="date" class="form-control" name="datanascimentoresp1">
-                    <spam id="msgDataResp1"></spam>
+                    <span id="msgDataResp1"></span>
                 </div>
 
                 <div class="col-sm-2">
@@ -222,13 +223,13 @@
                     <div class="col-sm-4">
                     <label>RG</label>
                     <input type="text" class="form-control" name="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
-                    <spam id="msgRgResp1"></spam>
+                    <span id="msgRgResp1"></span>
                 </div>
 
                 <div class="col-sm-4">
                     <label>CPF</label>
                     <input type="text" class="form-control" name="cpfresp1" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
-                    <spam id="msgCpfResp1"></spam>
+                    <span id="msgCpfResp1"></span>
                 </div>
 
                 <div class="col-sm-4">
@@ -280,12 +281,12 @@
                 <div class="col-sm-4">
                     <label>Telefone</label>
                     <input type="text" class="form-control" name="tel1resp1" id="tel1resp1"  onkeyup="mascara(this, Telefone);" maxlength="11">
-                    <spam id="msgTel1Resp1"></spam>
+                    <span id="msgTel1Resp1"></span>
                 </div>
                 <div class="col-sm-4">
                     <label>Telefone 2</label>
                     <input type="text" class="form-control" name="tel2resp1" id="tel2resp1" onkeyup="mascara(this, Telefone);" maxlength="11">
-                    <spam id="msgTel2Resp1"></spam>
+                    <span id="msgTel2Resp1"></span>
                 </div>
             </div>
         </div>
@@ -303,13 +304,13 @@
                 <div class="col-sm-8">
                     <label>Nome:</label>
                     <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
-                    <spam id="msgNomeResp2"></spam>
+                    <span id="msgNomeResp2"></span>
                 </div>
 
                 <div class="col-sm-2">
                     <label>Data de Nascimento</label>
                     <input type="date" class="form-control" name="datanascimentoresp2">
-                    <spam id="msgDataResp2"></spam>
+                    <span id="msgDataResp2"></span>
                 </div>
 
                 <div class="col-sm-2">
@@ -327,13 +328,13 @@
                 <div class="col-sm-4">
                     <label>RG</label>
                     <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9">
-                    <spam id="msgRgResp2"></spam>
+                    <span id="msgRgResp2"></span>
                 </div>
 
                 <div class="col-sm-4">
                     <label>CPF</label>
                     <input type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
-                    <spam id="msgCpfResp2"></spam>
+                    <span id="msgCpfResp2"></span>
                 </div>
                 
                 <div class="col-sm-4">
@@ -384,12 +385,12 @@
                 <div class="col-sm-4">
                     <label>Telefone 1</label>
                     <input type="tel" class="form-control" name="tel1resp2" id="tel1resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
-                    <spam id="msgTel1Resp2"></spam>
+                    <span id="msgTel1Resp2"></span>
                 </div>
                 <div class="col-sm-4">
                     <label>Telefone 2</label>
                     <input type="tel" class="form-control" name="tel2resp2" id="tel2resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
-                    <spam id="msgTel2Resp2"></spam>
+                    <span id="msgTel2Resp2"></span>
                 </div>
             </div>
         </div>
@@ -403,13 +404,13 @@
     <!-- ABA FAMILIA -->
     <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
         
-        </br>
+        <br>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-8">
                     <label>Número do NIS</label>
                     <input type="text" class="form-control" name="numnis">
-                    <spam id="msgNumNis"></spam>
+                    <span id="msgNumNis"></span>
                 </div>
                 <div class="col-sm-4">
                     <label>Moradia</label>
@@ -421,7 +422,7 @@
                 </div>
             </div>
         </div>
-        </br>
+        <br>
 
         
         <!-- radio buttons -->

@@ -41,7 +41,8 @@
                         <td>{{ $matA->nomeTurma() }}</td>
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
-                        <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
+                        <td>
+                            <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
                             <a href="/inativarMatricula" class="text text-danger" 
                             data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">inativar</a>
                             <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />

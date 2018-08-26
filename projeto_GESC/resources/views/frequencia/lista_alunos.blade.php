@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 <h1 class="text">Controle de Frequência</h1>
-<h3 class="text">Turma: {{$nomeTurma[0]->GrupoConvivencia}} - Turno:
+<h3 class="text">Turma: {{$nomeTurma[0]->grupoconvivencia}} - Turno:
     @if($nomeTurma[0]->Turno=="m")
         <td>Manhã</td>
     @else 
@@ -9,11 +9,11 @@
     @endif
     - Educador: {{ $nomeTurma[0]->Nome }}
 </h3>
-</br>
+<br>
 <form class="form" action="/lanca_frequencia" method="post" name="lancaFrequencia" id="lancaFrequencia"
         onsubmit="return validaFaltas({{$dias_funcionamento[0]->numero}}, 'lancaFrequencia');">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <div class="row">
+    <div class="row">   
     <div class="col-sm-2">
         <h5>Mês/Ano</h5>
             <select class="form-control" onchange="location=this.value;" name="listaData" id="listaData">
@@ -43,17 +43,17 @@
     </div>
     </div>
 @if($dias_funcionamento[0]->numero=="")
-    </br>
+    <br>
     <div class="alert alert-danger">
         Não é possível realizar o lançamento de faltas sem antes ter informado o número de fias de funcionamento do período selecinado.
         Por favor vá até a aba de instituição e verifique.
     </div>
 @endif
 
-<spam id="msgCampoVazio"></spam>
-<spam id="msgFaltasMaior"></spam>
+<span id="msgCampoVazio"></span>
+<span id="msgFaltasMaior"></span>
 
-    </br>
+    <br>
     @if(empty($listaAlunos))
         <div class="alert alert-danger">
             Esta turma não possui nenhum aluno matriculado referente ao período informado.
@@ -126,7 +126,7 @@
             } 
         }
         if(auxUm>0){
-            document.getElementById("msgCampoVazio").innerHTML="<font color='red'>Deve ser informando o número de faltas de todos os alunos listados, por favor verifique</br></font>";
+            document.getElementById("msgCampoVazio").innerHTML="<font color='red'>Deve ser informando o número de faltas de todos os alunos listados, por favor verifique<br></font>";
             permissao = false;
         } else {
                 document.getElementById("msgCampoVazio").innerHTML="<font color='red'></font>";
@@ -141,7 +141,7 @@
         }
 
         if(auxDois>0){
-            document.getElementById("msgFaltasMaior").innerHTML="<font color='red'>O número de faltas não pode ultrapassar o número de dias de funcionamento, por favor verifique </br></font>";
+            document.getElementById("msgFaltasMaior").innerHTML="<font color='red'>O número de faltas não pode ultrapassar o número de dias de funcionamento, por favor verifique <br></font>";
             permissao = false;
         } else {
             document.getElementById("msgFaltasMaior").innerHTML="<font color='red'></font>";

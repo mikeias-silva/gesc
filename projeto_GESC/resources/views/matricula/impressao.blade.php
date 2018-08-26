@@ -11,7 +11,7 @@
         <div >
            
             
-                <label>NOME: {{  $dados }}</label>
+                <label>NOME: {{   }}</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <label>DATA DE NASCIMENTO:</label>
             
@@ -24,6 +24,9 @@
         </div>
     </div>
     
+    @foreach ($responsaveis as $responsavel)
+           <label> {{ $responsavel->nomeresponsavel }}</label>
+    @endforeach
 
     
 @stop

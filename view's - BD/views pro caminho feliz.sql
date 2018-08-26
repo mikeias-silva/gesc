@@ -4,7 +4,8 @@ select
 	re.nomepessoa nomeresponsavel, re.datanascimento nascimentoresponsavel,
     re.cpf cpfresponsavel, re.rg rgresponsavel, 
     re.emissorrg emissorresponsavel, re.sexo sexoresponsavel,
-    parentesco.idresponsavel, parentesco.idcrianca
+    parentesco.idresponsavel, parentesco.idcrianca,
+    responsavel.idfamilia
 from 
 	parentesco, pessoa re, responsavel, familia, cras, crianca
 where
@@ -44,8 +45,8 @@ drop view if exists dadoscrianca;
 create view dadoscrianca as 
 select 
 	crianca.idcrianca, pessoa.nomepessoa nomecrianca, pessoa.datanascimento nascimentocrianca, 
-	pessoa.logradouro, pessoa.bairro, pessoa.ncasa, pessoa.complementoendereco,
-	pessoa.cpf cpfcrianca, pessoa.rg crianca, pessoa.sexo sexocrianca, 
+	pessoa.logradouro, pessoa.bairro, pessoa.ncasa, pessoa.complementoendereco, pessoa.cep,
+	pessoa.cpf cpfcrianca, pessoa.rg rgcrianca, pessoa.sexo sexocrianca, 
     pessoa.emissorrg emissorcrianca, matriculas.idmatricula,
 	escola.nomeescola
 from 

@@ -26,7 +26,6 @@
         
     <div>
     <br>
-    
 
     <form  action="/novaMatricula/adiciona" method="POST" 
     onsubmit="return validarMatricula(matriculaNova.nomecrianca, matriculaNova.datanascimentocrianca, matriculaNova.rgcrianca,

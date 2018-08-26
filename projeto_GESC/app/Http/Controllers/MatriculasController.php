@@ -72,39 +72,79 @@ class MatriculasController extends Controller
         $hoje = Carbon::now()->year;
     
 
-        $matricula = Request::input('idmatricula');
+        $idmatricula = Request::input('idmatricula');
 
 
-        $dadosmatricula = DB::select('select * from dadoscrianca where idmatricula
-        = ?', array($matricula));
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
+        = ?', array($idmatricula));
 
-    
-        //return $dadosmatricula;
+        foreach ($dadosmatricula as $dadosmt) {
+            $dadosmt->idcrianca;
+            $dadosmt->datamatricula;
+            $dadosmt->serieescolar;
+            $dadosmt->grupoconvivencia;
+            $dadosmt->idmatricula;
+
+        }
+
+        $dadoscrianca = DB::select('select * from dadoscrianca where idcrianca = ?', [$dadosmt->idcrianca]);
+
+        foreach ($dadoscrianca as $dadoscr) {
+            $dadoscr->nomecrianca;
+            $dadoscr->nascimentocrianca;
+            $dadoscr->logradouro;
+            $dadoscr->bairro;
+            $dadoscr->ncasa;
+            $dadoscr->complementoendereco;
+            $dadoscr->cpfcrianca;
+            $dadoscr->rgcrianca;
+            $dadoscr->sexocrianca;
+            $dadoscr->emissorcrianca;
+            $dadoscr->idmatricula;
+            $dadoscr->nomeescola;
+        }
+
+
+        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
+        
+        foreach($parentes as $parente){
+            $parente->nomeresponsavel;
+        }
+
+        //return ;
+
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        
+        foreach($dadosfamilia as $dadosfm){
+            $dadosfm->idfamilia;
+            $dadosfm->arearisco;
+            $dadosfm->bolsafamilia;
+            $dadosfm->moradia;
+            $dadosfm->numnis;
+            $dadosfm->tipohabitacao;
+            $dadosfm->nomecras;
+        }
+        
         foreach($dadoscrianca as $dadoscrianca){
-            $nascimentocrianca = Carbon::parse($nomemt->nascimentocrianca)->format('d/m/y');
+            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
             $logradouro = $dadoscrianca->logradouro;
             $bairro = $dadoscrianca->bairro;
             $ncasa = $dadoscrianca->ncasa;
-            $cep = $dadoscrianca->cep;
-            $complemento = $dadoscrianca->complementoendereco;
-            $nomecrianca = $dadoscrianca->nomecrianca;
-            $cpfcrianca = $dadoscrianca->cpfcrianca;
-            $rgcrianca = $dadoscrianca->rgcrianca;
-            $emissorcrianca = $dadoscrianca->emissorcrianca;
-            $sexocrianca = $dadoscrianca->sexocrianca;
-            $escolacrianca = $dadoscrianca->nomeescola;
-            $nomeresp1 = $dadoscrianca->nomeresponsavel;
+           
         
         }
             
         //return $nomematricula;
         $dados = [
-                
-            'nascimentocrianca'=>$nascimento
+            'responsaveis'=>$parentes,
+            'nascimentocrianca'=>$nascimentocrianca,
+            'dadoscrianca'=>$dadoscrianca,
+            'dadosfamilia'=>$dadosfamilia,
+            'dadosmatricula'=>$dadosmatricula
             ];
         //return $dadosmatricula;
 
-        
+        return $dados;
 
         $impressao = PDF::loadView('matricula.impressao', $dados);
        return $impressao->stream('Matricula');

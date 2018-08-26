@@ -91,7 +91,7 @@
                     <label>Educador</label>
                     <select class="form-control" name="idUsuario" id="idUsuario">
                         @foreach($educador as $e)
-                        <option value="{{ $e->idusuario }}">{{ $e->nome }}</option>
+                        <option value="{{ $e->id }}">{{ $e->nome }}</option>
                         @endforeach
                     </select>
                     <div class="modal-footer">
@@ -210,7 +210,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
-                    <input name="grupoconvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
+                    <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo_edit"></label>
                     </br>
                     <label>Turno</label>
@@ -219,9 +219,9 @@
                         <option value="t" id="tarde">Tarde</option>
                     </select>
                     <label>Educador</label>
-                  <select class="form-control" name="educador" id="educador">
+                  <select class="form-control" name="idUsuario" id="idUsuario">
                         @foreach($educador as $e)
-                        <option value="{{ $e->idusuario }}">{{ $e->nome }}</option>
+                        <option value="{{ $e->id }}">{{ $e->nome }}</option>
                         @endforeach
                   </select>
 

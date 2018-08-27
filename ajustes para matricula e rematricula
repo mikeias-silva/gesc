@@ -1,0 +1,56 @@
+Atualmente
+
+pega todas as vagas, compara se a idade minima e idade maxima da vaga
+comparando com a idade que esta cadastrando atualmente assim pega a vaga e sai do if
+
+depois seta qual o id da vaga na matricula que pegou dentro do if,
+depois soma todas as matriculas ativas que estão no mesmo id da vaga
+
+em seguida faz uma condição se a soma das matriculas ativas que estão nessa vaga é menor que o num de cagas disponiveis
+se sim vai para ativo
+caso contrário entra em espera 
+
+condição para finalizar a matricula
+
+se estiver em espera volta para a listagem 
+se o status estiver ativo vai para escolher a turma
+--------------------------------------------------------------
+
+
+Mudar para =>
+
+pega todas as vagas ativas(as ativas serão todas do ano atual)
+
+segue o mesmo esquema
+
+na listagem de matriculas ativas adicionar condição para listar com as vagas ativas
+
+
+-------------------------------------------------------------
+
+Rematricula
+pega todos os dados com as views ja feita 
+selecionar as vagas do ano sequente e fazer a mesma comparação da matricula 
+
+EDITAR MATRICULA
+pega os dados das views dadoscrianca, dadosfamilia, parentes, dadosmatricula
+escolher os campos editaveis 
+
+mantendo o status da matricula 
+
+
+ALTERAR STATUS 
+Ativa -> Inativo
+nenhuma condição
+
+Espera-> Ativo
+apenas o primeiro da lista opção de ativar 
+compara se há vaga disponível, mesma condição da matricula
+pega a idade da crianca pela view dadoscrianca
+
+Inativo-> Ativo
+Compara se há vaga se tiver escolhe turma caso não vai para 
+a listagem de colocando em espera
+mesma logica da matricula
+pegando a view dadosmatricula e dadoscrianca
+

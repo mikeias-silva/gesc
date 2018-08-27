@@ -144,8 +144,8 @@ class MatriculasController extends Controller
             ];
         //return $dadosmatricula;
 
-        return $dados;
-
+        //return $dadosfamilia;
+        
         $impressao = PDF::loadView('matricula.impressao', $dados);
        return $impressao->stream('Matricula');
     }

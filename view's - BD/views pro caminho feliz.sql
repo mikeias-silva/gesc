@@ -4,8 +4,13 @@ select
 	re.nomepessoa nomeresponsavel, re.datanascimento nascimentoresponsavel,
     re.cpf cpfresponsavel, re.rg rgresponsavel, 
     re.emissorrg emissorresponsavel, re.sexo sexoresponsavel,
+    
     parentesco.idresponsavel, parentesco.idcrianca,
-    responsavel.idfamilia
+    
+    responsavel.idfamilia, responsavel.estadocivil,
+    responsavel.localtrabalho, responsavel.profissao,
+    responsavel.escolaridade, responsavel.telefone,
+    responsavel.telefone2, responsavel.outrasobs
 from 
 	parentesco, pessoa re, responsavel, familia, cras, crianca
 where
@@ -21,6 +26,7 @@ select
 	familia.idfamilia, familia.arearisco, 
     familia.bolsafamilia, familia.moradia,
     familia.numnis, familia.tipohabitacao,
+    familia.beneficiopc,
     cras.nomecras
 from 
 	familia, cras
@@ -48,6 +54,7 @@ select
 	pessoa.logradouro, pessoa.bairro, pessoa.ncasa, pessoa.complementoendereco, pessoa.cep,
 	pessoa.cpf cpfcrianca, pessoa.rg rgcrianca, pessoa.sexo sexocrianca, 
     pessoa.emissorrg emissorcrianca, matriculas.idmatricula,
+	crianca.obssaude,
 	escola.nomeescola
 from 
 	matriculas, crianca, pessoa, escola

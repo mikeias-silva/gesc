@@ -2,12 +2,12 @@
 @section('conteudo')
 <h1 class="text">Controle de Frequência</h1>
 <h3 class="text">Turma: {{$nomeTurma[0]->grupoconvivencia}} - Turno:
-    @if($nomeTurma[0]->Turno=="m")
+    @if($nomeTurma[0]->turno=="M")
         <td>Manhã</td>
     @else 
         <td>Tarde</td>
     @endif
-    - Educador: {{ $nomeTurma[0]->Nome }}
+    - Educador: {{ $nomeTurma[0]->nome }}
 </h3>
 <br>
 <form class="form" action="/lanca_frequencia" method="post" name="lancaFrequencia" id="lancaFrequencia"

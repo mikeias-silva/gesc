@@ -77,19 +77,19 @@
                   <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 
                     <label>Grupo de Convivência</label>
-                    <input name="GrupoConvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
+                    <input name="grupoconvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo"></label>
                     <br>
                     <label>Turno</label>
                    <select class="form-control" name="turno" id="turno" value="">
-                       <option value="1">Manhã</option>
-                       <option value="2">Tarde</option> 
+                       <option value="M">Manhã</option>
+                       <option value="T">Tarde</option> 
                    </select>
 
                     <input type="hidden" name="statusTurma" id="statusTurma" value="1">
 
                     <label>Educador</label>
-                    <select class="form-control" name="idUsuario" id="idUsuario">
+                    <select class="form-control" name="idusuario" id="idusuario">
                         @foreach($educador as $e)
                         <option value="{{ $e->id }}">{{ $e->nome }}</option>
                         @endforeach

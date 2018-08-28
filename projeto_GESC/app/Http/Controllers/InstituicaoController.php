@@ -15,7 +15,7 @@ class InstituicaoController extends Controller
 
         $instituicao = instituicao::all();
         $ano = date('Y');
-        $diasFuncionamento = DB::select('select * from dias_funcionamento where idano=2018');
+        $diasFuncionamento = DB::select("select * from dias_funcionamento where idano='{$ano}'");
 
         // SELECT CIDADE E ESTADO ASSOCIADO A INSTITUIÇÃO
      //   select nomeCidade, siglaEstado from cidade, estado join instituicao 

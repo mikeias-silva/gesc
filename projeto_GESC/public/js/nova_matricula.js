@@ -1,4 +1,4 @@
- /*   function validarMatricula(nomeCrianca, dataNascimentoCrianca, rgCrianca, cpfCrianca, cep, endereco, bairro, nomeResp1, dataNascResp1,
+    function validarMatricula(nomeCrianca, dataNascimentoCrianca, rgCrianca, cpfCrianca, cep, endereco, bairro, nomeResp1, dataNascResp1,
                                 rgResp1, cpfResp1, salarioRep1, tel1Resp1, tel2Resp1, nomeResp2, dataNascResp2, rgResp2, cpfResp2,
                                 salarioResp2, tel1Resp2, tel2Resp2, numNis) {
         var permissao = true;
@@ -336,7 +336,7 @@
         //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         return v;
     }
-*//*}
+*/}
     function id( el ){
         return document.getElementById( el );
     }
@@ -385,4 +385,4 @@
             mascara( this, Rg );
         }
     }
-    */
+    

@@ -4,59 +4,43 @@
 <h1 class="text">Dashboard</h1>
 <hr></hr>
 
-<h6>Número de matriculas por idade</h6>
-<table class="table table-hover">
-    <thead class="thead">
+<h4>Número de matriculas ativas por idade</h4>
+<table class="table table-bordered">
+    <thead>
         <tr>
             <th>Idade:</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>10</th>
-            <th>11</th>
-            <th>12</th>
-            <th>13</th>
-            <th>14</th>
-            <th>15</th>
-            <th>16</th>
-            <th>17</th>
+            <th class="text-center">1</th>
+            <th class="text-center">2</th>
+            <th class="text-center">3</th>
+            <th class="text-center">4</th>
+            <th class="text-center">5</th>
+            <th class="text-center">6</th>
+            <th class="text-center">7</th>
+            <th class="text-center">8</th>
+            <th class="text-center">9</th>
+            <th class="text-center">10</th>
+            <th class="text-center">11</th>
+            <th class="text-center">12</th>
+            <th class="text-center">13</th>
+            <th class="text-center">14</th>
+            <th class="text-center">15</th>
+            <th class="text-center">16</th>
+            <th class="text-center">17</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
-            <th>Número de Alunos:</th>
+            <td><strong>Número de Alunos:</strong></td>
             @for($count=0; $count<17; $count++)
-                <th>{{$matriculaIdade[$count]}}</th>
+                <td class="text-center">{{$matriculaIdade[$count]}}</td>
             @endfor
         </tr> 
-    </thead>
+    </tbody>
     </table>
-
-<h6>Aniversários do Mês</h6>
-<table class="table table-hover">
-    <thead class="thead">
-        <tr>
-            <th>Nome</th>
-            <th>Turma</th>
-            <th>Data de Nascimento</th>
-           
-        </tr> 
-        @foreach($aniversarioMes as $ani)
-        <tr>
-            <td>{{$ani->nomepessoa}}</td>
-            <td>{{$ani->GrupoConvivencia}}</td>
-            <td>{{$ani->datanascimento}}</td>
-        </tr>
-        @endforeach
-</thead>
-</table>
-
-<h6>Vagas</h6>
-<table class="table table-hover">
+<div class="row center">
+<div class="col-md-6 centered">
+<h4>Vagas</h4>
+<table class="table table-bordered table-striped">
     <thead class="thead">
         <tr>
             <th>Faixa etária</th>
@@ -73,9 +57,9 @@
         @foreach($vagas as $v)
         <tr>
             <td>De {{ $v->idademin }} até {{ $v->idademax }} anos</td>
-            <td>{{ $v->numvaga }}</td>
-            <td>{{$vagaOcupada[$cont]}}</td>
-            <td>{{$v->numvaga-$vagaOcupada[$cont]}}</td>
+            <td class="text-center">{{ $v->numvaga }}</td>
+            <td class="text-center">{{$vagaOcupada[$cont]}}</td>
+            <td class="text-center">{{$v->numvaga-$vagaOcupada[$cont]}}</td>
        
         </tr>
         <?php
@@ -84,4 +68,31 @@
         @endforeach
     </tbody>
 </table>
+</div>
+</div>
+
+<h4>Aniversários do Mês</h4>
+<table class="table table-bordered table-striped">
+    <thead class="thead">
+        <tr>
+            <th>Nome</th>
+            <th>Turma</th>
+            <th>Idade</th>
+            <th>Data de Nascimento</th>
+           
+        </tr> 
+    </thead>
+    <tbody>
+        @foreach($aniversarioMes as $ani)
+        <tr>
+            <td>{{$ani->nomepessoa}}</td>
+            <td>{{$ani->GrupoConvivencia}}</td>
+            <td>{{$ani->idade}}</td>
+            <td>{{$ani->datanascimento}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+
 @stop

@@ -85,3 +85,8 @@ label{
 #tituloimpressao{
     padding-bottom: 80px;
 }
+
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+}

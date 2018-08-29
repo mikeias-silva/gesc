@@ -29,7 +29,7 @@ class DashboardController extends Controller
             array_push($matriculaIdade, $aux[0]->numroIdade);
         }
         $mes= date("m");
-        $aniversarioMes = DB::select("select pessoa.nomepessoa, DATE_FORMAT(pessoa.datanascimento, '%d/%m/%Y') as datanascimento, turma.GrupoConvivencia from matriculas, crianca, pessoa , turma
+        $aniversarioMes = DB::select("select pessoa.nomepessoa, DATE_FORMAT(pessoa.datanascimento, '%d/%m/%Y') as datanascimento, YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(pessoa.datanascimento))) AS idade, turma.GrupoConvivencia from matriculas, crianca, pessoa , turma
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa && matriculas.statuscadastro=1
         && matriculas.idturma=turma.idturma && EXTRACT(MONTH FROM pessoa.datanascimento)='{$mes}';");
         

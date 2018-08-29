@@ -517,7 +517,7 @@ class MatriculasController extends Controller
     */
         //return $idade;
 
-        if($matricula->statuscadastro = 'Espera'){
+        if($matricula->statuscadastro == 'Espera'){
 
             return redirect()->action('MatriculasController@listaMatriculas');
         }else{
@@ -526,7 +526,7 @@ class MatriculasController extends Controller
             
             $turmas = Turma::all();
             return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
-            $nomecrianca)->with('idmatricula', $matricula->id);
+            $nomecrianca)->with('idmatricula', $matricula->idmatricula);
         }
         
     }

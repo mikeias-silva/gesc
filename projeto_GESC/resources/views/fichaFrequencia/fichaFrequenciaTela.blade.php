@@ -5,10 +5,11 @@
 <hr>
 <spam id="campoObrigatorio"></spam>
 <spam id="cpfInvalido"></spam>
-<form class="form" action="" method="post" name="imprimeFicha" id="imprimeFicha"
+<form class="form" action="/fichaFrequencia/imprimir" method="post" name="imprimeFicha" id="imprimeFicha"
     onsubmit = "return validaDados(imprimeFicha.nomeresponsaveltec, imprimeFicha.cpfresponsavel, imprimeFicha.profissao, imprimeFicha.visitasdomiciliares,
     imprimeFicha.atendimentosgrupo, imprimeFicha.reuniaoacolhimento, imprimeFicha.encaminhamentos, imprimeFicha.atendimentosindividuais,
     imprimeFicha.encaminhamentoprivada, imprimeFicha.planoelaborado);">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="form-group">
         <div class="row">
             <div class="col-sm-2">
@@ -232,7 +233,7 @@
             document.getElementById("campoObrigatorio").innerHTML="";
         }
         //var tesTelefone = telefone.value;
-        return permissao;
+        return true;
     }
 
     function validaCPF(cpf){

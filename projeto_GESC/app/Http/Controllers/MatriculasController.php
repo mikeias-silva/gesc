@@ -645,13 +645,98 @@ class MatriculasController extends Controller
             $matricula->update();
             
         }elseif($matAtivas >= $essanumvaga){
-            return redirect()->action('MatriculasController@listaMatriculas')->with('');
+            return redirect()->action('MatriculasController@listaMatriculas');
                 
         }
 
 
         
 
+
+    }
+
+    public function rematricula($idmatricula){
+
+        //$idmatricula = Request::input('idmatricula');
+
+       // return $idmatricula;
+
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
+        = ?', array($idmatricula));
+
+        foreach ($dadosmatricula as $dadosmt) {
+            $dadosmt->idcrianca;
+            $dadosmt->datamatricula;
+            $dadosmt->serieescolar;
+            $dadosmt->grupoconvivencia;
+            $dadosmt->idmatricula;
+
+        }
+
+        $dadoscrianca = DB::select('select * from dadoscrianca where idcrianca = ?', [$dadosmt->idcrianca]);
+
+        foreach ($dadoscrianca as $dadoscr) {
+            $dadoscr->nomecrianca;
+            $dadoscr->nascimentocrianca;
+            $dadoscr->logradouro;
+            $dadoscr->bairro;
+            $dadoscr->ncasa;
+            $dadoscr->complementoendereco;
+            $dadoscr->cpfcrianca;
+            $dadoscr->rgcrianca;
+            $dadoscr->sexocrianca;
+            $dadoscr->emissorcrianca;
+            $dadoscr->idmatricula;
+            $dadoscr->nomeescola;
+        }
+
+
+        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
+        
+        foreach($parentes as $parente){
+            $parente->nomeresponsavel;
+            $parente->idfamilia;
+        }
+
+        //return ;
+
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        
+        foreach($dadosfamilia as $dadosfm){
+            $dadosfm->idfamilia;
+            $dadosfm->arearisco;
+            $dadosfm->bolsafamilia;
+            $dadosfm->moradia;
+            $dadosfm->numnis;
+            $dadosfm->tipohabitacao;
+            $dadosfm->nomecras;
+        }
+        
+        foreach($dadoscrianca as $dadoscrianca){
+            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
+            $logradouro = $dadoscrianca->logradouro;
+            $bairro = $dadoscrianca->bairro;
+            $ncasa = $dadoscrianca->ncasa;
+           
+        
+        }
+            
+        $cras = Cras::all();
+        $pprioritario = PublicoPrioritario::all();
+        $escola = Escola::all();
+        //return $nomematricula;
+        $dados = [
+            'responsaveis'=>$parentes,
+            'nascimentocrianca'=>$nascimentocrianca,
+            'dadoscrianca'=>$dadoscrianca,
+            'dadosfamilia'=>$dadosfamilia,
+            'dadosmatricula'=>$dadosmatricula,
+            'cras'=>$cras,
+            'pprioritario'=>$pprioritario,
+            'escola'=>$escola    
+        ];
+
+        return view('matricula.rematricula', $dados);
 
     }
 }

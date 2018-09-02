@@ -69,7 +69,7 @@ class ControleFrequenciaController extends Controller {
         }else if($mesSelect==8){
             $dias_funcionamento = DB::select("select ago as numero from dias_funcionamento where idano='{$ano}'");
         }else if($mesSelect==9){
-            $dias_funcionamento = DB::select("select set as numero from dias_funcionamento where idano='{$ano}'");
+            $dias_funcionamento = DB::select("select setembro as numero from dias_funcionamento where idano='{$ano}'");
         }else if($mesSelect==10){
             $dias_funcionamento = DB::select("select out as numero from dias_funcionamento where idano='{$ano}'");
         }else if($mesSelect==11){

@@ -41,6 +41,14 @@ main {
     margin-top: 35px;
 }
 
+#meiomenu{
+    background-color: #343a40 !important;
+    padding-top: .5px;
+    padding-bottom: .5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 #btn_instituicao {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -90,3 +98,14 @@ label{
     margin: 0 auto !important;
     float: none !important;
 }
+
+.fa{
+    color: black;
+}
+/*
+.active {
+    background:green
+}
+.inactive {
+    background:red
+}*/

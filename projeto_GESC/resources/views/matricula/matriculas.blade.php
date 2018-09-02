@@ -44,8 +44,12 @@
                         <td>
                             <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
                             <a href="/inativarMatricula" class="text text-danger" 
-                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">inativar</a>
+                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class=" text text-danger fa fa-minus fa-2x"></i></a>
                             <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
+                            @if( empty($matA->idturma))
+                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-2x"></i>
+                            </a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach 
@@ -240,6 +244,43 @@
     </div>
 </div>
 
+
+<!-- Modal  se aluno estiver sem turma-->
+<div class="modal fade" id="turma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center" id="exampleModalCenterTitle">Escolher turma</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            
+            <form action="/associaturma" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
+
+                    <h5>Escolha uma turma</h5>
+                    <select for="" class="form-control" name="idturma" id="">
+                        @foreach ($turmas as $turma)
+                           <option value="{{ $turma->idturma }}">{{ $turma->grupoconvivencia }}</option>
+                        @endforeach
+                    </select>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success" >Confirmar</button>
+            
+                    </div>
+                </div>
+            </form>
+            
+            
+        </div>
+    </div>
+</div>
+
 <form action="/novaMatricula">
     <button class="btn btn-secondary">Nova Matrícula</button>
 </form>
@@ -250,7 +291,7 @@
 
 <script>
 
-        $(document).ready(function () {
+    $(document).ready(function () {
     $('#dtAtivas').DataTable();
     $('.dataTables_length').addClass('bs-select');
   });
@@ -261,7 +302,7 @@
   });
       
        
-       $(document).ready(function () {
+    $(document).ready(function () {
     $('#dtEspera').DataTable();
     $('.dataTables_length').addClass('bs-select');
   });
@@ -341,6 +382,19 @@
         var modal = $(this)
         modal.find('.modal-body #idmatricula').val(id);
     
-    });</script>
+    });
+</script>
+
+<script>
+    $('#turma').on('show.bs.modal', function (event) {
+        console.log('modal opened');
+        var button = $(event.relatedTarget) 
+        var id = button.data('myid')
+        var modal = $(this)
+        modal.find('.modal-body #idmatricula').val(id);
+        console.log(id);
+    
+    });
+</script>
 
 @stop

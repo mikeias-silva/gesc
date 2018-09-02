@@ -1,8 +1,9 @@
 @extends('layout.principal')
 
 @section('conteudo')
+
 <h1 class="text">Dashboard</h1>
-<hr></hr>
+
 
 <h4>Número de matriculas ativas por idade</h4>
 <table class="table table-bordered">

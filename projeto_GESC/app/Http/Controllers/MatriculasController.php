@@ -48,8 +48,10 @@ class MatriculasController extends Controller
         $matAtivas = Matricula::matriculasAtiva();
         $matInativas = Matricula::matriculasInativas();
         $matEspera = Matricula::matriculasEspera();
+        $turmas = Turma::all();
+
         return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
-        ->with('matEspera', $matEspera);
+        ->with('matEspera', $matEspera)->with('turmas', $turmas);
        
       //return view('matricula.matriculas');
     }
@@ -531,12 +533,21 @@ class MatriculasController extends Controller
         
     }
 
+    public function turmaVazia(){
+        $idmatricula = Matricula::find(Request::input('idmatricula'));
+        $turma = Request::input('idturma');
+        
+        //return Request::all();
+        $idmatricula->update(['idturma'=> $turma]);
+
+        return redirect()->action('MatriculasController@listaMatriculas');
+    }
     
     public function matriculaEmTurma(){
         $newMatricula = Matricula::find(Request::input('idmatricula'));
         $turma = Request::input('idturma');
 
-        $newMatricula->update(['idturma'=> $turma]);
+        $newMatricula->update(['idturma'=>$turma]);
 
         return redirect()->action('MatriculasController@listaMatriculas');
     }

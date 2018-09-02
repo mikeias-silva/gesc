@@ -42,14 +42,15 @@
                         <td>{{ $matA->idadeMatricula() }}</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
-                            <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
+                            <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-lg"></i></a>
                             <a href="/inativarMatricula" class="text text-danger" 
-                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class=" text text-danger fa fa-minus fa-2x"></i></a>
+                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class=" text text-danger fa fa-minus fa-lg"></i></a>
                             <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
                             @if( empty($matA->idturma))
-                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-2x"></i>
+                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-lg"></i>
                             </a>
                             @endif
+                            <a href="/rematricula/{{ $matA->idmatricula }}">rematricula</a>
                         </td>
                     </tr>
                     @endforeach 
@@ -84,7 +85,7 @@
                             <td>{{ $matI->nomeTurma() }}</td>
                             <td>{{ $matI->idadeMatricula() }}</td>
                             <td>{{ $matI->anoMatricula() }}</td>
-                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
+                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print "></i></a>
                                 <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
 
                             </td>
@@ -124,7 +125,7 @@
                             <td>{{ $matE->anoMatricula() }}</td>
                             <td>
                                 
-                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
+                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="fa fa-print "></i></a>
                                 
                                 <a href="/ativarMatricula" class="text text-danger" 
                                 data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>

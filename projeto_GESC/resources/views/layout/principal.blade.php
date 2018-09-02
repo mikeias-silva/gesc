@@ -56,59 +56,59 @@
 </head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><h3>GESC</h3></a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard"><h3>GESC</h3></a>
         </nav>
         @yield('login')
         <div class="container-fluid">
             <div class="row">
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column centered">
                             <li class="nav-item">
-                                <a class="nav-link btn-light" id="btnmenu" href="dashboard">
-                                        <i class="fa fa-home fa-2x"></i> 
+                                <a class="nav-link btn-light" id="btnmenu" href="/dashboard">
+                                        <i class="fa fa-home fa-lg"></i> 
                                         Página inicial
                                     
                                 </a>
                             </li>
                          
                             <li class="nav-item">
-                                <a class="nav-link btn-light" id="btnmenu" href="matriculas">
-                                        <i class="fa fa-address-book fa-2x"></i>
+                                <a class="nav-link btn-light" id="btnmenu" href="/matriculas">
+                                        <i class="fa fa-book fa-lg"></i>
                                         Matriculas
                                 </a>
                             </li>
                   
                              <li class="nav-item">
-                                <a class="nav-link btn-light" href="instituicao">
-                                        <i class="fa fa-bank fa-2x"></i>
+                                <a class="nav-link btn-light" href="/instituicao">
+                                        <i class="fa fa-bank fa-lg"></i>
                                          Instituição
                                     
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/cras">
-                                    <i class="fa fa-university fa-2x"></i>
+                                    <i class="fa fa-university fa-lg"></i>
                                      CRAS/CREAS
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/turmas">
-                                    <i class="fa fa-teacher fa-2x"></i>
+                                    <i class="fa fa-teacher fa-lg"></i>
                                      Turmas
                                    
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/usuarios">
-                                    <i class="fa fa-user-plus fa-2x" ></i>
+                                    <i class="fa fa-user-plus fa-lg" ></i>
                                      Gerenciamento de Usuário
                                   
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/vagas">
-                                    <i class="fa fa-user-plus fa-2x" ></i>
+                                    <i class="fa fa-user-plus fa-lg" ></i>
                                      Gerenciamento de Vagas
                                    
                                 </a>
@@ -116,7 +116,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/controle_frequencia">
-                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                    <i class="fa fa-graduation-cap fa-lg" ></i>
                                      Controle de Frequência
                                    
                                 </a>
@@ -124,7 +124,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/transferencia_alunos">
-                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                    <i class="fa fa-graduation-cap fa-lg" ></i>
                                      Transferencia de Alunos
                                    
                                 </a>
@@ -132,7 +132,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link btn-light " href="/fichaFrequencia">
-                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                    <i class="fa fa-graduation-cap fa-lg" ></i>
                                      Ficha de Frequência
                                     
                                 </a>
@@ -140,7 +140,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="/logout">
-                                    <i class="fa fa-sign-out fa-2x" ></i>
+                                    <i class="fa fa-sign-out fa-lg" ></i>
                                      Sair
                                   
                                 </a>

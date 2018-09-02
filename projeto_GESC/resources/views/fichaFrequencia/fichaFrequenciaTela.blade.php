@@ -3,8 +3,8 @@
 
 <h1 class="text">Imprimir Ficha de Frequência</h1>
 <hr>
-<spam id="campoObrigatorio"></spam>
-<spam id="cpfInvalido"></spam>
+<span id="campoObrigatorio"></span>
+<span id="cpfInvalido"></span>
 <form class="form" action="" method="post" name="imprimeFicha" id="imprimeFicha"
     onsubmit = "return validaDados(imprimeFicha.nomeresponsaveltec, imprimeFicha.cpfresponsavel, imprimeFicha.profissao, imprimeFicha.visitasdomiciliares,
     imprimeFicha.atendimentosgrupo, imprimeFicha.reuniaoacolhimento, imprimeFicha.encaminhamentos, imprimeFicha.atendimentosindividuais,
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-2">
                 <label>Mês/Ano</label>
-                <select style="border:1px solid #808080;" class="form-control" name="periodo" id="periodo">
+                <select class="form-control" name="periodo" id="periodo">
                     <option value="{{$mes}}">{{$mes}}/{{$ano}}</option>
                     @if($mes==1)
                         <option value="12">12/{{$a=$ano-1}}</option>
@@ -29,14 +29,14 @@
         <div class="row">
             <div class="col-sm-8" >
                 <label>Nome do responsável técnico do serviço</label>
-                <input type="text" style="border:1px solid #808080;" class="form-control" name="nomeresponsaveltec" id="nomeresponsaveltec" maxlength="255" autocomplete="off">
-                <spam id="msgNomeResp"></spam>
+                <input type="text" class="form-control" name="nomeresponsaveltec" id="nomeresponsaveltec" maxlength="255" autocomplete="off">
+                <span id="msgNomeResp"></span>
             </div>
                             
             <div class="col-sm-4">
                 <label>CPF</label>
-                <input type="text" style="border:1px solid #808080;" class="form-control" name="cpfresponsavel" id="cpfresponsavel" maxlength="11" autocomplete="off"  onkeyup="mascara( this, removeLetra );">
-                <spam id="msgcpfresponsavel"></spam>
+                <input type="text" class="form-control" name="cpfresponsavel" id="cpfresponsavel" maxlength="11" autocomplete="off"  onkeyup="mascara( this, removeLetra );">
+                <span id="msgcpfresponsavel"></span>
             </div>
         </div>
     </div>
@@ -45,8 +45,8 @@
         <div class="row">
             <div class="col-sm-8" >
                 <label>Profissão e N. de registro de classe</label>
-                <input type="text" style="border:1px solid #808080;" class="form-control" name="profissao" id="profissao" maxlength="255" autocomplete="off">
-                <spam id="msgprofissao"></spam>
+                <input type="text" class="form-control" name="profissao" id="profissao" maxlength="255" autocomplete="off">
+                <span id="msgprofissao"></span>
             </div>
         </dvi>
     </div>  
@@ -58,7 +58,7 @@
                 <td><label>N. de visitas domiciliares:</label></td>
                 <td>
                     <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" cols="2" class="form-control" name="visitasdomiciliares" id="visitasdomiciliares" maxlength="4" autocomplete="off">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" cols="2" class="form-control" name="visitasdomiciliares" id="visitasdomiciliares" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -66,7 +66,7 @@
                 <td><label>N. de atendimentos em grupo:</label></td>
                 <td>
                     <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" class="form-control" name="atendimentosgrupo" id="atendimentosgrupo" maxlength="4" autocomplete="off">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="atendimentosgrupo" id="atendimentosgrupo" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -74,7 +74,7 @@
                 <td><label>N. de reuniões de acolhimento e/ou avaliação:</label></td>
                 <td>
                     <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" class="form-control" name="reuniaoacolhimento" id="reuniaoacolhimento" maxlength="4" autocomplete="off">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="reuniaoacolhimento" id="reuniaoacolhimento" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -82,7 +82,7 @@
                 <td><label>N. de encaminhamentos de CRAS e CREAS:</label></td>
                 <td>
                     <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" class="form-control" name="encaminhamentos" id="encaminhamentos" maxlength="4" autocomplete="off">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="encaminhamentos" id="encaminhamentos" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -90,7 +90,7 @@
                 <td><label>N. de atendimentos individuais:</label></td>
                 <td>
                     <div class="col-md-2">
-                    <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" class="form-control" name="atendimentosindividuais" id="atendimentosindividuais" maxlength="4" autocomplete="off">
+                    <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="atendimentosindividuais" id="atendimentosindividuais" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -98,7 +98,7 @@
                 <td><label>N. de encaminhamentos para rede privada:</label></td>
                 <td>
                     <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" class="form-control" name="encaminhamentoprivada" id="encaminhamentoprivada" maxlength="4" autocomplete="off">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="encaminhamentoprivada" id="encaminhamentoprivada" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -106,7 +106,7 @@
                 <td><label>N. de planos individuais e/ou familiar elaborados:</label></td>
                 <td>
                     <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" style="border:1px solid #808080;" class="form-control" name="planoelaborado" id="planoelaborado" maxlength="4" autocomplete="off">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="planoelaborado" id="planoelaborado" maxlength="4" autocomplete="off">
                     </div>
                 </td>
             </tr>
@@ -115,12 +115,12 @@
 
     <div class="form-group ">
         <label>Descrição das atividades executadas durante o mês no serviço contratado</label>
-        <textarea style="border:1px solid #808080;" name="descricaoatividade" id="" cols="10" rows="2" class="form-control" maxlength="1000" autocomplete="off"></textarea>
+        <textarea name="descricaoatividade" id="" cols="10" rows="2" class="form-control" maxlength="1000" autocomplete="off"></textarea>
     </div>
 
     <div class="form-group ">
         <label>Observações</label>
-        <textarea style="border:1px solid #808080;" name="obs" id="" cols="10" rows="2" class="form-control" maxlength="1000" autocomplete="off"></textarea>
+        <textarea name="obs" id="" cols="10" rows="2" class="form-control" maxlength="1000" autocomplete="off"></textarea>
     </div>
 
     

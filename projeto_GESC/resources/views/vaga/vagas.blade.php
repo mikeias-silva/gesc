@@ -35,10 +35,11 @@
 </table>
 @endif
 <!-- Button trigger modal -->
+<div class="float-right">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Novo
 </button>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
@@ -52,8 +53,8 @@
             
             </div>
             <div class ="row">
-            <spam id="msgiadadessobre" class="col-sm-12"></br></spam>
-            <spam id="msgintervaloinvalido" class="col-sm-12"></br></spam>
+            <span id="msgiadadessobre" class="col-sm-12"><br></span>
+            <span id="msgintervaloinvalido" class="col-sm-12"><br></span>
             </div>
             <div class="modal-body">
 
@@ -69,13 +70,13 @@
                             <label>Idade Mínima</label>
                             <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin"></label>
-                            </br>
+                            <br>
                         </div>
                         <div class="col-sm-6">
                             <label>Idade Máxima</label>
                             <input name="idademax" id="idademax"  type="text" class="form-control" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademax"></label>
-                            </br>
+                            <br>
                         </div>
                     </div>
                     <div class="row">
@@ -116,8 +117,8 @@
             </button>
             </div>
             <div class ="row">
-            <spam id="msgiadadessobre_edit" class="col-sm-12"></br></spam>
-            <spam id="msgintervaloinvalido_edit" class="col-sm-12"></br></spam>
+            <span id="msgiadadessobre_edit" class="col-sm-12"><br></span>
+            <span id="msgintervaloinvalido_edit" class="col-sm-12"><br></span>
             </div>
             <div class="modal-body">
 
@@ -134,13 +135,13 @@
                             <label>Idade Mínima</label>
                             <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin_edit"></label>
-                            </br>
+                            <br>
                         </div>
                         <div class="col-sm-6">
                             <label>Idade Máxima</label>
                             <input name="idademax" id="idademax"  type="text" class="form-control" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademax_edit"></label>
-                            </br>
+                            <br>
                         </div>
                     </div>
                     <div class="row">

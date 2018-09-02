@@ -63,8 +63,8 @@
             <div class="row">
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
-                        <ul class="nav flex-column centered">
-                            <li class="nav-item">
+                        <ul class="nav  flex-column ">
+                            <li class="nav-item ">
                                 <a class="nav-link btn-light" id="btnmenu" href="/dashboard">
                                         <i class="fa fa-home fa-lg"></i> 
                                         Página inicial

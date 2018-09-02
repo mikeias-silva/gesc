@@ -4,6 +4,8 @@
     padding-top: 2.5rem;
     overflow-x: hidden;
     overflow-y: auto;
+    border:black;
+    
 }
 
 .sidebar {
@@ -84,6 +86,18 @@ main {
 label{
     font-weight: bold;
     
+    
+}
+.titulo-novamat{
+    padding-right: 100px;
+    margin-right: 100px;
+    border-right: 100px
+}
+select, .form-control{
+    font-weight: bold;
+    color: black;
+    /*border-width: 2px;*/
+    border-color: rgb(177, 175, 175);
 }
 
 #campoobrigatorio{
@@ -101,6 +115,12 @@ label{
 
 .fa{
     color: black;
+}
+
+#cor{
+    background-color: rgb(218, 218, 218) !important;
+    color: black;
+    text-decoration-color: #343a40;
 }
 /*
 .active {

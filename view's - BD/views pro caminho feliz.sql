@@ -55,9 +55,14 @@ select
 	pessoa.cpf cpfcrianca, pessoa.rg rgcrianca, pessoa.sexo sexocrianca, 
     pessoa.emissorrg emissorcrianca, matriculas.idmatricula,
 	crianca.obssaude,
-	escola.nomeescola
+	escola.nomeescola,
+    publicoprioritario.publicoprioritario
 from 
-	matriculas, crianca, pessoa, escola
+	matriculas, crianca, pessoa, escola, publicoprioritario
 where 
 	crianca.idcrianca=matriculas.idcrianca 
-	and crianca.idpessoa=pessoa.idpessoa;
+	and crianca.idpessoa=pessoa.idpessoa
+    and crianca.idescola = escola.idescola
+    and crianca.idpublicoprioritario = publicoprioritario.idpublicoprioritario;
+    
+    

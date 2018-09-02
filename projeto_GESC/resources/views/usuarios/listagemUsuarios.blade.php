@@ -45,9 +45,11 @@
 </table>
 
 @endif
+<div class="float-right">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#incluirusuario">
   Novo
 </button>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="incluirusuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -68,20 +70,20 @@
                     <label>Nome</label>
                     <input name="nome" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="msgnome"></label>
-                    </br>
+                    <br>
                     <label>E-mail</label>
                     <input name="email" class="form-control" type="email" value="" maxlength="255" autocomplete="off">
                     <label id="msgemail"></label>
-                    </br>
+                    <br>
                     <label>Senha</label>
                     <input name="password" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
                     <label id="msgsenha"></label>
-                    </br>
+                    <br>
                     <label>Nome de Usuário</label>
                     <input name="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     <label id="msgnomeusuario"></label>
-                    </br>
-                    </br>
+                    <br>
+                    <br>
                     <label>Perfil:</label>
                     <label><input type="radio"  name="tipousuario" id="adm" value="Administrador" checked> Administrador</label>
                     <label><input type="radio" name="tipousuario" id="edu" value="Educador"> Educador</label>
@@ -120,11 +122,11 @@
                     <label>Nome</label>
                     <input name="nome" id="nome" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="msgnome_edit"></label>
-                    </br>
+                    <br>
                     <label>E-mail</label>
                     <input name="email" id="email" class="form-control" type="email" value="" maxlength="255" autocomplete="off">
                     <label id="msgemail_edit"></label>
-                    </br>
+                    <br>
                     <div class="form-group">
                     <label>Senha</label>
                     <input name="password" id="password" class="form-control" type="password" value="" maxlength="10" autocomplete="off">
@@ -133,8 +135,8 @@
                     <label>Nome de Usuário</label>
                     <input placeholder="Senha" name="nomeusuario" id="nomeusuario" class="form-control" type="text" value="" maxlength="10" autocomplete="off">
                     <label id="msgnomeusuario_edit"></label>
-                    </br>
-                    </br>
+                    <br>
+                    <br>
                     <label>Perfil:</label>
                     <label><input type="radio" name="tipousuario" id="Admin" value="Administrador"> Administrador</label>
                     <label><input type="radio" name="tipousuario" id="Edu" value="Educador"> Educador</label>

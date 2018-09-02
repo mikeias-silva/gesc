@@ -1,8 +1,17 @@
 @extends('layout.principal') 
-@extends('matricula.identificacao')
-@section('conteudo')
 
-<h2>Nova Matrícula</h2>
+@section('conteudo')
+<div class="float-right">
+    <button type="submit" class="btn btn-primary" id="btn-mat"
+    data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
+
+</div>
+
+<div>
+    <h2>Nova Matrícula</h2>
+</div>
+
+
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -13,12 +22,11 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" id="familia-tab" data-toggle="tab" href="#familia" role="tab" aria-controls="familia" aria-selected="false">Constituição Familiar</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="conclusao-tab" data-toggle="tab" href="#conclusao" role="tab" aria-controls="conclusao" aria-selected="false">Conclusao</a>
-    </li>
+    </li>  
+    
 </ul>
 
+      
 <div class="tab-content" id="myTabContent">
     <!--ABA IDENTIFICAÇÃO -->
     <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
@@ -191,17 +199,17 @@
     <div class="tab-pane fade" id="responsavel" role="tabpanel" aria-labelledby="responsavel-tab">
         <div class="form">
         <br>
-        <h2>Responsável 01</h2>
-
+        <h5>Responsável 01</h5>
+        <br>
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <label>Nome</label>
                     <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp1"></span>
                 </div>
                 
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <label>Data de Nascimento</label>
                     <input type="date" class="form-control" name="datanascimentoresp1">
                     <span id="msgDataResp1"></span>
@@ -297,16 +305,17 @@
 
         </div>
             
-        <h2>Responsável 02</h2>
+        <h5>Responsável 02</h5>
+        <br>
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <label>Nome:</label>
                     <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp2"></span>
                 </div>
 
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <label>Data de Nascimento</label>
                     <input type="date" class="form-control" name="datanascimentoresp2">
                     <span id="msgDataResp2"></span>
@@ -573,19 +582,6 @@
         
         </div>
     
-    
- 
-    <!-- CONCLUSÃO -->
-    <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
-        
-        
-       
-           <button type="submit" class="btn btn-primary" id="btn-mat"
-        data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
-    
-
-    </div>
-
   
     
     

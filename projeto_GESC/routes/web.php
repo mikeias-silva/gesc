@@ -56,6 +56,7 @@ Route::get('/pdfmatricula', 'MatriculasController@imprime')->middleware('auth');
 Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula')->middleware('auth');
 Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middleware('auth');
 Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middleware('auth');
+Route::post('/associaturma', 'MatriculasController@turmaVazia')->middleware('auth');
 
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');

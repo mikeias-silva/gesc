@@ -50,9 +50,8 @@
    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
    
     <link rel="stylesheet" href="/css/style.css">
+    <script src="js/btnAtivo-inativo.js"></script>
 
-    
-    
     <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
     <body>
@@ -65,83 +64,85 @@
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
-                            <li>
-                                <a class="nav-link disabled" href="dashboard">
-                                        <i class="fa fa-home fa-2x"></i> Dashboard
-                                    <span class="sr-only">(current)</span>
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" id="btnmenu" href="dashboard">
+                                        <i class="fa fa-home fa-2x"></i> 
+                                        Página inicial
+                                    
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link disabled" href="matriculas">
+                         
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" id="btnmenu" href="matriculas">
                                         <i class="fa fa-address-book fa-2x"></i>
                                         Matriculas
-                                    <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link disabled" href="instituicao">
+                  
+                             <li class="nav-item">
+                                <a class="nav-link btn-light" href="instituicao">
                                         <i class="fa fa-bank fa-2x"></i>
                                          Instituição
-                                    <span class="sr-only">(current)</span>
+                                    
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link disabled" href="/cras">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/cras">
                                     <i class="fa fa-university fa-2x"></i>
                                      CRAS/CREAS
-                                    <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link disabled" href="/turmas">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/turmas">
                                     <i class="fa fa-teacher fa-2x"></i>
                                      Turmas
-                                    <span class="sr-only">(current)</span>
+                                   
                                 </a>
                             </li>
-                                <a class="nav-link disabled" href="/usuarios">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/usuarios">
                                     <i class="fa fa-user-plus fa-2x" ></i>
                                      Gerenciamento de Usuário
-                                    <span class="sr-only">(current)</span>
+                                  
                                 </a>
                             </li>
-                            <li>
-                                <a class="nav-link disabled" href="/vagas">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/vagas">
                                     <i class="fa fa-user-plus fa-2x" ></i>
                                      Gerenciamento de Vagas
-                                    <span class="sr-only">(current)</span>
+                                   
                                 </a>
                             </li>
 
-                            <li>
-                                <a class="nav-link disabled" href="/controle_frequencia">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/controle_frequencia">
                                     <i class="fa fa-graduation-cap fa-2x" ></i>
                                      Controle de Frequência
-                                    <span class="sr-only">(current)</span>
+                                   
                                 </a>
                             </li>
 
-                            <li>
-                                <a class="nav-link disabled" href="/transferencia_alunos">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/transferencia_alunos">
                                     <i class="fa fa-graduation-cap fa-2x" ></i>
                                      Transferencia de Alunos
-                                    <span class="sr-only">(current)</span>
+                                   
                                 </a>
                             </li>
 
-                            <li>
-                                <a class="nav-link disabled" href="/fichaFrequencia">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light " href="/fichaFrequencia">
                                     <i class="fa fa-graduation-cap fa-2x" ></i>
                                      Ficha de Frequência
-                                    <span class="sr-only">(current)</span>
+                                    
                                 </a>
                             </li>
 
-                            <li>
-                                <a class="nav-link disabled" href="/logout">
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="/logout">
                                     <i class="fa fa-sign-out fa-2x" ></i>
                                      Sair
-                                    <span class="sr-only">(current)</span>
+                                  
                                 </a>
                             </li>
 

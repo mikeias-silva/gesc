@@ -80,7 +80,7 @@ class Matricula extends Model
 
     public function anoMatricula(){
        
-       return Carbon::parse($this->anomatricula)->format('d-m-y');
+       return Carbon::parse($this->anomatricula)->format('d/m/Y');
        
     }
 

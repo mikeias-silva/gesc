@@ -19,14 +19,15 @@
     <!--
 <div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
 -->
-<div></div>
-   <div class="tab-pane show active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
+
+   <div class="tab-pane active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
          <h2>Matriculas ativas</h2>
-        <table id="dtAtivas" class="table table-hover">
+        <table id="dtAtivas" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Turma</th>
+                        <th>CRAS</th>
                         <th>Idade</th>
                         <th>Data Matricula</th>
                         <th>Ações</th>
@@ -39,7 +40,8 @@
                     <tr>
                         <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->nomeTurma() }}</td>
-                        <td>{{ $matA->idadeMatricula() }}</td>
+                        <td>CRAS</td>
+                        <td>{{ $matA->idadeMatricula() }} anos</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
                             <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-lg"></i></a>
@@ -64,13 +66,14 @@
     </div>
 
     <!--ABA INATIVAS-->
-    <div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
+    <div class="tab-pane" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
         <h2>Matriculas inativas</h2>
         <table id="dtInativas" class="table table-hover">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Turma</th>
+                        <th>CRAS</th>
                         <th>Idade</th>
                         <th>Data Matricula</th>
                         <th>Ações</th>
@@ -83,7 +86,8 @@
                         <tr>
                             <td>{{ $matI->nomeMatricula() }}</td>
                             <td>{{ $matI->nomeTurma() }}</td>
-                            <td>{{ $matI->idadeMatricula() }}</td>
+                            <td>CRAS</td>
+                            <td>{{ $matI->idadeMatricula() }} anos</td>
                             <td>{{ $matI->anoMatricula() }}</td>
                             <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print "></i></a>
                                 <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
@@ -102,13 +106,14 @@
 
     
 <!--ABA ESPERA-->
-    <div class="tab-pane fade" id="espera" role="tabpanel" aria-labelledby="espera-tab">
+     <div class="tab-pane" id="espera" role="tabpanel" aria-labelledby="espera-tab">
         <h2>Matriculas em espera</h2>
         <table id="dtEspera" class="table table-hover">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Turma</th>
+                        <th>CRAS</th>
                         <th>Idade</th>
                         <th>Data Matricula</th>
                         <th>Ações</th>
@@ -121,7 +126,8 @@
                         <tr>
                             <td>{{ $matE->nomeMatricula() }}</td>
                             <td>{{ $matE->nomeTurma() }}</td>
-                            <td>{{ $matE->idadeMatricula() }}</td>
+                            <td>CRAS</td>
+                            <td>{{ $matE->idadeMatricula() }} anos</td>
                             <td>{{ $matE->anoMatricula() }}</td>
                             <td>
                                 
@@ -282,8 +288,8 @@
     </div>
 </div>
 
-<form action="/novaMatricula">
-    <button class="btn btn-secondary">Nova Matrícula</button>
+<form action="/novaMatricula" class="float-right">
+    <button class="btn btn-primary">Nova Matrícula</button>
 </form>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>

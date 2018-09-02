@@ -16,81 +16,82 @@
                 <div class="col-sm-8">
                     <h5 >Nome Instituição</h5>
                     <input name="nomeinstituicao" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgNomeInstituicao"></spam>
-                    </br>
+                    <span id="msgNomeInstituicao"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >CNPJ</h5>
                     <input name="cnpj" id="cnpj" class="form-control" type="text" value="" maxlength="14" autocomplete="off" onkeyup="mascara(this, Cnpj);">
-                    <spam id="msgCnpj"></spam>
-                    </br>
+                    <span id="msgCnpj"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                 <h5 >Endereço</h5>
                     <input name="logradouro" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEndereco"></spam>
-                    </br>
+                    <span id="msgEndereco"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                 <h5 >Cep</h5>
                     <input name="cep" id="cep" class="form-control" type="text" value="" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
-                    <spam id="msgCep"></spam>
-                    </br>
+                    <span id="msgCep"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <h5 >E-mail</h5>
                     <input name="email" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEmail"></spam>
-                    </br>
+                    <span id="msgEmail"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >Telefone</h5>
                     <input name="telefone" id="telefone" class="form-control" type="text" value="" maxlength="11" autocomplete="off" onkeyup="mascara(this, Telefone);">
-                    <spam id="msgTelefone"></spam>
-                    </br>
+                    <span id="msgTelefone"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
                     <h5 >N. de metas mensais</h5>
                     <input name="nummetasmensais" id="nummetasmensais" class="form-control" type="text" value="" maxlength="255" autocomplete="off" onkeyup="mascara(this, retiraLetras);">
-                    <spam id="msgMetasMensais"></spam>
-                    </br>
+                    <span id="msgMetasMensais"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >N. do termo de colaboração</h5>
                     <input name="numtermocolaboradorformento" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgTermoColab"></spam>
-                    </br>
+                    <span id="msgTermoColab"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >N. do plano de trabalho</h5>
                     <input name="numplanotrabalho" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgNumTermoTrab"></spam>
-                    </br>
+                    <span id="msgNumTermoTrab"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <h5 >Entidade Mantedora</h5>
                     <input name="entidademantenedora" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeMantedora"></spam>
-                    </br>
+                    <span id="msgEntidadeMantedora"></span>
+                    <br>
                 </div>
                 <div class="col-sm-6">
                     <h5 >Entidade Executora</h5>
                     <input name="entidadeexecutora" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeExecutora"></spam>
-                    </br>
+                    <span id="msgEntidadeExecutora"></span>
+                    <br>
                 </div>
-            </br>
+            <br>
             </div>
-            
+        <div class="float-right">
             <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+        </div>
         </form>
     @else
         <form class="form" action="/instituicao/edita" method="POST"  
@@ -104,80 +105,82 @@
                 <div class="col-sm-8">
                     <h5 >Nome Instituição</h5>
                     <input name="nomeinstituicao" class="form-control" type="text" value="{{ $instituicao[0]->nomeinstituicao }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgNomeInstituicao"></spam>
-                    </br>
+                    <span id="msgNomeInstituicao"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >CNPJ</h5>
                     <input name="cnpj" id="cnpj" class="form-control" type="text" value="{{ $instituicao[0]->cnpj }}" maxlength="14" autocomplete="off" onkeyup="mascara(this, Cnpj);">
-                    <spam id="msgCnpj"></spam>
-                    </br>
+                    <span id="msgCnpj"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                 <h5 >Endereço</h5>
                     <input name="logradouro" class="form-control" type="text" value="{{ $instituicao[0]->logradouro }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEndereco"></spam>
-                    </br>
+                    <span id="msgEndereco"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                 <h5 >Cep</h5>
                     <input name="cep" id="cep" class="form-control" type="text" value="{{ $instituicao[0]->cep }}" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
-                    <spam id="msgCep"></spam>
-                    </br>
+                    <span id="msgCep"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <h5 >E-mail</h5>
                     <input name="email" class="form-control" type="text" value="{{ $instituicao[0]->email }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEmail"></spam>
-                    </br>
+                    <span id="msgEmail"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >Telefone</h5>
                     <input name="telefone" id="telefone" class="form-control" type="text" value="{{ $instituicao[0]->telefone }}" maxlength="11" autocomplete="off" onkeyup="mascara(this, Telefone);">
-                    <spam id="msgTelefone"></spam>
-                    </br>
+                    <span id="msgTelefone"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
                     <h5 >N. de metas mensais</h5>
                     <input name="nummetasmensais" id="nummetasmensais" class="form-control" type="text" value="{{ $instituicao[0]->nummetasmensais }}" maxlength="255" autocomplete="off" onkeyup="mascara(this, retiraLetras);">
-                    <spam id="msgMetasMensais"></spam>
-                    </br>
+                    <span id="msgMetasMensais"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >N. do termo de colaboração</h5>
                     <input name="numtermocolaboradorformento" class="form-control" type="text" value="{{ $instituicao[0]->numtermocolaboradorformento }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgTermoColab"></spam>
-                    </br>
+                    <span id="msgTermoColab"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
                     <h5 >N. do plano de trabalho</h5>
                     <input name="numplanotrabalho" class="form-control" type="text" value="{{ $instituicao[0]->numplanotrabalho }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgNumTermoTrab"></spam>
-                    </br>
+                    <span id="msgNumTermoTrab"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
                     <h5 >Entidade Mantedora</h5>
                     <input name="entidademantenedora" class="form-control" type="text" value="{{ $instituicao[0]->entidademantenedora }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeMantedora"></spam>
-                    </br>
+                    <span id="msgEntidadeMantedora"></span>
+                    <br>
                 </div>
                 <div class="col-sm-6">
                     <h5 >Entidade Executora</h5>
                     <input name="entidadeexecutora" class="form-control" type="text" value="{{ $instituicao[0]->entidadeexecutora }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeExecutora"></spam>
-                    </br>
+                    <span id="msgEntidadeExecutora"></span>
+                    <br>
                 </div>
-            </br>
+            <br>
             </div>
+        
             <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+        
         </form>
     @endif
     
@@ -190,7 +193,7 @@
     <input type="hidden" name="idano" value="{{$ano}}">
     <h5 value="{{$ano}}" name="idano">Ano - {{$ano}}</h5>
 
-    </br>
+    <br>
     <table class="table table-striped container col-md-4" align="center">
         <thead>
             <tr align="center">

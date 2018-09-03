@@ -20,14 +20,14 @@ and parentesco.idresponsavel = responsavel.idresponsavel
 and responsavel.idfamilia = familia.idfamilia
 and cras.idcras = familia.idcras;
 
-
+drop view if exists dadosfamilia;
 create view dadosfamilia as
 select
 	familia.idfamilia, familia.arearisco, 
     familia.bolsafamilia, familia.moradia,
     familia.numnis, familia.tipohabitacao,
     familia.beneficiopc,
-    cras.nomecras
+    cras.nomecras, cras.idcras
 from 
 	familia, cras
 where 
@@ -56,7 +56,7 @@ select
     pessoa.emissorrg emissorcrianca, matriculas.idmatricula,
 	crianca.obssaude,
 	escola.nomeescola,
-    publicoprioritario.publicoprioritario
+    publicoprioritario.publicoprioritario, publicoprioritario.idpublicoprioritario
 from 
 	matriculas, crianca, pessoa, escola, publicoprioritario
 where 

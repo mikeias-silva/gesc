@@ -1,6 +1,7 @@
 @extends('layout.principal') 
 
 @section('conteudo')
+<form action="/novaMatricula/adiciona" method="POST">
 <div class="float-right">
     <button type="submit" class="btn btn-primary" id="btn-mat"
     data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
@@ -35,7 +36,7 @@
     <div>
     <br>
 
-    <form  action="/novaMatricula/adiciona" method="POST" 
+    <form action="/novaMatricula/adiciona" method="POST" 
     onsubmit="return validarMatricula(matriculaNova.nomecrianca, matriculaNova.datanascimentocrianca, matriculaNova.rgcrianca,
     matriculaNova.cpfcrianca, matriculaNova.cep, matriculaNova.logradouro, matriculaNova.bairro, matriculaNova.nomeresp1,
     matriculaNova.datanascimentoresp1, matriculaNova.rgresp1, matriculaNova.cpfresp1, matriculaNova.salarioresp1, matriculaNova.tel1resp1, 
@@ -46,7 +47,7 @@
             <div class="form-group ">
                 <div class="row">
                     <div class="col-sm-6" >
-                        <label>Nome<span id="campoobrigatorio">*</span></label>
+                        <label>Nome</label>
                         <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
                         <span id="msgNomeCrianca"></span>
                     </div>
@@ -124,7 +125,6 @@
                     <div class="col-sm-6">
                         <label>CRAS/CREAS</label>
                         <select name="cras" id="" class="custom-select" name="cras">
-                            <option value="">Nenhum</option>
                             @foreach($cras as $c)
                                 <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
                             @endforeach
@@ -138,7 +138,6 @@
                     <div class="col-sm-6">
                         <label>Público Prioritário</label>
                         <select name="pprioritario" id="" class="custom-select">
-                            <option value="">Nenhum</option>
                             @foreach($pprioritario as $p)
                                 <option value="{{ $p->idpublicoprioritario }}">{{ $p->publicoprioritario }}</option>
                             @endforeach
@@ -153,7 +152,6 @@
                     <div class="col-sm-6">
                         <label>Escola</label>
                         <select name="escola" id="" class="custom-select" >
-                           <option value="">Nenhum</option>
                             @foreach($escola as $e)
                                 <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                             @endforeach
@@ -439,23 +437,23 @@
             <div class="row">
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <span class="form-check-label" for="rd-alvenaria">
+                        <label class="form-check-label" for="rd-alvenaria">
                             <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
-                        </span>
+                        </label>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <span class="form-check-label" for="rd-madeira">
+                        <label class="form-check-label" for="rd-madeira">
                             <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-                        </span>
+                        </label>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <span class="form-check-label" for="rd-mista">
+                        <label class="form-check-label" for="rd-mista">
                             <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-                        </span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -465,21 +463,21 @@
             <label>Programas Sociais</label>
             <div class="form-inline">
             <div class="form-check col-sm-2">
-                <span class="form-check-label">
+                <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
-                </span>
+                </label>
             </div>
 
             <div class="form-check col-sm-2">
-                <span class="form-check-label">
+                <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
-                </span>
+                </label>
             </div>
 
             <div class="form-check col-sm-2">
-                <span class="form-check-label">
+                <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
-                </span>
+                </label>
             </div>
         </div>
             <!--GRID MEMBRO FAMILIA-->
@@ -582,7 +580,7 @@
         
         </div>
     
-  
+    </form>
     
     
 </div> 

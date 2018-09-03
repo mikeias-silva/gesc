@@ -135,21 +135,24 @@ class MatriculasController extends Controller
            
         
         }
-            
+
+        $publicoprioritario = PublicoPrioritario::all();
+            return $publicoprioritario;
         //return $nomematricula;
         $dados = [
             'responsaveis'=>$parentes,
             'nascimentocrianca'=>$nascimentocrianca,
             'dadoscrianca'=>$dadoscrianca,
             'dadosfamilia'=>$dadosfamilia,
-            'dadosmatricula'=>$dadosmatricula
+            'dadosmatricula'=>$dadosmatricula,
+            'publicoprioritario'=>$publicoprioritario
             ];
         //return $dadosmatricula;
 
         //return $dadosfamilia;
         
         $impressao = PDF::loadView('matricula.impressao', $dados);
-       return $impressao->stream('Matricula');
+        return $impressao->stream('Matricula');
     }
 
     public function adicionaMatricula(){
@@ -482,7 +485,7 @@ class MatriculasController extends Controller
         $anomatricula = Carbon::now();
         $idturma = Request::input('turma');
 
-         $matricula = new Matricula();
+        $matricula = new Matricula();
         
         $matricula->anomatricula = $hoje;
         $matricula->idvaga = $essavaga;
@@ -725,18 +728,148 @@ class MatriculasController extends Controller
         $pprioritario = PublicoPrioritario::all();
         $escola = Escola::all();
         //return $nomematricula;
+
+        $ano = Carbon::now()->year+1;
         $dados = [
             'responsaveis'=>$parentes,
-            'nascimentocrianca'=>$nascimentocrianca,
             'dadoscrianca'=>$dadoscrianca,
             'dadosfamilia'=>$dadosfamilia,
             'dadosmatricula'=>$dadosmatricula,
             'cras'=>$cras,
             'pprioritario'=>$pprioritario,
-            'escola'=>$escola    
+            'escola'=>$escola,
+            'ano'=>$ano   
         ];
 
+       // return $dados;
         return view('matricula.rematricula', $dados);
 
+    }
+
+    public function confirmarRematricula($idmatricula){
+        $hoje = Carbon::now();
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
+        = ?', array($idmatricula));
+
+        foreach ($dadosmatricula as $dadosmt) {
+            $esseidcrianca = $dadosmt->idcrianca;
+            $dadosmt->datamatricula;
+            $dadosmt->serieescolar;
+            $dadosmt->grupoconvivencia;
+            $dadosmt->idmatricula;
+
+        }
+
+        $dadoscrianca = DB::select('select * from dadoscrianca where idcrianca = ?', [$dadosmt->idcrianca]);
+
+        foreach ($dadoscrianca as $dadoscr) {
+            $dadoscr->nomecrianca;
+            $idade = $dadoscr->nascimentocrianca;
+            $dadoscr->logradouro;
+            $dadoscr->bairro;
+            $dadoscr->ncasa;
+            $dadoscr->complementoendereco;
+            $dadoscr->cpfcrianca;
+            $dadoscr->rgcrianca;
+            $dadoscr->sexocrianca;
+            $dadoscr->emissorcrianca;
+            $dadoscr->idmatricula;
+            $dadoscr->nomeescola;
+        }
+
+
+        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
+        
+        foreach($parentes as $parente){
+            $parente->nomeresponsavel;
+            $parente->idfamilia;
+        }
+
+        //return ;
+
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        
+        foreach($dadosfamilia as $dadosfm){
+            $dadosfm->idfamilia;
+            $dadosfm->arearisco;
+            $dadosfm->bolsafamilia;
+            $dadosfm->moradia;
+            $dadosfm->numnis;
+            $dadosfm->tipohabitacao;
+            $dadosfm->nomecras;
+        }
+        
+        foreach($dadoscrianca as $dadoscrianca){
+            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
+            $logradouro = $dadoscrianca->logradouro;
+            $bairro = $dadoscrianca->bairro;
+            $ncasa = $dadoscrianca->ncasa;
+           
+        
+        }
+            
+        $cras = Cras::all();
+        $pprioritario = PublicoPrioritario::all();
+        $escola = Escola::all();
+        //return $nomematricula;
+
+        $ano = Carbon::now()->year+1;
+        $dados = [
+            'responsaveis'=>$parentes,
+            'dadoscrianca'=>$dadoscrianca,
+            'dadosfamilia'=>$dadosfamilia,
+            'dadosmatricula'=>$dadosmatricula,
+            'cras'=>$cras,
+            'pprioritario'=>$pprioritario,
+            'escola'=>$escola,
+            'ano'=>$ano   
+        ];/*
+        $impressao = PDF::loadView('matricula.rematricula', $dados);
+        $impressao->stream('Matricula');*/
+
+        $idade = $hoje->diffInYears($idade);
+
+        $vagas = Vaga::vagaRematricula();
+        
+        //lógica para pegar vaga de acordo com a idade da criança
+        foreach($vagas as $vaga){
+            if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
+                $idademin = $vaga->idademin;
+                $idademax = $vaga->idademax; 
+                $vaga->numvaga;
+                $vaga->anovaga;
+                $vaga->idvaga;
+                $essavaga = $vaga->idvaga;
+                $essanumvaga = $vaga->numvaga;
+            
+            }
+            
+        }
+
+        $matricula = new Matricula();
+        
+        $matricula->anomatricula = $hoje;
+        $matricula->idvaga = $essavaga;
+        
+        //$matricula->serieescolar = Request::input('serie');
+        $matricula->idcrianca = $esseidcrianca;
+        
+        $matAtivas = Matricula::where('statuscadastro', 'Ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
+        
+        if($matAtivas < $essanumvaga){
+            $matricula->statuscadastro = 'Ativo';
+            
+        }elseif($matAtivas >= $essanumvaga){
+            $matricula->statuscadastro = 'Espera';
+            $matricula->dataespera = $hoje;
+                
+        }
+        
+        
+        //return $matricula;
+        $matricula->save();
+        
+        
+        return redirect()->action('MatriculasController@listaMatriculas');
     }
 }

@@ -15,7 +15,7 @@ class CrasController extends Controller {
     //  $cras = DB::select('select * from cras');
 
         
-        $cras = cras::all();
+        $cras = Cras::cras();
        
         //$cras = [];
         //return $cras;

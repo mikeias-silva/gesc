@@ -68,7 +68,7 @@
     <!--ABA INATIVAS-->
     <div class="tab-pane" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
         <h2>Matriculas inativas</h2>
-        <table id="dtInativas" class="table table-hover">
+        <table id="dtInativas" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -108,7 +108,7 @@
 <!--ABA ESPERA-->
      <div class="tab-pane" id="espera" role="tabpanel" aria-labelledby="espera-tab">
         <h2>Matriculas em espera</h2>
-        <table id="dtEspera" class="table table-hover">
+        <table id="dtEspera" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -288,7 +288,7 @@
     </div>
 </div>
 
-<form action="/novaMatricula" class="float-right">
+<form action="/novaMatricula" class="float-right" id="btn-novamatricula">
     <button class="btn btn-primary">Nova Matrícula</button>
 </form>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>

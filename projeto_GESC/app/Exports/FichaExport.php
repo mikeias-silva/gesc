@@ -33,7 +33,7 @@ Writer::macro('setCreator', function (Writer $writer, string $creator) {
 });
 
 
-class FichaExport implements FromView, WithEvents, ShouldAutoSize
+class FichaExport implements FromView, WithEvents
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -68,15 +68,62 @@ class FichaExport implements FromView, WithEvents, ShouldAutoSize
     }*/
     public function registerEvents(): array
     {
+        
         return [
             BeforeExport::class  => function(BeforeExport $event) {
-                $event->writer->setCreator('Patrick');
+                $event->writer->setCreator('Socorro');
             },
             AfterSheet::class    => function(AfterSheet $event) {
                 $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-                $event->sheet->SetMergeCells('A19','G19');
+                //$event->sheet->mergeCells('A1:I1');
+                /*$spreadsheet->getActiveSheet()->getPageMargins()->setTop(1);
+                $spreadsheet->getActiveSheet()->getPageMargins()->setRight(0.75);
+                $spreadsheet->getActiveSheet()->getPageMargins()->setLeft(0.75);
+                $spreadsheet->getActiveSheet()->getPageMargins()->setBottom(1);*/
+                $event->sheet->getRowDimension('3')->setRowHeight(50);
+                $event->sheet->getColumnDimension('A')->setWidth(5);
+                $event->sheet->getColumnDimension('B')->setWidth(5);
+                $event->sheet->getColumnDimension('C')->setWidth(5);
+                $event->sheet->getColumnDimension('D')->setWidth(5);
+                $event->sheet->getColumnDimension('E')->setWidth(5);
+                $event->sheet->getColumnDimension('F')->setWidth(5);
+                $event->sheet->getColumnDimension('G')->setWidth(5);
+                $event->sheet->getColumnDimension('H')->setWidth(5);
+                $event->sheet->getColumnDimension('I')->setWidth(5);
+                $event->sheet->getColumnDimension('J')->setWidth(5);
+                $event->sheet->getColumnDimension('K')->setWidth(5);
+                $event->sheet->getColumnDimension('L')->setWidth(5);
+                $event->sheet->getColumnDimension('M')->setWidth(5);
+                $event->sheet->getColumnDimension('N')->setWidth(5);
+                $event->sheet->getColumnDimension('O')->setWidth(5);
+                $event->sheet->getColumnDimension('P')->setWidth(5);
+                $event->sheet->getColumnDimension('Q')->setWidth(5);
+                $event->sheet->getColumnDimension('R')->setWidth(5);
+                $event->sheet->getColumnDimension('S')->setWidth(5);
+                $event->sheet->getColumnDimension('T')->setWidth(5);
+                $event->sheet->getColumnDimension('U')->setWidth(5);
+                $event->sheet->getColumnDimension('V')->setWidth(5);
+                $event->sheet->getColumnDimension('W')->setWidth(5);
+                $event->sheet->getColumnDimension('X')->setWidth(5);
+                $event->sheet->getCell('A12')->setValue("Nº DE PESSOAS\nATENDIDAS NO\nMÊS ANTERIOR:");
+                $event->sheet->getCell('D12')->setValue("Nº DE DIAS ÚTEIS COM\nATENDIMENTO NO MÊS ATUAL:");
+                $event->sheet->getStyle('A12:X13')->getAlignment()->setWrapText(true);
+                $event->sheet->getRowDimension('12')->setRowHeight(25.5);
+                $event->sheet->getRowDimension('13')->setRowHeight(25.5);
+                //$event->sheet->getStyle('A3:G3')
+                //->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+                //$event->sheet->mergeCells('A3:G4');
+                //$event->sheet->SetMergeCells('A19','G19');
+                $instituicao = Instituicao::all();
+                //$event->sheet->getCell('A5')->setValue("ENTIDADE MANTEDORA:\n".$instituicao[0]->entidademantenedora);
+                //$event->sheet->getStyle('A5')->getAlignment()->setWrapText(true);
+                //$event->sheet->getRowDimension('5')->setRowHeight(50);
+                $event->sheet->getCell('I8')->setValue("(".substr($instituicao[0]->telefone, 0, 2).")".substr($instituicao[0]->telefone, 2, 4)."-".
+                                                        substr($instituicao[0]->telefone, 7, 5));
+                $event->sheet->getCell('Q6')->setValue(substr($instituicao[0]->cnpj, 0, 2).".".substr($instituicao[0]->cnpj, 2, 3).".".
+                                                        substr($instituicao[0]->cnpj, 5, 3)."/".substr($instituicao[0]->cnpj, 8, 4)."-".substr($instituicao[0]->cnpj, 12, 2));
                 $event->sheet->styleCells(
-                    'A1:G1',
+                    'A1:X2',
                     [
                         //'width' => '50',
                         //'mergeCells' => true,
@@ -87,8 +134,193 @@ class FichaExport implements FromView, WithEvents, ShouldAutoSize
                         ],
                         'borders' => [
                             'bottom' => [
-                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
-                                'color' => ['argb' => 'FFFF0000'],
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A3:X3',
+                    [
+                        'alignment' => [
+                            'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                        ],
+
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '16',
+                            'name' => 'Times New Roman',
+                        ],
+
+                        'borders' => [
+                            'bottom' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A4:Q10',
+                    [
+                        'alignment' => [
+                            'horizontal'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A4:X4',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A11:X11',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A5:H6',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'I5:P6',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'Q5:X6',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A7:H8',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'I7:P8',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'Q7:X8',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A9:H10',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'I9:P10',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'Q9:X10',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A12:X13',
+                    [
+                        'alignment' => [
+                            'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
+                        ],
+
+                        'font' => [
+                            //'bold'  =>  true,
+                            'size' => '10',
+                            //'name' => 'Times New Roman',
+                        ],
+
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
                             ],
                         ]
                     ]

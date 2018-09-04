@@ -506,8 +506,8 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a href="/confirmarRematricula/{{ $dadosmatricula->idmatricula }}"><button type="submit" class="btn btn-success" >Confirmar Rematrícula</button></a>
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                <a href="/confirmarRematricula/{{ $dadosmatricula->idmatricula }}"><button type="submit" class="btn btn-success" >Fazer rematricula</button></a>
             </div>
         </div>
        

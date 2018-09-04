@@ -52,7 +52,7 @@
                             <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-lg"></i>
                             </a>
                             @endif
-                            <a href="/rematricula/{{ $matA->idmatricula }}">rematricula</a>
+                            <a href="/rematricula/{{ $matA->idmatricula }}">Atualizar dados</a>
                         </td>
                     </tr>
                     @endforeach 

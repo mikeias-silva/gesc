@@ -35,23 +35,23 @@
    
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-   
-   
+  
+
    
   <!-- =========== Trecho ACIMA que nao esta sendo utilizado mais ======= -->
    
 
-
-
+ 
    <!--  <script src="{{ asset('js/app.js') }}" defer></script>
-   -->
+ -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-   <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
    
     <link rel="stylesheet" href="/css/style.css">
-    <script src="js/btnAtivo-inativo.js"></script>
-
+   <!--   <script src="js/btnAtivo-inativo.js"></script>
+-->
+    
     <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
     <body>
@@ -62,9 +62,10 @@
         <div class="container-fluid">
             <div class="row">
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <ul class="nav  flex-column ">
-                            <li class="nav-item ">
+                    <div class="sidebar-sticky navbar-collapse">
+                        <ul class="nav flex-column">
+                               
+                            <li class="nav-item active">
                                 <a class="nav-link btn-light" id="btnmenu" href="/dashboard">
                                         <i class="fa fa-home fa-lg"></i> 
                                         Página inicial
@@ -73,12 +74,25 @@
                             </li>
                          
                             <li class="nav-item">
-                                <a class="nav-link btn-light" id="btnmenu" href="/matriculas">
+                                <a class="nav-link btn-light" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" href="/matriculas">
                                         <i class="fa fa-book fa-lg"></i>
                                         Matriculas
                                 </a>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <ul>
+                                            <li class="nav-link"><a  href="/matriculas"> Matriculas atuais
+                                               </a>
+                                            </li>
+                                            <li class="nav-link"> rematricula
+                                            </li>
+                                            <li> Matriculas do ano anterior
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </li>
-                  
                              <li class="nav-item">
                                 <a class="nav-link btn-light" href="/instituicao">
                                         <i class="fa fa-bank fa-lg"></i>
@@ -145,10 +159,11 @@
                                   
                                 </a>
                             </li>
-
+                            
                         </ul>
-
+                        
                     </div>
+                    
                 </nav>
             </div>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -160,11 +175,14 @@
                             <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
                         </div>
                     </div>       
+                  
                 @yield('conteudo')
 
             </main>
 
+           
 <script>
+
 
 $('#editar').on('show.bs.modal', function (event) {
     console.log('modal opened');

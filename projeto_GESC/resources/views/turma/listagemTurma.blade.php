@@ -39,12 +39,12 @@
         @if( ($t->statusturma) === 0)
         <td>
         <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#ativarturma">Ativar</button>
+                data-toggle="modal" data-target="#ativarturma">Inativo</button>
         </td>
         @elseif(($t->statusturma) >0)
         <td>
-        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#inativarturma">Inativar</button>
+        <button type="button" class="btn btn-success" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
+                data-toggle="modal" data-target="#inativarturma">Ativo</button>
         </td>
         @endif
     </tr>
@@ -53,7 +53,7 @@
     @endif
 </table>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novaturma">
+<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#novaturma">
   Novo
 </button>
 

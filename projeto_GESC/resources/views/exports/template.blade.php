@@ -47,8 +47,8 @@
 <td colspan="24" >BLOCO 2 – ATENDIMENTO NO SERVIÇO CONTRATADO:</td>
 </tr>
 <tr>
-  <td colspan="3" rowspan="2"></td>
-  <td colspan="5"></td>
+  <td colspan="3" rowspan="2">Nº DE PESSOAS ATENDIDAS NO MÊS ANTERIOR:</td>
+  <td colspan="5">Nº DE DIAS ÚTEIS COM ATENDIMENTO NO MÊS ATUAL: {{$dias_funcionamento}}</td>
   <td colspan="6">Nº DE PESSOAS EM LISTA DE ESPERA:</td>
   <td colspan="10">Nº DE PESSOAS ATENDIDAS POR DIA (MÉDIA DIÁRIA):</td>
 </tr>

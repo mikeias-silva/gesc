@@ -15,6 +15,7 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use \Maatwebsite\Excel\Sheet;
 use \Maatwebsite\Excel\Writer;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Illuminate\Support\Facades\DB;
 
 Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
     $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
@@ -48,10 +49,21 @@ class FichaExport implements FromView, WithEvents
 
     public function view(): View
     {
+        $mesanterior=($this->mes)-1;
+        $dias_funcionamento=FichaExport::dias_funcionamento($this->mes);
+        $espera=DB::select("select count(idmatricula) from matriculas where statuscadastro='Espera' and datasairespera=null and 
+        EXTRACT(MONTH FROM dataespera)>='{$this->mes}'");
+        $atendidos_mes=DB::select("select count(matriculas.idmatricula) from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
+        and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)>='{$this->mes}'");
+        $atendidos_mes_passado=DB::select("select count(matriculas.idmatricula) from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
+        and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)=<'{$mesanterior}'");
+
+
         return view('exports.template', [
             'vaga' => Vaga::all(),
             'mes' =>  $this->mes,
             'instituicao' => Instituicao::all(),
+            'dias_funcionamento' => $dias_funcionamento[0]->numero,
         ]);
         //return Vaga::all();
     }
@@ -76,10 +88,10 @@ class FichaExport implements FromView, WithEvents
             AfterSheet::class    => function(AfterSheet $event) {
                 $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
                 //$event->sheet->mergeCells('A1:I1');
-                /*$spreadsheet->getActiveSheet()->getPageMargins()->setTop(1);
-                $spreadsheet->getActiveSheet()->getPageMargins()->setRight(0.75);
-                $spreadsheet->getActiveSheet()->getPageMargins()->setLeft(0.75);
-                $spreadsheet->getActiveSheet()->getPageMargins()->setBottom(1);*/
+                /*$event->sheet->getPageMargins()->setTop(-1.27);
+                $event->sheet->getPageMargins()->setRight(1.27);
+                $event->sheet->getPageMargins()->setLeft(1.27);
+                $event->sheet->getPageMargins()->setBottom(1.27);*/
                 $event->sheet->getRowDimension('3')->setRowHeight(50);
                 $event->sheet->getColumnDimension('A')->setWidth(5);
                 $event->sheet->getColumnDimension('B')->setWidth(5);
@@ -105,8 +117,8 @@ class FichaExport implements FromView, WithEvents
                 $event->sheet->getColumnDimension('V')->setWidth(5);
                 $event->sheet->getColumnDimension('W')->setWidth(5);
                 $event->sheet->getColumnDimension('X')->setWidth(5);
-                $event->sheet->getCell('A12')->setValue("Nº DE PESSOAS\nATENDIDAS NO\nMÊS ANTERIOR:");
-                $event->sheet->getCell('D12')->setValue("Nº DE DIAS ÚTEIS COM\nATENDIMENTO NO MÊS ATUAL:");
+                //$event->sheet->getCell('A12')->setValue("Nº DE PESSOAS\nATENDIDAS NO\nMÊS ANTERIOR:");
+                //$event->sheet->getCell('D12')->setValue("Nº DE DIAS ÚTEIS COM\nATENDIMENTO NO MÊS ATUAL:");
                 $event->sheet->getStyle('A12:X13')->getAlignment()->setWrapText(true);
                 $event->sheet->getRowDimension('12')->setRowHeight(25.5);
                 $event->sheet->getRowDimension('13')->setRowHeight(25.5);
@@ -130,7 +142,7 @@ class FichaExport implements FromView, WithEvents
                         'font' => [
                             'bold'  =>  true,
                             'size' => '16',
-                            'name' => 'Times New Roman',
+                            'name' => 'Calibri',
                         ],
                         'borders' => [
                             'bottom' => [
@@ -138,6 +150,19 @@ class FichaExport implements FromView, WithEvents
                                 'color' => ['argb' => '00000000'],
                             ],
                         ]
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A5:X10',
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                        ],
                     ]
                 );
 
@@ -150,8 +175,8 @@ class FichaExport implements FromView, WithEvents
 
                         'font' => [
                             'bold'  =>  true,
-                            'size' => '16',
-                            'name' => 'Times New Roman',
+                            'size' => '18',
+                            'name' => 'Calibri',
                         ],
 
                         'borders' => [
@@ -327,5 +352,38 @@ class FichaExport implements FromView, WithEvents
                 );
             },
         ];
+    }
+
+    public function dias_funcionamento($mes)
+    {
+        $ano= date("Y");
+        if($mes==1){
+            $dias_funcionamento = DB::select("select jan as numero from dias_funcionamento where idano='{$ano}'");
+        }elseif($mes==2){
+            $dias_funcionamento = DB::select("select fev as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==3){
+            $dias_funcionamento = DB::select("select mar as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==4){
+            $dias_funcionamento = DB::select("select abr as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==5){
+            $dias_funcionamento = DB::select("select mar as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==6){
+            $dias_funcionamento = DB::select("select jun as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==7){
+            $dias_funcionamento = DB::select("select jul as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==8){
+            $dias_funcionamento = DB::select("select ago as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==9){
+            $dias_funcionamento = DB::select("select setembro as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==10){
+            $dias_funcionamento = DB::select("select out as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==11){
+            $dias_funcionamento = DB::select("select nov as numero from dias_funcionamento where idano='{$ano}'");
+        }else if($mes==12){
+            $dias_funcionamento = DB::select("select dez as numero from dias_funcionamento where idano='{$ano}'");
+        }
+
+        return $dias_funcionamento;
+
     }
 }

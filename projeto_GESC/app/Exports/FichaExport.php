@@ -50,13 +50,31 @@ class FichaExport implements FromView, WithEvents
     public function view(): View
     {
         $mesanterior=($this->mes)-1;
+        $ano = date("Y");
         $dias_funcionamento=FichaExport::dias_funcionamento($this->mes);
-        $espera=DB::select("select count(idmatricula) from matriculas where statuscadastro='Espera' and datasairespera=null and 
+        $espera=DB::select("select count(idmatricula) as emespera from matriculas where statuscadastro='Espera' and datasairespera=null and 
         EXTRACT(MONTH FROM dataespera)>='{$this->mes}'");
-        $atendidos_mes=DB::select("select count(matriculas.idmatricula) from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
+        $atendidos_mes=DB::select("select count(matriculas.idmatricula) as atendidosmes from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
         and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)>='{$this->mes}'");
-        $atendidos_mes_passado=DB::select("select count(matriculas.idmatricula) from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
-        and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)=<'{$mesanterior}'");
+        $atendidos_mes_passado=DB::select("select count(matriculas.idmatricula) as atendidosmespassado from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
+        and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)<='{$mesanterior}'");
+        $media_atendimento_diario = ($atendidos_mes[0]->atendidosmes)/$dias_funcionamento[0]->numero;
+        $total_vagas = DB::select("select sum(numvaga) as totalvagas from vagas where anovaga='{$ano}'");
+        $toal_matriculas = DB::select("select count(matriculas.idmatricula) as totalmatricula from gesc.matriculas, gesc.crianca where matriculas.statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'
+        and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and crianca.idcrianca=matriculas.idcrianca");
+        $vagas_disponiveis=$total_vagas[0]->totalvagas-$toal_matriculas[0]->totalmatricula;
+        $novos_mes=DB::select("select count(matriculas.idmatricula) as totalmatriculanovas from gesc.matriculas, gesc.crianca where matriculas.statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'
+        and EXTRACT(MONTH FROM crianca.datacadastro)='{$this->mes}' and crianca.idcrianca=matriculas.idcrianca");
+        $desligados_mes=DB::select("select count(matriculas.idmatricula) as totaldesligamentos from matriculas, historico_matricula where matriculas.statuscadastro='Inativo'
+        and matriculas.idmatricula=historico_matricula.idmatricula and EXTRACT(MONTH FROM datainativacao)='{$this->mes}'");
+        $beneficiarios_pc=DB::select("select count(matriculas.idmatricula) as bebficiariospc from matriculas, crianca, parentesco, responsavel, familia 
+        where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
+        parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.beneficiopc=1
+        and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}'");
+        $beneficiarios_bolsafamilia=DB::select("select count(matriculas.idmatricula) as bolsafamilia from matriculas, crianca, parentesco, responsavel, familia 
+        where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
+        parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.bolsafamilia=1
+        and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}'");
 
 
         return view('exports.template', [
@@ -64,6 +82,15 @@ class FichaExport implements FromView, WithEvents
             'mes' =>  $this->mes,
             'instituicao' => Instituicao::all(),
             'dias_funcionamento' => $dias_funcionamento[0]->numero,
+            'espera' => $espera[0]->emespera,
+            'atendidos_mes' => $atendidos_mes[0]->atendidosmes,
+            'atendidos_mes_passado' => $atendidos_mes_passado[0]->atendidosmespassado,
+            'media_atendimento_diario' => $media_atendimento_diario,
+            'vagas_disponiveis' => $vagas_disponiveis,
+            'novos_mes' => $novos_mes[0]->totalmatriculanovas,
+            'beneficiarios_pc' => $beneficiarios_pc[0]->bebficiariospc,
+            'beneficiarios_bolsafamilia' => $beneficiarios_bolsafamilia[0]->bolsafamilia,
+            'desligados_mes' => $desligados_mes[0]->totaldesligamentos,
         ]);
         //return Vaga::all();
     }

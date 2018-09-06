@@ -5,6 +5,13 @@
     overflow-x: hidden;
     overflow-y: auto;
     border:black;
+    background-color: rgb(245, 245, 245);
+   
+    
+}
+
+.btn-light{
+    background-color: rgb(245, 245, 245);
     
 }
 
@@ -83,7 +90,7 @@ main {
     outline: 0;
 }
 
-#btn-imprimir {
+#removerlink {
     text-decoration: none;
     color: black;
 }

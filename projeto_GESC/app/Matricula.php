@@ -48,6 +48,12 @@ class Matricula extends Model
         
     }
 
+    static function vagasMatriculas(){
+
+        $idmatricula = $this->idmatricula;
+        return DB::select('select * from vagasdasmatriculas where idmatricula = ? '[$idmatricula]);
+    }
+
     static function matriculasAtiva(){
       
         //DB::select('select * from matriculas where idmatricula = ?', 1);

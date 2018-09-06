@@ -58,11 +58,24 @@ select
 	escola.nomeescola,
     publicoprioritario.publicoprioritario, publicoprioritario.idpublicoprioritario
 from 
-	matriculas, crianca, pessoa, escola, publicoprioritario
+	 crianca, matriculas, pessoa, escola, publicoprioritario
 where 
-	crianca.idcrianca=matriculas.idcrianca 
-	and crianca.idpessoa=pessoa.idpessoa
+	crianca.idcrianca = matriculas.idcrianca 
+	and crianca.idpessoa = pessoa.idpessoa
     and crianca.idescola = escola.idescola
     and crianca.idpublicoprioritario = publicoprioritario.idpublicoprioritario;
     
+drop view if exists vagasdasmatriculas;
+create view  vagasdasmatriculas as
+select 
+		matriculas.idmatricula, vagas.idvaga, matriculas.anomatricula, matriculas.idcrianca,
+        matriculas.statuscadastro, vagas.anovaga, vagas.numvaga, vagas.idademax, vagas.idademin
+from 
+	matriculas, vagas, crianca
+where 
+	matriculas.idvaga = vagas.idvaga
+    and matriculas.idcrianca = crianca.idcrianca;
     
+    
+    
+select * from rematriculas where anovaga = '2019'

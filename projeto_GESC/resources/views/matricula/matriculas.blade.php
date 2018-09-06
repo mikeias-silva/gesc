@@ -320,23 +320,23 @@
 
 
 <script>
-        $('#dtAtivas').DataTable({
-            "language": {
-                "zeroRecords": "nada encontrado",
-                "infoEmpty": "Não há nenhum registro",
-                "lengthMenu": "Itens por página _MENU_ ",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoFiltered": "(Total de registros _MAX_)",
-                "search": "Busca",
-                "paginate": {
-                    "first": "Primeira",
-                    "last": "Última",
-                    "next": "Próxima",
-                    "previous": "Anterior"
-                },
-                "loadingRecords": "Carregando"
-            }
-        });
+    $('#dtAtivas').DataTable({
+        "language": {
+            "zeroRecords": "nada encontrado",
+            "infoEmpty": "Não há nenhum registro",
+            "lengthMenu": "Itens por página _MENU_ ",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoFiltered": "(Total de registros _MAX_)",
+            "search": "Busca",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            },
+            "loadingRecords": "Carregando"
+        }
+    });
 </script>
 
 

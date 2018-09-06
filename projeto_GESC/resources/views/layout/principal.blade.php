@@ -69,24 +69,30 @@
                                 <a class="nav-link btn-light" id="btnmenu" href="/dashboard">
                                         <i class="fa fa-home fa-lg"></i> 
                                         Página inicial
-                                    
                                 </a>
                             </li>
                          
                             <li class="nav-item">
-                                <a class="nav-link btn-light" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" href="/matriculas">
+                                <a class="nav-link btn-light" data-toggle="collapse" data-target="#collapseExample" >
                                         <i class="fa fa-book fa-lg"></i>
                                         Matriculas
                                 </a>
                                 <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        <ul>
-                                            <li class="nav-link"><a  href="/matriculas"> Matriculas atuais
-                                               </a>
+                                    <div>
+                                        <ul> 
+                                            <li>
+                                                <a class="nav-link btn-light" id="removerlink" href="/novaMatricula">Nova Matrícula
+                                                </a>
                                             </li>
-                                            <li class="nav-link"> rematricula
+                                         
+                                            <li>
+                                                <a class="nav-link btn-light" id="removerlink" href="/matriculas">Matriculas atuais
+                                                </a>
                                             </li>
-                                            <li> Matriculas do ano anterior
+                                            
+                                            <li >
+                                                <a class="nav-link btn-light" id="removerlink" href="/matriculas">Matriculas anteriores
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>

@@ -47,6 +47,16 @@ Route::get('/instituicao', 'InstituicaoController@mostraInstituicao')->middlewar
 Route::post('/instituicao/edita', 'InstituicaoController@editar')->middleware('auth');
 Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias')->middleware('auth');
 
+//Rotas para as telas de Responsaveis
+Route::get('/listagemResponsaveis', 'ResponsavelController@responsaveis')->middleware('auth');
+Route::get('/responsavel', 'ResponsavelController@novoResponsavel')->middleware('auth');
+Route::post('/crianca', 'ResponsavelController@adicionaResponsavel')->middleware('auth');
+Route::post('/adicionaCrianca', 'CriancaController@adicionaCrianca')->middleware('auth');
+
+//Route::post('/confirmarResponsaveis', 'ResponsavelController@responsaveis');
+
+//Rotas para as telas de Crianças
+//Route::post('/crianca', 'MatriculasController@crianca')->middleware('auth');
 
 //Rotas para as telas de Matrícula
 Route::get('/matriculas', 'MatriculasController@listaMatriculas')->middleware('auth');
@@ -59,6 +69,11 @@ Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middlew
 Route::post('/associaturma', 'MatriculasController@turmaVazia')->middleware('auth');
 Route::get('/rematricula/{idmatricula}', 'MatriculasController@rematricula')->middleware('auth');
 Route::get('/confirmarRematricula/{idmatricula}', 'MatriculasController@confirmarRematricula')->middleware('auth');
+Route::post('/matricula', 'MatriculasController@adicionaMatricula')->middleware('auth');
+Route::get('/matriculasAtuais', 'MatriculasController@matriculasAtuais')->middleware('auth');
+Route::get('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
+
+
 
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');

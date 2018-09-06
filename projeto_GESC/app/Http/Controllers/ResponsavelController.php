@@ -37,21 +37,7 @@ class ResponsavelController extends Controller
         $complemento = Request::input('complemento');
         $ncasa = Request::input('ncasa');
 
-        $teste= null;
-        
-        $dados = [
-            
-            'cep'=>$cep,
-            'bairro'=>$bairro,
-            'logradouro'=>$logradouro,
-            'ncasa'=>$ncasa,
-            'complemento'=>$complemento,
-            'idresponsavel1'=>1,
-            'idresponsavel2'=>$teste
-        ];
-
-        return view('matricula.cadastroCrianca', $dados);
-
+       
         $familia = new Familia();
         $familia->moradia = Request::input('moradia');
         $familia->arearisco = Request::input('arearisco');

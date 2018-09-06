@@ -15,20 +15,13 @@ class CriancaController extends Controller
 {
     public function adicionaCrianca(){
 
+            
+        //---------------------------------------------
+
         $idresponsaveis = Request::input('idresponsavel');
 
-       return $dadosresponsaveis = DB::select('select * from parentes where idresponsavel = ?', [$idresponsaveis[0]]);
-
-        $dados = [
-            'idresponsavel1'=>$idresponsaveis[0],
-            'idresponsavel2'=>$idresponsaveis[1],
-            'dadosresponsaveis'=>$dadosresponsaveis
-        ];
-
-        return $dados;
-        return view('matricula.cadastroCrianca', $dados);
-        
-        //---------------------------------------------
+        $idresponsavel1 = $idresponsaveis[0];
+        $idresposnavel2 = $idresposnaveis[1];
 
         $nomecrianca = Request::input('nomecrianca');
         $datanascimentocrianca = Request::input('datanascimentocrianca');
@@ -81,14 +74,34 @@ class CriancaController extends Controller
 
         //-------------------------------*
     */
-        $parentesco = new Parentesco();
-        $parentesco->idcrianca = $crianca->idcrianca;
-        $parentesco->idresponsavel = $responsavel1->idresponsavel;
-        $parentesco->save();
 
         $parentesco = new Parentesco();
         $parentesco->idcrianca = $crianca->idcrianca;
-        $parentesco->idresponsavel = $responsavel2->idresponsavel;
+        $parentesco->idresponsavel = $idresponsavel1;
         $parentesco->save();
+
+        
+        if (!empty($idresponsavel2)) {
+            $parentesco = new Parentesco();
+            $parentesco->idcrianca = $crianca->idcrianca;
+            $parentesco->idresponsavel = $idresponsavel2;
+            $parentesco->save();
+        }
+       
+
+
+        
+
+        $dadosresponsaveis = DB::select('select * from parentes where idresponsavel = ?', [$idresponsaveis[0]]);
+
+        $dados = [
+            'idresponsavel1'=>$idresponsavel1,
+            'idresponsavel2'=>$idresponsavel2,
+            'dadosresponsaveis'=>$dadosresponsaveis
+        ];
+
+        return $dados;
+        return view('matricula.cadastroCrianca', $dados);
+    
     }
 }

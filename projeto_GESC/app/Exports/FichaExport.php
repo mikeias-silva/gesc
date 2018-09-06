@@ -55,7 +55,7 @@ class FichaExport implements FromView, WithEvents
         $espera=DB::select("select count(idmatricula) as emespera from matriculas where statuscadastro='Espera' and datasairespera=null and 
         EXTRACT(MONTH FROM dataespera)>='{$this->mes}'");
         $atendidos_mes=DB::select("select count(matriculas.idmatricula) as atendidosmes from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
-        and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)>='{$this->mes}'");
+        and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)<='{$this->mes}'");
         $atendidos_mes_passado=DB::select("select count(matriculas.idmatricula) as atendidosmespassado from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
         and matriculas.statuscadastro='Ativo' and EXTRACT(MONTH FROM dataativacao)<='{$mesanterior}'");
         $media_atendimento_diario = ($atendidos_mes[0]->atendidosmes)/$dias_funcionamento[0]->numero;
@@ -75,6 +75,15 @@ class FichaExport implements FromView, WithEvents
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
         parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.bolsafamilia=1
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}'");
+        $beneficiarios_cadunico=DB::select("select count(matriculas.idmatricula) as cadunico from matriculas, crianca, parentesco, responsavel, familia 
+        where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
+        parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.numnis!=''
+        and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}'");
+
+        /*lista usuários ativos = select matriculas.idmatricula, pessoa.nomepessoa, familia.numnis, cras.nomecras, pessoa.bairro, publicoprioritario.publicoprioritario from gesc.matriculas, gesc.crianca, gesc.parentesco, gesc.responsavel, gesc.familia, gesc.pessoa, gesc.cras, gesc.publicoprioritario
+        where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and parentesco.idresponsavel=responsavel.idresponsavel 
+        and familia.idfamilia=responsavel.idfamilia and crianca.idpessoa=pessoa.idpessoa and familia.idcras=cras.idcras and crianca.idpublicoprioritario=publicoprioritario.idpublicoprioritario
+        and matriculas.statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)=2018 and EXTRACT(MONTH FROM datacadastro)<=8*/
 
 
         return view('exports.template', [
@@ -91,6 +100,7 @@ class FichaExport implements FromView, WithEvents
             'beneficiarios_pc' => $beneficiarios_pc[0]->bebficiariospc,
             'beneficiarios_bolsafamilia' => $beneficiarios_bolsafamilia[0]->bolsafamilia,
             'desligados_mes' => $desligados_mes[0]->totaldesligamentos,
+            'beneficiarios_cadunico' => $beneficiarios_cadunico[0]->cadunico,
         ]);
         //return Vaga::all();
     }
@@ -146,9 +156,13 @@ class FichaExport implements FromView, WithEvents
                 $event->sheet->getColumnDimension('X')->setWidth(5);
                 //$event->sheet->getCell('A12')->setValue("Nº DE PESSOAS\nATENDIDAS NO\nMÊS ANTERIOR:");
                 //$event->sheet->getCell('D12')->setValue("Nº DE DIAS ÚTEIS COM\nATENDIMENTO NO MÊS ATUAL:");
-                $event->sheet->getStyle('A12:X13')->getAlignment()->setWrapText(true);
-                $event->sheet->getRowDimension('12')->setRowHeight(25.5);
-                $event->sheet->getRowDimension('13')->setRowHeight(25.5);
+                $event->sheet->getStyle('A5:X13')->getAlignment()->setWrapText(true);
+                $event->sheet->getRowDimension('5')->setRowHeight(25.5);
+                $event->sheet->getRowDimension('6')->setRowHeight(25.5);
+                $event->sheet->getRowDimension('7')->setRowHeight(25.5);
+                $event->sheet->getRowDimension('9')->setRowHeight(37.75);
+                $event->sheet->getRowDimension('10')->setRowHeight(37.75);
+                $event->sheet->getRowDimension('11')->setRowHeight(37.75);
                 //$event->sheet->getStyle('A3:G3')
                 //->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
                 //$event->sheet->mergeCells('A3:G4');
@@ -157,9 +171,9 @@ class FichaExport implements FromView, WithEvents
                 //$event->sheet->getCell('A5')->setValue("ENTIDADE MANTEDORA:\n".$instituicao[0]->entidademantenedora);
                 //$event->sheet->getStyle('A5')->getAlignment()->setWrapText(true);
                 //$event->sheet->getRowDimension('5')->setRowHeight(50);
-                $event->sheet->getCell('I8')->setValue("(".substr($instituicao[0]->telefone, 0, 2).")".substr($instituicao[0]->telefone, 2, 4)."-".
+                $event->sheet->getCell('I6')->setValue("TELEFONE: (".substr($instituicao[0]->telefone, 0, 2).")".substr($instituicao[0]->telefone, 2, 4)."-".
                                                         substr($instituicao[0]->telefone, 7, 5));
-                $event->sheet->getCell('Q6')->setValue(substr($instituicao[0]->cnpj, 0, 2).".".substr($instituicao[0]->cnpj, 2, 3).".".
+                $event->sheet->getCell('Q5')->setValue("CNPJ: ".substr($instituicao[0]->cnpj, 0, 2).".".substr($instituicao[0]->cnpj, 2, 3).".".
                                                         substr($instituicao[0]->cnpj, 5, 3)."/".substr($instituicao[0]->cnpj, 8, 4)."-".substr($instituicao[0]->cnpj, 12, 2));
                 $event->sheet->styleCells(
                     'A1:X2',
@@ -233,10 +247,32 @@ class FichaExport implements FromView, WithEvents
                                 'color' => ['argb' => '00000000'],
                             ],
                         ],
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '11',
+                            //'name' => 'Times New Roman',
+                        ],
                     ]
                 );
 
                 $event->sheet->styleCells(
+                    'A12:X12',
+                    [
+                        'borders' => [
+                            'outline'  =>  [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ],
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '11',
+                            //'name' => 'Times New Roman',
+                        ],
+                    ]
+                );
+
+                /*$event->sheet->styleCells(
                     'A11:X11',
                     [
                         'borders' => [
@@ -248,7 +284,7 @@ class FichaExport implements FromView, WithEvents
                     ]
                 );
 
-                $event->sheet->styleCells(
+               $event->sheet->styleCells(
                     'A5:H6',
                     [
                         'borders' => [
@@ -354,17 +390,17 @@ class FichaExport implements FromView, WithEvents
                             ],
                         ],
                     ]
-                );
+                );*/
 
                 $event->sheet->styleCells(
-                    'A12:X13',
+                    'A5:X11',
                     [
                         'alignment' => [
                             'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
                         ],
 
                         'font' => [
-                            //'bold'  =>  true,
+                            'bold'  =>  true,
                             'size' => '10',
                             //'name' => 'Times New Roman',
                         ],

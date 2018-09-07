@@ -56,7 +56,9 @@
 </head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard"><h3>GESC</h3></a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">
+                <h3>GESC</h3>
+            </a>
         </nav>
         @yield('login')
         <div class="container-fluid">
@@ -81,17 +83,17 @@
                                     <div>
                                         <ul> 
                                             <li>
-                                                <a class="nav-link btn-light" id="removerlink" href="/novaMatricula">Nova Matrícula
+                                                <a class="nav-link btn-light" id="removerlink" href="/listagemResponsaveis">Nova Matrícula
                                                 </a>
                                             </li>
                                          
                                             <li>
-                                                <a class="nav-link btn-light" id="removerlink" href="/matriculas">Matriculas atuais
+                                                <a class="nav-link btn-light" id="removerlink" href="/listagemMatriculas">Matriculas atuais
                                                 </a>
                                             </li>
                                             
                                             <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="/matriculas">Matriculas anteriores
+                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/anteriores">Matriculas anteriores
                                                 </a>
                                             </li>
                                         </ul>
@@ -110,7 +112,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link  btn-light" href="/cras">
-                                    <i class="fa fa-university fa-lg"></i>
+                                    <i class="material-icons">
+                                        location_city
+                                    </i>
                                      CRAS/CREAS
                                 </a>
                             </li>
@@ -151,8 +155,8 @@
                             <li class="nav-item">
                                 <a class="nav-link  btn-light" href="/usuarios">
                                     <i class="material-icons">
-                                        assignment_ind
-                                        </i>
+                                            person_add
+                                    </i>
                                      Controle de Usuário
                                   
                                 </a>
@@ -161,7 +165,7 @@
                                 <a class="nav-link  btn-light" href="/vagas">
                                     <i class="material-icons">
                                         compare_arrows
-                                        </i>
+                                    </i>
                                      Controle de Vagas
                                    
                                 </a>
@@ -171,7 +175,9 @@
 
                             <li class="nav-item">
                                 <a class="nav-link  btn-light " href="/fichaFrequencia">
-                                    <i class="material-icons">school</i>
+                                    <i class="material-icons">
+                                        description
+                                    </i>
                                      Ficha de Frequência
                                     
                                 </a>

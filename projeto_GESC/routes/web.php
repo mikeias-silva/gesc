@@ -50,18 +50,20 @@ Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias
 //Rotas para as telas de Responsaveis
 Route::get('/listagemResponsaveis', 'ResponsavelController@responsaveis')->middleware('auth');
 Route::get('/responsavel', 'ResponsavelController@novoResponsavel')->middleware('auth');
-Route::post('/crianca', 'ResponsavelController@adicionaResponsavel')->middleware('auth');
+Route::post('/adicionaResponsavel', 'ResponsavelController@adicionaResponsavel')->middleware('auth');
+
+//Rotas para as telas de criança
+Route::post('/crianca', 'CriancaController@cadastroCrianca')->middleware('auth');
 Route::post('/adicionaCrianca', 'CriancaController@adicionaCrianca')->middleware('auth');
 
-//Route::post('/confirmarResponsaveis', 'ResponsavelController@responsaveis');
 
-//Rotas para as telas de Crianças
-//Route::post('/crianca', 'MatriculasController@crianca')->middleware('auth');
+//Rotas para as telas de Matrícula  
+Route::get('/listagemMatriculas', 'MatriculasController@listaMatriculas')->middleware('auth');
+Route::get('/listagemMatriculas/anteriores', 'MatriculasController@selecionaAno')->middleware('auth');
+Route::post('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
 
-//Rotas para as telas de Matrícula
-Route::get('/matriculas', 'MatriculasController@listaMatriculas')->middleware('auth');
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula')->middleware('auth');
-Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
+//Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
 Route::get('/pdfmatricula', 'MatriculasController@imprime')->middleware('auth');
 Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula')->middleware('auth');
 Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middleware('auth');
@@ -71,7 +73,6 @@ Route::get('/rematricula/{idmatricula}', 'MatriculasController@rematricula')->mi
 Route::get('/confirmarRematricula/{idmatricula}', 'MatriculasController@confirmarRematricula')->middleware('auth');
 Route::post('/matricula', 'MatriculasController@adicionaMatricula')->middleware('auth');
 Route::get('/matriculasAtuais', 'MatriculasController@matriculasAtuais')->middleware('auth');
-Route::get('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
 
 
 

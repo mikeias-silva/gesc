@@ -4,10 +4,10 @@
 @if(empty($turma))
     <div class="alert alert-danger">
     
-       <span class="glyphicons glyphicons-alert"></span> Você não tem nenhum Grupo de Convivência cadastrado.
-       <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+       <span class="text text-alert"></span> Você não tem nenhum Grupo de Convivência cadastrado.
+       <span class="text text-align-left" aria-hidden="true"></span>
     </div>
-@elseif($turma != "")
+@elseif(!empty($turma))
 <h1 class="text">Gerenciamento de Turmas</h1>
 <table class="table table-striped">
     <thead>
@@ -15,8 +15,8 @@
             <th scope="col">Grupo de Convivência</th>
             <th scope="col">Turno</th>
             <th scope="col">Educador</th>
-            <th>Editar</th>
-            <th>Ativado/inativado</th>
+            <th>Ações</th>
+            
 
         </tr>
     </thead>
@@ -32,20 +32,33 @@
         <td>{{ $t->nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
         <td>
-            <button type="button" class="btn btn-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
+            <a href="" class="text text-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
                 data-myturno="{{ $t->turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
-                 data-toggle="modal" data-target="#editarturma">Editar</button>
-        </td>
+                 data-toggle="modal" data-target="#editarturma">
+                 <i class="material-icons">
+                    edit
+                </i>
+            </a>
+       
         @if( ($t->statusturma) === 0)
-        <td>
-        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#ativarturma">Inativo</button>
-        </td>
-        @elseif(($t->statusturma) >0)
-        <td>
-        <button type="button" class="btn btn-success" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#inativarturma">Ativo</button>
-        </td>
+        
+            <a href="" class="text text-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
+                data-toggle="modal" data-target="#ativarturma">
+                <i class="material-icons">
+                    highlight_off
+                </i>
+            </a>
+        
+        @elseif(($t->statusturma) > 0)
+        
+            <a href="" class="text text-success" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
+                data-toggle="modal" data-target="#inativarturma">
+                <i class="material-icons">
+                    done
+                </i>
+            </a>
+        
+    </td>
         @endif
     </tr>
     

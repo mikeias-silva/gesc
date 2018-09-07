@@ -37,14 +37,16 @@ where
 drop view if exists dadosmatricula;
 create view dadosmatricula as
 select 
-	matriculas.idmatricula, matriculas.anomatricula datamatricula, matriculas.serieescolar,
+	matriculas.idmatricula, matriculas.anomatricula datamatricula, matriculas.serieescolar, matriculas.anomatricula,
     turma.grupoconvivencia,
-    matriculas.idcrianca
+    matriculas.idcrianca,
+    vagas.idvaga, vagas.anovaga
 from 
-	matriculas, crianca, turma
+	matriculas, crianca, turma, vagas
 where 
 	matriculas.idcrianca = crianca.idcrianca
-and matriculas.idturma = turma.idturma;
+and matriculas.idturma = turma.idturma
+and matriculas.idvaga = vagas.idvaga;
 
 
 drop view if exists dadoscrianca;
@@ -76,6 +78,3 @@ where
 	matriculas.idvaga = vagas.idvaga
     and matriculas.idcrianca = crianca.idcrianca;
     
-    
-    
-select * from rematriculas where anovaga = '2019'

@@ -85,7 +85,7 @@ $escolas = [
         foreach($escolas as $escola){
             
         
-            DB::insert('insert into escolas(nomeescola) values(?)', array($escola));
+            DB::insert('insert into escola(nomeescola) values(?)', array($escola));
         }
     }
 }

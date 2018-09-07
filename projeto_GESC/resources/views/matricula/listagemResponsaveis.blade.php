@@ -3,23 +3,33 @@
 <form action="/crianca" method="POST">
     {{ csrf_field() }}
 <h2>Responsáveis</h2>
-
+<div>
 <table id="dtResponsavel" class="table table-striped">
-        <thead>
+        <thead class="table table-bordered">
             <tr>
-                <th></th>
-                <th>Nome</th>
-                <th>RG</th>
-                <th>CPF</th>
-                <th>Idade</th>
-                <th>Ações</th>
+                <th>#</th>
+                <th class="shorting">Nome<i class="material-icons float-right">
+                    swap_vert
+                    </i></th>
+                <th>RG <i class="material-icons float-right">
+                    swap_vert
+                    </i></th>
+                <th>CPF<i class="material-icons float-right">
+                    swap_vert
+                    </i></th>
+                <th>Idade<i class="material-icons float-right">
+                    swap_vert
+                    </i></th>
+                <th>Ações<i class="material-icons float-right">
+                    swap_vert
+                    </i></th>
             </tr>
         </thead>
             
-        
+        <tbody>
             @foreach($responsaveis as $responsavel)
         
-            <tr>
+            <tr role="row">
                 <td><input type="checkbox" class="form-control" name="idresponsavel[]" value="{{ $responsavel->idresponsavel }}" id=""></td>
                 <td>{{ $responsavel->idresponsavel }}</td>
                  <td>
@@ -30,11 +40,10 @@
                 <td>asd</td>
             </tr>
             @endforeach 
-        
-          
+        </tbody>
             
     </table>
-
+</div>
 <div class="float-right">
     
         <button class="btn btn-success">
@@ -44,7 +53,7 @@
 </div>
 </form>
 <div class="float-right">
-    <form action="/novoResponsavel">
+    <form action="/responsavel">
         <button class="btn btn-primary">
             Novo Responsável
         </button>
@@ -59,7 +68,9 @@
 <script>
 
 $(document).ready(function () {
-$('#dtResponsavel').DataTable();
+$('#dtResponsavel').DataTable(
+    
+);
 $('.dataTables_length').addClass('bs-select');
 });
 

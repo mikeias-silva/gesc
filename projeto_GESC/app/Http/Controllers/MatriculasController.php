@@ -21,7 +21,7 @@ use App\Crianca;
 use App\Turma;
 use App\Vaga;
 use App\Historico_Matricula;
-
+use App\DadosMatricula;
 use Request;
 //use Illuminate\Http\Request;
 
@@ -41,10 +41,11 @@ class MatriculasController extends Controller
 
        // $matAtivas =  DB::select('select * from matriculas where statuscadastro = ?', ['Ativo']);
         //dd($matAtivas);
-       //$matAtivas = DB::select('select * from matriculas where statuscadastro = ');
+      // $matAtivas = DB::select('select * from matriculas where statuscadastro = ?', ['Ativo']);
 
         //$matAtivas = Matricula::where('statuscadastro', 'ativo');
 
+      
         $matAtivas = Matricula::matriculasAtiva();
         $matInativas = Matricula::matriculasInativas();
         $matEspera = Matricula::matriculasEspera();
@@ -69,6 +70,28 @@ class MatriculasController extends Controller
         ->with('pprioritario', $pprioritario)->with('turmas', $turmas);
     }
 
+    public function selecionaAno(){
+        $vagas = Vaga::vagasAnteriores();
+        
+        return view('matricula.anoMatricula')->with('vagas', $vagas);
+    }
+
+    public function matriculasAnteriores(){
+
+        $anovaga = Request::input('anovaga');
+       // return $anovaga;
+        //$dadosmatriculas = DB::select('select * from dadosmatricula where anovaga = ?', [$anovaga]);
+
+
+      //  $matAnteriores = Matricula::matriculasAnoAnterior($anovaga);
+
+        $matAnteriores = DadosMatricula::matriculasAnoAnterior($anovaga);
+       // $ano = Carbon::now()->year;
+        //return $matAnteriores;
+        return view('matricula.matriculasAnterior')->with('matAnteriores', $matAnteriores)
+        ->with('ano', $anovaga);
+    }
+
     public function imprime(){
         $matAtivas = Matricula::matriculasAtiva();
         $matInativas = Matricula::matriculasInativas();
@@ -79,8 +102,7 @@ class MatriculasController extends Controller
         $idmatricula = Request::input('idmatricula');
 
 
-        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
-        = ?', array($idmatricula));
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula = ?', array($idmatricula));
 
         foreach ($dadosmatricula as $dadosmt) {
             $dadosmt->idcrianca;
@@ -161,6 +183,7 @@ class MatriculasController extends Controller
 
         //return Request::all();
       
+        return $idcrianca;
         
         $hoje = Carbon::now();
         /*$nome = Request::input('nome');

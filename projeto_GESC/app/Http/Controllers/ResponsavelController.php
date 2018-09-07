@@ -11,6 +11,8 @@ use App\Escola;
 use App\Cras;
 use Request;
 
+use App\PublicoPrioritario;
+
 
 class ResponsavelController extends Controller
 {
@@ -24,9 +26,14 @@ class ResponsavelController extends Controller
 
     public function novoResponsavel(){
 
-        $escola = Escola::all();
+        $escolas = Escola::all();
+        $cras = Cras::all();
 
-        return view('matricula.cadastroResponsaveis');
+        $dados = [
+            'cras'=>$cras
+        ];
+
+        return view('matricula.cadastroResponsaveis', $dados);
     }
 
     public function adicionaResponsavel(){
@@ -37,7 +44,24 @@ class ResponsavelController extends Controller
         $complemento = Request::input('complemento');
         $ncasa = Request::input('ncasa');
 
-       
+        $pprioritario = PublicoPrioritario::all();
+        $escolas = Escola::all();
+        $dados = [
+            'responsaveis'=>123654,
+            'cep'=>$cep,
+            'bairro'=>$bairro,
+            'logradouro'=>$logradouro,
+            'ncasa'=>$ncasa,
+            'complemento'=>$complemento,
+            'idresponsavel1'=>2,
+            'idresponsavel2'=>3,
+            'pprioritario'=>$pprioritario,
+            'escolas'=>$escolas
+
+        ];
+
+        //return $pessoaresponsavel1->nomepessoa ;
+        return view('matricula.cadastroCrianca', $dados);
         $familia = new Familia();
         $familia->moradia = Request::input('moradia');
         $familia->arearisco = Request::input('arearisco');
@@ -239,17 +263,19 @@ class ResponsavelController extends Controller
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
 
+        $escolas = Escola::all();
         $dados = [
-            'responsaveis'=>$idresponsavel,
+            'responsaveis'=>123654,
             'cep'=>$cep,
             'bairro'=>$bairro,
             'logradouro'=>$logradouro,
             'ncasa'=>$ncasa,
             'complemento'=>$complemento,
-            'idresponsavel1'=>$responsavel1->idresponsavel,
-            'idresponsavel2'=>$responsavel2->idresponsavel
+            'idresponsavel1'=>2,
+            'idresponsavel2'=>3
         ];
 
+        //return $pessoaresponsavel1->nomepessoa ;
         return view('matricula.cadastroCrianca', $dados);
     }
 }

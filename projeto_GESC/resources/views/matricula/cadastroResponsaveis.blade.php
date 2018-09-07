@@ -1,12 +1,12 @@
 @extends('layout.principal') 
 @section('conteudo')
-<div class="" id="responsavel">
-<form action="/crianca" method="POST">
+<div class="container" id="responsavel">
+<form action="/adicionaResponsavel" method="POST">
     {{ csrf_field() }}
         <div class="form">
-        <br>
-        <h5>Responsável 01</h5>
-        <br>
+        
+        <h2>Responsável 01</h2>
+        
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
@@ -57,14 +57,54 @@
                 </div>
             </div>
         </div>
+        <div class="form-group ">
+                <div class="row" >
+                    <div class="col-sm-2">
+                        <label>CEP</label>
+                        <input class="form-control" type="text" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);"/>
+                    </div>
+                    <div class="col-sm-5">
+                        <label>Endereço</label>
+                        <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                        <span id="msgEndereco"></span>
+                    </div>
 
+                    <div class="col-sm-1">
+                        <label>Nº</label>
+                        <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
+                    </div>
+
+                    
+                    <div class="col-sm-4">
+                        <label>Bairro</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                        <span id="msgBairro"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="row" >
+                    <div class="col-sm-8">
+                        <label>Complemento</label>
+                        <input type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                    </div>
+
+                    
+                </div>
+            </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-8">
                     <label>Profissão</label>
                     <input type="text" class="form-control" name="profissaoresp1">
                 </div>
-                
+              <!--   <div class="col-sm-4">
+                    <label for="">Renda Familiar</label>
+                    <select class="form-control" name="" id="">
+                        <option value="">de 960 R$ até 1200 R$</option>
+                    </select>
+                </div>
+                 -->
             </div>
         </div>
 
@@ -111,15 +151,16 @@
 
         </div>
             
-        <h5>Responsável 02</h5>
-        <br>
+        <h2>Responsável 02</h2>
+      
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Nome:</label>
+                    <label>Nome</label>
                     <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp2"></span>
                 </div>
+            
 
                 <div class="col-sm-4">
                     <label>Data de Nascimento</label>
@@ -170,7 +211,6 @@
                     <label>Profissão</label>
                     <input type="text" class="form-control" name="profissaoresp2">
                 </div>
-               
             </div>
         </div>
 
@@ -213,7 +253,7 @@
         <textarea name="obsresp2" id="" cols="10" rows="2" class="form-control"></textarea>
     
         </div>
-    </div>
+    
 
     <!-- ABA FAMILIA -->
     <div class="" id="familia" >
@@ -336,7 +376,14 @@
             
            </div>
         -->
-        
+        <div class="col-sm-6">
+            <label>CRAS/CREAS</label>
+            <select name="cras" id="" class="custom-select" name="cras">
+                @foreach($cras as $c)
+                    <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
+                @endforeach
+            </select>
+        </div>
         </div>
 
       
@@ -344,4 +391,6 @@
                 Avançar
             </button>
       </form>
+    </div>
+<script src="js/buscaCep.js"></script>
 @stop

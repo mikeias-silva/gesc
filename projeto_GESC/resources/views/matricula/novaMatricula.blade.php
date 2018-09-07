@@ -1,6 +1,7 @@
 @extends('layout.principal') 
 
 @section('conteudo')
+
 <form action="/novaMatricula/adiciona" method="POST">
 <div class="float-right">
     <button type="submit" class="btn btn-primary" id="btn-mat"
@@ -51,7 +52,7 @@
                         <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
                         <span id="msgNomeCrianca"></span>
                     </div>
-                        
+                     
                     <div class="col-sm-4">
                         <label>Nascimento</label>
                         <input type="date" class="form-control" name="datanascimentocrianca">
@@ -601,4 +602,5 @@
   <!--  <script src="js/nova_matricula.js"></script>
   -->
     <script src="js/membro_familia.js"></script>
+   
 @stop

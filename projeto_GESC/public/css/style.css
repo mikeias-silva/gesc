@@ -10,6 +10,11 @@
     
 }
 
+.btn{
+    border-radius: 2.5px;
+    margin: 20px 3px 20px 3px;
+}
+
 .btn-light{
     background-color: rgb(245, 245, 245);
     
@@ -114,6 +119,8 @@ select, .form-control{
     color: black;
     /*border-width: 2px;*/
     border-color: rgb(177, 175, 175);
+    /*border: 1px;*/
+    border-radius: 2.5px;
 }
 
 #campoobrigatorio{
@@ -146,4 +153,12 @@ select, .form-control{
 #titulorematricula{
     font-weight: bold;
     margin-top: 40px;
+}
+
+h2, h1{
+    margin: 20px 0px 50px 0px;
+}
+
+h4, h2, h1{
+    font-weight: bold;
 }

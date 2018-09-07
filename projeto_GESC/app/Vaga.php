@@ -22,4 +22,16 @@ class Vaga extends Model
         
         return DB::select('select * from vagas where anovaga > ?', [$ano]);
     }
+
+    static function vagaMatricula(){
+        $ano = Carbon::now();
+
+        return DB::select('select * from vagas where anovaga = ?', [$ano]);
+    }
+
+    static function vagasAnteriores(){
+        $ano = Carbon::now();
+
+        return DB::select('select * from vagas where anovaga < ?', [$ano]);
+    }
 }

@@ -8,6 +8,9 @@ use App\Responsavel;
 
 use App\Escola;
 
+use App\Pessoa;
+
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -21,15 +24,19 @@ class CriancaController extends Controller
         $idresponsaveis = Request::input('idresponsavel');
 
         $idresponsavel1 = $idresponsaveis[0];
-        $idresposnavel2 = $idresposnaveis[1];
+        $idresponsavel2 = $idresponsaveis[1];
 
-        $nomecrianca = Request::input('nomecrianca');
+        //return $idresponsavel1;
+
+       /* $nomecrianca = Request::input('nomecrianca');
         $datanascimentocrianca = Request::input('datanascimentocrianca');
         $sexocrianca = Request::input('sexocrianca');
         $statusmatricula = Request::input('statusmatricula');
         $rgcrianca = Request::input('rgcrianca');
         $cpfcrianca = Request::input('cpfcrianca');
-        
+        $cep = Request::input('cep');
+        $bairro = 
+
         $pessoacrianca = new Pessoa();
         $pessoacrianca->nomepessoa = $nomecrianca;
         $pessoacrianca->datanascimento = $datanascimentocrianca;
@@ -37,10 +44,10 @@ class CriancaController extends Controller
         $pessoacrianca->cpf = $cpfcrianca;
         $pessoacrianca->sexo = $sexocrianca;
         $pessoacrianca->cep = $cep;
-        $pessoacrianca->bairro = $bairro;
-        $pessoacrianca->logradouro = $logradouro;
-        $pessoacrianca->complementoendereco = $complemento;
-        $pessoacrianca->save();
+       // $pessoacrianca->bairro = $bairro;
+       // $pessoacrianca->logradouro = $logradouro;
+       // $pessoacrianca->complementoendereco = $complemento;
+       // $pessoacrianca->save();
         
         /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
             values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -58,13 +65,13 @@ class CriancaController extends Controller
         $datacadastro = Carbon::now();
         $idpessoa = 1; */
 
-        $crianca = new Crianca();
+     /*   $crianca = new Crianca();
         $crianca->obssaude = Request::input('obssaude');
         $crianca->datacadastro = $hoje;
         $crianca->idescola = Request::input('escola');;
         $crianca->idpublicoprioritario = Request::input('pprioritario');
         $crianca->idpessoa = $pessoacrianca->id;
-        $crianca->save();
+        //$crianca->save();
 
         
         /*
@@ -75,10 +82,10 @@ class CriancaController extends Controller
         //-------------------------------*
     */
 
-        $parentesco = new Parentesco();
+      /*  $parentesco = new Parentesco();
         $parentesco->idcrianca = $crianca->idcrianca;
         $parentesco->idresponsavel = $idresponsavel1;
-        $parentesco->save();
+        //$parentesco->save();
 
         
         if (!empty($idresponsavel2)) {
@@ -87,8 +94,7 @@ class CriancaController extends Controller
             $parentesco->idresponsavel = $idresponsavel2;
             $parentesco->save();
         }
-       
-
+       */
 
         
 

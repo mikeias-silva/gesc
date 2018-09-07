@@ -44,12 +44,18 @@
                         <td>{{ $matA->idadeMatricula() }} anos</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
-                            <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-lg"></i></a>
+                            <a id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="material-icons text text-dark">
+                                print
+                                </i></a>
                             <a href="/inativarMatricula" class="text text-danger" 
-                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class=" text text-danger fa fa-minus fa-lg"></i></a>
+                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class="material-icons">
+                                highlight_off
+                                </i></a>
                             <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
-                            @if( empty($matA->idturma))
-                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-lg"></i>
+                            @if(empty( $matA->idturma ))
+                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="material-icons text text-warning">
+                                warning
+                                </i>
                             </a>
                             @endif
                             <a href="/rematricula/{{ $matA->idmatricula }}">Atualizar dados</a>
@@ -131,7 +137,9 @@
                             <td>{{ $matE->anoMatricula() }}</td>
                             <td>
                                 
-                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="fa fa-print "></i></a>
+                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="material-icons">
+                                    print
+                                    </i></a>
                                 
                                 <a href="/ativarMatricula" class="text text-danger" 
                                 data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
@@ -291,6 +299,7 @@
 <form action="/novaMatricula" class="float-right" id="btn-novamatricula">
     <button class="btn btn-primary">Nova Matrícula</button>
 </form>
+<!--  -->
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 

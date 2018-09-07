@@ -1,6 +1,6 @@
 @extends('layout.principal') 
 @section('conteudo')
-<form action="/adicionaCrianca" method="POST">
+<form action="/crianca" method="POST">
     {{ csrf_field() }}
 <h2>Responsáveis</h2>
 
@@ -25,6 +25,9 @@
                  <td>
                     <a href="/atualizarResponsavel/{{ $responsavel->idresponsavel }}">Atualizar dados</a>
                 </td>
+                <td>dasd</td>
+                <td>dads</td>
+                <td>asd</td>
             </tr>
             @endforeach 
         
@@ -60,24 +63,28 @@ $('#dtResponsavel').DataTable();
 $('.dataTables_length').addClass('bs-select');
 });
 
-$('#dtResponsavel').DataTable({
-    "language": {
-        "zeroRecords": "nada encontrado",
-        "infoEmpty": "Não há nenhum registro",
-        "lengthMenu": "Itens por página _MENU_ ",
-        "info": "Mostrando página _PAGE_ de _PAGES_",
-        "infoFiltered": "(Total de registros _MAX_)",
-        "search": "Busca",
-        "paginate": {
-            "first": "Primeira",
-            "last": "Última",
-            "next": "Próxima",
-            "previous": "Anterior"
-        },
-        "loadingRecords": "Carregando"
-    }
-});
 
+</script>
+
+
+<script>
+    $('#dtResponsavel').DataTable({
+        "language": {
+            "zeroRecords": "nada encontrado",
+            "infoEmpty": "Não há nenhum registro",
+            "lengthMenu": "Itens por página _MENU_ ",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoFiltered": "(Total de registros _MAX_)",
+            "search": "Busca",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            },
+            "loadingRecords": "Carregando"
+        }
+    });
 </script>
 
 

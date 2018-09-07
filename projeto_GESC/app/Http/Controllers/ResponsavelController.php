@@ -46,22 +46,7 @@ class ResponsavelController extends Controller
 
         $pprioritario = PublicoPrioritario::all();
         $escolas = Escola::all();
-        $dados = [
-            'responsaveis'=>123654,
-            'cep'=>$cep,
-            'bairro'=>$bairro,
-            'logradouro'=>$logradouro,
-            'ncasa'=>$ncasa,
-            'complemento'=>$complemento,
-            'idresponsavel1'=>2,
-            'idresponsavel2'=>3,
-            'pprioritario'=>$pprioritario,
-            'escolas'=>$escolas
-
-        ];
-
-        //return $pessoaresponsavel1->nomepessoa ;
-        return view('matricula.cadastroCrianca', $dados);
+       
         $familia = new Familia();
         $familia->moradia = Request::input('moradia');
         $familia->arearisco = Request::input('arearisco');
@@ -263,19 +248,21 @@ class ResponsavelController extends Controller
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
 
-        $escolas = Escola::all();
-        $dados = [
-            'responsaveis'=>123654,
-            'cep'=>$cep,
-            'bairro'=>$bairro,
-            'logradouro'=>$logradouro,
-            'ncasa'=>$ncasa,
-            'complemento'=>$complemento,
-            'idresponsavel1'=>2,
-            'idresponsavel2'=>3
-        ];
+    $dados = [
+        'responsaveis'=>123654,
+        'cep'=>$cep,
+        'bairro'=>$bairro,
+        'logradouro'=>$logradouro,
+        'ncasa'=>$ncasa,
+        'complemento'=>$complemento,
+        'idresponsavel1'=>$responsavel1->id,
+        'idresponsavel2'=>$responsavel2->id,
+        'pprioritario'=>$pprioritario,
+        'escolas'=>$escolas
 
-        //return $pessoaresponsavel1->nomepessoa ;
-        return view('matricula.cadastroCrianca', $dados);
+    ];
+
+    //return $pessoaresponsavel1->nomepessoa ;
+    return view('matricula.cadastroCrianca', $dados);
     }
 }

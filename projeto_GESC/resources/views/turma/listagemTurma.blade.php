@@ -8,7 +8,7 @@
        <span class="text text-align-left" aria-hidden="true"></span>
     </div>
 @elseif(!empty($turma))
-<h1 class="text">Gerenciamento de Turmas</h1>
+<h1 class="text">Cadastro de Grupos</h1>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -92,7 +92,7 @@
                     <label>Grupo de Convivência</label>
                     <input name="grupoconvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo"></label>
-                    <br>
+                    
                     <label>Turno</label>
                    <select class="form-control" name="turno" id="turno" value="">
                        <option value="M">Manhã</option>
@@ -166,7 +166,7 @@
                     <h5>Você tem certeza que deseja realmente ativar esta turma?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger">Ativar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
             
                     </div>
                 </div>

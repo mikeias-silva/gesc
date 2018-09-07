@@ -62,7 +62,7 @@
                     <tr>
                         <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->nomeTurma() }}</td>
-                        <td>CRAS</td>
+                        <td>teste</td>
                         <td>{{ $matA->idadeMatricula() }} anos</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>

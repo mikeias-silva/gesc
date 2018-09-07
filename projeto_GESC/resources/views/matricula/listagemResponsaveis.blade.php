@@ -7,11 +7,11 @@
 <table id="dtResponsavel" class="table table-striped">
         <thead class="table table-bordered">
             <tr>
-                <th>#</th>
-                <th class="shorting">Nome<i class="material-icons float-right">
+                
+                <th class="shorting">#<i class="material-icons float-right">
                     swap_vert
                     </i></th>
-                <th>RG <i class="material-icons float-right">
+                <th>Nome<i class="material-icons float-right">
                     swap_vert
                     </i></th>
                 <th>CPF<i class="material-icons float-right">
@@ -30,14 +30,15 @@
             @foreach($responsaveis as $responsavel)
         
             <tr role="row">
-                <td><input type="checkbox" class="form-control" name="idresponsavel[]" value="{{ $responsavel->idresponsavel }}" id=""></td>
-                <td>{{ $responsavel->idresponsavel }}</td>
-                 <td>
-                    <a href="/atualizarResponsavel/{{ $responsavel->idresponsavel }}">Atualizar dados</a>
+                <td>
+                    {{ $responsavel->idresponsavel }}
+                    <input type="checkbox" class="form-control" name="idresponsavel[]" value="{{ $responsavel->idresponsavel }}" id="">
                 </td>
-                <td>dasd</td>
-                <td>dads</td>
-                <td>asd</td>
+                 
+                <td>{{ $responsavel->nomeResponsavel() }}</td>
+                <td>{{ $responsavel->cpfResponsavel() }}</td>
+                <td>{{ $responsavel->idadeResponsavel() }}</td>
+                <td>editar</td>
             </tr>
             @endforeach 
         </tbody>
@@ -46,9 +47,9 @@
 </div>
 <div class="float-right">
     
-        <button class="btn btn-success">
-            Próximo
-        </button>
+    <button class="btn btn-success">
+        Próximo
+    </button>
     
 </div>
 </form>

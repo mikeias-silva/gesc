@@ -49,7 +49,7 @@ class TransferenciaController extends Controller {
     public function listaTurmasDois(){
         $aux=0;
         $numeroAlunos=[];
-        $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+        $listaTurmas = DB::select('select turma.idturma, turma.grupoconvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.id = turma.idUsuario && turma.statusTurma = 1');
 
         foreach($listaTurmas as $c){
@@ -64,11 +64,11 @@ class TransferenciaController extends Controller {
     public function listaAlunos($idturma){
         //echo($idturma);
         $ano= date("Y");
-        $nomeTurma = DB::select("select turma.GrupoConvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+        $nomeTurma = DB::select("select turma.grupoconvivencia, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.id = turma.idUsuario && turma.idturma='{$idturma}'");
         $aux=0;
         $numeroAlunos=[];
-        $listaTurmas = DB::select("select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
+        $listaTurmas = DB::select("select turma.idturma, turma.grupoconvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.id = turma.idUsuario && turma.statusTurma = 1 && turma.idturma!='{$idturma}'");
 
         foreach($listaTurmas as $c){
@@ -96,7 +96,8 @@ class TransferenciaController extends Controller {
     public function transfereAlunos(Request $request){
         //$checkTransferencia = $_POST['verificaTransferencia'];
        // $checkTransferencia = (isset($_POST["verificaTransferencia"])) ? $_POST["verificaTransferencia"] : "0";
-        $idMatricula = $_POST['idmatricula'];
+
+       return         $idMatricula = $_POST['idmatricula'];
         $novaTurma = $_POST['novaTurma'];
 
         for ($i=0; $i<count($idMatricula); $i++){

@@ -22,7 +22,7 @@
         ?>
         @foreach ($listaTurmas as $c)
             <tr>
-                <td> {{ $c->GrupoConvivencia }} </td>
+                <td> {{ $c->grupoconvivencia }} </td>
                 @if($c->Turno=="m")
                     <td>Manhã</td>
                 @else 

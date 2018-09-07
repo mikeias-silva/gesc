@@ -1,205 +1,12 @@
 @extends('layout.principal') 
-
 @section('conteudo')
-
-<form action="/novaMatricula/adiciona" method="POST">
-<div class="float-right">
-    <button type="submit" class="btn btn-primary" id="btn-mat"
-    data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
-
-</div>
-
-<div>
-    <h2>Nova Matrícula</h2>
-</div>
-
-
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="identificacao-tab" data-toggle="tab" href="#identificacao" role="tab" aria-controls="identificacao" aria-selected="true">Identificação</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="responsavel-tab" data-toggle="tab" href="#responsavel" role="tab" aria-controls="responsavel" aria-selected="false">Responsável</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="familia-tab" data-toggle="tab" href="#familia" role="tab" aria-controls="familia" aria-selected="false">Constituição Familiar</a>
-    </li>  
-    
-</ul>
-
-      
-<div class="tab-content" id="myTabContent">
-    <!--ABA IDENTIFICAÇÃO -->
-    <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
-    
-        
-    <div>
-    <br>
-
-    <form action="/novaMatricula/adiciona" method="POST" 
-    onsubmit="return validarMatricula(matriculaNova.nomecrianca, matriculaNova.datanascimentocrianca, matriculaNova.rgcrianca,
-    matriculaNova.cpfcrianca, matriculaNova.cep, matriculaNova.logradouro, matriculaNova.bairro, matriculaNova.nomeresp1,
-    matriculaNova.datanascimentoresp1, matriculaNova.rgresp1, matriculaNova.cpfresp1, matriculaNova.salarioresp1, matriculaNova.tel1resp1, 
-    matriculaNova.tel2resp1, matriculaNova.nomeresp2, matriculaNova.datanascimentoresp2, matriculaNova.rgresp2, matriculaNova.cpfresp2, 
-    matriculaNova.salarioresp2, matriculaNova.tel1resp2, matriculaNova.tel2resp2, matriculaNova.numnis);" name="matriculaNova">
-            <div class="form-group ">
-            {{ csrf_field() }}
-            <div class="form-group ">
-                <div class="row">
-                    <div class="col-sm-6" >
-                        <label>Nome</label>
-                        <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
-                        <span id="msgNomeCrianca"></span>
-                    </div>
-                     
-                    <div class="col-sm-4">
-                        <label>Nascimento</label>
-                        <input type="date" class="form-control" name="datanascimentocrianca">
-                        <span id="msgDataNascimento"></span>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <label>Sexo</label>
-                        <select name="sexocrianca" id="" class="custom-select" value="">
-                            <option value="M">Masculino</option>
-                            <option value="F">Feminino</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-4">
-                        <label>RG</label>
-                        <input type="text" class="form-control" id="rgcrianca" name="rgcrianca" onkeyup="mascara(this, Rg);" maxlength="9" autocomplete="off">
-                        <span id="msgRg"></span>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <label>CPF</label>
-                        <input type="text" class="form-control" name="cpfcrianca" id="cpfcrianca" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
-                        <span id="msgCpf"></span>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <label>CEP</label>
-                        <input type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
-                        <span id="msgCep"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-5">
-                        <label>Endereço</label>
-                        <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
-                        <span id="msgEndereco"></span>
-                    </div>
-
-                    <div class="col-sm-1">
-                        <label>Nº</label>
-                        <input class="form-control" type="text" name="ncasa"/>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <label>Cidade</label>
-                        <input disabled class="form-control" type="text" id="cidade"/>
-                    </div>
-                    <div class="col-sm-4">
-                        <label>Bairro</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
-                        <span id="msgBairro"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-6">
-                        <label>Complemento</label>
-                        <input type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label>CRAS/CREAS</label>
-                        <select name="cras" id="" class="custom-select" name="cras">
-                            @foreach($cras as $c)
-                                <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group " >
-                <div class="row" >
-                    <div class="col-sm-6">
-                        <label>Público Prioritário</label>
-                        <select name="pprioritario" id="" class="custom-select">
-                            @foreach($pprioritario as $p)
-                                <option value="{{ $p->idpublicoprioritario }}">{{ $p->publicoprioritario }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label>Escola</label>
-                        <select name="escola" id="" class="custom-select" >
-                            @foreach($escola as $e)
-                                <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <label>Serie Escolar</label>
-                        <select name="serie" id="" class="custom-select"> 
-                            <option value="">...</option>
-                            <option value="1">1º Fundamental</option>
-                            <option value="2">2º Fundamental</option>
-                            <option value="3">3º Fundamental</option>
-                            <option value="4">4º Fundamental</option>
-                            <option value="5">5º Fundamental</option>
-                            <option value="6">6º Fundamental</option>
-                            <option value="7">7º Fundamental</option>
-                            <option value="8">8º Fundamental</option>
-                            <option value="9">9º Fundamental</option>
-                            <option value="10">1º Médio</option>
-                            <option value="11">2º Médio</option>
-                            <option value="12">3º Médio</option>   
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group ">
-                <label>Observações de Saúde</label>
-                <textarea name="obssaude" id="" cols="10" rows="2" class="form-control" maxlength="255" autocomplete="off"></textarea>
-            </div>
-
-        </div>
-    </div>
-
-    </div>
-
-    <!-- ABA RESPONSÁVEL -->
-    <div class="tab-pane fade" id="responsavel" role="tabpanel" aria-labelledby="responsavel-tab">
+<div class="container" id="responsavel">
+<form action="/adicionaResponsavel" method="POST">
+    {{ csrf_field() }}
         <div class="form">
-        <br>
-        <h5>Responsável 01</h5>
-        <br>
+        
+        <h2>Responsável 01</h2>
+        
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
@@ -250,14 +57,54 @@
                 </div>
             </div>
         </div>
+        <div class="form-group ">
+                <div class="row" >
+                    <div class="col-sm-2">
+                        <label>CEP</label>
+                        <input class="form-control" type="text" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);"/>
+                    </div>
+                    <div class="col-sm-5">
+                        <label>Endereço</label>
+                        <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                        <span id="msgEndereco"></span>
+                    </div>
 
+                    <div class="col-sm-1">
+                        <label>Nº</label>
+                        <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
+                    </div>
+
+                    
+                    <div class="col-sm-4">
+                        <label>Bairro</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                        <span id="msgBairro"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="row" >
+                    <div class="col-sm-8">
+                        <label>Complemento</label>
+                        <input type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                    </div>
+
+                    
+                </div>
+            </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-8">
                     <label>Profissão</label>
                     <input type="text" class="form-control" name="profissaoresp1">
                 </div>
-                
+              <!--   <div class="col-sm-4">
+                    <label for="">Renda Familiar</label>
+                    <select class="form-control" name="" id="">
+                        <option value="">de 960 R$ até 1200 R$</option>
+                    </select>
+                </div>
+                 -->
             </div>
         </div>
 
@@ -304,15 +151,16 @@
 
         </div>
             
-        <h5>Responsável 02</h5>
-        <br>
+        <h2>Responsável 02</h2>
+      
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Nome:</label>
+                    <label>Nome</label>
                     <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp2"></span>
                 </div>
+            
 
                 <div class="col-sm-4">
                     <label>Data de Nascimento</label>
@@ -363,7 +211,6 @@
                     <label>Profissão</label>
                     <input type="text" class="form-control" name="profissaoresp2">
                 </div>
-               
             </div>
         </div>
 
@@ -406,10 +253,10 @@
         <textarea name="obsresp2" id="" cols="10" rows="2" class="form-control"></textarea>
     
         </div>
-    </div>
+    
 
     <!-- ABA FAMILIA -->
-    <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
+    <div class="" id="familia" >
         
         <br>
         <div class="form-group">
@@ -504,9 +351,7 @@
                             <td> 
                                <select id="tdedit" name="escolamembro1" id="" class="custom-select" >
                                    <option value="">Não estuda</option>
-                                    @foreach($escola as $e)
-                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
-                                    @endforeach
+                                INSERIR LOGICA DAS ESCOLAS PARA MEMBRO FAMILIA    
                                 </select>
                             </td>
                  
@@ -518,89 +363,34 @@
                             <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro2"/></td>
                             <td> 
                                <select id="tdedit" name="escolamembro2" id="" class="custom-select" >
-                                   <option value="">Não estuda</option>
-                                    @foreach($escola as $e)
-                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
-                                    @endforeach
-                                </select>
+                                   INSERIR LOGICA DAS ESCOLAS PARA MEMBRO FAMILIA    
+                               </select>
                             </td>
                            
                             
                         </tr>
-                        <tr class="hide">
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro3"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro3"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro3"/></td>
-                            <td> 
-                               <select id="tdedit" name="escolamembro3" id="" class="custom-select" >
-                                   <option value="">Não estuda</option>
-                                    @foreach($escola as $e)
-                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        
-                            
-                        </tr>
-                        <tr class="hide">
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro4"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro4"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro4"/></td>
-                            <td> 
-                               <select id="tdedit" name="escolamembro4" id="" class="custom-select" >
-                                   <option value="">Não estuda</option>
-                                    @foreach($escola as $e)
-                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                           
-                            
-                        </tr>
-                        <tr class="hide">
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro5"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro5"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro5"/></td>
-                            <td> 
-                               <select id="tdedit" name="escolamembro5" id="" class="custom-select" >
-                                   <option value="">Não estuda</option>
-                                    @foreach($escola as $e)
-                                    <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                          
-                            
-                        </tr>
+                       
                     </table>
                     
                 </div>
             
            </div>
         -->
-        
+        <div class="col-sm-6">
+            <label>CRAS/CREAS</label>
+            <select name="cras" id="" class="custom-select" name="cras">
+                @foreach($cras as $c)
+                    <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
+                @endforeach
+            </select>
         </div>
-    
-    </form>
-    
-    
-</div> 
-<a href="/matriculas">
-    <button class="btn btn-default" id="btn-mat">Cancelar</button>
-</a>
-            
+        </div>
 
-
-
-</form>
-
-
-
+      
+            <button class="btn btn-success float-right" type="submit">
+                Avançar
+            </button>
+      </form>
+    </div>
 <script src="js/buscaCep.js"></script>
- 
-
-  <!--  <script src="js/nova_matricula.js"></script>
-  -->
-    <script src="js/membro_familia.js"></script>
-   
 @stop

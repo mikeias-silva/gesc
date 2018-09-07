@@ -35,120 +35,167 @@
    
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-   
-   
+  
+
    
   <!-- =========== Trecho ACIMA que nao esta sendo utilizado mais ======= -->
    
 
-
-
+ 
    <!--  <script src="{{ asset('js/app.js') }}" defer></script>
-   -->
+ -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-   <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
    
     <link rel="stylesheet" href="/css/style.css">
-    <script src="js/btnAtivo-inativo.js"></script>
-
+   <!--   <script src="js/Ativo-inativo.js"></script>
+-->
+    
     <title>GESC - Gerenciamento de Serviço de Convivência</title>
 </head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard"><h3>GESC</h3></a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">
+                <h3>GESC</h3>
+            </a>
         </nav>
         @yield('login')
         <div class="container-fluid">
             <div class="row">
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <ul class="nav  flex-column ">
-                            <li class="nav-item ">
-                                <a class="nav-link btn-light" id="btnmenu" href="/dashboard">
-                                        <i class="fa fa-home fa-lg"></i> 
+                    <div class="sidebar-sticky navbar-collapse">
+                        <ul class="nav flex-column">
+                               
+                            <li class="nav-item active">
+                                <a class="nav-link  btn-light" id="menu" href="/dashboard">
+                                    <i class="material-icons">home</i> 
                                         Página inicial
-                                    
                                 </a>
                             </li>
                          
                             <li class="nav-item">
-                                <a class="nav-link btn-light" id="btnmenu" href="/matriculas">
-                                        <i class="fa fa-book fa-lg"></i>
+                                <a class="nav-link  btn-light" href="" data-toggle="collapse" data-target="#collapseExample" >
+                                    <i class="material-icons">library_books</i>
                                         Matriculas
                                 </a>
+                                <div class="collapse" id="collapseExample">
+                                    <div>
+                                        <ul> 
+                                            <li>
+                                                <a class="nav-link btn-light" id="removerlink" href="/listagemResponsaveis">Nova Matrícula
+                                                </a>
+                                            </li>
+                                         
+                                            <li>
+                                                <a class="nav-link btn-light" id="removerlink" href="/listagemMatriculas">Matriculas atuais
+                                                </a>
+                                            </li>
+                                            
+                                            <li >
+                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/anteriores">Matriculas anteriores
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </li>
-                  
                              <li class="nav-item">
-                                <a class="nav-link btn-light" href="/instituicao">
-                                        <i class="fa fa-bank fa-lg"></i>
+                                <a class="nav-link  btn-light" href="/instituicao">
+                                    <i class="material-icons">
+                                        account_balance
+                                        </i>
                                          Instituição
                                     
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/cras">
-                                    <i class="fa fa-university fa-lg"></i>
+                                <a class="nav-link  btn-light" href="/cras">
+                                    <i class="material-icons">
+                                        location_city
+                                    </i>
                                      CRAS/CREAS
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/turmas">
-                                    <i class="fa fa-teacher fa-lg"></i>
-                                     Turmas
-                                   
+                                <a class="nav-link btn-light" href="" data-toggle="collapse" data-target="#collapseTurmas" >
+                                    <i class="material-icons">school</i>
+                                        Controle de Turmas
                                 </a>
+                                <div class="collapse" id="collapseTurmas">
+                                    <div>
+                                        <ul> 
+                                        <li class="nav-item">
+                                            <a class="nav-link btn-light" href="/turmas">
+                                               
+                                                Turmas
+                                            
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link  btn-light" href="/controle_frequencia">
+                                                
+                                                 Controle de Frequência
+                                               
+                                            </a>
+                                        </li>
+            
+                                        <li class="nav-item">
+                                            <a class="nav-link  btn-light" href="/transferencia_alunos">
+                                              
+                                                 Transferencia de Alunos
+                                               
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/usuarios">
-                                    <i class="fa fa-user-plus fa-lg" ></i>
-                                     Gerenciamento de Usuário
+                                <a class="nav-link  btn-light" href="/usuarios">
+                                    <i class="material-icons">
+                                            person_add
+                                    </i>
+                                     Controle de Usuário
                                   
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/vagas">
-                                    <i class="fa fa-user-plus fa-lg" ></i>
-                                     Gerenciamento de Vagas
+                                <a class="nav-link  btn-light" href="/vagas">
+                                    <i class="material-icons">
+                                        compare_arrows
+                                    </i>
+                                     Controle de Vagas
                                    
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/controle_frequencia">
-                                    <i class="fa fa-graduation-cap fa-lg" ></i>
-                                     Controle de Frequência
-                                   
-                                </a>
-                            </li>
+                           
 
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/transferencia_alunos">
-                                    <i class="fa fa-graduation-cap fa-lg" ></i>
-                                     Transferencia de Alunos
-                                   
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link btn-light " href="/fichaFrequencia">
-                                    <i class="fa fa-graduation-cap fa-lg" ></i>
+                                <a class="nav-link  btn-light " href="/fichaFrequencia">
+                                    <i class="material-icons">
+                                        description
+                                    </i>
                                      Ficha de Frequência
                                     
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/logout">
-                                    <i class="fa fa-sign-out fa-lg" ></i>
-                                     Sair
-                                  
+                            <li class="">
+                                <a class="nav-link  btn-light" href="/logout">
+                                    <i class="material-icons">power_settings_new 
+                                    </i>
+                                    Sair
+                                  <!--   <span>SAIR</span>--> 
                                 </a>
                             </li>
-
+                            
                         </ul>
-
+                        
                     </div>
+                    
                 </nav>
             </div>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -160,11 +207,14 @@
                             <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
                         </div>
                     </div>       
+                  
                 @yield('conteudo')
 
             </main>
 
+           
 <script>
+
 
 $('#editar').on('show.bs.modal', function (event) {
     console.log('modal opened');

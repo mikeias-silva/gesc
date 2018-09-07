@@ -5,6 +5,18 @@
     overflow-x: hidden;
     overflow-y: auto;
     border:black;
+    background-color: rgb(245, 245, 245);
+   
+    
+}
+
+.btn{
+    border-radius: 2.5px;
+    margin: 20px 3px 20px 3px;
+}
+
+.btn-light{
+    background-color: rgb(245, 245, 245);
     
 }
 
@@ -43,6 +55,15 @@ main {
     margin-top: 35px;
 }
 
+#assinatura{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #343a40 !important;
+    margin-bottom: 35px;
+    margin-top: 35px;
+
+}
+
 #meiomenu{
     background-color: #343a40 !important;
     padding-top: .5px;
@@ -74,7 +95,7 @@ main {
     outline: 0;
 }
 
-#btn-imprimir {
+#removerlink {
     text-decoration: none;
     color: black;
 }
@@ -98,6 +119,8 @@ select, .form-control{
     color: black;
     /*border-width: 2px;*/
     border-color: rgb(177, 175, 175);
+    /*border: 1px;*/
+    border-radius: 2.5px;
 }
 
 #campoobrigatorio{
@@ -122,10 +145,20 @@ select, .form-control{
     color: black;
     text-decoration-color: #343a40;
 }
-/*
-.active {
-    background:green
+
+#btn-novamatricula{
+    margin-bottom: 20px;
 }
-.inactive {
-    background:red
-}*/
+
+#titulorematricula{
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+h2, h1{
+    margin: 20px 0px 50px 0px;
+}
+
+h4, h2, h1{
+    font-weight: bold;
+}

@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 <h1 class="text">Transferência de Alunos</h1>
-<h3 class="text">Turma: {{$nomeTurma[0]->GrupoConvivencia}} - Turno:
+<h3 class="text">Turma: {{$nomeTurma[0]->grupoconvivencia}} - Turno:
     @if($nomeTurma[0]->Turno=="m")
         <td>Manhã</td>
     @else 
@@ -27,7 +27,7 @@
             <h5>Nova Turma</h5>
             <select class="form-control" name="novaTurma" id="novaTurma">
             @foreach ($listaTurmas as $c)
-                <option value="{{$c->idturma}}">{{ $c->GrupoConvivencia }} - 
+                <option value="{{$c->idturma}}">{{ $c->grupoconvivencia }} - 
                 @if($c->Turno=="m")
                     <td>Manhã</td>
                 @else 
@@ -41,8 +41,8 @@
             @endforeach
             </select>
         </div>
-        </br>
-        <spam id="msgNenhumSelc"></spam>
+        <br>
+        <span id="msgNenhumSelc"></span>
         <table class="table table-striped">
             <thead>
 

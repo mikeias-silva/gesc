@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\DB;
+
 class Cras extends Model
 {
     protected $table = 'cras';
@@ -20,5 +22,10 @@ class Cras extends Model
     static function crasAtivos(){
 
         return Cras::where('statuscras', '1')->get();
+    }
+
+    static function cras(){
+
+        return DB::select('select * from cras where idcras > 1');
     }
 }

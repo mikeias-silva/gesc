@@ -48,6 +48,18 @@ class Matricula extends Model
         
     }
 
+
+    static function vagasMatriculas(){
+
+        $idmatricula = $this->idmatricula;
+        return DB::select('select * from vagasdasmatriculas where idmatricula = ? '[$idmatricula]);
+    }
+
+    static function matriculasAnoAnterior($anovaga){
+        //return $anovaga;
+        return DB::select('select * from dadosmatricula where anovaga = ?', [$anovaga]);
+    }
+
     static function matriculasAtiva(){
       
         //DB::select('select * from matriculas where idmatricula = ?', 1);
@@ -69,10 +81,10 @@ class Matricula extends Model
     public function nomeTurma(){
         $id = $this->idturma;
 
-        $nometurma = DB::select('select GrupoConvivencia from turma where idturma = ?', array($id));
+        $nometurma = DB::select('select grupoconvivencia from turma where idturma = ?', array($id));
 
         foreach($nometurma as $nometurma){
-            return $nometurma->GrupoConvivencia;
+            return $nometurma->grupoconvivencia;
             
         }
 
@@ -85,7 +97,31 @@ class Matricula extends Model
     }
 
 
-    public function vagasOcupadas(){
+    public function crasMatricula(){
+        //$id = $this->idcrianca;
+
+         $familiaMatricula = DB::select('select idfamilia from parentes where idcrianca = ?', array(48));
+
+
+         foreach ($familiaMatricula as $familiamt) {
+            
+            return $essafamilia = $familiamt->idfamilia;
+            
+            
+         }
+
+     //    return $essafamilia;
+        //  $essafamilia = $familiaMatricula[0]->idfamilia;
+          //return;
+      /*  
         
+        $crasMatricula = DB::select('select nomecras from dadosfamilia where idfamilia = ?', [$essafamilia]);
+        
+        foreach($crasMatricula as $crasMatricula){
+           
+            return $crasMatricula->nomecras;
+            
+        }*/
+  
     }
 }

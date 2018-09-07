@@ -1,6 +1,6 @@
 @extends('layout.principal') 
 @section('conteudo')
-<h2>Matriculas - APAM</h2>
+<h1>Matriculas - APAM</h1>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="ativas-tab" data-toggle="tab" href="#ativas" role="tab" aria-controls="ativas" aria-selected="true">Ativas</a>
@@ -13,24 +13,46 @@
         </li>
 </ul>
 
-<!--ABA ATIVAS-->
 
+<!-- TODAS ABAS -->
 <div class="tab-content" id="myTabContent">
-    <!--
-<div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
--->
 
+<!--ABA ATIVAS-->
    <div class="tab-pane active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
          <h2>Matriculas ativas</h2>
         <table id="dtAtivas" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Turma</th>
-                        <th>CRAS</th>
-                        <th>Idade</th>
-                        <th>Data Matricula</th>
-                        <th>Ações</th>
+                        <th>Nome
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+                        <th>Turma
+                            <i class="material-icons float-right">
+                            swap_vert
+                            </i>
+                        </th>
+                        <th>CRAS
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+                        <th>Idade
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+                        <th>Data Matricula
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+                        <th>Ações
+                            <i class="material-icons float-right">
+                            swap_vert
+                            </i>
+                        </th>
                     </tr>
                 </thead>
                     
@@ -40,19 +62,37 @@
                     <tr>
                         <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->nomeTurma() }}</td>
-                        <td>CRAS</td>
+                        <td>teste</td>
                         <td>{{ $matA->idadeMatricula() }} anos</td>
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
-                            <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-lg"></i></a>
+                            <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">
+                                <i class="material-icons">
+                                    print
+                                </i>
+                            </a>
+                            <a href="/rematricula/{{ $matA->idmatricula }}" class="text text-info">
+                                <i class="material-icons">
+                                    edit
+                                </i>
+                            </a>
                             <a href="/inativarMatricula" class="text text-danger" 
-                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class=" text text-danger fa fa-minus fa-lg"></i></a>
+                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">
+                                <i class="material-icons">
+                                    highlight_off
+                                </i>
+                            </a>
+                            
+                            
                             <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
-                            @if( empty($matA->idturma))
-                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-lg"></i>
+                            @if(empty( $matA->idturma ))
+                            <a class="text text-warning" href="" data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}">
+                                <i class="material-icons ">
+                                    warning
+                                </i>
                             </a>
                             @endif
-                            <a href="/rematricula/{{ $matA->idmatricula }}">rematricula</a>
+                            
                         </td>
                     </tr>
                     @endforeach 
@@ -61,23 +101,43 @@
                     
             </table> 
         
-        
-        
-    </div>
-
+   </div>  
     <!--ABA INATIVAS-->
     <div class="tab-pane" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
         <h2>Matriculas inativas</h2>
-        <table id="dtInativas" class="table table-hover">
+        <table id="dtInativas" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Turma</th>
-                        <th>CRAS</th>
-                        <th>Idade</th>
-                        <th>Data Matricula</th>
-                        <th>Ações</th>
-                        
+                        <th>Nome
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Turma
+                                <i class="material-icons float-right">
+                                swap_vert
+                                </i>
+                            </th>
+                            <th>CRAS
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Idade
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Data Matricula
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Ações
+                                <i class="material-icons float-right">
+                                swap_vert
+                                </i>
+                            </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,22 +161,42 @@
             </table>
          
     </div>
-
-    
-
-    
-<!--ABA ESPERA-->
+    <!--ABA ESPERA-->
      <div class="tab-pane" id="espera" role="tabpanel" aria-labelledby="espera-tab">
         <h2>Matriculas em espera</h2>
-        <table id="dtEspera" class="table table-hover">
+        <table id="dtEspera" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Turma</th>
-                        <th>CRAS</th>
-                        <th>Idade</th>
-                        <th>Data Matricula</th>
-                        <th>Ações</th>
+                        <th>Nome
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Turma
+                                <i class="material-icons float-right">
+                                swap_vert
+                                </i>
+                            </th>
+                            <th>CRAS
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Idade
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Data Matricula
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Ações
+                                <i class="material-icons float-right">
+                                swap_vert
+                                </i>
+                            </th>
                         
                     </tr>
                 </thead>
@@ -131,7 +211,9 @@
                             <td>{{ $matE->anoMatricula() }}</td>
                             <td>
                                 
-                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="fa fa-print "></i></a>
+                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="material-icons">
+                                    print
+                                    </i></a>
                                 
                                 <a href="/ativarMatricula" class="text text-danger" 
                                 data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
@@ -148,7 +230,6 @@
          
     </div>
 </div>
-
 <!-- Modal Center modal de inativacao-->
 <div class="modal fade" id="inativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -288,9 +369,10 @@
     </div>
 </div>
 
-<form action="/novaMatricula" class="float-right">
+<form action="/novaMatricula" class="float-right" id="btn-novamatricula">
     <button class="btn btn-primary">Nova Matrícula</button>
 </form>
+<!--  -->
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
@@ -320,23 +402,23 @@
 
 
 <script>
-        $('#dtAtivas').DataTable({
-            "language": {
-                "zeroRecords": "nada encontrado",
-                "infoEmpty": "Não há nenhum registro",
-                "lengthMenu": "Itens por página _MENU_ ",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoFiltered": "(Total de registros _MAX_)",
-                "search": "Busca",
-                "paginate": {
-                    "first": "Primeira",
-                    "last": "Última",
-                    "next": "Próxima",
-                    "previous": "Anterior"
-                },
-                "loadingRecords": "Carregando"
-            }
-        });
+    $('#dtAtivas').DataTable({
+        "language": {
+            "zeroRecords": "nada encontrado",
+            "infoEmpty": "Não há nenhum registro",
+            "lengthMenu": "Itens por página _MENU_ ",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoFiltered": "(Total de registros _MAX_)",
+            "search": "Busca",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            },
+            "loadingRecords": "Carregando"
+        }
+    });
 </script>
 
 

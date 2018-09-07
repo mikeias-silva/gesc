@@ -4,19 +4,19 @@
 @if(empty($turma))
     <div class="alert alert-danger">
     
-       <span class="glyphicons glyphicons-alert"></span> Você não tem nenhum Grupo de Convivência cadastrado.
-       <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+       <span class="text text-alert"></span> Você não tem nenhum Grupo de Convivência cadastrado.
+       <span class="text text-align-left" aria-hidden="true"></span>
     </div>
-@elseif($turma != "")
-<h1 class="text">Gerenciamento de Turmas</h1>
+@elseif(!empty($turma))
+<h1 class="text">Cadastro de Grupos</h1>
 <table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">Grupo de Convivência</th>
             <th scope="col">Turno</th>
             <th scope="col">Educador</th>
-            <th>Editar</th>
-            <th>Ativado/inativado</th>
+            <th>Ações</th>
+            
 
         </tr>
     </thead>
@@ -32,20 +32,33 @@
         <td>{{ $t->nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
         <td>
-            <button type="button" class="btn btn-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
+            <a href="" class="text text-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
                 data-myturno="{{ $t->turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
-                 data-toggle="modal" data-target="#editarturma">Editar</button>
-        </td>
+                 data-toggle="modal" data-target="#editarturma">
+                 <i class="material-icons">
+                    edit
+                </i>
+            </a>
+       
         @if( ($t->statusturma) === 0)
-        <td>
-        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#ativarturma">Ativar</button>
-        </td>
-        @elseif(($t->statusturma) >0)
-        <td>
-        <button type="button" class="btn btn-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#inativarturma">Inativar</button>
-        </td>
+        
+            <a href="" class="text text-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
+                data-toggle="modal" data-target="#ativarturma">
+                <i class="material-icons">
+                    highlight_off
+                </i>
+            </a>
+        
+        @elseif(($t->statusturma) > 0)
+        
+            <a href="" class="text text-success" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
+                data-toggle="modal" data-target="#inativarturma">
+                <i class="material-icons">
+                    done
+                </i>
+            </a>
+        
+    </td>
         @endif
     </tr>
     
@@ -53,7 +66,7 @@
     @endif
 </table>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novaturma">
+<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#novaturma">
   Novo
 </button>
 
@@ -79,7 +92,7 @@
                     <label>Grupo de Convivência</label>
                     <input name="grupoconvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo"></label>
-                    <br>
+                    
                     <label>Turno</label>
                    <select class="form-control" name="turno" id="turno" value="">
                        <option value="M">Manhã</option>
@@ -153,7 +166,7 @@
                     <h5>Você tem certeza que deseja realmente ativar esta turma?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger">Ativar</button>
+                            <button type="submit" class="btn btn-success">Ativar</button>
             
                     </div>
                 </div>

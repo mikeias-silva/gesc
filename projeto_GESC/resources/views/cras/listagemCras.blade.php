@@ -8,21 +8,22 @@
     </div>
 
 @elseif(!empty($cras))
-<table class="table table-striped">
+<div class=" col-md-11 centered">
+<table class="table table-striped text-center ">
     <thead>
         <tr >
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Opções</th>
+            <th class="text-center">Nome</th>
+            <th class="text-center">Telefone</th>
+            <th class="text-center">Opções</th>
 
         </tr>
     </thead>
     @foreach ($cras as $c)
     <tr>
-        <td> {{ $c->nomecras }} </td>
-        <td> {{ $c->telefone }} </td>
+        <td class="text-center"> {{ $c->nomecras }} </td>
+        <td class="text-center"> {{ $c->telefone }} </td>
         
-        <td>
+        <td class="text-center">
             <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
 
@@ -39,6 +40,7 @@
     </tr>
     @endforeach
 </table>
+</div>
 @endif
 <!-- Button trigger modal -->
 <div class="float-right">

@@ -14404,7 +14404,7 @@
 	
 		/* Features */
 		"sWrapper": "dataTables_wrapper",
-		"sFilter": "dataTables_filter",
+		"sFilter": "dataTables_filter float-right",
 		"sInfo": "dataTables_info",
 		"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
 		"sLength": "dataTables_length",

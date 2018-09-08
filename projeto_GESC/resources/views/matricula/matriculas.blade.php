@@ -20,38 +20,49 @@
 <!--ABA ATIVAS-->
    <div class="tab-pane active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
          <h2>Matriculas ativas</h2>
-        <table id="dtAtivas" class="table table-striped">
+        <table id="dtAtivas" class="table table-striped border">
                 <thead>
                     <tr>
-                        <th>Nome
+                            <a href="" id="removerlink"><th>
+                            Nome
+                                <a href="" id="removerlink">
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
+                                </a>
                         </th>
-                        <th>Turma
+                        <th><a href="" id="removerlink">
+                            <a href="" id="removerlink"> Turma
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
+                        </a>
                         </th>
-                        <th>CRAS
+                       
+                        <th><a href="" id="removerlink">
+                            Idade
+                                <a href="" id="removerlink">
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
+                                </a>
                         </th>
-                        <th>Idade
+                        <th>
+                                <a href="" id="removerlink">
+                                    Data Matricula
+                                
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
+                                </a>
                         </th>
-                        <th>Data Matricula
-                            <i class="material-icons float-right">
-                                swap_vert
-                            </i>
-                        </th>
-                        <th>Opções
+                        <th><a href="" id="removerlink">
+                            Opções
+                                
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
+                                </a>
                         </th>
                     </tr>
                 </thead>
@@ -62,8 +73,14 @@
                     <tr>
                         <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->nomeTurma() }}</td>
-                        <td>teste</td>
+                        @if ($matA->idadeMatricula() < 10)
+                        <td>0{{ $matA->idadeMatricula() }} anos</td>
+                        @endif
+                        @if ($matA->idadeMatricula() > 9)
                         <td>{{ $matA->idadeMatricula() }} anos</td>
+                        @endif
+                         
+                         
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
                             <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">

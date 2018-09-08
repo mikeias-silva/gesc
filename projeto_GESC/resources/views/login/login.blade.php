@@ -79,23 +79,23 @@
                             <label class="alert alert-danger" role="alert">As credenciais informadas não estão corretas, ou seu usuário está inativo, por favor verifique ou entre em contato com a administração</label>
                             @endif
                                 <div class="form-group">
-                                    <label for="uname1">Username</label>
+                                    <label for="uname1">Usuário</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="nomeusuario" id="nomeusuario" required="" autofocus value="{{old('nomeusuario')}}">
                                     <div class="invalid-feedback">Oops, you missed this one.</div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label>Senha</label>
                                     <input type="password" class="form-control form-control-lg rounded-0" id="password" name="password" required="" autocomplete="new-password">
                                     <div class="invalid-feedback">Enter your password too!</div>
                                 </div>
-                                <a href="#">Recuperar Senha</a>
+                               <!--   <a href="#">Recuperar Senha</a>-->
                                 <div>
                                     <label class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" name="remember">
                                         <span class="custom-control-indicator"></span>
                                     </label>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+                                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Entrar</button>
                             </form>
                         </div>
                         <!--/card-block-->

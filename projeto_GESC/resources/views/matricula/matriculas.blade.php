@@ -23,46 +23,45 @@
         <table id="dtAtivas" class="table table-striped border">
                 <thead>
                     <tr>
-                            <a href="" id="removerlink"><th>
+                            <th>
                             Nome
-                                <a href="" id="removerlink">
+                               
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
-                                </a>
+                               
                         </th>
-                        <th><a href="" id="removerlink">
-                            <a href="" id="removerlink"> Turma
+                        <th>Turma
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
-                        </a>
+                       
                         </th>
                        
-                        <th><a href="" id="removerlink">
+                        <th>
                             Idade
-                                <a href="" id="removerlink">
+                               
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
-                                </a>
+                               
                         </th>
                         <th>
-                                <a href="" id="removerlink">
+                                
                                     Data Matricula
                                 
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
-                                </a>
+                                
                         </th>
-                        <th><a href="" id="removerlink">
+                        <th>
                             Opções
                                 
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
-                                </a>
+                            
                         </th>
                     </tr>
                 </thead>
@@ -135,11 +134,7 @@
                                 swap_vert
                                 </i>
                             </th>
-                            <th>CRAS
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
+                           
                             <th>Idade
                                 <i class="material-icons float-right">
                                     swap_vert

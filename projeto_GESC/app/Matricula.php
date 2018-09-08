@@ -65,12 +65,13 @@ class Matricula extends Model
         //DB::select('select * from matriculas where idmatricula = ?', 1);
         
         //return DB::table('matriculas')->where('statuscadastro', 'Ativo')->get();
+
         return Matricula::where('statuscadastro', 'Ativo')->get();
     }
 
     static function matriculasInativas(){
-
-        return Matricula::where('statuscadastro', 'Inativo')->get();
+        $hoje = Carbon::now();
+        return Matricula::where('statuscadastro', 'Inativo')->where('anomatricula', '<=', $hoje)->get();
     }
 
     static function matriculasEspera(){

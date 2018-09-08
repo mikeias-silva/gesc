@@ -162,3 +162,17 @@ h2, h1{
 h4, h2, h1{
     font-weight: bold;
 }
+
+#gesc{
+    background-color: #343a40;
+    margin-top: 150px;
+    
+}
+
+#bodylogin{
+    opacity: 0.6;
+}
+
+#btn-login{
+    margin-top: 40px;
+}

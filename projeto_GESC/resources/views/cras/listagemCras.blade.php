@@ -8,8 +8,8 @@
     </div>
 
 @elseif(!empty($cras))
-<div class=" col-md-11 centered">
-<table class="table table-striped text-center ">
+<div>
+<table class="table table-striped text-center border">
     <thead>
         <tr >
             <th class="text-center">Nome</th>
@@ -66,13 +66,13 @@
                     <input type="hidden" name="statuscras" value="1">
 
                     <label>Nome</label>
-                    <input name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
+                    <input name="nomecras" required class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
                     <label id="msgcras"></label>
-                    </br>
+                    <br>
                     <label>Telefone</label>
                     <input name="telefone" id="telefone" class="form-control" maxlength="15" autocomplete="off" onkeyup="mascara( this, mtel );">
                     <label id="msgtelefone"></label>
-                    </br>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Confirmar</button>
@@ -169,11 +169,11 @@
                     <label>Nome</label>
                     <input name="nomecras" value="" class="form-control" id="nomecras" value="" maxlength="255" autocomplete="off">
                     <label id="msgcras_edit"></label>
-                    </br>
+                    <br>
                     <label>Telefone</label>
                     <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" autocomplete="off">
                     <label id="msgtelefone_edit"></label>
-                    </br>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Salvar Mudanças</button>
@@ -228,14 +228,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -256,14 +256,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";

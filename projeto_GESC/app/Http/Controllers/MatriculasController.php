@@ -46,9 +46,14 @@ class MatriculasController extends Controller
         //$matAtivas = Matricula::where('statuscadastro', 'ativo');
 
     //  return Matricula::crasMatricula();
-       $matAtivas = Matricula::matriculasAtiva();
+      // $matAtivas = Matricula::matriculasAtiva();
+     
         $matInativas = Matricula::matriculasInativas();
-        $matEspera = Matricula::matriculasEspera();
+      //  $matEspera = Matricula::matriculasEspera();
+
+        $matAtivas = DadosMatricula::matriculasAtiva();
+        $matEspera = DadosMatricula::matriculasEspera();
+       // $matInativas = DadosMatricula::matriculasInativas();
         $turmas = Turma::all();
 
         /*$matAtivas = Matricula::vagasMatriculas();

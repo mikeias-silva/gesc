@@ -4,7 +4,7 @@
 
 <!--ABA ATIVAS-->
   
-<table id="dtAnterior" class="table table-striped">
+<table id="dtAnterior" class="table table-striped border">
     <thead>
         <tr>
             <th>Nome

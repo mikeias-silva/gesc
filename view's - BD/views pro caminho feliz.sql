@@ -38,8 +38,8 @@ drop view if exists dadosmatricula;
 create view dadosmatricula as
 select 
 	matriculas.idmatricula, matriculas.anomatricula datamatricula, matriculas.serieescolar, matriculas.anomatricula,
-    turma.grupoconvivencia,
-    matriculas.idcrianca,
+    turma.grupoconvivencia, turma.idturma,
+    matriculas.idcrianca, matriculas.statuscadastro,
     vagas.idvaga, vagas.anovaga
 from 
 	matriculas, crianca, turma, vagas
@@ -78,3 +78,12 @@ where
 	matriculas.idvaga = vagas.idvaga
     and matriculas.idcrianca = crianca.idcrianca;
     
+    
+    select * from parentes;
+    
+    
+    select * from dadosmatricula;
+    
+    select * from matriculas
+    
+    select * from turma

@@ -107,6 +107,7 @@ Route::get('/login', function(){
 });*/
 //Auth::routes();
 Route::get('/login', 'LoginController@login')->name('login');
+Route::get('/login2', 'LoginController@login2')->name('login');
 Route::post('/login/autenticar', 'LoginController@tentativaLogin');
 Route::get('/logout', 'LoginController@logout')->middleware('auth');
 

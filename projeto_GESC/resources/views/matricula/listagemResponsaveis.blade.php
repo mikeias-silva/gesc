@@ -4,7 +4,7 @@
     {{ csrf_field() }}
 <h2>Responsáveis</h2>
 <div>
-<table id="dtResponsavel" class="table table-striped">
+<table id="dtResponsavel" class="table table-striped border">
         <thead class="table table-bordered">
             <tr>
                 

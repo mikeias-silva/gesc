@@ -31,8 +31,9 @@
         
             <tr role="row">
                 <td>
+                   
+                    <input type="checkbox" class="" name="idresponsavel[]" value="{{ $responsavel->idresponsavel }}" id="">
                     {{ $responsavel->idresponsavel }}
-                    <input type="checkbox" class="form-control" name="idresponsavel[]" value="{{ $responsavel->idresponsavel }}" id="">
                 </td>
                  
                 <td>{{ $responsavel->nomeResponsavel() }}</td>

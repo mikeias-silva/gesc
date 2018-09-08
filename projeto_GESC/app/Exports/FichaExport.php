@@ -44,7 +44,12 @@ class FichaExport implements FromView, WithEvents
  
     public function __construct($mes)
     {
+        $ano = date("Y");
         $this->mes = $mes;
+        $this->teste = count (DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        and mesfrequencia='{$this->mes}'"));
+        $this->desligamentos = count (DB::select("select * from listaAlunosDesligados where
+        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}'"));
     }
 
     public function view(): View
@@ -79,6 +84,12 @@ class FichaExport implements FromView, WithEvents
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
         parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.numnis!=''
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}'");
+        $lista_ativos=DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        and mesfrequencia='{$this->mes}'");
+        $lista_desligamentos=DB::select("select * from listaAlunosDesligados where
+        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}'");
+        $lista_novos=DB::select("select * from listaAlunosNovos where
+        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%'");
 
         /*lista usuários ativos = select matriculas.idmatricula, pessoa.nomepessoa, familia.numnis, cras.nomecras, pessoa.bairro, publicoprioritario.publicoprioritario from gesc.matriculas, gesc.crianca, gesc.parentesco, gesc.responsavel, gesc.familia, gesc.pessoa, gesc.cras, gesc.publicoprioritario
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and parentesco.idresponsavel=responsavel.idresponsavel 
@@ -101,6 +112,9 @@ class FichaExport implements FromView, WithEvents
             'beneficiarios_bolsafamilia' => $beneficiarios_bolsafamilia[0]->bolsafamilia,
             'desligados_mes' => $desligados_mes[0]->totaldesligamentos,
             'beneficiarios_cadunico' => $beneficiarios_cadunico[0]->cadunico,
+            'lista_ativos' => $lista_ativos,
+            'lista_desligamentos' => $lista_desligamentos,
+            'lista_novos' => $lista_novos,
         ]);
         //return Vaga::all();
     }
@@ -152,17 +166,21 @@ class FichaExport implements FromView, WithEvents
                 $event->sheet->getColumnDimension('T')->setWidth(5);
                 $event->sheet->getColumnDimension('U')->setWidth(5);
                 $event->sheet->getColumnDimension('V')->setWidth(5);
-                $event->sheet->getColumnDimension('W')->setWidth(5);
-                $event->sheet->getColumnDimension('X')->setWidth(5);
+                $event->sheet->getColumnDimension('W')->setWidth(2.5);
+                $event->sheet->getColumnDimension('X')->setWidth(2.5);
+                $event->sheet->getColumnDimension('Y')->setWidth(2.5);
+                $event->sheet->getColumnDimension('Z')->setWidth(2.5);
+                $event->sheet->getColumnDimension('AA')->setWidth(2.5);
                 //$event->sheet->getCell('A12')->setValue("Nº DE PESSOAS\nATENDIDAS NO\nMÊS ANTERIOR:");
                 //$event->sheet->getCell('D12')->setValue("Nº DE DIAS ÚTEIS COM\nATENDIMENTO NO MÊS ATUAL:");
-                $event->sheet->getStyle('A5:X13')->getAlignment()->setWrapText(true);
+                $event->sheet->getStyle('A5:X200')->getAlignment()->setWrapText(true);
                 $event->sheet->getRowDimension('5')->setRowHeight(25.5);
                 $event->sheet->getRowDimension('6')->setRowHeight(25.5);
                 $event->sheet->getRowDimension('7')->setRowHeight(25.5);
                 $event->sheet->getRowDimension('9')->setRowHeight(37.75);
                 $event->sheet->getRowDimension('10')->setRowHeight(37.75);
                 $event->sheet->getRowDimension('11')->setRowHeight(37.75);
+                //$event->sheet->getRowDimension('16')->setAutoSize(true);
                 //$event->sheet->getStyle('A3:G3')
                 //->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
                 //$event->sheet->mergeCells('A3:G4');
@@ -171,12 +189,24 @@ class FichaExport implements FromView, WithEvents
                 //$event->sheet->getCell('A5')->setValue("ENTIDADE MANTEDORA:\n".$instituicao[0]->entidademantenedora);
                 //$event->sheet->getStyle('A5')->getAlignment()->setWrapText(true);
                 //$event->sheet->getRowDimension('5')->setRowHeight(50);
-                $event->sheet->getCell('I6')->setValue("TELEFONE: (".substr($instituicao[0]->telefone, 0, 2).")".substr($instituicao[0]->telefone, 2, 4)."-".
+                $event->sheet->getCell('K6')->setValue("TELEFONE: (".substr($instituicao[0]->telefone, 0, 2).")".substr($instituicao[0]->telefone, 2, 4)."-".
                                                         substr($instituicao[0]->telefone, 7, 5));
-                $event->sheet->getCell('Q5')->setValue("CNPJ: ".substr($instituicao[0]->cnpj, 0, 2).".".substr($instituicao[0]->cnpj, 2, 3).".".
+                $event->sheet->getCell('S5')->setValue("CNPJ: ".substr($instituicao[0]->cnpj, 0, 2).".".substr($instituicao[0]->cnpj, 2, 3).".".
                                                         substr($instituicao[0]->cnpj, 5, 3)."/".substr($instituicao[0]->cnpj, 8, 4)."-".substr($instituicao[0]->cnpj, 12, 2));
+                
+                //calcula qubra de linha
+                for($i=0, $cont=15; $i<=$this->teste; $i++, $cont++){
+                    $cellA1 = $event->sheet->getCell('P'.$cont)->getValue();
+                    if(strlen ($cellA1)>22){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if (strlen ($cellA1)>44){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    }
+                }
+
+                
                 $event->sheet->styleCells(
-                    'A1:X2',
+                    'A1:AA2',
                     [
                         //'width' => '50',
                         //'mergeCells' => true,
@@ -195,7 +225,7 @@ class FichaExport implements FromView, WithEvents
                 );
 
                 $event->sheet->styleCells(
-                    'A5:X10',
+                    'A5:AA10',
                     [
                         //'width' => '50',
                         //'mergeCells' => true,
@@ -208,7 +238,7 @@ class FichaExport implements FromView, WithEvents
                 );
 
                 $event->sheet->styleCells(
-                    'A3:X3',
+                    'A3:AA3',
                     [
                         'alignment' => [
                             'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -229,17 +259,17 @@ class FichaExport implements FromView, WithEvents
                     ]
                 );
 
-                $event->sheet->styleCells(
+                /*$event->sheet->styleCells(
                     'A4:Q10',
                     [
                         'alignment' => [
                             'horizontal'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
                         ],
                     ]
-                );
+                );*/
 
                 $event->sheet->styleCells(
-                    'A4:X4',
+                    'A4:AA4',
                     [
                         'borders' => [
                             'outline'  =>  [
@@ -256,7 +286,7 @@ class FichaExport implements FromView, WithEvents
                 );
 
                 $event->sheet->styleCells(
-                    'A12:X12',
+                    'A12:AA12',
                     [
                         'borders' => [
                             'outline'  =>  [
@@ -393,10 +423,11 @@ class FichaExport implements FromView, WithEvents
                 );*/
 
                 $event->sheet->styleCells(
-                    'A5:X11',
+                    'A5:AA14',
                     [
                         'alignment' => [
                             'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
+                            'horizontal'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
                         ],
 
                         'font' => [
@@ -411,6 +442,29 @@ class FichaExport implements FromView, WithEvents
                                 'color' => ['argb' => '00000000'],
                             ],
                         ]
+                    ]
+                );
+
+                $event->sheet->styleCells(
+                    'A15:AA200',
+                    [
+                        'alignment' => [
+                            'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
+                            'horizontal'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
+                        ],
+
+                        'font' => [
+                            //'bold'  =>  true,
+                            'size' => '10',
+                            //'name' => 'Times New Roman',
+                        ],
+
+                        /*'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]*/
                     ]
                 );
             },

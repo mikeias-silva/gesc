@@ -12,7 +12,7 @@ class Vaga extends Model
 {
     protected $table = 'vagas';
     public $timestamps = false;
-    protected $fillable = array('idademin', 'idademax', 'numvaga', 'anovaga', 'idinstituicao');
+    protected $fillable = array('idademin', 'idademax', 'numvaga', 'anovaga', 'idinstituicao', 'statusvaga');
 
     protected $primaryKey = 'idvaga';
 

@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<h1 style="margin:20px 0px 50px 0px;" class="text text-center">Associassão de Promoção a Menina - APAM</h1>
+<h1 style="margin:20px 0px 50px 0px;" class="text text-center">Associação de Promoção a Menina - APAM</h1>
 
 
 <h4>Número de matriculas ativas por idade</h4>

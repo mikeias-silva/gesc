@@ -48,7 +48,7 @@
                                 swap_vert
                             </i>
                         </th>
-                        <th>Ações
+                        <th>Opções
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
@@ -133,7 +133,7 @@
                                     swap_vert
                                 </i>
                             </th>
-                            <th>Ações
+                            <th>Opções
                                 <i class="material-icons float-right">
                                 swap_vert
                                 </i>
@@ -192,7 +192,7 @@
                                     swap_vert
                                 </i>
                             </th>
-                            <th>Ações
+                            <th>Opções
                                 <i class="material-icons float-right">
                                 swap_vert
                                 </i>

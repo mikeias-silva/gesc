@@ -15,7 +15,7 @@
             <th scope="col">Grupo de Convivência</th>
             <th scope="col">Turno</th>
             <th scope="col">Educador</th>
-            <th>Ações</th>
+            <th>Opções</th>
             
 
         </tr>

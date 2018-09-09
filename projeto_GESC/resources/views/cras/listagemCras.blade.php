@@ -24,17 +24,41 @@
         <td class="text-center"> {{ $c->telefone }} </td>
         
         <td class="text-center">
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+                <a href="" class="text text-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+                        data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">
+                        <i class="material-icons">
+                                edit
+                            </i>
+                        </a>
+           <!--   <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
-
+-->
             @if($c->statuscras=='1')     
+          <!--  
             <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
-                data-toggle="modal" data-target="#inativar">Inativar</button>
+                data-toggle="modal" data-target="#inativar">Inativar
+            </button>-->  
+            <a href="" class="text text-danger" data-mytitle="{{ $c->nomecras }}" 
+                    data-myid="{{ $c->idcras }}" 
+                    data-toggle="modal" data-target="#inativar">
+           
+                <i class="material-icons">
+                    highlight_off
+                </i> </a> 
             @else
-            <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
+           <!--   <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
-                data-toggle="modal" data-target="#ativar">Ativar</button>
+                data-toggle="modal" data-target="#ativar">Ativar
+            </button>-->
+
+            <a href="" class="text text-success" data-mytitle="{{ $c->nomecras }}" 
+                    data-myid="{{ $c->idcras }}" 
+                    data-toggle="modal" data-target="#ativar">
+                    <i class="material-icons">
+                            done
+                        </i>
+            </a>
             @endif
         </td>
     </tr>

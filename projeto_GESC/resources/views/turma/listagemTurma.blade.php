@@ -47,10 +47,10 @@
        <!--  <button type="button" class="btn btn-danger"  
                 data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#inativarturma">Inativar</button>--> 
-             <a  href="" class="text text-success" data-myid="{{ $t->idturma }}" 
+             <a  href="" class="text text-danger" data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#inativarturma">
                 <i class="material-icons">
-                        done
+                        highlight_off
                     </i>
             </a>
             
@@ -61,11 +61,12 @@
                 data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#ativarturma">Ativar
             </button> --> 
-          <a href="" class="text text-danger" data-myid="{{ $t->idturma }}" 
+          <a href="" class="text text-success" data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#ativarturma">
+                
                 <i class="material-icons">
-                    highlight_off
-                </i>
+                        done
+                    </i>
               
             </a> 
         

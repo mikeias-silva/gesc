@@ -39,6 +39,7 @@ class MatriculasController extends Controller
     
     public function listaMatriculas(){
 
+        $ano = Carbon::now()->year;
        // $matAtivas =  DB::select('select * from matriculas where statuscadastro = ?', ['Ativo']);
         //dd($matAtivas);
       // $matAtivas = DB::select('select * from matriculas where statuscadastro = ?', ['Ativo']);
@@ -59,7 +60,7 @@ class MatriculasController extends Controller
         /*$matAtivas = Matricula::vagasMatriculas();
         return $matAtivas;*/
         return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
-        ->with('matEspera', $matEspera)->with('turmas', $turmas);
+        ->with('matEspera', $matEspera)->with('turmas', $turmas)->with('ano', $ano);
        
       //return view('matricula.matriculas');
     }
@@ -96,6 +97,8 @@ class MatriculasController extends Controller
         return view('matricula.matriculasAnterior')->with('matAnteriores', $matAnteriores)
         ->with('ano', $anovaga);
     }
+
+   
 
     public function imprime(){
         $matAtivas = Matricula::matriculasAtiva();
@@ -165,23 +168,29 @@ class MatriculasController extends Controller
         
         }
 
-        $publicoprioritario = PublicoPrioritario::all();
-            return $publicoprioritario;
+        $cras = Cras::all();
+        $pprioritario = PublicoPrioritario::all();
+        $escola = Escola::all();
         //return $nomematricula;
+
+        $ano = Carbon::now()->year;
         $dados = [
             'responsaveis'=>$parentes,
-            'nascimentocrianca'=>$nascimentocrianca,
             'dadoscrianca'=>$dadoscrianca,
             'dadosfamilia'=>$dadosfamilia,
             'dadosmatricula'=>$dadosmatricula,
-            'publicoprioritario'=>$publicoprioritario
-            ];
+            'cras'=>$cras,
+            'pprioritario'=>$pprioritario,
+            'escola'=>$escola,
+            'ano'=>$ano   
+        ];
+
         //return $dadosmatricula;
 
         //return $dadosfamilia;
         
-        $impressao = PDF::loadView('matricula.impressao', $dados);
-        return $impressao->stream('Matricula');
+       
+        return view('matricula.impressao', $dados);
     }
 
     public function adicionaMatricula(){
@@ -422,6 +431,7 @@ class MatriculasController extends Controller
 
        // return $idmatricula;
 
+      // return $idmatricula;
         $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
         = ?', array($idmatricula));
 
@@ -628,6 +638,19 @@ class MatriculasController extends Controller
         $matricula->save();
         
         
-        return redirect()->action('MatriculasController@listaMatriculas');
+        return redirect()->action('MatriculasController@precisamRematricular');
+    }
+
+
+    public function precisamRematricular(){
+        //$idcriancarematriculada = DB::select('select idcrianca from dadosmatricula where anovaga > ?', [1]) 
+        $anovaga = Carbon::now()->year;
+
+         $precisamRematricula = DadosMatricula::rematricula($anovaga);
+
+         $dados = [
+            'matRematricula'=>$precisamRematricula
+         ];
+         return view('matricula.listagemRematricula', $dados);
     }
 }

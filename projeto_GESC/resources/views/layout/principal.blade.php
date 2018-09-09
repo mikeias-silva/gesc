@@ -44,6 +44,10 @@
                                                 <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/anteriores">Matriculas anteriores
                                                 </a>
                                             </li>
+                                             <li >
+                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/rematriculas">Rematricula
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
 

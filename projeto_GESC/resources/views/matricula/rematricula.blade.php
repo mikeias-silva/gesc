@@ -1,20 +1,9 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-   
-    <title>Document</title>
-</head>
-<body>
+@extends('layout.principal')
+@section('conteudo')
+<body id="conteudoimprimir " >
         <div class="float-right">
-            <button class="btn btn-toolbar"><i class="fa fa-print fa-lg"></i></button>
+            <button class="btn btn-toolbar " onclick="myFunction()"><i class="fa fa-print fa-lg"></i></button>
             <a href="#" id="btn-imprimir"></a>
         </div>
         <div class="container">
@@ -22,7 +11,7 @@
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano }}</h5>
         <br>
         <div>
-                <div class="form-group ">
+                <div class="form-group " >
                 {{ csrf_field() }}
                 <div class="form-group ">
                     <div class="row">
@@ -514,4 +503,22 @@
         <br>
     
 </body>
-</html>
+<script>
+    function myFunction(){
+        var conteudo = document.getElementById('conteudoimprimir').innerHTML,
+        tela_impressao = window.open('about:blank');
+
+        document.body.innerHTML = 
+          "<html><head><title></title></head><body>" + 
+          conteudo + "</body>";
+        tela_impressao.document.write(conteudo);
+
+        
+
+        
+
+         tela_impressao.window.print();
+         tela_impressao.window.close();
+    }
+</script>
+@stop

@@ -60,11 +60,12 @@ Route::post('/adicionaCrianca', 'CriancaController@adicionaCrianca')->middleware
 //Rotas para as telas de Matrícula  
 Route::get('/listagemMatriculas', 'MatriculasController@listaMatriculas')->middleware('auth');
 Route::get('/listagemMatriculas/anteriores', 'MatriculasController@selecionaAno')->middleware('auth');
+Route::get('/listagemMatriculas/rematriculas', 'MatriculasController@precisamRematricular')->middleware('auth');
 Route::post('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
 
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula')->middleware('auth');
 //Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
-Route::get('/pdfmatricula', 'MatriculasController@imprime')->middleware('auth');
+Route::get('/imprimematricula', 'MatriculasController@imprime')->middleware('auth');
 Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula')->middleware('auth');
 Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middleware('auth');
 Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middleware('auth');
@@ -107,6 +108,7 @@ Route::get('/login', function(){
 });*/
 //Auth::routes();
 Route::get('/login', 'LoginController@login')->name('login');
+Route::get('/login2', 'LoginController@login2')->name('login');
 Route::post('/login/autenticar', 'LoginController@tentativaLogin');
 Route::get('/logout', 'LoginController@logout')->middleware('auth');
 

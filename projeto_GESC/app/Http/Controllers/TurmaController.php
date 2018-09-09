@@ -45,6 +45,7 @@ class TurmaController extends Controller
     /* DB::insert('insert into Turma(GrupoConvivencia, Turno, statusTurma, idUsuario,) values(?, ?, ?, ?)',
     array($grupoConvi, $turno, $status, $educ));*/
         $turma = new Turma($request->all());
+        $turma->statusturma = 1;
         $turma->save();
         // Turma::create($request->all());
 
@@ -72,13 +73,27 @@ class TurmaController extends Controller
         $turma = Turma::find($request->idturma);
         $turma->statusturma ='0';
         $turma->update($request->all());
+      //  return  $turma = Turma::find($request->idturma);
+        //return $turma = Turma::find($turma);
+
+
+
+
+        
          return redirect()->action('TurmaController@listaTurma');
     }
 
     public function ativar(Request $request){
-        $turma = Turma::find($request->idturma);
+         $turma = Turma::find($request->idturma);
+       // return $turma = Turma::find($turma);
         $turma->statusturma ='1';
+      //  return Turma::find($turma);
+
         $turma->update($request->all());
+    /*  $cras = Cras::find($request->idcras);
+      $cras->statuscras='1';
+      $cras->update($request->all());
+      return redirect()->action('CrasController@listaCras');*/
          return redirect()->action('TurmaController@listaTurma');
     }
 

@@ -26,17 +26,46 @@
         <td>{{ $c->tipousuario }}</td>
         <td>{{ $c->statususuario }}</td>
         <td>
-            <button type="button" class="btn btn-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
+          <!--    <button type="button" class="btn btn-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
                 data-myemail="{{ $c->email }}" data-mysenha="{{ $c->password }}" data-mytipousuario="{{ $c->tipousuario }}" 
                 data-mynomeusuario="{{ $c->nomeusuario }}" 
-                data-toggle="modal" data-target="#editarusuario">Editar</button>
+                data-toggle="modal" data-target="#editarusuario">Editar
+            </button>-->
+
+            <a href="" class="text text-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
+                    data-myemail="{{ $c->email }}" data-mysenha="{{ $c->password }}" data-mytipousuario="{{ $c->tipousuario }}" 
+                    data-mynomeusuario="{{ $c->nomeusuario }}" 
+                    data-toggle="modal" data-target="#editarusuario">
+                    <i class="material-icons">
+                            edit
+                    </i>
+            </a>
 
             @if($c->statususuario=='1')       
-            <button type="button" class="btn btn-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
-                data-toggle="modal" data-target="#inativar">Inativar</button>
+               <!--   <button type="button" class="btn btn-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+                    data-toggle="modal" data-target="#inativar">Inativar
+                </button>
+                -->
+                <a href="" class="text text-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+                        data-toggle="modal" data-target="#inativar">
+                    
+                <i class="material-icons">
+                        highlight_off
+                </i>
+            </a>
             @else
-            <button type="button" class="btn btn-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
-                data-toggle="modal" data-target="#ativar">Ativar</button>
+              <!--   <button type="button" class="btn btn-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+                    data-toggle="modal" data-target="#ativar">Ativar
+                </button>
+                --> 
+
+                <a href="" class="text text-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+                    data-toggle="modal" data-target="#ativar">
+                    <i class="material-icons">
+                            done
+                    </i>
+                </a>
+
             @endif
 
         </td>

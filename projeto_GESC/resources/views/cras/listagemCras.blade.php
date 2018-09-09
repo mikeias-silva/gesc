@@ -8,37 +8,63 @@
     </div>
 
 @elseif(!empty($cras))
-<table class="table table-striped">
+<div>
+<table class="table table-striped text-center border">
     <thead>
         <tr >
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Opções</th>
+            <th class="text-center">Nome</th>
+            <th class="text-center">Telefone</th>
+            <th class="text-center">Opções</th>
 
         </tr>
     </thead>
     @foreach ($cras as $c)
     <tr>
-        <td> {{ $c->nomecras }} </td>
-        <td> {{ $c->telefone }} </td>
+        <td class="text-center"> {{ $c->nomecras }} </td>
+        <td class="text-center"> {{ $c->telefone }} </td>
         
-        <td>
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+        <td class="text-center">
+                <a href="" class="text text-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+                        data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">
+                        <i class="material-icons">
+                                edit
+                            </i>
+                        </a>
+           <!--   <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
-
+-->
             @if($c->statuscras=='1')     
+          <!--  
             <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
-                data-toggle="modal" data-target="#inativar">Inativar</button>
+                data-toggle="modal" data-target="#inativar">Inativar
+            </button>-->  
+            <a href="" class="text text-danger" data-mytitle="{{ $c->nomecras }}" 
+                    data-myid="{{ $c->idcras }}" 
+                    data-toggle="modal" data-target="#inativar">
+           
+                <i class="material-icons">
+                    highlight_off
+                </i> </a> 
             @else
-            <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
+           <!--   <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
-                data-toggle="modal" data-target="#ativar">Ativar</button>
+                data-toggle="modal" data-target="#ativar">Ativar
+            </button>-->
+
+            <a href="" class="text text-success" data-mytitle="{{ $c->nomecras }}" 
+                    data-myid="{{ $c->idcras }}" 
+                    data-toggle="modal" data-target="#ativar">
+                    <i class="material-icons">
+                            done
+                        </i>
+            </a>
             @endif
         </td>
     </tr>
     @endforeach
 </table>
+</div>
 @endif
 <!-- Button trigger modal -->
 <div class="float-right">
@@ -64,13 +90,13 @@
                     <input type="hidden" name="statuscras" value="1">
 
                     <label>Nome</label>
-                    <input name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
+                    <input name="nomecras" required class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
                     <label id="msgcras"></label>
-                    </br>
+                    <br>
                     <label>Telefone</label>
                     <input name="telefone" id="telefone" class="form-control" maxlength="15" autocomplete="off" onkeyup="mascara( this, mtel );">
                     <label id="msgtelefone"></label>
-                    </br>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Confirmar</button>
@@ -167,11 +193,11 @@
                     <label>Nome</label>
                     <input name="nomecras" value="" class="form-control" id="nomecras" value="" maxlength="255" autocomplete="off">
                     <label id="msgcras_edit"></label>
-                    </br>
+                    <br>
                     <label>Telefone</label>
                     <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" autocomplete="off">
                     <label id="msgtelefone_edit"></label>
-                    </br>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Salvar Mudanças</button>
@@ -226,14 +252,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -254,14 +280,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";

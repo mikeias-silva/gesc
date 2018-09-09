@@ -9,13 +9,14 @@
     </div>
 @elseif(!empty($turma))
 <h1 class="text">Cadastro de Grupos</h1>
-<table class="table table-striped">
+<table class="table table-striped border">
     <thead>
         <tr>
             <th scope="col">Grupo de Convivência</th>
             <th scope="col">Turno</th>
             <th scope="col">Educador</th>
-            <th>Ações</th>
+          
+            <th>Opções</th>
             
 
         </tr>
@@ -31,6 +32,7 @@
         @endif 
         <td>{{ $t->nome }}</td>
      <!-- Adicionar regra para listar professor de cada turma -->
+   
         <td>
             <a href="" class="text text-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
                 data-myturno="{{ $t->turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
@@ -40,23 +42,33 @@
                 </i>
             </a>
        
-        @if( ($t->statusturma) === 0)
+        @if( ($t->statusturma) == '1')
         
-            <a href="" class="text text-danger" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
-                data-toggle="modal" data-target="#ativarturma">
-                <i class="material-icons">
-                    highlight_off
-                </i>
-            </a>
-        
-        @elseif(($t->statusturma) > 0)
-        
-            <a href="" class="text text-success" data-myid="{{ $t->idturma }}" data-mystatususuario="{{ $t->statusturma }}" 
+       <!--  <button type="button" class="btn btn-danger"  
+                data-myid="{{ $t->idturma }}" 
+                data-toggle="modal" data-target="#inativarturma">Inativar</button>--> 
+             <a  href="" class="text text-danger" data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#inativarturma">
                 <i class="material-icons">
-                    done
-                </i>
+                        highlight_off
+                    </i>
             </a>
+            
+        
+        @else
+        
+       <!-- <button type="button" class="btn btn-success"  
+                data-myid="{{ $t->idturma }}" 
+                data-toggle="modal" data-target="#ativarturma">Ativar
+            </button> --> 
+          <a href="" class="text text-success" data-myid="{{ $t->idturma }}" 
+                data-toggle="modal" data-target="#ativarturma">
+                
+                <i class="material-icons">
+                        done
+                    </i>
+              
+            </a> 
         
     </td>
         @endif
@@ -223,7 +235,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="idturma" id="idturma" value="">
                     <label>Grupo de Convivência</label>
-                    <input name="GrupoConvivencia" class="form-control" id="GrupoConvivencia" value="" maxlength="255" autocomplete="off">
+                    <input name="grupoconvivencia" class="form-control" id="grupoconvivencia" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo_edit"></label>
                     <br>
                     <label>Turno</label>
@@ -251,6 +263,77 @@
 </div>
 
 <script>
+    
+$('#excluirturma').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idturma').val(id);
+    console.log(id);
+    console.log("EXCLUIR modal turma");
+    
+});
+
+$('#editarturma').on('show.bs.modal', function (event) {
+    console.log('modal opened');
+    var button = $(event.relatedTarget) 
+    var nome = button.data('mygrupo')
+    var turno = button.data('myturno')
+    var educador = button.data('myeducador') 
+    var id = button.data('myid') 
+    var modal = $(this)
+    console.log(turno.value);
+    modal.find('.modal-body #grupoconvivencia').val(nome)
+    modal.find('.modal-body #turno').val(turno)
+    modal.find('.modal-body #idUsuario').val(educador)
+    modal.find('.modal-body #idturma').val(id)
+
+});
+
+
+$('#inativar').on('show.bs.modal', function (event) {
+    console.log("Modal aberta");
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #id').val(id);
+    
+    console.log(id);
+});
+
+    $('#ativar').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #id').val(id);
+    console.log(id);
+});
+    
+    $('#editarturma').on('hidden.bs.modal', function (event) {
+    $(this).find('input:text').val('');
+    document.getElementById("meggrupo_edit").innerHTML="";
+    });
+
+    $('#ativarturma').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idturma').val(id);
+    
+    });
+
+    $('#inativarturma').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    var id = button.data('myid') 
+    var modal = $(this)
+   // modal.find('.modal-body #crasId').val(id);
+    modal.find('.modal-body #idturma').val(id);
+    
+    });
     function validarInclusaoTurma(nomeGrupo) {
         var permissao = true;
         var formulario = document.register;
@@ -284,28 +367,7 @@
     return permissao;
     }
 
-    $('#editarturma').on('hidden.bs.modal', function (event) {
-    $(this).find('input:text').val('');
-    document.getElementById("meggrupo_edit").innerHTML="";
-    });
-
-    $('#ativarturma').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
-    var modal = $(this)
-   // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #idturma').val(id);
     
-    });
-
-    $('#inativarturma').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
-    var modal = $(this)
-   // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #idturma').val(id);
-    
-    });
 
 
 </script>

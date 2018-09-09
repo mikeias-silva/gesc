@@ -1,68 +1,85 @@
 @extends('layout.principal') 
 @section('conteudo')
-<h1>Matriculas {{ $ano }} - APAM</h1>
+<div class="container">
+<h2>Matriculas ativas</h2>
 
-<!--ABA ATIVAS-->
-  
-<table id="dtAnterior" class="table table-striped border">
-    <thead>
-        <tr>
-            <th>Nome
-                <i class="material-icons float-right">
-                    swap_vert
-                </i>
-            </th>
-            <th>Turma
-                <i class="material-icons float-right">
-                swap_vert
-                </i>
-            </th>
-            
-            <th>Idade
-                <i class="material-icons float-right">
-                    swap_vert
-                </i>
-            </th>
-            <th>Data Matricula
-                <i class="material-icons float-right">
-                    swap_vert
-                </i>
-            </th>
-            <!--     <th>Ações
-                <i class="material-icons float-right">
-                swap_vert
-                </i>
-            </th>-->
-        </tr>
-    </thead>
-        
-    
-        @foreach($matAnteriores as $matAnt)
-    
-        <tr>
-            <td>{{ $matAnt->nomeMatricula() }}</td>
-            <td>{{ $matAnt->grupoconvivencia }}</td>
-           
-            <td>{{ $matAnt->idadeMatricula() }} anos</td>
-            <td>{{ $matAnt->datamatricula }}</td>
-           <!--  <td> 
-                <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matAnt->idmatricula }}">
-                    <i class="material-icons">
-                        print
+<table id="dtRematricula" class="table table-striped border">
+        <thead>
+            <tr>
+                    <th>
+                    Nome
+                       
+                    <i class="material-icons float-right">
+                        swap_vert
                     </i>
-                </a>
-                <input type="hidden" name="idmatricula" value="{{ $matAnt->idmatricula }}" />
-                
-                
-            </td>-->
-        </tr>
-        @endforeach 
-    
+                       
+                </th>
+                <th>Turma
+                    <i class="material-icons float-right">
+                    swap_vert
+                    </i>
+               
+                </th>
+               
+                <th>
+                    Idade
+                       
+                    <i class="material-icons float-right">
+                        swap_vert
+                    </i>
+                       
+                </th>
+                <th>
+                        
+                            Data Matricula
+                        
+                    <i class="material-icons float-right">
+                        swap_vert
+                    </i>
+                        
+                </th>
+                <th>
+                    Rematricular
+                        
+                    <i class="material-icons float-right">
+                    swap_vert
+                    </i>
+                    
+                </th>
+            </tr>
+        </thead>
+            
         
+            @foreach($matRematricula as $matA)
         
-</table> 
-
-    
+            <tr>
+                <td>{{ $matA->nomeMatricula() }}</td>
+                <td>{{ $matA->nomeTurma() }}</td>
+                @if ($matA->idadeMatricula() < 10)
+                <td>0{{ $matA->idadeMatricula() }} anos</td>
+                @endif
+                @if ($matA->idadeMatricula() > 9)
+                <td>{{ $matA->idadeMatricula() }} anos</td>
+                @endif
+                 
+                 
+                <td>{{ $matA->anoMatricula() }}</td>
+                <td>
+                        <a href="/confirmarRematricula/{{ $matA->idmatricula }}" class="text text-info">
+                            <i class="material-icons">
+                                add_box
+                            </i>
+                        </a>
+                      
+                       <!--   href="/confirmarRematricula/ dadosmatricula->idmatricula "-->
+                </td>
+            </tr>
+            @endforeach 
+        
+          
+            
+    </table> 
+</div>
 <!-- Modal Center modal de inativacao-->
 <div class="modal fade" id="inativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -166,9 +183,7 @@
 </div>
 
 
-<form action="/listagemMatriculas/anteriores" class="float-right" id="btn-novamatricula">
-    <button class="btn btn-secondary">Voltar</button>
-</form>
+
 <!--  -->
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
@@ -178,7 +193,7 @@
 <script>
 
     $(document).ready(function () {
-    $('#dtAnterior').DataTable();
+    $('#dtRematricula').DataTable();
     $('.dataTables_length').addClass('bs-select');
   });
   
@@ -188,7 +203,7 @@
 
 
 <script>
-    $('#dtAnterior').DataTable({
+    $('#dtRematricula').DataTable({
         "language": {
             "zeroRecords": "nada encontrado",
             "infoEmpty": "Não há nenhum registro",

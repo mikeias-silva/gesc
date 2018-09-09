@@ -1,6 +1,6 @@
 @extends('layout.principal') 
 @section('conteudo')
-<h1>Matriculas - APAM</h1>
+<h1>Matriculas {{ $ano }} - APAM</h1>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="ativas-tab" data-toggle="tab" href="#ativas" role="tab" aria-controls="ativas" aria-selected="true">Ativas</a>
@@ -20,38 +20,48 @@
 <!--ABA ATIVAS-->
    <div class="tab-pane active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
          <h2>Matriculas ativas</h2>
-        <table id="dtAtivas" class="table table-striped">
+        <table id="dtAtivas" class="table table-striped border">
                 <thead>
                     <tr>
-                        <th>Nome
+                            <th>
+                            Nome
+                               
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
+                               
                         </th>
                         <th>Turma
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
+                       
                         </th>
-                        <th>CRAS
+                       
+                        <th>
+                            Idade
+                               
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
+                               
                         </th>
-                        <th>Idade
+                        <th>
+                                
+                                    Data Matricula
+                                
                             <i class="material-icons float-right">
                                 swap_vert
                             </i>
+                                
                         </th>
-                        <th>Data Matricula
-                            <i class="material-icons float-right">
-                                swap_vert
-                            </i>
-                        </th>
-                        <th>Ações
+                        <th>
+                            Opções
+                                
                             <i class="material-icons float-right">
                             swap_vert
                             </i>
+                            
                         </th>
                     </tr>
                 </thead>
@@ -62,11 +72,22 @@
                     <tr>
                         <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->nomeTurma() }}</td>
-                        <td>teste</td>
+                        @if ($matA->idadeMatricula() < 10)
+                        <td>0{{ $matA->idadeMatricula() }} anos</td>
+                        @endif
+                        @if ($matA->idadeMatricula() > 9)
                         <td>{{ $matA->idadeMatricula() }} anos</td>
+                        @endif
+                         
+                         
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
-                            <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">
+                              <!--    <a href="/imprimematricula/{{ $matA->idmatricula }}" class=" text text-dark"   >
+                                    <i class="material-icons">
+                                        print
+                                    </i>
+                                </a>-->
+                             <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">
                                 <i class="material-icons">
                                     print
                                 </i>
@@ -108,36 +129,33 @@
         <table id="dtInativas" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nome
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
-                            <th>Turma
-                                <i class="material-icons float-right">
+                        <th>
+                            Nome
+                            <i class="material-icons float-right">
                                 swap_vert
-                                </i>
-                            </th>
-                            <th>CRAS
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
-                            <th>Idade
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
-                            <th>Data Matricula
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
-                            <th>Ações
-                                <i class="material-icons float-right">
+                            </i>
+                        </th>
+                            
+                        <th>
+                            Idade
+                            <i class="material-icons float-right">
                                 swap_vert
-                                </i>
-                            </th>
+                            </i>
+                        </th>
+
+                        <th>
+                            Data Matricula
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+
+                        <th>
+                            Opções
+                            <i class="material-icons float-right">
+                            swap_vert
+                            </i>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,12 +163,14 @@
                         @foreach($matInativas as $matI)
                         <tr>
                             <td>{{ $matI->nomeMatricula() }}</td>
-                            <td>{{ $matI->nomeTurma() }}</td>
-                            <td>CRAS</td>
+                            
                             <td>{{ $matI->idadeMatricula() }} anos</td>
                             <td>{{ $matI->anoMatricula() }}</td>
-                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print "></i></a>
-                                <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+                            <td>
+                                <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">
+                                    inativar
+                                </a>
+
 
                             </td>
                             
@@ -172,16 +192,7 @@
                                     swap_vert
                                 </i>
                             </th>
-                            <th>Turma
-                                <i class="material-icons float-right">
-                                swap_vert
-                                </i>
-                            </th>
-                            <th>CRAS
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
+                            
                             <th>Idade
                                 <i class="material-icons float-right">
                                     swap_vert
@@ -192,7 +203,7 @@
                                     swap_vert
                                 </i>
                             </th>
-                            <th>Ações
+                            <th>Opções
                                 <i class="material-icons float-right">
                                 swap_vert
                                 </i>
@@ -205,9 +216,7 @@
                         @foreach($matEspera as $matE)
                         <tr>
                             <td>{{ $matE->nomeMatricula() }}</td>
-                            <td>{{ $matE->nomeTurma() }}</td>
-                            <td>CRAS</td>
-                            <td>{{ $matE->idadeMatricula() }} anos</td>
+                             <td>{{ $matE->idadeMatricula() }} anos</td>
                             <td>{{ $matE->anoMatricula() }}</td>
                             <td>
                                 
@@ -250,7 +259,7 @@
                     <h5>Você tem certeza que deseja realmente inativar esta Matrícula?</h5>
 
                     <label>Motivo<span id="campoobrigatorio">*</span></label>
-                    <textarea class="form-control" type="text" name="motivoinativacao" id="" 
+                    <textarea required class="form-control" type="text" name="motivoinativacao" id="" 
                     placeholder="Infome o motivo da inativação dessa matricula">
 
                     </textarea>
@@ -311,7 +320,7 @@
             </button>
             </div>
             
-            <form action="/pdfmatricula" method="get">
+            <form action="/imprimematricula" method="get">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

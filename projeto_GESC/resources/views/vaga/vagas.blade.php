@@ -1,5 +1,6 @@
 @extends('layout.principal') 
 @section('conteudo')
+<div class="">
 <h1 class="text">Gerenciamento de vagas</h1>
 @if(count($vaga)==0)
     <div class="alert alert-danger">
@@ -7,38 +8,62 @@
     </div>
 
 @elseif(!empty($vaga))
-<table class="table table-striped">
+
+<table class="table table-striped border">
     <thead>
         <tr>
-            <th>Idade Mínima</th>
-            <th>Idade Máxima</th>
-            <th>Número de Vagas</th>
-            <th>Ano</th>
-            <th>Opções</th>
+            <th class="text-center">Idade Mínima</th>
+            <th class="text-center">Idade Máxima</th>
+            <th class="text-center">Número de Vagas</th>
+            <th class="text-center">Ano</th>
+            <th class="text-center">Opções</th>
 
         </tr>
     </thead>
     @foreach ($vaga as $v)
     <tr>
-        <td> {{ $v->idademin }} </td>
-        <td> {{ $v->idademax }} </td>
-        <td> {{ $v->numvaga }} </td>
-        <td> {{ $v->anovaga }} </td>
+        <td class="text-center"> {{ $v->idademin }} </td>
+        <td class="text-center"> {{ $v->idademax }} </td>
+        <td class="text-center"> {{ $v->numvaga }} </td>
+        <td class="text-center"> {{ $v->anovaga }} 
+            @if( ($v->statusvaga) === 0)
         
-        <td>
-            <button type="button" class="btn btn-info" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
-            data-myidademax="{{ $v->idademax }}" data-mynumvaga="{{ $v->numvaga }}" data-myano="{{ $v->anovaga }}" data-toggle="modal" data-target="#editarVagas">Editar</button>    
-            <button type="button" class="btn btn-danger" data-myid="{{ $v->idvaga }}" data-toggle="modal" data-target="#excluirVaga">Excluir</button>
+          
+                <i class="material-icons text-danger">
+                    highlight_off
+                </i>
+           
+        
+        @elseif(($v->statusvaga) > 0)
+        
+                <i class="material-icons text-success">
+                    done
+                </i>
+            
+        
+    </td>
+        @endif
         </td>
+        
+        <td class="text-center">
+            <a href="" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
+            data-myidademax="{{ $v->idademax }}" data-mynumvaga="{{ $v->numvaga }}" data-myano="{{ $v->anovaga }}" data-toggle="modal" data-target="#editarVagas">
+            <i class="material-icons text-info">
+                edit
+            </i>
+        </a>    
+              </td>
     </tr>
     @endforeach
 </table>
+
 @endif
 <!-- Button trigger modal -->
 <div class="float-right">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Novo
 </button>
+</div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >

@@ -267,11 +267,11 @@
                 @endif
             </tr>
             <tr>
-                <td align="center" class="font-weight-bold">Setembro</td>
-                @if(empty($diasFuncionamento[0]->set) || $diasFuncionamento[0]->set==0)
-                    <td align="center"><input  name="set" id="set" class="combo-box col-2" type="number"></td>
+                <td align="center">Setembro</td>
+                @if(empty($diasFuncionamento[0]->setembro) || $diasFuncionamento[0]->setembro==0)
+                    <td align="center"><input  name="setembro" id="setembro" class="combo-box col-2" type="number"></td>
                 @else
-                    <td align="center"><input name="set" id="set" value="{{$diasFuncionamento[0]->set}}" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="setembro" id="setembro" value="{{$diasFuncionamento[0]->setembro}}" class="combo-box col-2" type="number"></td>
                 @endif
             </tr>
             <tr>

@@ -101,6 +101,7 @@ Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlun
 Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos')->middleware('auth');
 
 Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia')->middleware('auth');
+Route::post('/fichaFrequencia/imprimir', 'FichaFrequenciaController@excel')->middleware('auth');
 
 /*
 Route::get('/login', function(){

@@ -1,8 +1,9 @@
 @extends('layout.principal')
 
 @section('conteudo')
-<h1 class="text">Dashboard</h1>
-<hr></hr>
+
+<h1 style="margin:20px 0px 50px 0px;" class="text text-center">Associação de Promoção a Menina - APAM</h1>
+
 
 <h4>Número de matriculas ativas por idade</h4>
 <table class="table table-bordered">

@@ -1,67 +1,9 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-    
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      
-      <!-- =========== Trecho ABAIXO que nao esta sendo utilizado mais ======= -->
-        <!--webService CEP-->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                crossorigin="anonymous">
-        </script>
-    <!-- 
-        <link rel="profile" href="http://gmpg.org/xfn/11">
-        <link rel="pingback" href="http://themes.getbootstrap.com/xmlrpc.php">
-        <link rel="apple-touch-icon" sizes="180x180" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-16x16.png">
-        <link rel="manifest" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/manifest.json">
-        <link rel="shortcut icon" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon.ico">
-        <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/jquery.min.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/Chart.min.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/Chart.bundle.min.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/tether.min.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/popper.min.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/bootstrap.min.js"></script>
-        <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/scripts.js?ver=1516485707"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-       
-         --><script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-      
-    
-       
-      <!-- =========== Trecho ACIMA que nao esta sendo utilizado mais ======= -->
-       
-    
-     
-       <!--  <script src="{{ asset('js/app.js') }}" defer></script>
-     -->
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
-       
-        <link rel="stylesheet" href="/css/style.css">
-       <!--   <script src="js/Ativo-inativo.js"></script>
-    -->
-        
-        <title>GESC - Gerenciamento de Serviço de Convivência</title>
-</head>
-
-</html>
+@extends('layout.principal')
+@section('conteudo')
 <body id="conteudoimprimir " >
         <div class="float-right">
-            <a class="btn btn-toolbar " onclick="myFunction()"><i class="material-icons">
-                    print
-                </i>
-            </a>
+            <button class="btn btn-toolbar " onclick="myFunction()"><i class="fa fa-print fa-lg"></i></button>
             <a href="#" id="btn-imprimir"></a>
         </div>
         <div class="container">
@@ -75,22 +17,22 @@
                     <div class="row">
                         <div class="col-sm-7" >
                             <label>Nome</label>
-                            <input disabled  value="{{ $dadoscrianca->nomecrianca }}" type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
+                            <input  value="{{ $dadoscrianca->nomecrianca }}" type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
                             <span id="msgNomeCrianca"></span>
                         </div>
                             
                         <div class="col-md-3">
                             <label>Nascimento</label>
-                            <input disabled  value="{{ $dadoscrianca->nascimentocrianca }}" type="date" class="form-control" name="datanascimentocrianca">
+                            <input  value="{{ $dadoscrianca->nascimentocrianca }}" type="date" class="form-control" name="datanascimentocrianca">
                             <span id="msgDataNascimento"></span>
                         </div>
     
                         <div class="col-sm-2">
                             <label>Sexo</label>
                             @if($dadoscrianca->sexocrianca = 'm')
-                            <input disabled  class="form-control" type="text" value="Masculino"/>
+                            <input  class="form-control" type="text" value="Masculino"/>
                             @elseif($dadoscrianca->sexocrianca = 'f')
-                            <input disabled  class="form-control" type="text" value="Feminino"/>
+                            <input  class="form-control" type="text" value="Feminino"/>
                             @endif
                         </div>
                     </div>
@@ -100,19 +42,19 @@
                     <div class="row" >
                         <div class="col-sm-4">
                             <label>RG</label>
-                            <input disabled  value="{{ $dadoscrianca->rgcrianca }}" type="text" class="form-control" id="rgcrianca" name="rgcrianca" onkeyup="mascara(this, Rg);" maxlength="9" autocomplete="off">
+                            <input  value="{{ $dadoscrianca->rgcrianca }}" type="text" class="form-control" id="rgcrianca" name="rgcrianca" onkeyup="mascara(this, Rg);" maxlength="9" autocomplete="off">
                             <span id="msgRg"></span>
                         </div>
     
                         <div class="col-sm-4">
                             <label>CPF</label>
-                            <input disabled  value="{{ $dadoscrianca->cpfcrianca }}" type="text" class="form-control" name="cpfcrianca" id="cpfcrianca" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
+                            <input  value="{{ $dadoscrianca->cpfcrianca }}" type="text" class="form-control" name="cpfcrianca" id="cpfcrianca" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
                             <span id="msgCpf"></span>
                         </div>
     
                         <div class="col-sm-4">
                             <label>CEP</label>
-                            <input disabled value="{{ $dadoscrianca->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
+                            <input value="{{ $dadoscrianca->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
                             <span id="msgCep"></span>
                         </div>
                     </div>
@@ -122,22 +64,22 @@
                     <div class="row" >
                         <div class="col-sm-5">
                             <label>Endereço</label>
-                            <input disabled value="{{ $dadoscrianca->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                            <input value="{{ $dadoscrianca->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
                             <span id="msgEndereco"></span>
                         </div>
     
                         <div class="col-sm-1">
                             <label>Nº</label>
-                            <input disabled value="{{ $dadoscrianca->ncasa }}" class="form-control" type="text" name="ncasa"/>
+                            <input value="{{ $dadoscrianca->ncasa }}" class="form-control" type="text" name="ncasa"/>
                         </div>
     
                         <div class="col-sm-2">
                             <label>Cidade</label>
-                            <input disabled value="Ponta Grossa"  class="form-control" type="text" id="cidade"/>
+                            <input value="Ponta Grossa"  class="form-control" type="text" id="cidade"/>
                         </div>
                         <div class="col-sm-4">
                             <label>Bairro</label>
-                            <input disabled value="{{ $dadoscrianca->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                            <input value="{{ $dadoscrianca->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                             <span id="msgBairro"></span>
                         </div>
                     </div>
@@ -146,13 +88,13 @@
                         <div class="row" >
                             <div class="col-sm-6">
                                 <label>Complemento</label>
-                                <input disabled value="{{ $dadoscrianca->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                                <input value="{{ $dadoscrianca->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
                             </div>
                             @foreach ($dadosfamilia as $dadofamilia)
                             <div class="col-sm-6">
                                 <label>CRAS/CREAS</label>
-                                <select disabled class="form-control" name="idcras" id="" >
-                                    <option value="{{ $dadofamilia->idcras }}">{{ $dadofamilia->nomecras }}</option>
+                                <select class="form-control" name="idcras" id="" >
+                                    <option value="{{ $dadofamilia->idcras }}">{{ $dadofamilia->nomecras }} --ATUAL</option>
                                     @foreach ($cras as $cras)
                                         <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
                                     @endforeach
@@ -166,8 +108,8 @@
                         <div class="row" >
                             <div class="col-sm-6">
                                 <label>Público Prioritário</label>
-                                <select disabled class="form-control" name="idpublicoprioritario" id="">
-                                        <option value="{{ $dadoscrianca->idpublicoprioritario }}">{{ $dadoscrianca->publicoprioritario }}</option>
+                                <select class="form-control" name="idpublicoprioritario" id="">
+                                        <option value="{{ $dadoscrianca->idpublicoprioritario }}">{{ $dadoscrianca->publicoprioritario }} --atual</option>
                                     @foreach ($pprioritario as $pprioritario)
                                         <option value="{{ $pprioritario->idpublicopriotirario }}">{{ $pprioritario->publicoprioritario }}</option>
                                     @endforeach
@@ -181,8 +123,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Escola</label>
-                                <select disabled name="escola" id="" class="custom-select" >
-                                   <option value="">{{ $dadoscrianca->nomeescola }}</option>
+                                <select name="escola" id="" class="custom-select" >
+                                   <option value="">{{ $dadoscrianca->nomeescola }} --atual</option>
                                     @foreach($escola as $e)
                                         <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                                     @endforeach
@@ -195,7 +137,7 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <label>Serie Escolar</label>
-                                <select disabled name="serie" id="" class="custom-select"> 
+                                <select name="serie" id="" class="custom-select"> 
                                     @foreach ($dadosmatricula as $dadosmatricula)
                                     <option value="">{{ $dadosmatricula->serieescolar }} </option>
                                    
@@ -219,7 +161,7 @@
         
                     <div class="form-group ">
                         <label>Observações de Saúde</label>
-                        <textarea disabled value="{{ $dadoscrianca->obssaude }}" name="obssaude" id="" cols="10" rows="2" class="form-control" maxlength="255" autocomplete="off">{{ $dadoscrianca->obssaude }}</textarea>
+                        <textarea value="{{ $dadoscrianca->obssaude }}" name="obssaude" id="" cols="10" rows="2" class="form-control" maxlength="255" autocomplete="off">{{ $dadoscrianca->obssaude }}</textarea>
                     </div>
                 </div>
         </div>
@@ -233,22 +175,22 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <label>Nome</label>
-                        <input disabled value="{{ $responsaveis[0]->nomeresponsavel }}" class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
+                        <input value="{{ $responsaveis[0]->nomeresponsavel }}" class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
                         <span id="msgNomeResp1"></span>
                     </div>
                     
                     <div class="col-sm-4">
                         <label>Data de Nascimento</label>
-                        <input disabled value="{{ $responsaveis[0]->nascimentoresponsavel }}" type="date" class="form-control" name="datanascimentoresp1">
+                        <input value="{{ $responsaveis[0]->nascimentoresponsavel }}" type="date" class="form-control" name="datanascimentoresp1">
                         <span id="msgDataResp1"></span>
                     </div>
     
                     <div class="col-sm-2">
                         <label>Sexo</label>
                         @if($responsaveis[0]->sexoresponsavel = 'm')
-                            <input disabled  class="form-control" type="text" value="Masculino"/>
+                            <input  class="form-control" type="text" value="Masculino"/>
                             @elseif($responsaveis[0]->sexoresponsavel = 'f')
-                            <input disabled  class="form-control" type="text" value="Feminino"/>
+                            <input  class="form-control" type="text" value="Feminino"/>
                         @endif
                     </div>
                 </div>
@@ -258,21 +200,25 @@
                 <div class="row">
                         <div class="col-sm-4">
                         <label>RG</label>
-                        <input disabled value="{{ $responsaveis[0]->rgresponsavel }}" type="text" class="form-control" name="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
+                        <input value="{{ $responsaveis[0]->rgresponsavel }}" type="text" class="form-control" name="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
                         <span id="msgRgResp1"></span>
                     </div>
     
                     <div class="col-sm-4">
                         <label>CPF</label>
-                        <input disabled value="{{ $responsaveis[0]->cpfresponsavel }}" type="text" class="form-control" name="cpfresp1" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
+                        <input value="{{ $responsaveis[0]->cpfresponsavel }}" type="text" class="form-control" name="cpfresp1" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
                         <span id="msgCpfResp1"></span>
                     </div>
     
                     <div class="col-sm-4">
                         <label>Estado Civil</label>
-                        <select disabled class="form-control" name="estadocivilresp1" id="">
-                            <option value="{{ $responsaveis[0]->estadocivil }}"> {{ $responsaveis[0]->estadocivil }}</option>
-                          
+                        <select class="form-control" name="estadocivilresp1" id="">
+                            <option value="{{ $responsaveis[0]->estadocivil }}">{{ $responsaveis[0]->estadocivil }}--atual</option>
+                            <option value="1">Solteiro</option>
+                            <option value="2">Casado</option>
+                            <option value="3">Divorciado</option>
+                            <option value="4">Viúvo</option>
+                            <option value="5">Separado</option>
                         </select>
                     </div>
                 </div>
@@ -282,7 +228,7 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <label>Profissão</label>
-                        <input disabled value="{{ $responsaveis[0]->profissao }}" type="text" class="form-control" name="profissaoresp1">
+                        <input value="{{ $responsaveis[0]->profissao }}" type="text" class="form-control" name="profissaoresp1">
                     </div>
                     
                 </div>
@@ -292,12 +238,12 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <label>Local de Trabalho</label>
-                        <input disabled value="{{ $responsaveis[0]->localtrabalho }}" type="text" class="form-control" name="trabalhoresp1">
+                        <input value="{{ $responsaveis[0]->localtrabalho }}" type="text" class="form-control" name="trabalhoresp1">
                     </div>
                     <div class="col-sm-4">
                         <label>Escolaridade</label>
-                        <select disabled class="form-control" name="escolaridaderesp1" id="">
-                            <option value="{{ $responsaveis[0]->escolaridade }}">{{ $responsaveis[0]->escolaridade }} </option>
+                        <select class="form-control" name="escolaridaderesp1" id="">
+                            <option value="{{ $responsaveis[0]->escolaridade }}">{{ $responsaveis[0]->escolaridade }} atual</option>
                             <option value="1">Ensino Fundamental Incompleto</option>
                             <option value="2">Ensino Fundamental Completo</option>
                             <option value="3">Ensino Médio Incompleto</option>
@@ -313,19 +259,19 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>Telefone</label>
-                        <input disabled value="{{ $responsaveis[0]->telefone }}" type="text" class="form-control" name="tel1resp1" id="tel1resp1"  onkeyup="mascara(this, Telefone);" maxlength="11">
+                        <input value="{{ $responsaveis[0]->telefone }}" type="text" class="form-control" name="tel1resp1" id="tel1resp1"  onkeyup="mascara(this, Telefone);" maxlength="11">
                         <span id="msgTel1Resp1"></span>
                     </div>
                     <div class="col-sm-4">
                         <label>Telefone 2</label>
-                        <input disabled value="{{ $responsaveis[0]->telefone2 }}" type="text" class="form-control" name="tel2resp1" id="tel2resp1" onkeyup="mascara(this, Telefone);" maxlength="11">
+                        <input value="{{ $responsaveis[0]->telefone2 }}" type="text" class="form-control" name="tel2resp1" id="tel2resp1" onkeyup="mascara(this, Telefone);" maxlength="11">
                         <span id="msgTel2Resp1"></span>
                     </div>
                 </div>
             </div>
     
             <label>Observações</label>
-            <textarea disabled name="obsresp1" id="" cols="10" rows="2" class="form-control">{{ $responsaveis[0]->outrasobs }}</textarea>
+            <textarea name="obsresp1" id="" cols="10" rows="2" class="form-control">{{ $responsaveis[0]->outrasobs }}</textarea>
     
             <div class="container" id="meio">
     
@@ -338,19 +284,19 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <label>Nome:</label>
-                        <input disabled  value="{{ $responsaveis[1]->nomeresponsavel }}" class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
+                        <input  value="{{ $responsaveis[1]->nomeresponsavel }}" class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
                         <span id="msgNomeResp2"></span>
                     </div>
     
                     <div class="col-sm-4">
                         <label>Data de Nascimento</label>
-                        <input disabled  value="{{ $responsaveis[1]->nascimentoresponsavel }}" type="date" class="form-control" name="datanascimentoresp2">
+                        <input  value="{{ $responsaveis[1]->nascimentoresponsavel }}" type="date" class="form-control" name="datanascimentoresp2">
                         <span id="msgDataResp2"></span>
                     </div>
     
                     <div class="col-sm-2">
                             <label>Sexo</label>
-                            <input disabled  value="{{ $responsaveis[1]->sexoresponsavel }}" type="text" class="form-control" name="" id="">
+                            <input  value="{{ $responsaveis[1]->sexoresponsavel }}" type="text" class="form-control" name="" id="">
                     </div>
                 </div>
             </div>
@@ -359,20 +305,20 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>RG</label>
-                        <input disabled  value="{{ $responsaveis[1]->rgresponsavel }}" type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9">
+                        <input  value="{{ $responsaveis[1]->rgresponsavel }}" type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9">
                         <span id="msgRgResp2"></span>
                     </div>
     
                     <div class="col-sm-4">
                         <label>CPF</label>
-                        <input disabled  value="{{ $responsaveis[1]->cpfresponsavel }}" type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
+                        <input  value="{{ $responsaveis[1]->cpfresponsavel }}" type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
                         <span id="msgCpfResp2"></span>
                     </div>
                     
                     <div class="col-sm-4">
                         <label>Estado Civil</label>
-                        <select disabled class="form-control" id="" name="estadocivilresp2">
-                            <option value="{{ $responsaveis[1]->estadocivil }}">{{ $responsaveis[1]->estadocivil }} </option>
+                        <select class="form-control" id="" name="estadocivilresp2">
+                            <option value="{{ $responsaveis[1]->estadocivil }}">{{ $responsaveis[1]->estadocivil }} atual</option>
                             <option value="1">Solteiro</option>
                             <option value="2">Casado</option>
                             <option value="3">Divorciado</option>
@@ -387,7 +333,7 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <label>Profissão</label>
-                        <input disabled value="{{ $responsaveis[1]->profissao }}" type="text" class="form-control" name="profissaoresp2">
+                        <input value="{{ $responsaveis[1]->profissao }}" type="text" class="form-control" name="profissaoresp2">
                     </div>
                    
                 </div>
@@ -397,12 +343,12 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <label>Local de Trabalho</label>
-                        <input disabled value="{{ $responsaveis[1]->localtrabalho }}" type="text" class="form-control" name="trabalhoresp2">
+                        <input value="{{ $responsaveis[1]->localtrabalho }}" type="text" class="form-control" name="trabalhoresp2">
                     </div>
                     <div class="col-sm-4">
                         <label>Escolaridade</label>
-                        <select disabled class="form-control" id="" name="escolaridaderesp2">
-                            <option value="{{ $responsaveis[1]->escolaridade }}"> {{ $responsaveis[1]->escolaridade }}</option>
+                        <select class="form-control" id="" name="escolaridaderesp2">
+                            <option value="{{ $responsaveis[1]->escolaridade }}">atual {{ $responsaveis[1]->escolaridade }}</option>
                             <option value="1">Ensino Fundamental Incompleto</option>
                             <option value="2">Ensino Fundamental Completo</option>
                             <option value="3">Ensino Médio Incompleto</option>
@@ -418,12 +364,12 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>Telefone 1</label>
-                        <input disabled value="{{  $responsaveis[1]->telefone }}" type="tel" class="form-control" name="tel1resp2" id="tel1resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
+                        <input value="{{  $responsaveis[1]->telefone }}" type="tel" class="form-control" name="tel1resp2" id="tel1resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
                         <span id="msgTel1Resp2"></span>
                     </div>
                     <div class="col-sm-4">
                         <label>Telefone 2</label>
-                        <input disabled value="{{  $responsaveis[1]->telefone2 }}" type="tel" class="form-control" name="tel2resp2" id="tel2resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
+                        <input value="{{  $responsaveis[1]->telefone2 }}" type="tel" class="form-control" name="tel2resp2" id="tel2resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
                         <span id="msgTel2Resp2"></span>
                     </div>
                 </div>
@@ -431,7 +377,7 @@
             
             <div>
                 <label>Observações</label>
-                <textarea disabled name="obsresp2" id="" cols="10" rows="2" class="form-control">{{  $responsaveis[1]->outrasobs }}</textarea>
+                <textarea name="obsresp2" id="" cols="10" rows="2" class="form-control">{{  $responsaveis[1]->outrasobs }}</textarea>
             </div>
             </div>
             <br>
@@ -439,13 +385,13 @@
                 <div class="row">
                     <div class="col-sm-8">
                         <label>Número do NIS</label>
-                        <input disabled value="{{ $dadosfamilia[0]->numnis }}" type="text" class="form-control" name="numnis">
+                        <input value="{{ $dadosfamilia[0]->numnis }}" type="text" class="form-control" name="numnis">
                         <span id="msgNumNis"></span>
                     </div>
                     <div class="col-sm-4">
                         <label>Moradia</label>
-                        <select disabled class="form-control" name="moradia" id="">
-                            <option value="{{ $dadosfamilia[0]->moradia }}"> {{ $dadosfamilia[0]->moradia }}</option>
+                        <select class="form-control" name="moradia" id="">
+                            <option value="{{ $dadosfamilia[0]->moradia }}">atual {{ $dadosfamilia[0]->moradia }}</option>
                             <option value="1">Alugada</option>
                             <option value="2">Cedida</option>
                             <option value="3">Própria</option>
@@ -465,11 +411,11 @@
                             <label class="form-check-label" for="rd-alvenaria" >
                                 @if ($dadosfamilia[0]->tipohabitacao == 'Alvenaria')
                                     
-                                    <input disabled type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
+                                    <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
                 
                                     
                                 @else
-                                    <input disabled type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria">Alvenaria
+                                    <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria">Alvenaria
                                    
                                 @endif
                             </label>
@@ -479,10 +425,10 @@
                         <div class="form-check">
                             <label class="form-check-label" for="rd-madeira">
                                 @if ($dadosfamilia[0]->tipohabitacao == 'Madeira')
-                                    <input disabled type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira" checked>Madeira
+                                    <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira" checked>Madeira
                                 
                                 @else
-                                    <input disabled type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
+                                    <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
                             
                                 @endif
                             </label>
@@ -493,10 +439,10 @@
                             <label class="form-check-label" for="rd-mista">
                                 @if ($dadosfamilia[0]->tipohabitacao == 'Mista')
                                     
-                                    <input disabled type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista" checked>Mista
+                                    <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista" checked>Mista
                                 @else
                                     
-                                    <input disabled type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
+                                    <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
                                 @endif
                             </label>
                         </div>
@@ -510,9 +456,9 @@
                 <div class="form-check col-sm-2">
                     <label class="form-check-label">
                         @if ($dadosfamilia[0]->arearisco == '1')
-                            <input disabled type="checkbox" class="form-check-input" name="arearisco" value="1" checked>Mora em área de risco
+                            <input type="checkbox" class="form-check-input" name="arearisco" value="1" checked>Mora em área de risco
                         @else
-                            <input disabled type="checkbox" class="form-check-input" name="arearisco" value="1" >Mora em área de risco
+                            <input type="checkbox" class="form-check-input" name="arearisco" value="1" >Mora em área de risco
                         @endif
                         
                     </label>
@@ -521,10 +467,10 @@
                 <div class="form-check col-sm-2">
                     <label class="form-check-label">
                         @if ($dadosfamilia[0]->bolsafamilia == '1')
-                            <input disabled type="checkbox" class="form-check-input" name="bolsafamilia" value="1" checked>Beneficiário do Bolsa Familia
+                            <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1" checked>Beneficiário do Bolsa Familia
 
                         @else
-                            <input disabled type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
+                            <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
 
                         @endif
                     </label>
@@ -533,10 +479,10 @@
                 <div class="form-check col-sm-2">
                     <label class="form-check-label">
                         @if ($dadosfamilia[0]->beneficiopc == '1')
-                           <input disabled type="checkbox" class="form-check-input" name="beneficiopc" value="1" checked>Benefício Pessoa Continuada
+                           <input type="checkbox" class="form-check-input" name="beneficiopc" value="1" checked>Benefício Pessoa Continuada
 
                         @else
-                            <input disabled type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
+                            <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
 
                         @endif
                     </label>
@@ -544,11 +490,14 @@
             </div>
             
            
-            <div class="float-left" style="margin: 40px 0px 40px 0px">
+            <div class="float-right" style="margin-bottom: 40px">
                     <h3>Responsável:__________________________</h3>
             </div>
 
-           
+            <div>
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                <a href="/confirmarRematricula/{{ $dadosmatricula->idmatricula }}"><button type="submit" class="btn btn-success" >Fazer rematricula</button></a>
+            </div>
         </div>
        
         <br>
@@ -556,7 +505,20 @@
 </body>
 <script>
     function myFunction(){
-         window.print();
-        }
+        var conteudo = document.getElementById('conteudoimprimir').innerHTML,
+        tela_impressao = window.open('about:blank');
+
+        document.body.innerHTML = 
+          "<html><head><title></title></head><body>" + 
+          conteudo + "</body>";
+        tela_impressao.document.write(conteudo);
+
+        
+
+        
+
+         tela_impressao.window.print();
+         tela_impressao.window.close();
+    }
 </script>
-</html>
+@stop

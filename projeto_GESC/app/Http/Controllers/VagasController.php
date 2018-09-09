@@ -8,10 +8,29 @@ use Illuminate\Support\Facades\DB;
 
 use App\Vaga;
 use App\Instituicao;
-
+use Illuminate\Support\Carbon;
 class VagasController extends Controller {
 
+    public function vagasAnoAnterior(){
+       // return dd('opa');
+        //return opa;
+        $anopassado = Carbon::now()->year-1;
+       // return $anopassado;
+        $vagas = Vaga::all();
+        foreach ($vagas as $vaga) {
+          //  return dd('opa');
+         $vaga->anovaga;
+            if ($vaga->anovaga == $anopassado) {
+               // return dd('opa');
+                $vagaedita = Vaga::find($vaga->idvaga);
+                $vagaedita->update(['statusvaga'=>0]);
+            }
+           
+        }
+    }
     public function listaVagas(){
+        $this->vagasAnoAnterior();
+        
         $vaga = vaga::all();
         $idadeMin=[];
         $idadeMax=[];
@@ -51,13 +70,13 @@ class VagasController extends Controller {
         $vaga->update($request->all());
         return redirect()->action('VagasController@listaVagas');
     }
-
+/*
     public function exclui(Request $request){
         $vaga = Vaga::find($request->idvaga);
         $vaga->delete();
         return redirect()->action('VagasController@listaVagas');
     }
-
+*/
     public function consulta($ano){
         $teste = 'oi';
         return $teste;

@@ -17,6 +17,11 @@ class LoginController extends Controller {
         return view('login.login')->with('fail',$fail);
     }
 
+    public function login2(){
+        $fail="";
+        return view('login.login2')->with('fail',$fail);
+    }
+
     public function tentativaLogin(Request $request){
         $this->validate($request, [
             'nomeusuario' => ['required', 'max:255'],

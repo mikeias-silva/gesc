@@ -36,7 +36,7 @@
                             
             <div class="col-sm-4">
                 <label>CPF</label>
-                <input type="text" style="border:1px solid #808080;" class="form-control" name="cpfresponsavel" id="cpfresponsavel" maxlength="11" autocomplete="off"  onkeyup="mascara( this, removeLetra );">
+                <input type="text" style="border:1px solid #808080;" class="form-control" name="cpfresponsavel" id="cpfresponsavel" maxlength="14" autocomplete="off"  onkeyup="mascara( this, removeLetra );">
                 <spam id="msgcpfresponsavel"></spam>
             </div>
         </div>
@@ -233,10 +233,11 @@
             document.getElementById("campoObrigatorio").innerHTML="";
         }
         //var tesTelefone = telefone.value;
-        return true;
+        return permissao;
     }
 
     function validaCPF(cpf){
+        cpf=cpf.replace(/\D/g,""); 
         var Soma;
         var Resto;
         Soma = 0; 
@@ -273,8 +274,9 @@
     }
     function removeLetra(v){
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
-        //v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-        //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+        v=v.replace(/(\d{3})(\d)/,"$1.$2");
+		v=v.replace(/(\d{3})(\d)/,"$1.$2");
+		v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
         return v;
     }
 

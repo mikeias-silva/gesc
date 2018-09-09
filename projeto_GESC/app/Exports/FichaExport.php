@@ -42,14 +42,31 @@ class FichaExport implements FromView, WithEvents
 
     public $mes;
  
-    public function __construct($mes)
+    public function __construct($mes, $nomeresponsaveltec, $cpfresponsavel, $profissao,
+    $visitasdomiciliares, $atendimentosgrupo, $reuniaoacolhimento, $encaminhamentos, $atendimentosindividuais,  $encaminhamentoprivada, $planoelaborado,
+    $descricaoatividade, $obs, $mesdesc)
     {
         $ano = date("Y");
         $this->mes = $mes;
-        $this->teste = count (DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        $this->nomeresponsaveltec = $nomeresponsaveltec;
+        $this->cpfresponsavel = $cpfresponsavel;
+        $this->profissao = $profissao;
+        $this->visitasdomiciliares = $visitasdomiciliares;
+        $this->atendimentosgrupo = $atendimentosgrupo;
+        $this->reuniaoacolhimento = $reuniaoacolhimento;
+        $this->encaminhamentos = $encaminhamentos;
+        $this->atendimentosindividuais = $atendimentosindividuais;
+        $this->encaminhamentoprivada = $encaminhamentoprivada;
+        $this->planoelaborado = $planoelaborado;
+        $this->descricaoatividade = $descricaoatividade;
+        $this->obs = $obs;
+        $this->mesdesc = $mesdesc;
+        $this->numlinhasativos = count (DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
         and mesfrequencia='{$this->mes}'"));
         $this->desligamentos = count (DB::select("select * from listaAlunosDesligados where
         EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}'"));
+        $this->novos = count (DB::select("select * from listaAlunosNovos where
+        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%'"));
     }
 
     public function view(): View
@@ -100,6 +117,18 @@ class FichaExport implements FromView, WithEvents
         return view('exports.template', [
             'vaga' => Vaga::all(),
             'mes' =>  $this->mes,
+            'nomeresponsaveltec' =>  $this->nomeresponsaveltec,
+            'cpfresponsavel' =>  $this->cpfresponsavel,
+            'profissao' =>  $this->profissao,
+            'visitasdomiciliares' =>  $this->visitasdomiciliares,
+            'atendimentosgrupo' =>  $this->atendimentosgrupo,
+            'reuniaoacolhimento' =>  $this->reuniaoacolhimento,
+            'encaminhamentos' =>  $this->encaminhamentos,
+            'atendimentosindividuais' =>  $this->atendimentosindividuais,
+            'encaminhamentoprivada' =>  $this->encaminhamentoprivada,
+            'planoelaborado' =>  $this->planoelaborado,
+            'descricaoatividade' =>  $this->descricaoatividade,
+            'obs' =>  $this->obs,
             'instituicao' => Instituicao::all(),
             'dias_funcionamento' => $dias_funcionamento[0]->numero,
             'espera' => $espera[0]->emespera,
@@ -115,6 +144,7 @@ class FichaExport implements FromView, WithEvents
             'lista_ativos' => $lista_ativos,
             'lista_desligamentos' => $lista_desligamentos,
             'lista_novos' => $lista_novos,
+            'mesdesc' => $this->mesdesc,
         ]);
         //return Vaga::all();
     }
@@ -195,16 +225,337 @@ class FichaExport implements FromView, WithEvents
                                                         substr($instituicao[0]->cnpj, 5, 3)."/".substr($instituicao[0]->cnpj, 8, 4)."-".substr($instituicao[0]->cnpj, 12, 2));
                 
                 //calcula qubra de linha
-                for($i=0, $cont=15; $i<=$this->teste; $i++, $cont++){
-                    $cellA1 = $event->sheet->getCell('P'.$cont)->getValue();
-                    if(strlen ($cellA1)>22){
+                for($i=0, $cont=15; $i<=$this->numlinhasativos; $i++, $cont++){
+                    $publicoPrioritario = $event->sheet->getCell('P'.$cont)->getValue();
+                    $nome = $event->sheet->getCell('B'.$cont)->getValue();
+                    $cras = $event->sheet->getCell('J'.$cont)->getValue();
+                    $bairro = $event->sheet->getCell('M'.$cont)->getValue();
+
+                    if(strlen ($publicoPrioritario)>22){
                         $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
-                    } else if (strlen ($cellA1)>44){
+                    } else if(strlen ($nome)>31){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if(strlen ($cras)>16){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if(strlen ($bairro)>16){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } 
+
+                    if (strlen ($publicoPrioritario)>44){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    }else if (strlen ($nome)>62){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    } else if(strlen ($cras)>32){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    } else if(strlen ($bairro)>32){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    } 
+                }
+
+                //formatar lista de alunos ativos
+                $fimlistaativos=$this->numlinhasativos+14;
+                $event->sheet->styleCells(
+                    'A15:AA'.$fimlistaativos,
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            //'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                $fimlistaativos = $fimlistaativos+1;
+                $event->sheet->styleCells(
+                    "A$fimlistaativos:AA$fimlistaativos",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                $fimlistaativos = $fimlistaativos+1;
+                $event->sheet->styleCells(
+                    "A$fimlistaativos:AA$fimlistaativos",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+
+                $fimlistadesligados = $fimlistaativos + $this->desligamentos+1;
+
+                for($i=0, $cont=$fimlistaativos; $i<=$fimlistadesligados; $i++, $cont++){
+                    $nome = $event->sheet->getCell('B'.$cont)->getValue();
+                    $cras = $event->sheet->getCell('K'.$cont)->getValue();
+                    $motivo = $event->sheet->getCell('Q'.$cont)->getValue();
+
+                    if(strlen ($motivo)>44){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if(strlen ($nome)>31){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if(strlen ($cras)>16){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    }
+
+                    if (strlen ($motivo)>88){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    }else if (strlen ($nome)>62){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    } else if(strlen ($cras)>32){
                         $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
                     }
                 }
 
+                $event->sheet->styleCells(
+                    "A$fimlistaativos:AA$fimlistadesligados",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            //'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+
                 
+                $event->sheet->styleCells(
+                    "A$fimlistadesligados:AA$fimlistadesligados",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+                $fimlistadesligados = $fimlistadesligados +1;
+                $event->sheet->styleCells(
+                    "A$fimlistadesligados:AA$fimlistadesligados",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+                $fimlistadesligados = $fimlistadesligados +1;
+                $fimlistanovos = $fimlistadesligados +$this->novos;
+
+                for($i=0, $cont=$fimlistadesligados; $i<=$fimlistanovos; $i++, $cont++){
+                    $nome = $event->sheet->getCell('B'.$cont)->getValue();
+                    $bairro = $event->sheet->getCell('O'.$cont)->getValue();
+                    $formaAcesso = $event->sheet->getCell('U'.$cont)->getValue();
+
+                    if(strlen ($formaAcesso)>44){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if(strlen ($nome)>31){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    } else if(strlen ($bairro)>16){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(25.5);
+                    }
+
+                    if (strlen ($bairro)>88){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    }else if (strlen ($nome)>62){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    } else if(strlen ($bairro)>32){
+                        $event->sheet->getRowDimension($cont)->setRowHeight(37.75);
+                    }
+                }
+
+                $event->sheet->styleCells(
+                    "A$fimlistadesligados:AA$fimlistanovos",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            //'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                
+                //$event->sheet->getCell('AB5')->setValue($fimlistanovos);
+                $event->sheet->styleCells(
+                    "A$fimlistanovos:AA$fimlistanovos",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '12',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                $blocoquatro = $fimlistanovos +2;
+                $fimlistanovos = $fimlistanovos+1;
+                //$event->sheet->getCell('AB6')->setValue($fimlistanovos);
+                $event->sheet->styleCells(
+                    "A$fimlistanovos:AA$blocoquatro",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'outline' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+                $fimlistanovos = $fimlistanovos+1;
+                $event->sheet->getRowDimension($fimlistanovos)->setRowHeight(37.75);
+                $blocoquatro = $blocoquatro + 5;
+                $fimlistanovos = $fimlistanovos+1;
+                $event->sheet->styleCells(
+                    "A$fimlistanovos:AA$blocoquatro",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+                $blococinco = $blocoquatro + 1;
+                $event->sheet->styleCells(
+                    "A$blococinco:AA$blococinco",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '12',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
+                $blococinco = $blococinco + 1;
+                $aux = $blococinco + 1;
+                $event->sheet->styleCells(
+                    "A$blococinco:AA$aux",
+                    [
+                        //'width' => '50',
+                        //'mergeCells' => true,
+                        'font' => [
+                            'bold'  =>  true,
+                            'size' => '10',
+                            'name' => 'Calibri',
+                            //'color' => ['argb' => \PhpOffice\PhpSpreadsheet\Style\Color::COLOR_RED],
+                        ],
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['argb' => '00000000'],
+                            ],
+                        ]
+                    ]
+                );
+
                 $event->sheet->styleCells(
                     'A1:AA2',
                     [
@@ -429,6 +780,10 @@ class FichaExport implements FromView, WithEvents
                             'vertical'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
                             'horizontal'  =>  \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
                         ],
+                        /*'fill' => [
+                            'type' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                            'color' => ['argb' => '00000000'],
+                        ],*/
 
                         'font' => [
                             'bold'  =>  true,
@@ -467,6 +822,10 @@ class FichaExport implements FromView, WithEvents
                         ]*/
                     ]
                 );
+
+                //cores blocos 1 e 2
+                //$event->sheet->getStyle('A4:AA7')->getFill()->getStartColor()->setRGB('A4DDF4');
+
             },
         ];
     }

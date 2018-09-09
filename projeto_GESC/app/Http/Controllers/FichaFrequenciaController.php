@@ -23,8 +23,54 @@ class FichaFrequenciaController extends Controller
     public function excel(Request $request){
         $teste=[];
         $mes=$request->periodo;
+        $nomeresponsaveltec=$request->nomeresponsaveltec;
+        $cpfresponsavel=$request->cpfresponsavel;
+        $profissao=$request->profissao;
+        $visitasdomiciliares=$request->visitasdomiciliares;
+        $atendimentosgrupo=$request->atendimentosgrupo;
+        $reuniaoacolhimento=$request->reuniaoacolhimento;
+        $encaminhamentos=$request->encaminhamentos;
+        $atendimentosindividuais=$request->atendimentosindividuais;
+        $encaminhamentoprivada=$request->encaminhamentoprivada;
+        $planoelaborado=$request->planoelaborado;
+        $descricaoatividade=$request->descricaoatividade;
+        $obs=$request->obs;
 
-        return Excel::download(new FichaExport($mes), 'teste.xlsx');
+        if($mes==1){
+            $mesdesc="Janeiro";
+        }else if($mes==2){
+            $mesdesc="Fevereiro";
+        }else if($mes==3){
+            $mesdesc="Março";
+        }else if($mes==4){
+            $mesdesc="Abril";
+        }else if($mes==5){
+            $mesdesc="Maio";
+        }else if($mes==6){
+            $mesdesc="Junho";
+        }else if($mes==7){
+            $mesdesc="Julho";
+        }else if($mes==8){
+            $mesdesc="Agosto";
+        }else if($mes==9){
+            $mesdesc="Setembro";
+        }else if($mes==10){
+            $mesdesc="Outubro";
+        }else if($mes==11){
+            $mesdesc="Novembro";
+        }else if($mes==12){
+            $mesdesc="Dezembro";
+        }
+
+
+
+
+
+
+
+        return Excel::download(new FichaExport($mes, $nomeresponsaveltec, $cpfresponsavel, $profissao,
+        $visitasdomiciliares, $atendimentosgrupo, $reuniaoacolhimento, $encaminhamentos, $atendimentosindividuais,  $encaminhamentoprivada, $planoelaborado,
+        $descricaoatividade, $obs, $mesdesc), 'teste.xlsx');
 
         return redirect()->back();
 

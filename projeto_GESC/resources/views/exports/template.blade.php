@@ -8,7 +8,7 @@
   <td colspan="27">DEPARTAMENTO DE GESTÃO DO SUAS - DIVISÃO DE MONITORAMENTO</td>
 </tr>
 <tr>
-  <td colspan="27">FREQUÊNCIA REFERENTE AO MÊS DE: {{$mes}}/2018</td>
+  <td colspan="27">FREQUÊNCIA REFERENTE AO MÊS DE: {{$mesdesc}}/2018</td>
 </tr>
 <tr>
   <td colspan="27">BLOCO 1- IDENTIFICAÇÃO DA ENTIDADE:</td>
@@ -108,7 +108,7 @@
     <td colspan="4">{{$desligamento->numnis}}</td>
     <td colspan="3">{{$desligamento->nomecras}}</td>
     <td colspan="3">{{$desligamento->datainativacao}}</td>
-    <td colspan="11"></td>
+    <td colspan="11">{{$desligamento->motivoinativacao}}</td>
   </tr>
   <?php
     $cont++;
@@ -145,6 +145,40 @@
 @endforeach
 <tr>
   <td colspan="27" >BLOCO 4 – AÇÕES EXECUTADAS:</td>
+</tr>
+<tr>
+  <td colspan="27">DESCRIÇÃO DAS ATIVIDADES EXECUTADAS DURANTE O MÊS NO SERVIÇO CONTRATADO:</td>
+</tr>
+
+<tr>
+  <td colspan="27">{{$descricaoatividade}}</td>
+
+<tr>
+  <td colspan="27">ATENDIMENTOS DA EQUIPE TÉCNICA DE NÍVEL SUPERIOR:</td>
+</tr>
+<tr>
+  <td colspan="7">Nº DE VISITAS DOMICILIARES [ {{$visitasdomiciliares}} ]</td>
+  <td colspan="9">Nº DE REUNIÕES DE ACOLHIDA E/OU AVALIAÇÃO [ {{$reuniaoacolhimento}} ]</td>
+  <td colspan="11">Nº DE ATENDIMENTOS INDIVIDUAIS [ {{$atendimentosindividuais}} ]</td>
+</tr>
+<tr>
+  <td colspan="7">Nº DE ATENDIMENTOS EM GRUPO [ {{$atendimentosgrupo}} ]</td>
+  <td colspan="9">Nº DE ENCAMINHAMENTOS PARA CRAS E CREAS [ {{$encaminhamentos}} ]</td>
+  <td colspan="11">Nº DE ENCAMINHAMENTOS PARA REDE PRIVADA [ {{$encaminhamentoprivada}} ]</td>
+</tr>
+<tr>
+  <td colspan="27">Nº DE PLANOS INDIVIDUAL E OU/FAMILIAR DE ATENDIMENTO (PIA, PAF, PDU E SIMILARES) ELABORADOS [ {{$planoelaborado}} ]</td>
+</tr>
+<tr>
+  <td colspan="27">OBSERVAÇÕES: {{$obs}}</td>
+</tr>
+<tr>
+  <td colspan="27">BLOCO 5 – IDENTIFICAÇAO DO RESPONSÁVEL:</td>
+</tr>
+<tr>
+  <td colspan="10" rowspan="2">NOME DO RESPONSÁVEL TÉCNICO DO SERVIÇO: {{$nomeresponsaveltec}}</td>
+  <td colspan="8" rowspan="2">PROFISSÃO E Nº DE REGISTRO DE CLASSE: {{$profissao}}</td>
+  <td colspan="9" rowspan="2">CPF: {{$cpfresponsavel}}</td>
 </tr>
 </table>
 </html>

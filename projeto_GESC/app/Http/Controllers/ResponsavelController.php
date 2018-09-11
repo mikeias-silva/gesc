@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-
 use App\Responsavel;
 
 use App\Escola;
 
+use App\Familia;
+
+use App\Membros_Familia;
+
 use App\Cras;
+
 use Request;
 
 use App\PublicoPrioritario;

@@ -106,13 +106,15 @@
                             
                             
                             <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
-                            @if(empty( $matA->idturma ))
+                          
                             <a class="text text-warning" href="" data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}">
                                 <i class="material-icons ">
-                                    warning
+                                    group_add
+
+
                                 </i>
                             </a>
-                            @endif
+                           
                             
                         </td>
                     </tr>

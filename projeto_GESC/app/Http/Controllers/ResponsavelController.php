@@ -12,6 +12,9 @@ use App\Membro_Familia;
 
 use App\Cras;
 
+use App\Pessoa;
+
+
 use Request;
 
 use App\PublicoPrioritario;

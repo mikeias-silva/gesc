@@ -43,9 +43,11 @@ class InstituicaoController extends Controller
 
     public function difinirDias(Request $request){
         $ano = date('Y');
+        $idInstituicao = DB::select("select max(idinstituicao) as id from instituicao");
         $diasFuncionamento_teste = dias_funcionamento::find($request->idano);
         if($diasFuncionamento_teste==null){
             $diasFuncionamento = new dias_funcionamento($request->all());
+            $diasFuncionamento->idinstituicao = $idInstituicao[0]->id;
             $diasFuncionamento->idano = $ano;
             $diasFuncionamento->save();
         } else {

@@ -254,19 +254,37 @@ class ResponsavelController extends Controller
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
 
-    $dados = [
+    if (!empty($responsavel2->id)) {
+        $dados = [
+            'responsaveis'=>123654,
+            'cep'=>$cep,
+            'bairro'=>$bairro,
+            'logradouro'=>$logradouro,
+            'ncasa'=>$ncasa,
+            'complemento'=>$complemento,
+            'idresponsavel1'=>$responsavel1->idresponsavel,
+            'idresponsavel2'=>$responsavel2->idresponsavel,
+            'pprioritario'=>$pprioritario,
+            'escolas'=>$escolas
+    
+        ];
+        return view('matricula.cadastroCrianca', $dados);
+    }$dados = [
         'responsaveis'=>123654,
         'cep'=>$cep,
         'bairro'=>$bairro,
         'logradouro'=>$logradouro,
         'ncasa'=>$ncasa,
         'complemento'=>$complemento,
-        'idresponsavel1'=>$responsavel1->id,
-        'idresponsavel2'=>$responsavel2->id,
+        'idresponsavel1'=>$responsavel1->idresponsavel,
         'pprioritario'=>$pprioritario,
         'escolas'=>$escolas
 
     ];
+
+    //return $responsavel1->id;
+    return view('matricula.cadastroCrianca', $dados);
+    
 
     //return $pessoaresponsavel1->nomepessoa ;
     return view('matricula.cadastroCrianca', $dados);

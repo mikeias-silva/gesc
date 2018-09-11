@@ -437,6 +437,62 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     validações de cras e cras
 */
 
+    function validarInclusao(nomeCras, telefone) {
+    var permissao = true;
+    var formulario = document.register;
+    var tesNome = nomeCras.value;
+    var tesTelefone = telefone.value;
+
+    if (tesNome == "") {
+        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgcras").innerHTML="";
+    }
+
+    if (tesTelefone == "") {
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        permissao = false;
+    } else if(tesTelefone.length<10){
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
+        permissao = false;
+    }
+    else {
+        document.getElementById("msgtelefone").innerHTML="";
+    }
+
+    return permissao;
+    
+    }
+
+    function validarEdicao(nomeCras, telefone) {
+    var permissao = true;
+    var formulario = document.register;
+    var tesNome = nomeCras.value;
+    var tesTelefone = telefone.value;
+
+    if (tesNome == "") {
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgcras_edit").innerHTML="";
+    }
+
+    if (tesTelefone == "") {
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        permissao = false;
+    } else if(tesTelefone.length<10){
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
+        permissao = false;
+    }
+    else {
+        document.getElementById("msgtelefone_edit").innerHTML="";
+    }
+
+    return permissao;
+    
+    }
+
 $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 

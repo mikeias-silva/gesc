@@ -16,6 +16,17 @@ use App\PublicoPrioritario;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Carbon;
+
+use App\Crianca;
+
+use App\Vaga;
+
+use App\Matricula;
+
+use App\Historico_Matricula;
+
+use App\Turma;
 
 class CriancaController extends Controller
 {
@@ -108,7 +119,7 @@ class CriancaController extends Controller
         $idescola = Request::input('escola');
         $pprioritario = Request::input('pprioritario');
         $obssaude = Request::input('obssaude');
-        $datacadastro = Carbon::now();
+        $hoje = Carbon::now();
       //  $idpessoa = 1; 
 
         $crianca = new Crianca();

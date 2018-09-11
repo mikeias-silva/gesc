@@ -8,7 +8,7 @@ use App\Escola;
 
 use App\Familia;
 
-use App\Membros_Familia;
+use App\Membro_Familia;
 
 use App\Cras;
 

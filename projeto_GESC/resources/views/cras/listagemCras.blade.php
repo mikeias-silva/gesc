@@ -89,11 +89,11 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statuscras" value="1">
 
-                    <label>Nome</label>
+                    <label>Nome*</label>
                     <input name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
                     <label id="msgcras"></label>
                     <br>
-                    <label>Telefone</label>
+                    <label>Telefone*</label>
                     <input name="telefone" id="telefone" class="form-control" maxlength="11" autocomplete="off" onkeyup="mascara( this, mtel );">
                     <label id="msgtelefone"></label>
                     <br>
@@ -177,7 +177,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Alterar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Alterar CRAS ou CREAS</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -190,11 +190,11 @@
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
                     <input type="hidden" name="statuscras" id="statuscras" type="text" value="">
                     
-                    <label>Nome</label>
+                    <label>Nome*</label>
                     <input name="nomecras" value="" class="form-control" id="nomecras" value="" maxlength="255" autocomplete="off">
                     <label id="msgcras_edit"></label>
                     <br>
-                    <label>Telefone</label>
+                    <label>Telefone*</label>
                     <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="11" autocomplete="off">
                     <label id="msgtelefone_edit"></label>
                     <br>
@@ -280,14 +280,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";

@@ -3,12 +3,13 @@
 
 <h1 class="text">Imprimir Ficha de Frequência</h1>
 <hr>
-<span id="campoObrigatorio"></span>
-<span id="cpfInvalido"></span>
-<form class="form" action="" method="post" name="imprimeFicha" id="imprimeFicha"
+<spam id="campoObrigatorio"></spam>
+<spam id="cpfInvalido"></spam>
+<form class="form" action="/fichaFrequencia/imprimir" method="post" name="imprimeFicha" id="imprimeFicha"
     onsubmit = "return validaDados(imprimeFicha.nomeresponsaveltec, imprimeFicha.cpfresponsavel, imprimeFicha.profissao, imprimeFicha.visitasdomiciliares,
     imprimeFicha.atendimentosgrupo, imprimeFicha.reuniaoacolhimento, imprimeFicha.encaminhamentos, imprimeFicha.atendimentosindividuais,
     imprimeFicha.encaminhamentoprivada, imprimeFicha.planoelaborado);">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="form-group">
         <div class="row">
             <div class="col-sm-2">
@@ -35,8 +36,8 @@
                             
             <div class="col-sm-4">
                 <label>CPF</label>
-                <input type="text" class="form-control" name="cpfresponsavel" id="cpfresponsavel" maxlength="11" autocomplete="off"  onkeyup="mascara( this, removeLetra );">
-                <span id="msgcpfresponsavel"></span>
+                <input type="text" style="border:1px solid #808080;" class="form-control" name="cpfresponsavel" id="cpfresponsavel" maxlength="14" autocomplete="off"  onkeyup="mascara( this, removeLetra );">
+                <spam id="msgcpfresponsavel"></spam>
             </div>
         </div>
     </div>
@@ -236,6 +237,7 @@
     }
 
     function validaCPF(cpf){
+        cpf=cpf.replace(/\D/g,""); 
         var Soma;
         var Resto;
         Soma = 0; 
@@ -272,8 +274,9 @@
     }
     function removeLetra(v){
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
-        //v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-        //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+        v=v.replace(/(\d{3})(\d)/,"$1.$2");
+		v=v.replace(/(\d{3})(\d)/,"$1.$2");
+		v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
         return v;
     }
 

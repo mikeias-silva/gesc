@@ -8,7 +8,7 @@ class Dias_funcionamento extends Model
 {
     protected $table = 'dias_funcionamento';
     public $timestamps = false;
-    protected $fillable = array('jan', 'fev', 'mar', 'abr', 'jun', 'jul', 'ago', 'setembro', 'outubro', 'nov', 'dez');
+    protected $fillable = array('jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'setembro', 'outubro', 'nov', 'dez', 'idinstituicao');
 
     protected $primaryKey = 'idano';
 

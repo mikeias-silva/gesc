@@ -89,12 +89,12 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statuscras" value="1">
 
-                    <label>Nome</label>
-                    <input name="nomecras" required class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
+                    <label>Nome*</label>
+                    <input name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
                     <label id="msgcras"></label>
                     <br>
-                    <label>Telefone</label>
-                    <input name="telefone" id="telefone" class="form-control" maxlength="15" autocomplete="off" onkeyup="mascara( this, mtel );">
+                    <label>Telefone*</label>
+                    <input name="telefone" id="telefone" class="form-control" maxlength="11" autocomplete="off" onkeyup="mascara( this, mtel );">
                     <label id="msgtelefone"></label>
                     <br>
                     <div class="modal-footer">
@@ -177,25 +177,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Alterar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Alterar CRAS ou CREAS</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <form class="form" action="/cras/inativar" method="POST" name="editarCras"
-                onsubmit="return validarEdicao(editarCras.nomeCras, editarCras.telefone);">
+                onsubmit="return validarEdicao(editarCras.nomecras, editarCras.telefone);">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
                     <input type="hidden" name="statuscras" id="statuscras" type="text" value="">
                     
-                    <label>Nome</label>
+                    <label>Nome*</label>
                     <input name="nomecras" value="" class="form-control" id="nomecras" value="" maxlength="255" autocomplete="off">
                     <label id="msgcras_edit"></label>
                     <br>
-                    <label>Telefone</label>
-                    <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" autocomplete="off">
+                    <label>Telefone*</label>
+                    <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="11" autocomplete="off">
                     <label id="msgtelefone_edit"></label>
                     <br>
                     <div class="modal-footer">
@@ -213,7 +213,7 @@
 <script>
 
 
-    $('#exampleModal').on('hidden.bs.modal', function (event) {
+    $('#novoCras').on('hidden.bs.modal', function (event) {
         $(this).find('input:text').val('');
         //document.getElementById("adm").checked = true;
         document.getElementById("msgcras").innerHTML="";
@@ -221,7 +221,7 @@
         //document.getElementById("msgsenha").innerHTML="";
         //document.getElementById("msgnome").innerHTML="";
     });
-/*
+
     function mascara(o,f){
         v_obj=o
         v_fun=f
@@ -229,13 +229,13 @@
     }
     function execmascara(){
         v_obj.value=v_fun(v_obj.value)
-    }/*
+    }
     function mtel(v){
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
         //v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
         //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         return v;
-    }*/
+    }
     function id( el ){
         return document.getElementById( el );
     }
@@ -244,8 +244,8 @@
             mascara( this, mtel );
         }
     }
-/*
-    function validarInclusao(nomeCras, telefone) {
+
+    /*function validarInclusao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
     var tesNome = nomeCras.value;
@@ -272,7 +272,7 @@
     return permissao;
     
     }*/
-/*
+
     function validarEdicao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
@@ -280,14 +280,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -300,7 +300,7 @@
     return permissao;
     
     }
-*/
+
     $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
@@ -321,7 +321,7 @@
     console.log(id);
 });
 
-$('#editar').on('hidden.bs.modal', function (event) {
+    $('#editar').on('show.bs.modal', function (event) {
         $(this).find('input:text').val('');
         document.getElementById("msgcras_edit").innerHTML="";
         document.getElementById("msgtelefone_edit").innerHTML="";

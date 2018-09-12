@@ -165,32 +165,3 @@ end if;
 end $$ 
 delimiter ;
 
-
-drop trigger if exists validar_datanasc;
-DELIMITER $
-CREATE TRIGGER validar_datanasc BEFORE INSERT ON pessoa
-FOR EACH ROW
-BEGIN
-    IF (((TIMESTAMPDIFF(YEAR, new.datanascimento, now())) <0) 
-    OR ((TIMESTAMPDIFF(YEAR, NEW.datanascimento, now())) <= 4))
-    THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Idade invalida';
-    END IF;
-END$
-DELIMITER ;
-
-drop trigger if exists validar_datanascupd;
-DELIMITER $
-CREATE TRIGGER validar_datanascupd BEFORE UPDATE ON pessoa
-FOR EACH ROW
-BEGIN
-    IF (((TIMESTAMPDIFF(YEAR, new.datanascimento, now())) <0) 
-    OR ((TIMESTAMPDIFF(YEAR, NEW.datanascimento, now())) <= 4))
-    THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Idade invalida';
-    END IF;
-END$
-DELIMITER ;
-
-
-

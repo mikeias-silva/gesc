@@ -543,9 +543,13 @@
                 </div>
             </div>
             
-           
-            <div class="float-left" style="margin: 40px 0px 40px 0px">
-                    <h3>Responsável:__________________________</h3>
+           <div class="row">
+                <div class="float-left"  style="margin: 40px 0px 40px 0px">
+                    <div class="col-md-3">
+                        <h3 >Responsável:</h3>
+                    </div>
+                        <div id="meio" class="col-sm-2"></div>
+                </div>
             </div>
 
            

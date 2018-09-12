@@ -1,0 +1,28 @@
+
+Instalação ambiente de homologação
+
+Passo 1 - instalar mysql 5.7
+
+passo 2 - instalar o mysql workbench 6.3
+
+passo 3 - executar o dump import da pasta dump_gesc 
+
+passo 4 - instalar php 7.1
+
+passo 5 - instalar composer
+
+passo 6 - descompactar pasta do projeto de preferencia na raiz do disco Rígido (C:/)
+
+passo 7 - acessar via terminal a pasta do local onde foi descompactada (C:/)
+     Ex: c:/gesc/projeto_gesc
+
+passo 8 - executar o comando 
+        composer install e composer update
+
+passo 9 - acessar via terminal a pasta do local onde foi descompactada (C:/)
+     Ex: c:/gesc/projeto_gesc
+
+passo 10 - executar o comando php artisan serve
+        verificar se o comando está em execução
+
+passo 11 - acessar pelo navegador localhost:8000/login2

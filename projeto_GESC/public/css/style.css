@@ -176,3 +176,14 @@ h4, h2, h1{
 #btn-login{
     margin-top: 40px;
 }
+
+.float-left .assinatura{
+    display: grid;
+    grid-template-columns: 15% 85%; 
+    span{
+
+    }
+    div{
+
+    }
+}

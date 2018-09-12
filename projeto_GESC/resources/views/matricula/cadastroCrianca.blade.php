@@ -12,9 +12,9 @@
     matriculaNova.salarioresp2, matriculaNova.tel1resp2, matriculaNova.tel2resp2, matriculaNova.numnis);" name="matriculaNova">
             {{ csrf_field() }}
             <div class="form-group">
-                @if (!empty($idresponsavel1))
+                
                     <input name="idresponsavel1" type="hidden" value="{{ $idresponsavel1 }}"/>
-                @endif
+               
                 
                 @if (!empty($idresponsavel2 ))
                     <input name="idresponsavel2" type="hidden" value="{{ $idresponsavel2 }}"/> 

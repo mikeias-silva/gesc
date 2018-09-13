@@ -25,25 +25,7 @@
         <td class="text-center"> {{ $v->idademin }} </td>
         <td class="text-center"> {{ $v->idademax }} </td>
         <td class="text-center"> {{ $v->numvaga }} </td>
-        <td class="text-center"> {{ $v->anovaga }} 
-            @if( ($v->statusvaga) === 0)
-        
-          
-                <i class="material-icons text-danger">
-                    highlight_off
-                </i>
-           
-        
-        @elseif(($v->statusvaga) > 0)
-        
-                <i class="material-icons text-success">
-                    done
-                </i>
-            
-        
-    </td>
-        @endif
-        </td>
+        <td class="text-center"> {{ $v->anovaga }} </td>
         
         <td class="text-center">
             <a href="" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
@@ -70,35 +52,37 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Novo faixa etária de vagas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nova faixa etária de vagas</h5>
                 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
             
             </div>
-            <div class ="row">
-            <span id="msgiadadessobre" class="col-sm-12"><br></span>
-            <span id="msgintervaloinvalido" class="col-sm-12"><br></span>
-            </div>
             <div class="modal-body">
+                
 
                 <form class="form" action="/vagas/adiciona" method="post" name="incluirVagas"
                 onsubmit="return incluirVaga(incluirVagas.idademin, incluirVagas.idademax, incluirVagas.numvaga, 
                 incluirVagas.listaAno, incluirVagas.listaIdadeMin, incluirVagas.listaIdadeMax, incluirVagas.anovaga);">
+                    <div class ="row">
+                        <!--<label class="col-sm-1"><br></label>-->
+                        <span><label id="msgiadadessobre" class="col-sm-12"></label><br></span>
+                        <span><label id="msgintervaloinvalido" class="col-sm-12"></label><br></span>
+                    </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="listaAno" value="{{ $listaAno }}">
                     <input type="hidden" name="listaIdadeMax" value="{{ $listaIdadeMax }}">
                     <input type="hidden" name="listaIdadeMin" value="{{ $listaIdadeMin }}">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Idade Mínima</label>
+                            <label>Idade Mínima*</label>
                             <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin"></label>
                             <br>
                         </div>
                         <div class="col-sm-6">
-                            <label>Idade Máxima</label>
+                            <label>Idade Máxima*</label>
                             <input name="idademax" id="idademax"  type="text" class="form-control" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademax"></label>
                             <br>
@@ -106,12 +90,12 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Número de Vagas</label>
+                            <label>Número de Vagas*</label>
                             <input name="numvaga" id="numvaga" type="text" class="form-control" maxlength="4" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgnumvagas"></label>
                             </div>
                         <div class="col-sm-6">
-                            <label>Ano</label>
+                            <label>Ano*</label>
                             <select class="form-control" name="anovaga" id="anovaga">
                                 <option value="{{$ano}}">{{$ano}}</option>
                                 <option value="{{$a = $ano+1}}">{{$a = $ano+1}}</option>
@@ -157,13 +141,13 @@
                     <input type="hidden" name="idvaga" id="idvaga" type="text" value="">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Idade Mínima</label>
+                            <label>Idade Mínima*</label>
                             <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin_edit"></label>
                             <br>
                         </div>
                         <div class="col-sm-6">
-                            <label>Idade Máxima</label>
+                            <label>Idade Máxima*</label>
                             <input name="idademax" id="idademax"  type="text" class="form-control" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademax_edit"></label>
                             <br>
@@ -171,12 +155,12 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Número de Vagas</label>
+                            <label>Número de Vagas*</label>
                             <input name="numvaga" id="numvaga" type="text" class="form-control" maxlength="4" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgnumvagas_edit"></label>
                             </div>
                         <div class="col-sm-6">
-                            <label>Ano</label>
+                            <label>Ano*</label>
                             <select class="form-control" name="anovaga" id="anovaga">
                                 <option value="{{$ano}}">{{$ano}}</option>
                                 <option value="{{$a = $ano+1}}">{{$a = $ano+1}}</option>

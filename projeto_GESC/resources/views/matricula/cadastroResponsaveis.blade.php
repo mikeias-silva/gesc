@@ -1,7 +1,8 @@
 @extends('layout.principal') 
 @section('conteudo')
 <div class="container" id="responsavel">
-<form action="/adicionaResponsavel" method="POST">
+<form action="/adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
+responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rgresp1);">
     {{ csrf_field() }}
         <div class="form">
         
@@ -10,19 +11,19 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Nome</label>
+                    <label>Nome*</label>
                     <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp1"></span>
                 </div>
                 
                 <div class="col-sm-4">
-                    <label>Data de Nascimento</label>
-                    <input type="date" class="form-control" name="datanascimentoresp1">
+                    <label>Data de Nascimento*</label>
+                    <input type="date" class="form-control" name="datanascimentoresp1" id="datanascimentoresp1">
                     <span id="msgDataResp1"></span>
                 </div>
 
                 <div class="col-sm-2">
-                    <label>Sexo</label>
+                    <label>Sexo*</label>
                     <select class="form-control" name="sexoresp1" id="">
                         <option value="M">Masculino</option>
                         <option value="F">Feminino</option>
@@ -35,18 +36,18 @@
             <div class="row">
                     <div class="col-sm-4">
                     <label>RG</label>
-                    <input type="text" class="form-control" name="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
+                    <input type="text" class="form-control" name="rgresp1" id="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
                     <span id="msgRgResp1"></span>
                 </div>
 
                 <div class="col-sm-4">
                     <label>CPF</label>
-                    <input type="text" class="form-control" name="cpfresp1" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
+                    <input type="text" class="form-control" name="cpfresp1" id="cpfresp1" maxlength="11" autocomplete="off" onkeyup="mascara(this, cpf);">
                     <span id="msgCpfResp1"></span>
                 </div>
 
                 <div class="col-sm-4">
-                    <label>Estado Civil</label>
+                    <label>Estado Civil*</label>
                     <select class="form-control" name="estadocivilresp1" id="">
                         <option value="1">Solteiro</option>
                         <option value="2">Casado</option>
@@ -62,21 +63,22 @@
                     <div class="col-sm-2">
                         <label>CEP</label>
                         <input class="form-control" type="text" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);"/>
+                        <span id="msgCep"></span>
                     </div>
                     <div class="col-sm-5">
-                        <label>Endereço</label>
+                        <label>Endereço*</label>
                         <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
                         <span id="msgEndereco"></span>
                     </div>
 
                     <div class="col-sm-1">
-                        <label>Nº</label>
+                        <label>Nº*</label>
                         <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
                     </div>
 
                     
                     <div class="col-sm-4">
-                        <label>Bairro</label>
+                        <label>Bairro*</label>
                         <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                         <span id="msgBairro"></span>
                     </div>
@@ -116,7 +118,7 @@
                 </div>
 
                 <div class="col-sm-4">
-                    <label>Escolaridade</label>
+                    <label>Escolaridade*</label>
                     <select class="form-control" name="escolaridaderesp1" id="">
                         <option value="1">Ensino Fundamental Incompleto</option>
                         <option value="2">Ensino Fundamental Completo</option>
@@ -156,20 +158,20 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Nome</label>
+                    <label>Nome*</label>
                     <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp2"></span>
                 </div>
             
 
                 <div class="col-sm-4">
-                    <label>Data de Nascimento</label>
+                    <label>Data de Nascimento*</label>
                     <input type="date" class="form-control" name="datanascimentoresp2">
                     <span id="msgDataResp2"></span>
                 </div>
 
                 <div class="col-sm-2">
-                        <label>Sexo</label>
+                        <label>Sexo*</label>
                         <select class="form-control" name="sexoresp2" id="">
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
@@ -193,7 +195,7 @@
                 </div>
                 
                 <div class="col-sm-4">
-                    <label>Estado Civil</label>
+                    <label>Estado Civil*</label>
                     <select class="form-control" id="" name="estadocivilresp2">
                         <option value="1">Solteiro</option>
                         <option value="2">Casado</option>
@@ -221,7 +223,7 @@
                     <input type="text" class="form-control" name="trabalhoresp2">
                 </div>
                 <div class="col-sm-4">
-                    <label>Escolaridade</label>
+                    <label>Escolaridade*</label>
                     <select class="form-control" id="" name="escolaridaderesp2">
                             <option value="1">Ensino Fundamental Incompleto</option>
                             <option value="2">Ensino Fundamental Completo</option>
@@ -267,7 +269,7 @@
                     <span id="msgNumNis"></span>
                 </div>
                 <div class="col-sm-4">
-                    <label>Moradia</label>
+                    <label>Moradia*</label>
                     <select class="form-control" name="moradia" id="">
                         <option value="1">Alugada</option>
                         <option value="2">Cedida</option>
@@ -281,7 +283,7 @@
         
         <!-- radio buttons -->
         <div class="form-group">
-            <label>Tipo Habitação</label>
+            <label>Tipo Habitação*</label>
             <div class="row">
                 <div class="col-sm-1">
                     <div class="form-check">
@@ -377,7 +379,7 @@
            </div>
         -->
         <div class="col-sm-6">
-            <label>CRAS/CREAS</label>
+            <label>CRAS/CREAS*</label>
             <select name="cras" id="" class="custom-select" name="cras">
                 @foreach($cras as $c)
                     <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
@@ -393,4 +395,8 @@
       </form>
     </div>
 <script src="js/buscaCep.js"></script>
+
+<script src="js/validaResponsaveis.js"></script>
+
+
 @stop

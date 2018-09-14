@@ -2,7 +2,8 @@
 @section('conteudo')
 <div class="container" id="responsavel">
 <form action="/adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
-responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rgresp1);">
+responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
+responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, responsavel.rgresp2, responsavel.tel1resp2, responsavel.tel2resp2);">
     {{ csrf_field() }}
         <div class="form">
         
@@ -72,7 +73,7 @@ responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rg
                     </div>
 
                     <div class="col-sm-1">
-                        <label>Nº*</label>
+                        <label>Nº</label>
                         <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
                     </div>
 
@@ -98,7 +99,7 @@ responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rg
             <div class="row">
                 <div class="col-sm-8">
                     <label>Profissão</label>
-                    <input type="text" class="form-control" name="profissaoresp1">
+                    <input type="text" class="form-control" name="profissaoresp1" autocomplete="off">
                 </div>
               <!--   <div class="col-sm-4">
                     <label for="">Renda Familiar</label>
@@ -114,7 +115,7 @@ responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rg
             <div class="row">
                 <div class="col-sm-8">
                     <label>Local de Trabalho</label>
-                    <input type="text" class="form-control" name="trabalhoresp1">
+                    <input type="text" class="form-control" name="trabalhoresp1" autocomplete="off">
                 </div>
 
                 <div class="col-sm-4">
@@ -135,12 +136,12 @@ responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rg
             <div class="row">
                 <div class="col-sm-4">
                     <label>Telefone</label>
-                    <input type="text" class="form-control" name="tel1resp1" id="tel1resp1"  onkeyup="mascara(this, Telefone);" maxlength="11">
+                    <input type="text" class="form-control" name="tel1resp1" id="tel1resp1"  autocomplete="off" onkeyup="mascara(this, Telefone);" maxlength="11">
                     <span id="msgTel1Resp1"></span>
                 </div>
                 <div class="col-sm-4">
                     <label>Telefone 2</label>
-                    <input type="text" class="form-control" name="tel2resp1" id="tel2resp1" onkeyup="mascara(this, Telefone);" maxlength="11">
+                    <input type="text" class="form-control" name="tel2resp1" id="tel2resp1" autocomplete="off" onkeyup="mascara(this, Telefone);" maxlength="11">
                     <span id="msgTel2Resp1"></span>
                 </div>
             </div>
@@ -190,7 +191,7 @@ responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rg
 
                 <div class="col-sm-4">
                     <label>CPF</label>
-                    <input type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, Cpf);">
+                    <input type="text" class="form-control" name="cpfresp2" id="cpfresp2" maxlength="11" autocomplete="off" onkeyup="mascara(this, cpf);">
                     <span id="msgCpfResp2"></span>
                 </div>
                 
@@ -240,12 +241,12 @@ responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rg
             <div class="row">
                 <div class="col-sm-4">
                     <label>Telefone 1</label>
-                    <input type="tel" class="form-control" name="tel1resp2" id="tel1resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
+                    <input type="tel" class="form-control" name="tel1resp2" id="tel1resp2" autocomplete="off" onkeyup="mascara(this, Telefone);" maxlength="11">
                     <span id="msgTel1Resp2"></span>
                 </div>
                 <div class="col-sm-4">
                     <label>Telefone 2</label>
-                    <input type="tel" class="form-control" name="tel2resp2" id="tel2resp2" onkeyup="mascara(this, Telefone);" maxlength="11">
+                    <input type="tel" class="form-control" name="tel2resp2" id="tel2resp2" autocomplete="off" onkeyup="mascara(this, Telefone);" maxlength="11">
                     <span id="msgTel2Resp2"></span>
                 </div>
             </div>

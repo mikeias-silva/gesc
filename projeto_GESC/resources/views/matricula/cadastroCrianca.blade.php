@@ -5,11 +5,7 @@
     <h2>Cadastro Criança</h2>
 
     <form action="/adicionaCrianca" method="POST" 
-    onsubmit="return validarMatricula(matriculaNova.nomecrianca, matriculaNova.datanascimentocrianca, matriculaNova.rgcrianca,
-    matriculaNova.cpfcrianca, matriculaNova.cep, matriculaNova.logradouro, matriculaNova.bairro, matriculaNova.nomeresp1,
-    matriculaNova.datanascimentoresp1, matriculaNova.rgresp1, matriculaNova.cpfresp1, matriculaNova.salarioresp1, matriculaNova.tel1resp1, 
-    matriculaNova.tel2resp1, matriculaNova.nomeresp2, matriculaNova.datanascimentoresp2, matriculaNova.rgresp2, matriculaNova.cpfresp2, 
-    matriculaNova.salarioresp2, matriculaNova.tel1resp2, matriculaNova.tel2resp2, matriculaNova.numnis);" name="matriculaNova">
+    onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca);" name="novaCrianca">
             {{ csrf_field() }}
             <div class="form-group">
                 
@@ -105,7 +101,6 @@
                     <div class="col-sm-3">
                         <label>Serie Escolar</label>
                         <select name="serie" id="" class="custom-select"> 
-                            <option value="">...</option>
                             <option value="1">1º Fundamental</option>
                             <option value="2">2º Fundamental</option>
                             <option value="3">3º Fundamental</option>
@@ -134,6 +129,7 @@
             </div>
         </form>
 </div>
-  
+
+<script src="js/validaCrianca.js"></script>
 
 @stop

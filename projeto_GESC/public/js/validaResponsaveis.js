@@ -22,14 +22,14 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
 
 
     if(nomeresp1==""){
-        document.getElementById("msgNomeResp1").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgNomeResp1").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgNomeResp1").innerHTML="";
     }
 
     if(datanascimentoresp1==""){
-        document.getElementById("msgDataResp1").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgDataResp1").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(hoje < dataSelecionada){
         document.getElementById("msgDataResp1").innerHTML="<font color='red'>Data de nascimento inválida, por favor verifique</font>";
@@ -38,14 +38,14 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
     }
 
     if(logradouro==""){
-        document.getElementById("msgEndereco").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgEndereco").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgEndereco").innerHTML="";
     }
 
     if(bairro==""){
-        document.getElementById("msgBairro").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgBairro").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgBairro").innerHTML="";
@@ -86,14 +86,14 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
     if(nomeresp2!="" || datanascimentoresp2!=""  || cpfresp2!="" || rgresp2!="" || tel1resp2!="" || tel2resp2!="" ){
 
         if(nomeresp2==""){
-            document.getElementById("msgNomeResp2").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgNomeResp2").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgNomeResp2").innerHTML="";
         }
     
         if(datanascimentoresp2==""){
-            document.getElementById("msgDataResp2").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgDataResp2").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(hoje < dataSelecionada){
             document.getElementById("msgDataResp2").innerHTML="<font color='red'>Data de nascimento inválida, por favor verifique</font>";

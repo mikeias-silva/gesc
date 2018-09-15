@@ -72,13 +72,13 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                         <span id="msgEndereco"></span>
                     </div>
 
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <label>Nº</label>
                         <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
                     </div>
 
                     
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label>Bairro*</label>
                         <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                         <span id="msgBairro"></span>

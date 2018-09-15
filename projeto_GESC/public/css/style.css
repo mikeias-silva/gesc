@@ -180,10 +180,8 @@ h4, h2, h1{
 .float-left .assinatura{
     display: grid;
     grid-template-columns: 15% 85%; 
-    span{
+}
 
-    }
-    div{
-
-    }
+#btn-frequencia{
+    margin: 0px 0px 0px 0px !important;
 }

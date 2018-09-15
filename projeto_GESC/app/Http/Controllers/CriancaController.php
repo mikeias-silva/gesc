@@ -22,6 +22,8 @@ use App\Crianca;
 
 use App\Vaga;
 
+use App\Cras;
+
 use App\Matricula;
 
 use App\Historico_Matricula;
@@ -142,7 +144,7 @@ class CriancaController extends Controller
         $parentesco = new Parentesco();
         $parentesco->idcrianca = $crianca->idcrianca;
         $parentesco->idresponsavel = $idresponsavel1;
-        //$parentesco->save();
+        $parentesco->save();
 
         
         if (!empty($idresponsavel2)) {

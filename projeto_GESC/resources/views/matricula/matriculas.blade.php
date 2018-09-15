@@ -170,7 +170,9 @@
                             <td>{{ $matI->anoMatricula() }}</td>
                             <td>
                                 <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">
-                                    inativar
+                                    <i class="material-icons text-success">
+                                        done
+                                    </i>
                                 </a>
 
 
@@ -224,10 +226,15 @@
                                 
                                 <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="material-icons">
                                     print
-                                    </i></a>
+                                    </i>
+                                </a>
                                 
                                 <a href="/ativarMatricula" class="text text-danger" 
-                                data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+                                data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">
+                                    <i class="material-icons text-success">
+                                        done
+                                    </i>
+                                </a>
 
                             </td>
                             

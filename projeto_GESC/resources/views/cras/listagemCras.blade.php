@@ -280,14 +280,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";

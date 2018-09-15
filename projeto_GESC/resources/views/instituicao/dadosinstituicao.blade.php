@@ -306,9 +306,10 @@
         
             
     </table>
-        <div class="row">
-            <button type="submit" class="btn btn-primary"  id="btn_instituicao">Salvar</button>
-        </div>
+        
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-primary"  id="btn_instituicao">Salvar</button>
     </div>
     </form>
 
@@ -332,14 +333,14 @@
         var tesEntidadeExec = entidadeExec.value;
 
         if (tesNome == "") {
-            document.getElementById("msgNomeInstituicao").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgNomeInstituicao").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgNomeInstituicao").innerHTML="";
         }
 
         if (tesCnpj == "") {
-            document.getElementById("msgCnpj").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgCnpj").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(validarCNPJ(tesCnpj)){
             document.getElementById("msgCnpj").innerHTML="<font color='red'>O CNPJ informado não é válido, por favor verifique</font>";
@@ -349,14 +350,14 @@
         }
 
         if (tesEndereco == "") {
-            document.getElementById("msgEndereco").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEndereco").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgEndereco").innerHTML="";
         }
 
         if (tesCep == "") {
-            document.getElementById("msgCep").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgCep").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(tesCep.length<8){
             document.getElementById("msgCep").innerHTML="<font color='red'>O CEP informado não é válido, por favor verifique</font>";
@@ -366,7 +367,7 @@
         }
 
         if (tesEmail == "") {
-            document.getElementById("msgEmail").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEmail").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(validarEmail(email)){
             document.getElementById("msgEmail").innerHTML="<font color='red'>O email informado não é válido, por favor verifique</font>";
@@ -376,7 +377,7 @@
         }
 
         if (tesTelefone == "") {
-            document.getElementById("msgTelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgTelefone").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(tesTelefone.length<10){
             document.getElementById("msgTelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -386,35 +387,35 @@
         }
 
         if (tesMetasMensais == "") {
-            document.getElementById("msgMetasMensais").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgMetasMensais").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgMetasMensais").innerHTML="";
         }
         
         if (tesNumTermoColab == "") {
-            document.getElementById("msgTermoColab").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgTermoColab").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgTermoColab").innerHTML="";
         }
 
         if (tesNumTermoTrab == "") {
-            document.getElementById("msgNumTermoTrab").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgNumTermoTrab").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgNumTermoTrab").innerHTML="";
         }
 
         if (tesEntidadeMant == "") {
-            document.getElementById("msgEntidadeMantedora").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEntidadeMantedora").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgEntidadeMantedora").innerHTML="";
         }
 
         if (tesEntidadeExec == "") {
-            document.getElementById("msgEntidadeExecutora").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEntidadeExecutora").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgEntidadeExecutora").innerHTML="";

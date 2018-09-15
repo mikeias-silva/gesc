@@ -21,7 +21,7 @@ class Responsavel extends Model
             $id = $this->idresponsavel;
             
             
-            $nomeresponsavel = DB::select('select nomeresponsavel from parentes where idresponsavel
+            $nomeresponsavel = DB::select('select nomeresponsavel from dadosresponsavel where idresponsavel
             = ?', array($id));
         
         //   dd($nomecrianca);
@@ -34,7 +34,7 @@ class Responsavel extends Model
         $id = $this->idresponsavel;
         
         
-        $cpfresponsavel = DB::select('select cpfresponsavel from parentes where idresponsavel
+        $cpfresponsavel = DB::select('select cpfresponsavel from dadosresponsavel where idresponsavel
         = ?', array($id));
     
     //   dd($nomecrianca);
@@ -47,7 +47,7 @@ class Responsavel extends Model
         $id = $this->idresponsavel;
             
         $hoje = Carbon::now();
-        $nascimentoresponsavel = DB::select('select nascimentoresponsavel from parentes where idresponsavel
+        $nascimentoresponsavel = DB::select('select nascimentoresponsavel from dadosresponsavel where idresponsavel
         = ?', array($id));
 
         foreach($nascimentoresponsavel as $nasc){

@@ -98,6 +98,22 @@ class MatriculasController extends Controller
         ->with('ano', $anovaga);
     }
 
+    public function matriculasSeguinte(){
+
+        $anovaga = Carbon::now()->year;
+       // return $anovaga;
+        //$dadosmatriculas = DB::select('select * from dadosmatricula where anovaga = ?', [$anovaga]);
+
+
+      //  $matAnteriores = Matricula::matriculasAnoAnterior($anovaga);
+
+       return  $matSeguinte = DadosMatricula::matriculasAnoSeguinte();
+       // $ano = Carbon::now()->year;
+        //return $matAnteriores;
+        return view('matricula.matriculasSeguintes')->with('matSeguinte', $matSeguinte)
+        ->with('ano', $anovaga);
+    }
+
    
 
     public function imprime(){
@@ -637,6 +653,10 @@ class MatriculasController extends Controller
         //return $matricula;
         $matricula->save();
         
+        $turmas = Turma::turmasAtiva();
+        return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
+        $dadoscrianca->nomecrianca)->with('idmatricula', $matricula->idmatricula);
+        
         return redirect()->action('MatriculasController@listaMatriculas');
 
         return redirect()->action('MatriculasController@precisamRematricular');
@@ -647,11 +667,150 @@ class MatriculasController extends Controller
         //$idcriancarematriculada = DB::select('select idcrianca from dadosmatricula where anovaga > ?', [1]) 
         $anovaga = Carbon::now()->year;
 
-         $precisamRematricula = DadosMatricula::rematricula($anovaga);
+        $precisamRematricula = DadosMatricula::rematricula($anovaga);
 
-         $dados = [
+        $dados = [
             'matRematricula'=>$precisamRematricula
-         ];
-         return view('matricula.listagemRematricula', $dados);
+        ];
+        return view('matricula.listagemRematricula', $dados);
     }
+
+    
+    public function editarMatricula($idmatricula){
+
+        //$idmatricula = Request::input('idmatricula');
+
+       // return $idmatricula;
+
+      // return $idmatricula;
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
+        = ?', array($idmatricula));
+
+        foreach ($dadosmatricula as $dadosmt) {
+            $dadosmt->idcrianca;
+            $dadosmt->datamatricula;
+            $dadosmt->serieescolar;
+            $dadosmt->grupoconvivencia;
+            $dadosmt->idmatricula;
+
+        }
+
+        $dadoscrianca = DB::select('select * from dadoscrianca where idcrianca = ?', [$dadosmt->idcrianca]);
+
+        foreach ($dadoscrianca as $dadoscr) {
+            $dadoscr->nomecrianca;
+            $dadoscr->nascimentocrianca;
+            $dadoscr->logradouro;
+            $dadoscr->bairro;
+            $dadoscr->ncasa;
+            $dadoscr->complementoendereco;
+            $dadoscr->cpfcrianca;
+            $dadoscr->rgcrianca;
+            $dadoscr->sexocrianca;
+            $dadoscr->emissorcrianca;
+            $dadoscr->idmatricula;
+            $dadoscr->nomeescola;
+        }
+
+
+        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
+        
+        foreach($parentes as $parente){
+            $parente->nomeresponsavel;
+            $parente->idfamilia;
+        }
+
+        //return ;
+
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        
+        foreach($dadosfamilia as $dadosfm){
+            $dadosfm->idfamilia;
+            $dadosfm->arearisco;
+            $dadosfm->bolsafamilia;
+            $dadosfm->moradia;
+            $dadosfm->numnis;
+            $dadosfm->tipohabitacao;
+            $dadosfm->nomecras;
+        }
+        
+        foreach($dadoscrianca as $dadoscrianca){
+            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
+            $logradouro = $dadoscrianca->logradouro;
+            $bairro = $dadoscrianca->bairro;
+            $ncasa = $dadoscrianca->ncasa;
+           
+        
+        }
+            
+        $cras = Cras::all();
+        $pprioritario = PublicoPrioritario::all();
+        $escola = Escola::all();
+        //return $nomematricula;
+
+        $ano = Carbon::now()->year+1;
+        $dados = [
+            'responsaveis'=>$parentes,
+            'dadoscrianca'=>$dadoscrianca,
+            'dadosfamilia'=>$dadosfamilia,
+            'dadosmatricula'=>$dadosmatricula,
+            'cras'=>$cras,
+            'pprioritario'=>$pprioritario,
+            'escola'=>$escola,
+            'ano'=>$ano   
+        ];
+
+       // return $dados;
+        return view('matricula.editMatricula', $dados);
+
+    }
+
+    public function confirmarEdit(){
+        $cep = Request::input('cep');
+        $logradouro = Request::input('logradouro');
+        $ncasa = Request::input('ncasa');
+        $bairro = Request::input('bairro');
+
+        $pessoacrianca = Pessoa::buscaPessoa(Request::input('idpessoacrianca'));
+        $pressoaresponsavel1 = Pessoa::buscaPessoa(Request::input('idpessoaresponsavel1'));
+
+        //return  $pessoacrianca = Pessoa::where('idpessoa', '134');
+
+        $crianca = Crianca::find(Request::input('idcrianca'));
+        $crianca->update([
+            'escola'=>(Request::input('escola'))
+        ]);
+
+        $resposnavel1 = Responsavel::find(Request::input('idresponsavel1'));
+        $responsavel1->update([
+            'estadocivil'=>(Request::input('estadocivilresp1')),
+            'profissao'=>(Request::input('profissaoresp1')),
+            'trabalho'=>(Request::input('trabalhoresp1')),
+            'escolaridade'=>(Request::input('escolaridaderesp1')),
+            'telefone1'=>(Request::input('tel1resp1')),
+            'telefone2'=>(Request::input('tel2resp1')),
+
+        ]);
+        // $familia = Familia::find(Request::input('idfamilia'));
+        
+        if (!empty(Request::input('idresponsavel2'))) {
+            $idresposnavel2 = Responsavel::find(Request::input('idresponsavel2'));
+            $responsavel12->update([
+                'estadocivil'=>(Request::input('estadocivilresp2')),
+                'profissao'=>(Request::input('profissaoresp2')),
+                'trabalho'=>(Request::input('trabalhoresp2')),
+                'escolaridade'=>(Request::input('escolaridaderesp2')),
+                'telefone1'=>(Request::input('tel1resp2')),
+                'telefone2'=>(Request::input('tel2resp2')),
+                
+            ]);
+        }
+
+
+       
+
+        //return $pessoacrianca;
+        return back();
+    }
+
 }

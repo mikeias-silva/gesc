@@ -10,7 +10,7 @@ class Familia extends Model
 
     public $timestamps = false;
 
-    protected $fillable = array('redapercapta', 'moradia', 'arearisco', 'tipohabitacao', 'numnis', 'beneficiopc', 'idcras', 'idmembro');
+    protected $fillable = array('rendafamiliar', 'moradia', 'arearisco', 'tipohabitacao', 'numnis', 'beneficiopc', 'idcras', 'idmembro');
 
     protected $pimaryKey = 'idfamilia';
 

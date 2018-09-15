@@ -92,7 +92,7 @@
                                     print
                                 </i>
                             </a>
-                            <a href="/rematricula/{{ $matA->idmatricula }}" class="text text-info">
+                            <a href="/editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
                                 <i class="material-icons">
                                     edit
                                 </i>
@@ -335,11 +335,11 @@
 
                     <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
 
-                    <h5>Imprimir?</h5>
+                    <h5>Deseja imprimir?</h5>
 
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success" formtarget="_blank">Imprimir</button>
+                            <button type="submit" class="btn btn-success"  target="_blank"  >Preparar para impressão</button>
             
                     </div>
                 </div>

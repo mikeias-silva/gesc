@@ -95,25 +95,25 @@
             <div class="modal-body">
 
                 <form class="form" action="/turmas/adiciona" method="post" name="incluirTurma" 
-                onsubmit="return validarInclusaoTurma(incluirTurma.GrupoConvivencia);">
+                onsubmit="return validarInclusaoTurma(incluirTurma.grupoconvivencia);">
 
 
                     {{ csrf_field() }}
                   <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
 
-                    <label>Grupo de Convivência</label>
+                    <label>Grupo de Convivência*</label>
                     <input name="grupoconvivencia" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo"></label>
-                    
-                    <label>Turno</label>
+                    <br>
+                    <label>Turno*</label>
                    <select class="form-control" name="turno" id="turno" value="">
                        <option value="M">Manhã</option>
                        <option value="T">Tarde</option> 
                    </select>
 
                     <input type="hidden" name="statusTurma" id="statusTurma" value="1">
-
-                    <label>Educador</label>
+                    <br>
+                    <label>Educador*</label>
                     <select class="form-control" name="idusuario" id="idusuario">
                         @foreach($educador as $e)
                         <option value="{{ $e->id }}">{{ $e->nome }}</option>
@@ -229,22 +229,23 @@
             </button>
             </div>
             <form class="form" action="turmas/edita" method="post" name="editarTurma"
-            onsubmit="return validarEdicaoTurma(editarTurma.GrupoConvivencia);">
+            onsubmit="return validarEdicaoTurma(editarTurma.grupoconvivencia);">
                
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <input type="hidden" name="idturma" id="idturma" value="">
-                    <label>Grupo de Convivência</label>
+                    <label>Grupo de Convivência*</label>
                     <input name="grupoconvivencia" class="form-control" id="grupoconvivencia" value="" maxlength="255" autocomplete="off">
                     <label id="meggrupo_edit"></label>
                     <br>
-                    <label>Turno</label>
+                    <label>Turno*</label>
                     <select name="turno" id="turno" value="" class="form-control">
                         <option value="m" id="manha">Manhã</option>
                         <option value="t" id="tarde">Tarde</option>
                     </select>
-                    <label>Educador</label>
-                  <select class="form-control" name="idUsuario" id="idUsuario">
+                    <br>
+                    <label>Educador*</label>
+                  <select class="form-control" name="idusuario" id="idusuario">
                         @foreach($educador as $e)
                         <option value="{{ $e->id }}">{{ $e->nome }}</option>
                         @endforeach
@@ -286,7 +287,7 @@ $('#editarturma').on('show.bs.modal', function (event) {
     console.log(turno.value);
     modal.find('.modal-body #grupoconvivencia').val(nome)
     modal.find('.modal-body #turno').val(turno)
-    modal.find('.modal-body #idUsuario').val(educador)
+    modal.find('.modal-body #idusuario').val(educador)
     modal.find('.modal-body #idturma').val(id)
 
 });
@@ -339,7 +340,7 @@ $('#inativar').on('show.bs.modal', function (event) {
         var formulario = document.register;
         var tesNome = nomeGrupo.value;
 
-        if (tesNome == "") {
+    if (tesNome == "") {
         document.getElementById("meggrupo").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
         permissao = false;
     } else {

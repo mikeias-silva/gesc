@@ -33,19 +33,22 @@ $(document).ready(function() {
                         //Atualiza os campos com os valores da consulta.
                         $("#logradouro").val(dados.logradouro);
                         $("#bairro").val(dados.bairro);
-                        $("#cidade").val(dados.localidade);     
+                        $("#cidade").val(dados.localidade);   
+                        document.getElementById("msgCep").innerHTML="";  
                     } //end if.
                     else {
                         //CEP pesquisado não foi encontrado.
                         limpa_formulário_cep();
-                        alert("CEP não encontrado.");
+                        document.getElementById("msgCep").innerHTML="<font color='blue'>CEP não encontrado</font>";
+                        //alert("CEP não encontrado.");
                     }
                 });
             } //end if.
             else {
                 //cep é inválido.
                 limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
+                document.getElementById("msgCep").innerHTML="<font color='red'>CEP inválido</font>";
+                //alert("Formato de CEP inválido.");
             }
         } //end if.
         else {

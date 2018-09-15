@@ -8,21 +8,26 @@
         <thead class="table table-bordered">
             <tr>
                 
-                <th class="shorting">#<i class="material-icons float-right">
+                <th class="shorting">#
+                    <i class="material-icons float-right">
                     swap_vert
-                    </i></th>
-                <th>Nome<i class="material-icons float-right">
+                    </i>
+                </th>
+                <th>Nome
+                    <i class="material-icons float-right">
                     swap_vert
-                    </i></th>
-                <th>CPF<i class="material-icons float-right">
+                    </i>
+                </th>
+                <th>CPF
+                    <i class="material-icons float-right">
                     swap_vert
-                    </i></th>
-                <th>Idade<i class="material-icons float-right">
+                    </i>
+                </th>
+                <th>Idade
+                    <i class="material-icons float-right">
                     swap_vert
-                    </i></th>
-                <th>Ações<i class="material-icons float-right">
-                    swap_vert
-                    </i></th>
+                    </i>
+                </th>
             </tr>
         </thead>
             
@@ -39,7 +44,7 @@
                 <td>{{ $responsavel->nomeResponsavel() }}</td>
                 <td>{{ $responsavel->cpfResponsavel() }}</td>
                 <td>{{ $responsavel->idadeResponsavel() }}</td>
-                <td>editar</td>
+               
             </tr>
             @endforeach 
         </tbody>

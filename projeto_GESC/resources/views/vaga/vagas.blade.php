@@ -318,21 +318,21 @@
 
 
         if (tesIdadeMin == "") {
-            document.getElementById("msgidademin").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademin").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademin").innerHTML="";
         }
 
         if (tesIdadeMax == "") {
-            document.getElementById("msgidademax").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademax").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademax").innerHTML="";
         }
 
         if (tesNumVgagas == "") {
-            document.getElementById("msgnumvagas").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgnumvagas").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgnumvagas").innerHTML="";
@@ -392,21 +392,21 @@
         }
 
         if (tesIdadeMin == "") {
-            document.getElementById("msgidademin_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademin_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademin_edit").innerHTML="";
         }
 
         if (tesIdadeMax == "") {
-            document.getElementById("msgidademax_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademax_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademax_edit").innerHTML="";
         }
 
         if (tesNumVgagas == "") {
-            document.getElementById("msgnumvagas_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgnumvagas_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgnumvagas_edit").innerHTML="";

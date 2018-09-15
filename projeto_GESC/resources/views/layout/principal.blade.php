@@ -286,7 +286,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario, confirmacaoSenha
     }
 
     if (tesNome == "") {
-        document.getElementById("msgnome").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgnome").innerHTML="<font color='red'>Campo obrigatório</font>";
         console.log('Preencha o campo com seu nome');
         //alert('Preencha o campo com seu nome');
         //document.getElementById("msgnome").innerHTML="O campo nome é obrigatório";
@@ -296,7 +296,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario, confirmacaoSenha
     }
 
     if (tesSenha == "") {
-        document.getElementById("msgsenha").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgsenha").innerHTML="<font color='red'>Campo obrigatório</font>";
         console.log('Preencha o campo senha');
         permissao = false;
     } else {
@@ -304,7 +304,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario, confirmacaoSenha
     }
 
     if (tesEmail == "") {
-        document.getElementById("msgemail").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgemail").innerHTML="<font color='red'>Campo obrigatório</font>";
         //console.log('Preencha o campo senha');
         permissao = false;
     } else if ((usuario.length >=1) &&
@@ -325,7 +325,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario, confirmacaoSenha
     }
 
     if (tesNomeUsuario == "") {
-        document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if (cont>0){
         document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Nome de usuário já cadastrado, por favor informe outro</font>";
@@ -335,7 +335,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario, confirmacaoSenha
     }
 
     if (confirmacaoSenha == "") {
-        document.getElementById("msgpasswordConfirm").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgpasswordConfirm").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgpasswordConfirm").innerHTML="";
@@ -377,14 +377,14 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
         }
     }
     if (tesNome == "") {
-        document.getElementById("msgnome_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgnome_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgnome_edit").innerHTML="";
     }
 
     if (tesEmail == "") {
-        document.getElementById("msgemail_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgemail_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         //console.log('Preencha o campo senha');
         permissao = false;
     } else if ((usuario.length >=1) &&
@@ -405,7 +405,7 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     }
 
     if (tesNomeUsuario == "") {
-        document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(cont>1 && tesNomeUsuarioAtual!=tesNomeUsuario){
         document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Nome de usuário já cadastrado, por favor informe outro</font>";
@@ -464,17 +464,17 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
-        document.getElementById("msgtelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Telefone inválido</font>";
         permissao = false;
     }
     else {
@@ -492,17 +492,17 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Telefone inválido</font>";
         permissao = false;
     }
     else {

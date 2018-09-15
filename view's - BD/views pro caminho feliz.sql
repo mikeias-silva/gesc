@@ -66,6 +66,20 @@ where
 	and crianca.idpessoa = pessoa.idpessoa
     and crianca.idescola = escola.idescola
     and crianca.idpublicoprioritario = publicoprioritario.idpublicoprioritario;
+
+drop view if exists dadosresponsavel;
+create view dadosresponsavel as 
+select 
+	responsavel.idresponsavel, pessoa.nomepessoa nomeresponsavel, pessoa.datanascimento nascimentoresponsavel, 
+	pessoa.logradouro, pessoa.bairro, pessoa.ncasa, pessoa.complementoendereco, pessoa.cep,
+	pessoa.cpf cpfresponsavel, pessoa.rg rgresposnavel, pessoa.sexo sexoresponsavel, 
+    pessoa.emissorrg emissorresponsavel, 
+	responsavel.outrasobs
+	
+from 
+	 responsavel, pessoa 
+where 
+	responsavel.idpessoa = pessoa.idpessoa;
     
 drop view if exists vagasdasmatriculas;
 create view  vagasdasmatriculas as
@@ -79,11 +93,14 @@ where
     and matriculas.idcrianca = crianca.idcrianca;
     
     
-    select * from parentes;
+    select * from responsavel; 71
     
+    select idcrianca from dadosmatricula where anovaga > 2018
+     select idcrianca from dadosmatricula where anovaga = 2018 and idcrianca != 45
+    select * from dadosmatricula where idmatricula = 11;
     
-    select * from dadosmatricula;
-    
-    select * from matriculas
-    
+    select * from matriculas 58
+    select * from dadoscrianca where idcrianca = 45;
     select * from turma
+    
+    select * from parentesco where idresponsavel = 53

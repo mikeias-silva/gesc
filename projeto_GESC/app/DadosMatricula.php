@@ -66,7 +66,8 @@ class DadosMatricula extends Model
     }
 
     static function rematricula($anovaga){
-        $dadomatricula = DB::select('select idcrianca from dadosmatricula where anovaga > ?', [$anovaga]);
+        $dadomatricula = DB::select('select idcrianca from dadosmatricula where anovaga > ?
+        ', [$anovaga]);
 
         foreach ($dadomatricula as $dadomatricula) {
            $essacrianca =  $dadomatricula->idcrianca;

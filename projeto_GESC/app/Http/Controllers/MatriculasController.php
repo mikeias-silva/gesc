@@ -637,7 +637,8 @@ class MatriculasController extends Controller
         //return $matricula;
         $matricula->save();
         
-        
+        return redirect()->action('MatriculasController@listaMatriculas');
+
         return redirect()->action('MatriculasController@precisamRematricular');
     }
 

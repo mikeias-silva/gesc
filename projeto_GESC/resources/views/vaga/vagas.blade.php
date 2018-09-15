@@ -30,11 +30,14 @@
         <td class="text-center">
             <a href="" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
             data-myidademax="{{ $v->idademax }}" data-mynumvaga="{{ $v->numvaga }}" data-myano="{{ $v->anovaga }}" data-toggle="modal" data-target="#editarVagas">
-            <i class="material-icons text-info">
+           @if ($v->anovaga > 2017)
+           <i class="material-icons text-info">
                 edit
             </i>
+           @endif
+            
         </a>    
-              </td>
+        </td>
     </tr>
     @endforeach
 </table>

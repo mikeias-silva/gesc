@@ -35,11 +35,46 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
 
         <div class="form-group">
             <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                     <label>RG</label>
                     <input type="text" class="form-control" name="rgresp1" id="rgresp1" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9"> 
+                   
                     <span id="msgRgResp1"></span>
                 </div>
+                <div class="col-sm-2">
+                        <label>Órgão Emissor RG</label>
+                        <select class="form-control" name="emissorrgresposnavel1" id="">
+                                <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
+                                <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
+                                <option value="CRA">CRA - Conselho Regional de Administração</option>
+                                <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
+                                <option value="CRC">CRC - Conselho Regional de Contabilidade</option>
+                                <option value="CRE">CRE - Conselho Regional de Estatística</option>
+                                <option value="CREA">CREA - Conselho Regional de Engenharia Arquitetura e Agronomia</option>
+                                <option value="CRECI">CRECI - Conselho Regional de Corretores de Imóveis</option>
+                                <option value="CREFIT">CREFIT - Conselho Regional de Fisioterapia e Terapia Ocupacional</option>
+                                <option value="CRF">CRF - Conselho Regional de Farmácia</option>
+                                <option value="CRM">CRM - Conselho Regional de Medicina</option>
+                                <option value="CRN">CRN - Conselho Regional de Nutrição</option>
+                                <option value="CRO">CRO - Conselho Regional de Odontologia</option>
+                                <option value="CRP">CRP - Conselho Regional de Psicologia</option>
+                                <option value="CRPRE">CRPRE - Conselho Regional de Profissionais de Relações Públicas</option>
+                                <option value="CRQ">CRQ - Conselho Regional de Química</option>
+                                <option value="CRRC">CRRC - Conselho Regional de Representantes Comerciais</option>
+                                <option value="CRMV">CRMV - Conselho Regional de Medicina Veterinária</option>
+                                <option value="DPF">DPF - Polícia Federal</option>
+                                <option value="EST">EST - Documentos Estrangeiros</option>
+                                <option value="I CLA">I CLA - Carteira de Identidade Classista</option>
+                                <option value="MAE">MAE - Ministério da Aeronáutica</option>
+                                <option value="MEX">MEX - Ministério do Exército</option>
+                                <option value="MMA">MMA - Ministério da Marinha</option>
+                                <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
+                                <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
+                                <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
+                                <option value="OUT">OUT - Outros Emissores</option>
+                        </select>
+                    </div>
 
                 <div class="col-sm-4">
                     <label>CPF</label>
@@ -72,13 +107,13 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                         <span id="msgEndereco"></span>
                     </div>
 
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <label>Nº</label>
                         <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
                     </div>
 
                     
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <label>Bairro*</label>
                         <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                         <span id="msgBairro"></span>
@@ -183,11 +218,45 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
 
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-">
                     <label>RG</label>
                     <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9">
                     <span id="msgRgResp2"></span>
                 </div>
+                <div class="col-sm-2">
+                        <label>Órgão Emissor RG</label>
+                        <select class="form-control" name="emissorrgresposnavel2" id="">
+                                <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
+                                <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
+                                <option value="CRA">CRA - Conselho Regional de Administração</option>
+                                <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
+                                <option value="CRC">CRC - Conselho Regional de Contabilidade</option>
+                                <option value="CRE">CRE - Conselho Regional de Estatística</option>
+                                <option value="CREA">CREA - Conselho Regional de Engenharia Arquitetura e Agronomia</option>
+                                <option value="CRECI">CRECI - Conselho Regional de Corretores de Imóveis</option>
+                                <option value="CREFIT">CREFIT - Conselho Regional de Fisioterapia e Terapia Ocupacional</option>
+                                <option value="CRF">CRF - Conselho Regional de Farmácia</option>
+                                <option value="CRM">CRM - Conselho Regional de Medicina</option>
+                                <option value="CRN">CRN - Conselho Regional de Nutrição</option>
+                                <option value="CRO">CRO - Conselho Regional de Odontologia</option>
+                                <option value="CRP">CRP - Conselho Regional de Psicologia</option>
+                                <option value="CRPRE">CRPRE - Conselho Regional de Profissionais de Relações Públicas</option>
+                                <option value="CRQ">CRQ - Conselho Regional de Química</option>
+                                <option value="CRRC">CRRC - Conselho Regional de Representantes Comerciais</option>
+                                <option value="CRMV">CRMV - Conselho Regional de Medicina Veterinária</option>
+                                <option value="DPF">DPF - Polícia Federal</option>
+                                <option value="EST">EST - Documentos Estrangeiros</option>
+                                <option value="I CLA">I CLA - Carteira de Identidade Classista</option>
+                                <option value="MAE">MAE - Ministério da Aeronáutica</option>
+                                <option value="MEX">MEX - Ministério do Exército</option>
+                                <option value="MMA">MMA - Ministério da Marinha</option>
+                                <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
+                                <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
+                                <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
+                                <option value="OUT">OUT - Outros Emissores</option>
+                        </select>
+                    </div>
 
                 <div class="col-sm-4">
                     <label>CPF</label>
@@ -212,7 +281,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-8">
                     <label>Profissão</label>
-                    <input type="text" class="form-control" name="profissaoresp2">
+                    <input type="text" class="form-control" name="profissaoresp2" autocomplete="off">
                 </div>
             </div>
         </div>
@@ -221,7 +290,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-8">
                     <label>Local de Trabalho</label>
-                    <input type="text" class="form-control" name="trabalhoresp2">
+                    <input type="text" class="form-control" name="trabalhoresp2" autocomplete="off">
                 </div>
                 <div class="col-sm-4">
                     <label>Escolaridade*</label>
@@ -266,7 +335,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-8">
                     <label>Número do NIS</label>
-                    <input type="text" class="form-control" name="numnis">
+                    <input type="text" class="form-control" name="numnis" autocomplete="off">
                     <span id="msgNumNis"></span>
                 </div>
                 <div class="col-sm-4">
@@ -306,6 +375,22 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                             <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
                         </label>
                     </div>
+                </div>
+                <div class="col-sm-3">
+                    <label>CRAS/CREAS*</label>
+                    <select name="cras" id="" class="custom-select" name="cras">
+                        @foreach($cras as $c)
+                            <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label>Renda familiar</label>
+                    <select name="rendafamiliar" id="" class="custom-select form-control">
+                        <option value="1 a 2 salarios minimo">1 à 2 salários minimo</option>
+                        <option value="2 a 3 salarios minimo">2 à 3 salários minimo</option>
+                        <option value="Mais de 3 salarios minimos">Mais de 3 salarios minimos</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -379,14 +464,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             
            </div>
         -->
-        <div class="col-sm-6">
-            <label>CRAS/CREAS*</label>
-            <select name="cras" id="" class="custom-select" name="cras">
-                @foreach($cras as $c)
-                    <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
-                @endforeach
-            </select>
-        </div>
+        
         </div>
 
       

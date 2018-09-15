@@ -2,17 +2,22 @@
 @extends('layout.principal')
 @section('conteudo')
 <body id="conteudoimprimir " >
-        <div class="float-right">
-            <button class="btn btn-toolbar " onclick="myFunction()"><i class="fa fa-print fa-lg"></i></button>
-            <a href="#" id="btn-imprimir"></a>
-        </div>
+        
         <div class="container">
             <h4 class="text-center content text-uppercase" id="titulorematricula">ASSOCIAÇÃO DE PROMOÇÃO À MENINA - APAM</h4>
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano }}</h5>
         <br>
+        <form action="/confirmarEdit" method="POST">
+            {{ csrf_field() }}
+            <input name="idcrianca" type="text" value="{{  $dadoscrianca->idcrianca}}">
+            <input name="idpessoacrianca" type="text" value="{{  $dadoscrianca->idpessoa}}">
+            <input name="idresponsavel1" type="text" value="{{  $responsaveis[0]->idresponsavel}}">
+            <input name="idpessoaresponsavel1" type="text" value="{{  $responsaveis[0]->idpessoa}}">
+            <input name="idfamilia" type="text" value="{{ $dadosfamilia[0]->idfamilia }}">
+            
         <div>
                 <div class="form-group " >
-                {{ csrf_field() }}
+               
                 <div class="form-group ">
                     <div class="row">
                         <div class="col-sm-7" >
@@ -54,7 +59,7 @@
     
                         <div class="col-sm-4">
                             <label>CEP</label>
-                            <input value="{{ $dadoscrianca->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
+                            <input value="{{ $responsaveis[0]->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
                             <span id="msgCep"></span>
                         </div>
                     </div>
@@ -64,22 +69,19 @@
                     <div class="row" >
                         <div class="col-sm-5">
                             <label>Endereço</label>
-                            <input value="{{ $dadoscrianca->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                            <input value="{{ $responsaveis[0]->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
                             <span id="msgEndereco"></span>
                         </div>
     
                         <div class="col-sm-1">
                             <label>Nº</label>
-                            <input value="{{ $dadoscrianca->ncasa }}" class="form-control" type="text" name="ncasa"/>
+                            <input value="{{ $responsaveis[0]->ncasa }}" class="form-control" type="text" name="ncasa"/>
                         </div>
     
-                        <div class="col-sm-2">
-                            <label>Cidade</label>
-                            <input value="Ponta Grossa"  class="form-control" type="text" id="cidade"/>
-                        </div>
+                        
                         <div class="col-sm-4">
                             <label>Bairro</label>
-                            <input value="{{ $dadoscrianca->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                            <input value="{{ $responsaveis[0]->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                             <span id="msgBairro"></span>
                         </div>
                     </div>
@@ -88,13 +90,13 @@
                         <div class="row" >
                             <div class="col-sm-6">
                                 <label>Complemento</label>
-                                <input value="{{ $dadoscrianca->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                                <input value="{{ $responsaveis[0]->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
                             </div>
                             @foreach ($dadosfamilia as $dadofamilia)
                             <div class="col-sm-6">
                                 <label>CRAS/CREAS</label>
                                 <select class="form-control" name="idcras" id="" >
-                                    <option value="{{ $dadofamilia->idcras }}">{{ $dadofamilia->nomecras }} --ATUAL</option>
+                                   
                                     @foreach ($cras as $cras)
                                         <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
                                     @endforeach
@@ -109,7 +111,6 @@
                             <div class="col-sm-6">
                                 <label>Público Prioritário</label>
                                 <select class="form-control" name="idpublicoprioritario" id="">
-                                        <option value="{{ $dadoscrianca->idpublicoprioritario }}">{{ $dadoscrianca->publicoprioritario }} --atual</option>
                                     @foreach ($pprioritario as $pprioritario)
                                         <option value="{{ $pprioritario->idpublicopriotirario }}">{{ $pprioritario->publicoprioritario }}</option>
                                     @endforeach
@@ -123,8 +124,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Escola</label>
-                                <select name="escola" id="" class="custom-select" >
-                                   <option value="">{{ $dadoscrianca->nomeescola }} --atual</option>
+                                <select name="escola" id="" class="custom-select form-control" >
+                                   <option value="">{{ $dadoscrianca->nomeescola }} </option>
                                     @foreach($escola as $e)
                                         <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                                     @endforeach
@@ -137,7 +138,7 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <label>Serie Escolar</label>
-                                <select name="serie" id="" class="custom-select"> 
+                                <select name="serie" id="" class="custom-select form-control"> 
                                     @foreach ($dadosmatricula as $dadosmatricula)
                                     <option value="">{{ $dadosmatricula->serieescolar }} </option>
                                    
@@ -213,7 +214,7 @@
                     <div class="col-sm-4">
                         <label>Estado Civil</label>
                         <select class="form-control" name="estadocivilresp1" id="">
-                            <option value="{{ $responsaveis[0]->estadocivil }}">{{ $responsaveis[0]->estadocivil }}--atual</option>
+                            <option value="{{ $responsaveis[0]->estadocivil }}">{{ $responsaveis[0]->estadocivil }}</option>
                             <option value="1">Solteiro</option>
                             <option value="2">Casado</option>
                             <option value="3">Divorciado</option>
@@ -273,11 +274,14 @@
             <label>Observações</label>
             <textarea name="obsresp1" id="" cols="10" rows="2" class="form-control">{{ $responsaveis[0]->outrasobs }}</textarea>
     
-            <div class="container" id="meio">
-    
-            </div>
+            
             
             @if (!empty($responsaveis[1]->nomeresponsavel))
+            <input name="idresponsavel2" type="hidden" value="{{  $responsaveis[1]->idresponsavel}}">
+            <input name="idpessoaresponsavel2" type="hidden" value="{{  $responsaveis[1]->idpessoa}}">
+            <div class="container" id="meio">
+    
+                </div>
             <br>
             <h4>Responsável 02</h4>
             <div class="form-group">
@@ -490,16 +494,13 @@
             </div>
             
            
-            <div class="float-right" style="margin-bottom: 40px">
-                    <h3>Responsável:__________________________</h3>
-            </div>
+         
 
             <div>
                 <button type="submit" class="btn btn-primary">Alterar</button>
-                <a href="/confirmarRematricula/{{ $dadosmatricula->idmatricula }}"><button type="submit" class="btn btn-success" >Fazer rematricula</button></a>
             </div>
         </div>
-       
+    </form>
         <br>
     
 </body>

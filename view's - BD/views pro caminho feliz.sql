@@ -4,7 +4,7 @@ select
 	re.nomepessoa nomeresponsavel, re.datanascimento nascimentoresponsavel,
     re.cpf cpfresponsavel, re.rg rgresponsavel, 
     re.emissorrg emissorresponsavel, re.sexo sexoresponsavel,
-    
+    re.complementoendereco, re.bairro, re.logradouro, re.cep, re.ncasa,   
     parentesco.idresponsavel, parentesco.idcrianca,
     
     responsavel.idfamilia, responsavel.estadocivil,
@@ -52,10 +52,11 @@ and matriculas.idvaga = vagas.idvaga;
 drop view if exists dadoscrianca;
 create view dadoscrianca as 
 select 
+	pessoa.idpessoa,
 	crianca.idcrianca, pessoa.nomepessoa nomecrianca, pessoa.datanascimento nascimentocrianca, 
 	pessoa.logradouro, pessoa.bairro, pessoa.ncasa, pessoa.complementoendereco, pessoa.cep,
 	pessoa.cpf cpfcrianca, pessoa.rg rgcrianca, pessoa.sexo sexocrianca, 
-    pessoa.emissorrg emissorcrianca, matriculas.idmatricula,
+    pessoa.emissorrg emissorcrianca, matriculas.idmatricula, 
 	crianca.obssaude,
 	escola.nomeescola,
     publicoprioritario.publicoprioritario, publicoprioritario.idpublicoprioritario
@@ -70,6 +71,7 @@ where
 drop view if exists dadosresponsavel;
 create view dadosresponsavel as 
 select 
+	pessoa.idpessoa,
 	responsavel.idresponsavel, pessoa.nomepessoa nomeresponsavel, pessoa.datanascimento nascimentoresponsavel, 
 	pessoa.logradouro, pessoa.bairro, pessoa.ncasa, pessoa.complementoendereco, pessoa.cep,
 	pessoa.cpf cpfresponsavel, pessoa.rg rgresposnavel, pessoa.sexo sexoresponsavel, 

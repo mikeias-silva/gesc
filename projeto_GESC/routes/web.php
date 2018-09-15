@@ -62,6 +62,7 @@ Route::get('/listagemMatriculas', 'MatriculasController@listaMatriculas')->middl
 Route::get('/listagemMatriculas/anteriores', 'MatriculasController@selecionaAno')->middleware('auth');
 Route::get('/listagemMatriculas/rematriculas', 'MatriculasController@precisamRematricular')->middleware('auth');
 Route::post('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
+Route::get('/listagemMatriculas/seguinte', 'MatriculasController@matriculasSeguinte')->middleware('auth');
 
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula')->middleware('auth');
 //Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
@@ -71,6 +72,8 @@ Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middl
 Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middleware('auth');
 Route::post('/associaturma', 'MatriculasController@turmaVazia')->middleware('auth');
 Route::get('/rematricula/{idmatricula}', 'MatriculasController@rematricula')->middleware('auth');
+Route::get('/editarMatricula/{idmatricula}', 'MatriculasController@editarMatricula')->middleware('auth');
+Route::post('/confirmarEdit', 'MatriculasController@confirmarEdit')->middleware('auth');
 Route::get('/confirmarRematricula/{idmatricula}', 'MatriculasController@confirmarRematricula')->middleware('auth');
 Route::post('/matricula', 'MatriculasController@adicionaMatricula')->middleware('auth');
 Route::get('/matriculasAtuais', 'MatriculasController@matriculasAtuais')->middleware('auth');

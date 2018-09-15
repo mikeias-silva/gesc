@@ -238,7 +238,7 @@ class CriancaController extends Controller
             $historico_matricula->idmatricula = $matricula->idmatricula;
             $historico_matricula->save(); 
             
-            $turmas = Turma::all();
+            $turmas = Turma::turmasAtiva();
             return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
             $nomecrianca)->with('idmatricula', $matricula->idmatricula);
         }

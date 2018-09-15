@@ -8,14 +8,14 @@ function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianc
     var dataSelecionada = new Date(datanascimentocrianca);
 
     if(nomecrianca==""){
-        document.getElementById("msgNomeCrianca").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgNomeCrianca").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgNomeCrianca").innerHTML="";
     }
 
     if(datanascimentocrianca==""){
-        document.getElementById("msgDataNascimento").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgDataNascimento").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(calculaIdade(dataSelecionada)>17){
         document.getElementById("msgDataNascimento").innerHTML="<font color='red'>Idade não pode ser maior que 18 anos, por favor verifique</font>";

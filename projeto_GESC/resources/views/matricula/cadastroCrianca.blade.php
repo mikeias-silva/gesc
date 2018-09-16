@@ -8,9 +8,13 @@
     onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca);" name="novaCrianca">
             {{ csrf_field() }}
             <div class="form-group">
-                
-                    <input name="idresponsavel1" type="hidden" value="{{ $idresponsavel1 }}"/>
-               
+            
+                <input name="idresponsavel1" type="hidden" value="{{ $idresponsavel1 }}"/>
+                <input name="cep" type="hidden" value="{{ $cep }}"/>
+                <input name="bairro" type="hidden" value="{{ $bairro }}"/>
+                <input name="logradouro" type="hidden" value="{{ $logradouro }}"/>
+                <input name="ncasa" type="hidden" value="{{ $ncasa }}"/>
+                <input name="complemento" type="hidden" value="{{ $complemento }}"/>
                 
                 @if (!empty($idresponsavel2 ))
                     <input name="idresponsavel2" type="hidden" value="{{ $idresponsavel2 }}"/> 

@@ -129,7 +129,7 @@ class CriancaController extends Controller
         $crianca->datacadastro = $hoje;
         $crianca->idescola = Request::input('escola');;
         $crianca->idpublicoprioritario = Request::input('pprioritario');
-        $crianca->idpessoa = $pessoacrianca->id;
+        $crianca->idpessoa = $pessoacrianca->idpessoa;
         $crianca->save();
 
         

@@ -60,6 +60,12 @@ class Matricula extends Model
         return DB::select('select * from dadosmatricula where anovaga = ?', [$anovaga]);
     }
 
+    static function matriculasAnoSeguinte(){
+        $anovaga = Carbon::now()->year;
+       // return Matricula::join('vagas', $this->idvaga, '=', 'vagas.?')
+        return DB::select('select * from matriculas, vagas where matriculas.idvaga = vagas.idvaga and vagas.anovaga > ? ', [$anovaga]);
+        //return DB::select('select * from dadosmatricula where anovaga > ?', [$anovaga]);
+    }
     static function matriculasAtiva(){
       
         //DB::select('select * from matriculas where idmatricula = ?', 1);

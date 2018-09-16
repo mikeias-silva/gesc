@@ -194,7 +194,7 @@
     <h5 value="{{$ano}}" name="idano">Ano - {{$ano}}</h5>
 
     <br>
-    <div class="col-md-6 centered">
+    <div class="col-md-6 centered form-group">
     <table class="table table-striped table-bordered" align="center">
         <thead>
             <tr align="center">
@@ -207,7 +207,7 @@
             </tr>
         </thead>
     
-            <tr>
+            <tr >
                 <td align="center" class="font-weight-bold">Janeiro</td>
                 @if(empty($diasFuncionamento[0]->jan) || $diasFuncionamento[0]->jan==0)
                     <td align="center"><input name="jan" id="jan" class="combo-box col-2" type="number" maxlength="2"></td>
@@ -274,7 +274,7 @@
             <tr>
                 <td align="center" class="font-weight-bold">Setembro</td>
                 @if(empty($diasFuncionamento[0]->setembro) || $diasFuncionamento[0]->setembro==0)
-                    <td align="center"><input  name="setembro" id="setembro" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input  name="setembro" id="setembro" class="combo-box col-2 form-control" type="number" maxlength="2"></td>
                 @else
                     <td align="center"><input name="setembro" id="setembro" value="{{$diasFuncionamento[0]->setembro}}" class="combo-box col-2" type="number" maxlength="2"></td>
                 @endif

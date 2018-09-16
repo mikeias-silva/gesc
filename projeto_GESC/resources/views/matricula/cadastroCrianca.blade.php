@@ -8,9 +8,13 @@
     onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca);" name="novaCrianca">
             {{ csrf_field() }}
             <div class="form-group">
-                
-                    <input name="idresponsavel1" type="hidden" value="{{ $idresponsavel1 }}"/>
-               
+            
+                <input name="idresponsavel1" type="hidden" value="{{ $idresponsavel1 }}"/>
+                <input name="cep" type="hidden" value="{{ $cep }}"/>
+                <input name="bairro" type="hidden" value="{{ $bairro }}"/>
+                <input name="logradouro" type="hidden" value="{{ $logradouro }}"/>
+                <input name="ncasa" type="hidden" value="{{ $ncasa }}"/>
+                <input name="complemento" type="hidden" value="{{ $complemento }}"/>
                 
                 @if (!empty($idresponsavel2 ))
                     <input name="idresponsavel2" type="hidden" value="{{ $idresponsavel2 }}"/> 
@@ -52,11 +56,45 @@
             
             <div class="form-group ">
                 <div class="row" >
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <label>RG</label>
                         <input type="text" class="form-control" id="rgcrianca" name="rgcrianca" onkeyup="mascara(this, Rg);" maxlength="9" autocomplete="off">
                         <span id="msgRg"></span>
                     </div>
+                    <div class="col-sm-2">
+                            <label>Órgão Emissor RG</label>
+                            <select class="form-control" name="emissorrgcrianca" id="">
+                                    <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
+                                    <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                    <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
+                                    <option value="CRA">CRA - Conselho Regional de Administração</option>
+                                    <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
+                                    <option value="CRC">CRC - Conselho Regional de Contabilidade</option>
+                                    <option value="CRE">CRE - Conselho Regional de Estatística</option>
+                                    <option value="CREA">CREA - Conselho Regional de Engenharia Arquitetura e Agronomia</option>
+                                    <option value="CRECI">CRECI - Conselho Regional de Corretores de Imóveis</option>
+                                    <option value="CREFIT">CREFIT - Conselho Regional de Fisioterapia e Terapia Ocupacional</option>
+                                    <option value="CRF">CRF - Conselho Regional de Farmácia</option>
+                                    <option value="CRM">CRM - Conselho Regional de Medicina</option>
+                                    <option value="CRN">CRN - Conselho Regional de Nutrição</option>
+                                    <option value="CRO">CRO - Conselho Regional de Odontologia</option>
+                                    <option value="CRP">CRP - Conselho Regional de Psicologia</option>
+                                    <option value="CRPRE">CRPRE - Conselho Regional de Profissionais de Relações Públicas</option>
+                                    <option value="CRQ">CRQ - Conselho Regional de Química</option>
+                                    <option value="CRRC">CRRC - Conselho Regional de Representantes Comerciais</option>
+                                    <option value="CRMV">CRMV - Conselho Regional de Medicina Veterinária</option>
+                                    <option value="DPF">DPF - Polícia Federal</option>
+                                    <option value="EST">EST - Documentos Estrangeiros</option>
+                                    <option value="I CLA">I CLA - Carteira de Identidade Classista</option>
+                                    <option value="MAE">MAE - Ministério da Aeronáutica</option>
+                                    <option value="MEX">MEX - Ministério do Exército</option>
+                                    <option value="MMA">MMA - Ministério da Marinha</option>
+                                    <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
+                                    <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
+                                    <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
+                                    <option value="OUT">OUT - Outros Emissores</option>
+                            </select>
+                        </div>
 
                     <div class="col-sm-4">
                         <label>CPF</label>

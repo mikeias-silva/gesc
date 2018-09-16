@@ -188,32 +188,33 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-sm-3">
+                                    <label>Serie Escolar</label>
+                                    <select disabled name="serie" id="" class="custom-select"> 
+                                        @foreach ($dadosmatricula as $dadosmatricula)
+                                        <option value="">{{ $dadosmatricula->serieescolar }} </option>
+                                       
+                                        @endforeach
+                                        <option value="1">1º Fundamental</option>
+                                        <option value="2">2º Fundamental</option>
+                                        <option value="3">3º Fundamental</option>
+                                        <option value="4">4º Fundamental</option>
+                                        <option value="5">5º Fundamental</option>
+                                        <option value="6">6º Fundamental</option>
+                                        <option value="7">7º Fundamental</option>
+                                        <option value="8">8º Fundamental</option>
+                                        <option value="9">9º Fundamental</option>
+                                        <option value="10">1º Médio</option>
+                                        <option value="11">2º Médio</option>
+                                        <option value="12">3º Médio</option>   
+                                    </select>
+                                </div>
                         </div>
                     </div>
         
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-3">
-                                <label>Serie Escolar</label>
-                                <select disabled name="serie" id="" class="custom-select"> 
-                                    @foreach ($dadosmatricula as $dadosmatricula)
-                                    <option value="">{{ $dadosmatricula->serieescolar }} </option>
-                                   
-                                    @endforeach
-                                    <option value="1">1º Fundamental</option>
-                                    <option value="2">2º Fundamental</option>
-                                    <option value="3">3º Fundamental</option>
-                                    <option value="4">4º Fundamental</option>
-                                    <option value="5">5º Fundamental</option>
-                                    <option value="6">6º Fundamental</option>
-                                    <option value="7">7º Fundamental</option>
-                                    <option value="8">8º Fundamental</option>
-                                    <option value="9">9º Fundamental</option>
-                                    <option value="10">1º Médio</option>
-                                    <option value="11">2º Médio</option>
-                                    <option value="12">3º Médio</option>   
-                                </select>
-                            </div>
+                           
                         </div>
                     </div>
         
@@ -327,11 +328,12 @@
             <label>Observações</label>
             <textarea disabled name="obsresp1" id="" cols="10" rows="2" class="form-control">{{ $responsaveis[0]->outrasobs }}</textarea>
     
-            <div class="container" id="meio">
-    
-            </div>
+            
             
             @if (!empty($responsaveis[1]->nomeresponsavel))
+            <div class="container" id="meio">
+    
+                </div>
             <br>
             <h4>Responsável 02</h4>
             <div class="form-group">
@@ -548,7 +550,7 @@
                     <div class="col-md-3">
                         <h3 >Responsável:</h3>
                     </div>
-                        <div id="meio" class="col-sm-2"></div>
+                        {{-- <div id="meio" class="col-sm-2"></div> --}}
                 </div>
             </div>
 

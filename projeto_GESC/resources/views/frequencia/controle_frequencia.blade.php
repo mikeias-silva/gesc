@@ -34,6 +34,7 @@
                 <td>{{ $c->Nome }}</td>
                 <td>{{$numeroAlunos[$cont]}}</td>
                 <td>
+
                     <a href="{{"/controle_frequencia/{$c->idturma }/turma/{$mes}"}}" class="btn btn-primary" id="btn-frequencia">Lançar faltas</a>
                 </td>
             </tr>

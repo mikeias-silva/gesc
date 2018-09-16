@@ -57,10 +57,12 @@ class MatriculasController extends Controller
        // $matInativas = DadosMatricula::matriculasInativas();
         $turmas = Turma::all();
 
+        $vagas = Vaga::vagaMatricula();
+
         /*$matAtivas = Matricula::vagasMatriculas();
         return $matAtivas;*/
         return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
-        ->with('matEspera', $matEspera)->with('turmas', $turmas)->with('ano', $ano);
+        ->with('matEspera', $matEspera)->with('turmas', $turmas)->with('ano', $ano)->with('vagas', $vagas);
        
       //return view('matricula.matriculas');
     }
@@ -95,6 +97,22 @@ class MatriculasController extends Controller
        // $ano = Carbon::now()->year;
         //return $matAnteriores;
         return view('matricula.matriculasAnterior')->with('matAnteriores', $matAnteriores)
+        ->with('ano', $anovaga);
+    }
+
+    public function matriculasSeguinte(){
+
+        $anovaga = Carbon::now()->year;
+       // return $anovaga;
+        //$dadosmatriculas = DB::select('select * from dadosmatricula where anovaga = ?', [$anovaga]);
+
+
+      //  $matAnteriores = Matricula::matriculasAnoAnterior($anovaga);
+
+       return  $matSeguinte = DadosMatricula::matriculasAnoSeguinte();
+       // $ano = Carbon::now()->year;
+        //return $matAnteriores;
+        return view('matricula.matriculasSeguintes')->with('matSeguinte', $matSeguinte)
         ->with('ano', $anovaga);
     }
 
@@ -391,7 +409,7 @@ class MatriculasController extends Controller
 
         $idade = $hoje->diffInYears($datanascimentocrianca);
 
-        $vagas = Vaga::all();
+        $vagas = Vaga::vagaMatricula();
         foreach($vagas as $vaga){
             if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
                 $idademin = $vaga->idademin;
@@ -497,6 +515,7 @@ class MatriculasController extends Controller
         $escola = Escola::all();
         //return $nomematricula;
 
+        $vagas = Vaga::vagaRematricula();
         $ano = Carbon::now()->year+1;
         $dados = [
             'responsaveis'=>$parentes,
@@ -506,7 +525,8 @@ class MatriculasController extends Controller
             'cras'=>$cras,
             'pprioritario'=>$pprioritario,
             'escola'=>$escola,
-            'ano'=>$ano   
+            'ano'=>$ano,
+            'vagas'=>$vagas 
         ];
 
        // return $dados;
@@ -637,6 +657,10 @@ class MatriculasController extends Controller
         //return $matricula;
         $matricula->save();
         
+        $turmas = Turma::turmasAtiva();
+        return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
+        $dadoscrianca->nomecrianca)->with('idmatricula', $matricula->idmatricula);
+        
         return redirect()->action('MatriculasController@listaMatriculas');
 
         return redirect()->action('MatriculasController@precisamRematricular');
@@ -645,13 +669,213 @@ class MatriculasController extends Controller
 
     public function precisamRematricular(){
         //$idcriancarematriculada = DB::select('select idcrianca from dadosmatricula where anovaga > ?', [1]) 
-        $anovaga = Carbon::now()->year;
+        $ano = Carbon::now()->year+1;
 
-         $precisamRematricula = DadosMatricula::rematricula($anovaga);
+        $precisamRematricula = DadosMatricula::rematricula();
 
-         $dados = [
-            'matRematricula'=>$precisamRematricula
-         ];
-         return view('matricula.listagemRematricula', $dados);
+        $vagas = Vaga::vagaRematricula();
+        $dados = [
+            'matRematricula'=>$precisamRematricula,
+            'vagas'=>$vagas,
+            'ano'=>$ano
+        ];
+        return view('matricula.listagemRematricula', $dados);
     }
+
+    
+    public function editarMatricula($idmatricula){
+
+        //$idmatricula = Request::input('idmatricula');
+
+       // return $idmatricula;
+
+      // return $idmatricula;
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
+        = ?', array($idmatricula));
+
+        foreach ($dadosmatricula as $dadosmt) {
+            $dadosmt->idcrianca;
+            $dadosmt->datamatricula;
+            $dadosmt->serieescolar;
+            $dadosmt->grupoconvivencia;
+            $dadosmt->idmatricula;
+
+        }
+
+        $dadoscrianca = DB::select('select * from dadoscrianca where idcrianca = ?', [$dadosmt->idcrianca]);
+
+        foreach ($dadoscrianca as $dadoscr) {
+            $dadoscr->nomecrianca;
+            $dadoscr->nascimentocrianca;
+            $dadoscr->logradouro;
+            $dadoscr->bairro;
+            $dadoscr->ncasa;
+            $dadoscr->complementoendereco;
+            $dadoscr->cpfcrianca;
+            $dadoscr->rgcrianca;
+            $dadoscr->sexocrianca;
+            $dadoscr->emissorcrianca;
+            $dadoscr->idmatricula;
+            $dadoscr->nomeescola;
+        }
+
+
+        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
+        
+        foreach($parentes as $parente){
+            $parente->nomeresponsavel;
+            $parente->idfamilia;
+        }
+
+        //return ;
+
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        
+        foreach($dadosfamilia as $dadosfm){
+            $dadosfm->idfamilia;
+            $dadosfm->arearisco;
+            $dadosfm->bolsafamilia;
+            $dadosfm->moradia;
+            $dadosfm->numnis;
+            $dadosfm->tipohabitacao;
+            $dadosfm->nomecras;
+        }
+        
+        foreach($dadoscrianca as $dadoscrianca){
+            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
+            $logradouro = $dadoscrianca->logradouro;
+            $bairro = $dadoscrianca->bairro;
+            $ncasa = $dadoscrianca->ncasa;
+           
+        
+        }
+            
+        $cras = Cras::all();
+        $pprioritario = PublicoPrioritario::all();
+        $escola = Escola::all();
+        //return $nomematricula;
+
+        $ano = Carbon::now()->year+1;
+        $dados = [
+            'responsaveis'=>$parentes,
+            'dadoscrianca'=>$dadoscrianca,
+            'dadosfamilia'=>$dadosfamilia,
+            'dadosmatricula'=>$dadosmatricula,
+            'cras'=>$cras,
+            'pprioritario'=>$pprioritario,
+            'escola'=>$escola,
+            'ano'=>$ano   
+        ];
+        
+        // return $dadoscrianca;
+        return view('matricula.editMatricula', $dados);
+
+    }
+
+    public function confirmarEdit(){
+        $cep = Request::input('cep');
+        $logradouro = Request::input('logradouro');
+        $ncasa = Request::input('ncasa');
+        $bairro = Request::input('bairro');
+        $complemento = Request::input('complemento');
+
+        $idpessoacrianca = Request::input('idpessoacrianca');
+        $pessoacrianca = DB::select('select * from pessoa where idpessoa = ?', [$idpessoacrianca]);
+        DB::table('pessoa')
+            ->where('idpessoa', $idpessoacrianca)
+            ->update([
+                'nomepessoa'=>Request::input('nomecrianca'),
+                'rg'=>Request::input('rgcrianca'),
+                'cpf'=>Request::input('cpfcrianca'),
+                'cep'=>$cep,
+                'logradouro'=>$logradouro,
+                'ncasa'=>$ncasa,
+                'bairro'=>$bairro,
+                'complementoendereco'=>$complemento,
+                'sexo'=>Request::input('sexocrianca')
+            ]);
+
+        $idpessoaresponsavel1 = Request::input('idpessoaresponsavel1');
+        DB::table('pessoa')
+            ->where('idpessoa', $idpessoaresponsavel1)
+            ->update([
+                'nomepessoa'=>Request::input('nomeresp1'),
+                'rg'=>Request::input('rgresp1'),
+                'cpf'=>Request::input('cpfresp1'),
+                'cep'=>$cep,
+                'logradouro'=>$logradouro,
+                'ncasa'=>$ncasa,
+                'bairro'=>$bairro,
+                'complementoendereco'=>$complemento,
+                'sexo'=>Request::input('sexoresponsavel1')
+            ]);
+        //return  $pessoacrianca = Pessoa::where('idpessoa', '134');
+
+        $crianca = Crianca::find(Request::input('idcrianca'));
+        Request::input('idpublicoprioritario');
+        $crianca->update([
+            'idescola'=>Request::input('idescola'),
+            'idpublicoprioritario'=>Request::input('idpublicoprioritario'),
+            'obssaude'=>Request::input('obssaude')
+        ]);
+
+        $responsavel1 = Responsavel::find(Request::input('idresponsavel1'));
+        $responsavel1->update([
+            'estadocivil'=>Request::input('estadocivilresp1'),
+            'profissao'=>Request::input('profissaoresp1'),
+            'trabalho'=>Request::input('trabalhoresp1'),
+            'escolaridade'=>Request::input('escolaridaderesp1'),
+            'telefone1'=>Request::input('tel1resp1'),
+            'telefone2'=>Request::input('tel2resp1')
+
+        ]);
+        // $familia = Familia::find(Request::input('idfamilia'));
+        
+        if (!empty(Request::input('idresponsavel2'))) {
+            $idpessoaresponsavel2 = Request::input('idpessoaresponsavel2');
+            DB::table('pessoa')
+                ->where('idpessoa', $idpessoaresponsavel2)
+                ->update([
+                    'nomepessoa'=>Request::input('nomeresp2'),
+                    'rg'=>Request::input('rgresp2'),
+                    'cpf'=>Request::input('cpfresp2'),
+                    'cep'=>$cep,
+                    'logradouro'=>$logradouro,
+                    'ncasa'=>$ncasa,
+                    'bairro'=>$bairro,
+                    'complementoendereco'=>$complemento,
+                    'sexo'=>Request::input('sexoresponsavel2')
+                ]);
+
+            $resposnavel2 = Responsavel::find(Request::input('idresponsavel2'));
+            $resposnavel2->update([
+                'estadocivil'=>Request::input('estadocivilresp2'),
+                'profissao'=>Request::input('profissaoresp2'),
+                'trabalho'=>Request::input('trabalhoresp2'),
+                'escolaridade'=>Request::input('escolaridaderesp2'),
+                'telefone1'=>Request::input('tel1resp2'),
+                'telefone2'=>Request::input('tel2resp2')
+                
+            ]);
+        }
+
+
+         $idfamilia = Request::input('idfamilia');
+
+        DB::table('familia')
+            ->where('idfamilia', $idfamilia)
+            ->update([
+                'idcras'=>Request::input('cras'),
+                'numnis'=>Request::input('numnis'),
+                'moradia'=>Request::input('moradia'),
+                'arearisco'=>Request::input('arearisco'),
+                'bolsafamilia'=>Request::input('bolsafamiliar'),
+                'beneficiopc'=>Request::input('beneficiopc')
+            ]);
+       
+
+        //return $pessoacrianca;
+        return redirect()->action('MatriculasController@listaMatriculas');
+    }
+
 }

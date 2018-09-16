@@ -197,26 +197,31 @@ class CriancaController extends Controller
         $matricula = new Matricula();
         
         $matricula->anomatricula = $hoje;
-        $matricula->idvaga = $essavaga;
-        
+
         $matricula->serieescolar = Request::input('serie');
-        $matricula->idcrianca = $crianca->idcrianca;;
-        
-        $matAtivas = Matricula::where('statuscadastro', 'Ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
-        // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
-        
+        $matricula->idcrianca = $crianca->idcrianca;
         $historico_matricula = new Historico_matricula();
 
-        if($matAtivas < $essanumvaga){
-            $matricula->statuscadastro = 'Ativo';
-            $historico_matricula->dataativacao = $hoje;
+        if (!empty($essavaga)) {
+           
+            $matricula->idvaga = $essavaga;
             
-        }elseif($matAtivas >= $essanumvaga){
+            $matAtivas = Matricula::where('statuscadastro', 'Ativo')->where('idvaga', $essavaga)->sum('statuscadastro');
+            // $matAtivas = Matricula::where('idvaga', $vaga->idvaga);
+
+            if($matAtivas < $essanumvaga){
+                $matricula->statuscadastro = 'Ativo';
+                $historico_matricula->dataativacao = $hoje;
+                
+            }elseif($matAtivas >= $essanumvaga){
+                $matricula->statuscadastro = 'Espera';
+                $matricula->dataespera = $hoje;
+                    
+            }
+        }elseif(empty($essavaga)){
             $matricula->statuscadastro = 'Espera';
             $matricula->dataespera = $hoje;
-                
         }
-        
         
         //return $matricula;
         $matricula->save();
@@ -238,7 +243,7 @@ class CriancaController extends Controller
             $historico_matricula->idmatricula = $matricula->idmatricula;
             $historico_matricula->save(); 
             
-            $turmas = Turma::all();
+            $turmas = Turma::turmasAtiva();
             return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
             $nomecrianca)->with('idmatricula', $matricula->idmatricula);
         }

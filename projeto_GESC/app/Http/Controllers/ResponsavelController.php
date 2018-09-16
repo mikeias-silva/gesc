@@ -61,6 +61,7 @@ class ResponsavelController extends Controller
         $familia->beneficiopc = Request::input('beneficiopc');
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('cras');
+        $familia->rendafamiliar = Request::input('rendafamiliar');
         $familia->save();
         //add familia aos responsavels adicionados por ultimo
         //  $responsavel1->update(array('idfamilia' =>$familia->id));
@@ -140,6 +141,7 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->nomepessoa = Request::input('nomeresp1');
         $pessoaresponsavel1->datanascimento = Request::input('datanascimentoresp1');
         $pessoaresponsavel1->rg = Request::input('rgresp1');
+        $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
         $pessoaresponsavel1->cpf = Request::input('cpfresp1');
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
         $pessoaresponsavel1->cep = $cep;
@@ -147,6 +149,7 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->logradouro = $logradouro;
         $pessoaresponsavel1->complementoendereco = $complemento;
         $pessoaresponsavel1->ncasa = $ncasa;
+
         $pessoaresponsavel1->save();
         
         
@@ -195,6 +198,7 @@ class ResponsavelController extends Controller
             $pessoaresponsavel2->nomepessoa = Request::input('nomeresp2');
             $pessoaresponsavel2->datanascimento = Request::input('datanascimentoresp2');
             $pessoaresponsavel2->rg = Request::input('rgresp2');
+            $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel2');
             $pessoaresponsavel2->cpf = Request::input('cpfresp2');
             $pessoaresponsavel2->sexo = Request::input('sexoresp2');;
             $pessoaresponsavel2->cep = $cep;

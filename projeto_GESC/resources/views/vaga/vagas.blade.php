@@ -3,8 +3,8 @@
 <div class="">
 <h1 class="text">Gerenciamento de vagas</h1>
 @if(count($vaga)==0)
-    <div class="alert alert-danger">
-        Você não tem nenhuma faixa etária cadastrada.
+    <div class="alert alert-danger container card-text">
+       Não existem vagas cadastradas
     </div>
 
 @elseif(!empty($vaga))
@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label>Idade Mínima*</label>
-                            <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                            <input autofocus name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin"></label>
                             <br>
                         </div>

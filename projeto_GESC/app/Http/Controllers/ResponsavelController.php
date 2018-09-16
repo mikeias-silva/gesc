@@ -19,6 +19,7 @@ use Request;
 
 use App\PublicoPrioritario;
 
+use App\Vaga;
 
 class ResponsavelController extends Controller
 {
@@ -26,8 +27,8 @@ class ResponsavelController extends Controller
     public function responsaveis(){
 
         $responsaveis = Responsavel::all();
-       // return $responsaveis;   
-        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis);
+        $vagas = Vaga::vagaMatricula();
+        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas);
     }
 
     public function novoResponsavel(){

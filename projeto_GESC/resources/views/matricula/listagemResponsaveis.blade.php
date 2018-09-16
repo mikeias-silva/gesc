@@ -1,5 +1,13 @@
 @extends('layout.principal') 
 @section('conteudo')
+@if (empty($vagas))
+<div class="alert alert-danger">
+   Não existem vagas neste ano para realizar uma matricula
+</div>
+
+@else
+    
+
 <form action="/crianca" method="POST" onsubmit="return validaSelecao();">
     {{ csrf_field() }}
 <h2>Responsáveis</h2>
@@ -107,5 +115,5 @@ $('.dataTables_length').addClass('bs-select');
     });
 </script>
 
-
+@endif
 @stop

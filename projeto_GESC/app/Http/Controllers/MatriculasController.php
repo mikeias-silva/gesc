@@ -358,15 +358,19 @@ class MatriculasController extends Controller
                 if($ht->datainativacao == null){
                     $essehistorico = $ht->idhistoricomatricula;
                     $atualizahistorico = Historico_Matricula::find($essehistorico);
-                    $atualizahistorico->update(['datainativacao'=>$hoje],
-                    ['motivoinativacao'=>$motivoinativacao]);
+                    $atualizahistorico->update([
+                        'datainativacao'=>$hoje,
+                        'motivoinativacao'=>$motivoinativacao
+                    ]);
                 }
             }
            
             
             
 
-            $matricula->update(['statuscadastro'=>'Inativo']);
+            $matricula->update([
+                'statuscadastro'=>'Inativo',
+                'idturma'=>null]);
 
 
     

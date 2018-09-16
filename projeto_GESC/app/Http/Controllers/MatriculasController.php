@@ -766,8 +766,8 @@ class MatriculasController extends Controller
             'escola'=>$escola,
             'ano'=>$ano   
         ];
-
-       // return $dados;
+        
+        // return $dadoscrianca;
         return view('matricula.editMatricula', $dados);
 
     }
@@ -807,18 +807,19 @@ class MatriculasController extends Controller
                 'ncasa'=>$ncasa,
                 'bairro'=>$bairro,
                 'complementoendereco'=>$complemento,
-                'sexo'=>Request::input('sexoresp1')
+                'sexo'=>Request::input('sexoresponsavel1')
             ]);
         //return  $pessoacrianca = Pessoa::where('idpessoa', '134');
 
         $crianca = Crianca::find(Request::input('idcrianca'));
+        Request::input('idpublicoprioritario');
         $crianca->update([
-            'idescola'=>Request::input('escola'),
-            'idpublicoprioritario'=>Request::input('pprioritario'),
+            'idescola'=>Request::input('idescola'),
+            'idpublicoprioritario'=>Request::input('idpublicoprioritario'),
             'obssaude'=>Request::input('obssaude')
         ]);
 
-        $resposnavel1 = Responsavel::find(Request::input('idresponsavel1'));
+        $responsavel1 = Responsavel::find(Request::input('idresponsavel1'));
         $responsavel1->update([
             'estadocivil'=>Request::input('estadocivilresp1'),
             'profissao'=>Request::input('profissaoresp1'),
@@ -843,11 +844,11 @@ class MatriculasController extends Controller
                     'ncasa'=>$ncasa,
                     'bairro'=>$bairro,
                     'complementoendereco'=>$complemento,
-                    'sexo'=>Request::input('sexoresp2')
+                    'sexo'=>Request::input('sexoresponsavel2')
                 ]);
 
-            $idresposnavel2 = Responsavel::find(Request::input('idresponsavel2'));
-            $responsavel12->update([
+            $resposnavel2 = Responsavel::find(Request::input('idresponsavel2'));
+            $resposnavel2->update([
                 'estadocivil'=>Request::input('estadocivilresp2'),
                 'profissao'=>Request::input('profissaoresp2'),
                 'trabalho'=>Request::input('trabalhoresp2'),
@@ -859,11 +860,12 @@ class MatriculasController extends Controller
         }
 
 
-        $idfamilia = Request::input('idfamlia');
+         $idfamilia = Request::input('idfamilia');
+
         DB::table('familia')
             ->where('idfamilia', $idfamilia)
             ->update([
-                'cras'=>Request::input('cras'),
+                'idcras'=>Request::input('cras'),
                 'numnis'=>Request::input('numnis'),
                 'moradia'=>Request::input('moradia'),
                 'arearisco'=>Request::input('arearisco'),

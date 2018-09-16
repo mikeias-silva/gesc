@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label>Idade Mínima*</label>
-                            <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                            <input autofocus name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin"></label>
                             <br>
                         </div>

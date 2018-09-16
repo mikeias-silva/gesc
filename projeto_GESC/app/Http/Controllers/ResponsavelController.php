@@ -60,7 +60,7 @@ class ResponsavelController extends Controller
         $familia->numnis = Request::input('numnis');
         $familia->beneficiopc = Request::input('beneficiopc');
         $familia->bolsafamilia = Request::input('bolsafamilia');
-        $familia->idcras = Request::input('cras');
+        $familia->idcras = Request::input('idcras');
         $familia->rendafamiliar = Request::input('rendafamiliar');
         $familia->save();
         //add familia aos responsavels adicionados por ultimo

@@ -56,23 +56,7 @@
 
                                 </div>
                             </li>
-                             <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/instituicao">
-                                    <i class="material-icons">
-                                        account_balance
-                                        </i>
-                                         Instituição
-                                    
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/cras">
-                                    <i class="material-icons">
-                                        location_city
-                                    </i>
-                                     CRAS/CREAS
-                                </a>
-                            </li>
+                             
                             <li class="nav-item">
                                 <a class="nav-link btn-light" href="" data-toggle="collapse" data-target="#collapseTurmas" >
                                     <i class="material-icons">school</i>
@@ -107,15 +91,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/usuarios">
-                                    <i class="material-icons">
-                                            person_add
-                                    </i>
-                                     Controle de Usuário
-                                  
-                                </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link  btn-light" href="/vagas">
                                     <i class="material-icons">
@@ -126,7 +102,16 @@
                                 </a>
                             </li>
 
-                           
+                            <li class="nav-item">
+                                <a class="nav-link  btn-light" href="/instituicao">
+                                    <i class="material-icons">
+                                        account_balance
+                                        </i>
+                                         Instituição
+                                    
+                                </a>
+                            </li>
+                            
 
                             <li class="nav-item">
                                 <a class="nav-link  btn-light " href="/fichaFrequencia">
@@ -135,6 +120,23 @@
                                     </i>
                                      Ficha de Frequência
                                     
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn-light" href="/cras">
+                                    <i class="material-icons">
+                                        location_city
+                                    </i>
+                                     CRAS/CREAS
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn-light" href="/usuarios">
+                                    <i class="material-icons">
+                                            person_add
+                                    </i>
+                                     Controle de Usuário
+                                  
                                 </a>
                             </li>
 

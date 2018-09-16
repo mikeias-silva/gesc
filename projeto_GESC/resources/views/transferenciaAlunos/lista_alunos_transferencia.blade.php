@@ -43,14 +43,16 @@
         </div>
         <br>
         <span id="msgNenhumSelc"></span>
-        <table class="table table-striped">
+        <table class="table table-striped border">
             <thead>
 
                 <tr>
-                    <th></th>
+                    <th>#</th>
                     <th>Nome</th>
                     <th>Idade</th>
                 </tr>
+            </thead>
+            <tbody>
                 @foreach ($listaAlunos as $c)
                 <tr>
                     <td><input type="checkbox" value="1" name="verificaTransferencia[]"></td>
@@ -59,12 +61,12 @@
                     <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">
                 </tr>
                 @endforeach
-
-                </thead>
+            </tbody>
+                
         </table>
-        <div class="footer">
-            <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Cancelar</a>
+        <div class="footer text-right">
             <button type="submit" class="btn btn-primary">Salvar</button>
+            <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Cancelar</a>
         </div>
     </form>
 @endif

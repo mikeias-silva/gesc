@@ -16,7 +16,8 @@ class VagasController extends Controller {
         //return opa;
         $anopassado = Carbon::now()->year-1;
        // return $anopassado;
-        $vagas = Vaga::all();
+        //$vagas = Vaga::all()->orderBy('anovaga');
+        $vagas = DB::select("select * from vagas order by anovaga, idademin");
         foreach ($vagas as $vaga) {
           //  return dd('opa');
          $vaga->anovaga;
@@ -31,7 +32,8 @@ class VagasController extends Controller {
     public function listaVagas(){
         $this->vagasAnoAnterior();
         
-        $vaga = vaga::all();
+        //$vaga = vaga::all();
+        $vaga = DB::select("select * from vagas order by anovaga, idademin");
         $idadeMin=[];
         $idadeMax=[];
         $anoLista=[];

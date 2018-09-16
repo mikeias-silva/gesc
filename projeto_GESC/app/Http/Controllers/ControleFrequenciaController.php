@@ -44,7 +44,7 @@ class ControleFrequenciaController extends Controller {
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
         && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
-        && EXTRACT(MONTH FROM crianca.datacadastro)<='{$mes}' && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
+        && EXTRACT(MONTH FROM crianca.datacadastro)<='{$mes}' && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}' ORDER BY nomepessoa ASC");
 
         
         $mes= date("m");

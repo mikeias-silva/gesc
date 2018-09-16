@@ -44,10 +44,10 @@
 <table class="table table-bordered table-striped">
     <thead class="thead">
         <tr>
-            <th>Faixa etária</th>
-            <th>Numero de vagas</th>
-            <th>Vagas Ocupadas</th>
-            <th>Vagas restantes</th>
+            <th class="align-top">Faixa etária</th>
+            <th class="align-top">Numero de vagas</th>
+            <th class="align-top">Vagas Ocupadas</th>
+            <th class="align-top">Vagas restantes</th>
            
         </tr> 
     </thead>

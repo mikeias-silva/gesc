@@ -387,7 +387,7 @@
     </div>
 </div>
 
-<form action="/novaMatricula" class="float-right" id="btn-novamatricula">
+<form action="/listagemResponsaveis" class="float-right" id="btn-novamatricula">
     <button class="btn btn-primary">Nova Matrícula</button>
 </form>
 <!--  -->

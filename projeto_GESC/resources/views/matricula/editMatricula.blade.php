@@ -537,7 +537,12 @@
          
 
             <div class="float-right">
+
+                
                 <button type="submit" class="btn btn-primary">Alterar</button>
+                <a href="/listagemMatriculas">
+                    <button class="btn btn-secondary">Cancelar</button>
+                </a>
             </div>
         </div>
     </form>

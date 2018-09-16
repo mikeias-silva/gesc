@@ -68,10 +68,6 @@ class Matricula extends Model
     }
     static function matriculasAtiva(){
       
-        //DB::select('select * from matriculas where idmatricula = ?', 1);
-        
-        //return DB::table('matriculas')->where('statuscadastro', 'Ativo')->get();
-
         return Matricula::where('statuscadastro', 'Ativo')->get();
     }
 

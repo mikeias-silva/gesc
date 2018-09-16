@@ -1,6 +1,7 @@
 drop view if exists parentes;
 create view parentes as         
 select 
+	re.idpessoa,
 	re.nomepessoa nomeresponsavel, re.datanascimento nascimentoresponsavel,
     re.cpf cpfresponsavel, re.rg rgresponsavel, 
     re.emissorrg emissorresponsavel, re.sexo sexoresponsavel,
@@ -58,7 +59,7 @@ select
 	pessoa.cpf cpfcrianca, pessoa.rg rgcrianca, pessoa.sexo sexocrianca, 
     pessoa.emissorrg emissorcrianca, matriculas.idmatricula, 
 	crianca.obssaude,
-	escola.nomeescola,
+	escola.nomeescola, escola.idescola,
     publicoprioritario.publicoprioritario, publicoprioritario.idpublicoprioritario
 from 
 	 crianca, matriculas, pessoa, escola, publicoprioritario
@@ -94,15 +95,3 @@ where
 	matriculas.idvaga = vagas.idvaga
     and matriculas.idcrianca = crianca.idcrianca;
     
-    
-    select * from responsavel; 71
-    
-    select idcrianca from dadosmatricula where anovaga > 2018
-     select idcrianca from dadosmatricula where anovaga = 2018 and idcrianca != 45
-    select * from dadosmatricula where idmatricula = 11;
-    
-    select * from matriculas 58
-    select * from dadoscrianca where idcrianca = 45;
-    select * from turma
-    
-    select * from parentesco where idresponsavel = 53

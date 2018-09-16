@@ -62,7 +62,8 @@ class ResponsavelController extends Controller
         $familia->beneficiopc = Request::input('beneficiopc');
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('idcras');
-        $familia->rendafamiliar = Request::input('rendafamiliar');
+       // $familia->rendapercapta = Request::input('rendafamiliar');
+        // return $familia;
         $familia->save();
         //add familia aos responsavels adicionados por ultimo
         //  $responsavel1->update(array('idfamilia' =>$familia->id));

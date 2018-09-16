@@ -44,21 +44,22 @@ END$$
 DELIMITER ; 
 
 end;
-
-CREATE TRIGGER `tr_valida_cpf` BEFORE insert ON `pessoa`
+CREATE DEFINER=`root`@`localhost` TRIGGER `tr_valida_cpf` BEFORE insert ON `pessoa`
 FOR EACH ROW 
 BEGIN
-IF(NEW.cpf = null)THEN BEGIN
+IF(NEW.cpf = null)THEN 
+BEGIN
+	IF (((SELECT count(*) from pessoa where pessoa.cpf = '11') > 0)) THEN BEGIN
+		SIGNAL SQLSTATE '45000'  
+		SET MESSAGE_TEXT = 'Erro: CPF ja cadastrado';
+	END;  
+	ELSEIF ((SELECT validaCPF(NEW.cpf)) = false) THEN BEGIN  
+		SIGNAL SQLSTATE '45000'  
+		SET MESSAGE_TEXT = 'Erro: CPF inválido';  
+	END;
+	END IF;
 END;
-ELSEIF (((SELECT count(*) from pessoa where pessoa.cpf = '11') > 0)) THEN BEGIN
-SIGNAL SQLSTATE '45000'  
-SET MESSAGE_TEXT = 'Erro: CPF ja cadastrado';
-END;  
-ELSEIF ((SELECT validaCPF(NEW.cpf)) = false) THEN BEGIN  
-SIGNAL SQLSTATE '45000'  
-SET MESSAGE_TEXT = 'Erro: CPF inválido';  
-END;
-END IF; 
+END IF;    
 END
 
 drop trigger if exists tr_valida_cpfupd;

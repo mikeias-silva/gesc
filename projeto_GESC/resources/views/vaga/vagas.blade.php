@@ -310,7 +310,7 @@
         //console.log(cont);
         if(cont>0){
             //console.log("Entra");
-            document.getElementById("msgiadadessobre").innerHTML="<font color='red'>A faixa etária informada sobrepõe a autra cadastrada, por favor verifique</font>";
+            document.getElementById("msgiadadessobre").innerHTML="<font color='red'>A faixa etária informada sobrepõe a outra cadastrada, por favor verifique</font>";
             permissao = false;
         } else {
             document.getElementById("msgiadadessobre").innerHTML="";

@@ -107,7 +107,7 @@
     <td colspan="5">{{$desligamento->nomepessoa}}</td>
     <td colspan="4">{{$desligamento->numnis}}</td>
     <td colspan="3">{{$desligamento->nomecras}}</td>
-    <td colspan="3">{{$desligamento->datainativacao}}</td>
+    <td colspan="3">{{date('d/m/Y', strtotime($desligamento->datainativacao))}}</td>
     <td colspan="11">{{$desligamento->motivoinativacao}}</td>
   </tr>
   <?php
@@ -123,7 +123,7 @@
   <td colspan="4">Nº DO NIS</td>
   <td colspan="4">FONE DE CONTATO</td>
   <td colspan="3">VILA/BAIRRO</td>
-  <td colspan="3">DATA DO ENTRADA</td>
+  <td colspan="3">DATA DA ENTRADA</td>
   <td colspan="7">FORMA DE ACESSO</td>
 </tr>
 <?php

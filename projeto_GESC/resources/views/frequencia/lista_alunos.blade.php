@@ -97,7 +97,7 @@
                         @endforeach
                         @if($cont==0)
                         <div class="col-md-2 centered">
-                            <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                            <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control text-right" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                         </div> 
                             <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">
                             <input name="idfrequencia[]" class="form-control" type="hidden" value="">

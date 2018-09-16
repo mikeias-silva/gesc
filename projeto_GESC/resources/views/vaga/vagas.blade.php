@@ -3,8 +3,8 @@
 <div class="">
 <h1 class="text">Gerenciamento de vagas</h1>
 @if(count($vaga)==0)
-    <div class="alert alert-danger">
-        Você não tem nenhuma faixa etária cadastrada.
+    <div class="alert alert-danger container card-text">
+       Não existem vagas cadastradas
     </div>
 
 @elseif(!empty($vaga))

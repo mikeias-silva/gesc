@@ -13,7 +13,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-6">
                     <label>Nome*</label>
-                    <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
+                    <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off" autofocus/>
                     <span id="msgNomeResp1"></span>
                 </div>
                 
@@ -195,7 +195,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-6">
                     <label>Nome*</label>
-                    <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
+                    <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off" />
                     <span id="msgNomeResp2"></span>
                 </div>
             

@@ -17,7 +17,7 @@
        
          <label for="inputEmail" class="sr-only col-md-3">Email address</label>
         <input name="nomeusuario" id="nomeusuario" required value="{{ old('nomeusuario')}}" type="" id="inputEmail" class="form-control col-md-3 centered
-        " placeholder="Usuário">
+        " placeholder="Usuário" autofocus/>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control col-md-3 centered" placeholder="Senha" required id="password" name="password" autocomplete="new-password">
        <div id="btn-login">

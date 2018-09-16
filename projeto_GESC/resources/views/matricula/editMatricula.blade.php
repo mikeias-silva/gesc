@@ -5,15 +5,15 @@
         
         <div class="container">
             <h4 class="text-center content text-uppercase" id="titulorematricula">ASSOCIAÇÃO DE PROMOÇÃO À MENINA - APAM</h4>
-            <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano }}</h5>
+            <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano-1 }}</h5>
         <br>
         <form action="/confirmarEdit" method="POST">
             {{ csrf_field() }}
-            <input name="idcrianca" type="text" value="{{  $dadoscrianca->idcrianca}}">
-            <input name="idpessoacrianca" type="text" value="{{  $dadoscrianca->idpessoa}}">
-            <input name="idresponsavel1" type="text" value="{{  $responsaveis[0]->idresponsavel}}">
-            <input name="idpessoaresponsavel1" type="text" value="{{  $responsaveis[0]->idpessoa}}">
-            <input name="idfamilia" type="text" value="{{ $dadosfamilia[0]->idfamilia }}">
+            <input name="idcrianca" type="hidden" value="{{ $dadoscrianca->idcrianca }}">
+            <input name="idpessoacrianca" type="hidden" value="{{  $dadoscrianca->idpessoa}}">
+            <input name="idresponsavel1" type="hidden" value="{{  $responsaveis[0]->idresponsavel}}">
+            <input name="idpessoaresponsavel1" type="hidden" value="{{  $responsaveis[0]->idpessoa}}">
+            <input name="idfamilia" type="hidden" value="{{ $dadosfamilia[0]->idfamilia }}">
             
         <div>
                 <div class="form-group " >
@@ -34,11 +34,23 @@
     
                         <div class="col-sm-2">
                             <label>Sexo</label>
-                            @if($dadoscrianca->sexocrianca = 'm')
-                            <input  class="form-control" type="text" value="Masculino"/>
-                            @elseif($dadoscrianca->sexocrianca = 'f')
-                            <input  class="form-control" type="text" value="Feminino"/>
-                            @endif
+                           <select class="form-control" name="sexocrianca" id="">
+
+                                <option value="{{ $dadoscrianca->sexocrianca }}">
+                                    @if ($dadoscrianca->sexocrianca == 'M')
+                                        Masculino
+                                   @else
+                                       Feminino
+                                   @endif
+                                </option>
+
+                                @if ($dadoscrianca->sexocrianca == 'M')
+                                     <option value="F">Feminino</option>
+                                @else
+                                    <option value='M'>Masculino</option>
+                                @endif
+                                
+                           </select>
                         </div>
                     </div>
                 </div>
@@ -112,7 +124,7 @@
                                 <label>Público Prioritário</label>
                                 <select class="form-control" name="idpublicoprioritario" id="">
                                     @foreach ($pprioritario as $pprioritario)
-                                        <option value="{{ $pprioritario->idpublicopriotirario }}">{{ $pprioritario->publicoprioritario }}</option>
+                                        <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -124,8 +136,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Escola</label>
-                                <select name="escola" id="" class="custom-select form-control" >
-                                   <option value="">{{ $dadoscrianca->nomeescola }} </option>
+                                <select name="idescola" id="" class="custom-select form-control" >
+                                   <option value="{{ $dadoscrianca->idescola }}">{{ $dadoscrianca->nomeescola }} </option>
                                     @foreach($escola as $e)
                                         <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                                     @endforeach
@@ -140,7 +152,7 @@
                                 <label>Serie Escolar</label>
                                 <select name="serie" id="" class="custom-select form-control"> 
                                     @foreach ($dadosmatricula as $dadosmatricula)
-                                    <option value="">{{ $dadosmatricula->serieescolar }} </option>
+                                    <option value="{{ $dadosmatricula->serieescolar }}">{{ $dadosmatricula->serieescolar }} </option>
                                    
                                     @endforeach
                                     <option value="1">1º Fundamental</option>
@@ -188,11 +200,23 @@
     
                     <div class="col-sm-2">
                         <label>Sexo</label>
-                        @if($responsaveis[0]->sexoresponsavel = 'm')
-                            <input  class="form-control" type="text" value="Masculino"/>
-                            @elseif($responsaveis[0]->sexoresponsavel = 'f')
-                            <input  class="form-control" type="text" value="Feminino"/>
-                        @endif
+                        <select class="form-control" name="sexoresponsavel1" id="">
+
+                            <option value="{{ $responsaveis[0]->sexoresponsavel }}">
+                                @if ($responsaveis[0]->sexoresponsavel == 'M')
+                                    Masculino
+                                @else
+                                    Feminino
+                                @endif
+                            </option>
+                            
+                            @if ($responsaveis[0]->sexoresponsavel == 'M')
+                                    <option value="F">Feminino</option>
+                            @else
+                                <option value='M'>Masculino</option>
+                            @endif
+                            
+                        </select>
                     </div>
                 </div>
             </div>
@@ -300,7 +324,23 @@
     
                     <div class="col-sm-2">
                             <label>Sexo</label>
-                            <input  value="{{ $responsaveis[1]->sexoresponsavel }}" type="text" class="form-control" name="" id="">
+                            <select class="form-control" name="sexoresponsavel2" id="">
+
+                                <option value="{{ $responsaveis[1]->sexoresponsavel }}">
+                                    @if ($responsaveis[1]->sexoresponsavel == 'M')
+                                        Masculino
+                                    @else
+                                        Feminino
+                                    @endif
+                                </option>
+                                
+                                @if ($responsaveis[1]->sexoresponsavel == 'M')
+                                        <option value="F">Feminino</option>
+                                @else
+                                    <option value='M'>Masculino</option>
+                                @endif
+                                
+                            </select>
                     </div>
                 </div>
             </div>
@@ -496,7 +536,7 @@
            
          
 
-            <div>
+            <div class="float-right">
                 <button type="submit" class="btn btn-primary">Alterar</button>
             </div>
         </div>

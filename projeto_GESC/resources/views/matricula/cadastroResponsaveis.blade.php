@@ -378,7 +378,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                 </div>
                 <div class="col-sm-3">
                     <label>CRAS/CREAS*</label>
-                    <select name="cras" id="" class="custom-select" name="cras">
+                    <select id="" class="custom-select" name="idcras">
                         @foreach($cras as $c)
                             <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
                         @endforeach

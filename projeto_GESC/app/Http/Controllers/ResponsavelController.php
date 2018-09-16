@@ -60,7 +60,7 @@ class ResponsavelController extends Controller
         $familia->numnis = Request::input('numnis');
         $familia->beneficiopc = Request::input('beneficiopc');
         $familia->bolsafamilia = Request::input('bolsafamilia');
-        $familia->idcras = Request::input('cras');
+        $familia->idcras = Request::input('idcras');
         $familia->rendafamiliar = Request::input('rendafamiliar');
         $familia->save();
         //add familia aos responsavels adicionados por ultimo
@@ -170,8 +170,8 @@ class ResponsavelController extends Controller
         $responsavel1->telefone2 = Request::input('tel2resp1');
         $responsavel1->escolaridade = Request::input('escolaridaderesp1');
         $responsavel1->outrasobs = Request::input('obsresp1');
-        $responsavel1->idpessoa = $pessoaresponsavel1->id;
-        $responsavel1->idfamilia = $familia->id;
+        $responsavel1->idpessoa = $pessoaresponsavel1->idpessoa;
+        $responsavel1->idfamilia = $familia->idfamilia;
         $responsavel1->save();
 
         //return $responsavel1->idresponsavel;
@@ -232,8 +232,8 @@ class ResponsavelController extends Controller
             $responsavel2->telefone2 = Request::input('tel2resp2');
             $responsavel2->escolaridade = Request::input('escolaridaderesp2');
             $responsavel2->outrasobs = Request::input('obsresp2');
-            $responsavel2->idpessoa = $pessoaresponsavel2->id;
-            $responsavel2->idfamilia = $familia->id;
+            $responsavel2->idpessoa = $pessoaresponsavel2->idpessoa;
+            $responsavel2->idfamilia = $familia->idfamilia;
             $responsavel2->save();
 
             
@@ -258,7 +258,7 @@ class ResponsavelController extends Controller
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
 
-    if (!empty($responsavel2->id)) {
+    if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,
             'cep'=>$cep,

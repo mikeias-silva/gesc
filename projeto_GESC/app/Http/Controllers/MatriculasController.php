@@ -780,35 +780,59 @@ class MatriculasController extends Controller
         $complemento = Request::input('complemento');
 
         $idpessoacrianca = Request::input('idpessoacrianca');
-        $pessoacrianca = DB::select('select * from pessoa where idpessoa = ?', [$idpessoacrianca]);
-        DB::table('pessoa')
-            ->where('idpessoa', $idpessoacrianca)
-            ->update([
-                'nomepessoa'=>Request::input('nomecrianca'),
-                'rg'=>Request::input('rgcrianca'),
-                'cpf'=>Request::input('cpfcrianca'),
-                'cep'=>$cep,
-                'logradouro'=>$logradouro,
-                'ncasa'=>$ncasa,
-                'bairro'=>$bairro,
-                'complementoendereco'=>$complemento,
-                'sexo'=>Request::input('sexocrianca')
-            ]);
+        $pessoacrianca = Pessoa::findOrFail($idpessoacrianca);
+        $pessoacrianca->update([
+            'nomepessoa'=>Request::input('nomecrianca'),
+            'rg'=>Request::input('rgcrianca'),
+            'cpf'=>Request::input('cpfcrianca'),
+            'cep'=>$cep,
+            'logradouro'=>$logradouro,
+            'ncasa'=>$ncasa,
+            'bairro'=>$bairro,
+            'complementoendereco'=>$complemento,
+            'sexo'=>Request::input('sexocrianca')
+        ]);
+        // DB::table('pessoa')
+        //     ->where('idpessoa', $idpessoacrianca)
+        //     ->update([
+        //         'nomepessoa'=>Request::input('nomecrianca'),
+        //         'rg'=>Request::input('rgcrianca'),
+        //         'cpf'=>Request::input('cpfcrianca'),
+        //         'cep'=>$cep,
+        //         'logradouro'=>$logradouro,
+        //         'ncasa'=>$ncasa,
+        //         'bairro'=>$bairro,
+        //         'complementoendereco'=>$complemento,
+        //         'sexo'=>Request::input('sexocrianca')
+        //     ]);
 
         $idpessoaresponsavel1 = Request::input('idpessoaresponsavel1');
-        DB::table('pessoa')
-            ->where('idpessoa', $idpessoaresponsavel1)
-            ->update([
-                'nomepessoa'=>Request::input('nomeresp1'),
-                'rg'=>Request::input('rgresp1'),
-                'cpf'=>Request::input('cpfresp1'),
-                'cep'=>$cep,
-                'logradouro'=>$logradouro,
-                'ncasa'=>$ncasa,
-                'bairro'=>$bairro,
-                'complementoendereco'=>$complemento,
-                'sexo'=>Request::input('sexoresponsavel1')
-            ]);
+
+        $responsavel1 = Pessoa::findOrFail($idpessoaresponsavel1);
+        $responsavel1->update([
+            'nomepessoa'=>Request::input('nomeresp1'),
+            'rg'=>Request::input('rgresp1'),
+            'cpf'=>Request::input('cpfresp1'),
+            'cep'=>$cep,
+            'logradouro'=>$logradouro,
+            'ncasa'=>$ncasa,
+            'bairro'=>$bairro,
+            'complementoendereco'=>$complemento,
+            'sexo'=>Request::input('sexoresponsavel1')    
+        ]);
+        // DB::table('pessoa')
+        //     ->where('idpessoa', $idpessoaresponsavel1)
+        //     ->update([
+        //         'nomepessoa'=>Request::input('nomeresp1'),
+        //         'rg'=>Request::input('rgresp1'),
+        //         'cpf'=>Request::input('cpfresp1'),
+        //         'cep'=>$cep,
+        //         'logradouro'=>$logradouro,
+        //         'ncasa'=>$ncasa,
+        //         'bairro'=>$bairro,
+        //         'complementoendereco'=>$complemento,
+        //         'sexo'=>Request::input('sexoresponsavel1')
+        //     ]);
         //return  $pessoacrianca = Pessoa::where('idpessoa', '134');
 
         $crianca = Crianca::find(Request::input('idcrianca'));
@@ -833,19 +857,18 @@ class MatriculasController extends Controller
         
         if (!empty(Request::input('idresponsavel2'))) {
             $idpessoaresponsavel2 = Request::input('idpessoaresponsavel2');
-            DB::table('pessoa')
-                ->where('idpessoa', $idpessoaresponsavel2)
-                ->update([
-                    'nomepessoa'=>Request::input('nomeresp2'),
-                    'rg'=>Request::input('rgresp2'),
-                    'cpf'=>Request::input('cpfresp2'),
-                    'cep'=>$cep,
-                    'logradouro'=>$logradouro,
-                    'ncasa'=>$ncasa,
-                    'bairro'=>$bairro,
-                    'complementoendereco'=>$complemento,
-                    'sexo'=>Request::input('sexoresponsavel2')
-                ]);
+            $responsavel2 = Pessoa::findOrFail($idpessoaresponsavel2);
+            $responsavel2->update([
+                'nomepessoa'=>Request::input('nomeresp2'),
+                'rg'=>Request::input('rgresp2'),
+                'cpf'=>Request::input('cpfresp2'),
+                'cep'=>$cep,
+                'logradouro'=>$logradouro,
+                'ncasa'=>$ncasa,
+                'bairro'=>$bairro,
+                'complementoendereco'=>$complemento,
+                'sexo'=>Request::input('sexoresponsavel2')    
+            ]);
 
             $resposnavel2 = Responsavel::find(Request::input('idresponsavel2'));
             $resposnavel2->update([
@@ -862,16 +885,26 @@ class MatriculasController extends Controller
 
          $idfamilia = Request::input('idfamilia');
 
-        DB::table('familia')
-            ->where('idfamilia', $idfamilia)
-            ->update([
-                'idcras'=>Request::input('cras'),
-                'numnis'=>Request::input('numnis'),
-                'moradia'=>Request::input('moradia'),
-                'arearisco'=>Request::input('arearisco'),
-                'bolsafamilia'=>Request::input('bolsafamiliar'),
-                'beneficiopc'=>Request::input('beneficiopc')
-            ]);
+        $familia = Familia::findOrFail($idfamilia);
+       
+        $familia->update([
+            'idcras'=>Request::input('idcras'),
+            'numnis'=>Request::input('numnis'),
+            'moradia'=>Request::input('moradia'),
+            'arearisco'=>Request::input('arearisco'),
+            'bolsafamilia'=>Request::input('bolsafamiliar'),
+            'beneficiopc'=>Request::input('beneficiopc')
+        ]);
+        // DB::table('familia')
+        //     ->where('idfamilia', $idfamilia)
+        //     ->update([
+        //         'idcras'=>Request::input('cras'),
+        //         'numnis'=>Request::input('numnis'),
+        //         'moradia'=>Request::input('moradia'),
+        //         'arearisco'=>Request::input('arearisco'),
+        //         'bolsafamilia'=>Request::input('bolsafamiliar'),
+        //         'beneficiopc'=>Request::input('beneficiopc')
+        //     ]);
        
 
         //return $pessoacrianca;

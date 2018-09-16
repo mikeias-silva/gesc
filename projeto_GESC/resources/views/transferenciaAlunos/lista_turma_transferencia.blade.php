@@ -8,7 +8,7 @@
     </div>
 
 @elseif(!empty($listaTurmas))
-<table class="table table-striped">
+<table class="table table-striped border">
     <thead>
         <tr>
             <th>Turma</th>
@@ -17,6 +17,8 @@
             <th>Número de Alunos</th>
             <th>Transferir Alunos</th>
         </tr>
+    </thead>
+    <tbody>
         <?php
             $cont=0;
         ?>
@@ -32,14 +34,15 @@
                 <td>{{ $c->Nome }}</td>
                 <td>{{$numeroAlunos[$cont]}}</td>
                 <td>
-                    <a class="btn btn-info" href="{{"/transferencia_alunos/{$c->idturma }/"}}">Transferir Alunos</a>
+                    <a class="btn btn-info" id="btn-frequencia" href="{{"/transferencia_alunos/{$c->idturma }/"}}">Transferir Alunos</a>
                 </td>
             </tr>
             <?php
                 $cont++;
             ?>
         @endforeach
-    </thead>
+    </tbody>
+    
 </table>
 @endif
 

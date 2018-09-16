@@ -187,3 +187,18 @@ h4, h2, h1{
 
     }
 }
+
+#btn-frequencia{
+    margin: 0px 0px 0px 0px !important;
+}
+
+.lancaFrequancia{
+    background-color: #007bff; /* Green */
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

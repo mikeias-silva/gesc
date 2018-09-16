@@ -8,7 +8,7 @@
     </div>
 
 @elseif(!empty($listaTurmas))
-<table class="table table-striped">
+<table class="table table-striped border">
     <thead>
         <tr>
             <th>Turma</th>
@@ -17,11 +17,13 @@
             <th>Número de Alunos</th>
             <th>Lançar número de faltas</th>
         </tr>
+    </thead>
+    <tbody>
         <?php
             $cont=0;
         ?>
         @foreach ($listaTurmas as $c)
-            <tr>
+            <tr role="row">
                 <td> {{ $c->GrupoConvivencia }} </td>
                 @if($c->Turno=="m")
                     <td>Manhã</td>
@@ -32,14 +34,14 @@
                 <td>{{ $c->Nome }}</td>
                 <td>{{$numeroAlunos[$cont]}}</td>
                 <td>
-                    <a class="btn btn-info" href="{{"/controle_frequencia/{$c->idturma }/turma/{$mes}"}}">Lançar faltas</a>
+                    <a href="{{"/controle_frequencia/{$c->idturma }/turma/{$mes}"}}" class="btn btn-primary" id="btn-frequencia">Lançar faltas</a>
                 </td>
             </tr>
             <?php
                 $cont++;
             ?>
         @endforeach
-    </thead>
+    </tbody>
 </table>
 @endif
 

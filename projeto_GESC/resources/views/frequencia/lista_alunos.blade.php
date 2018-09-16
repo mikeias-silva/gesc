@@ -62,24 +62,32 @@
         <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Voltar</a>
 
     @elseif(!empty($listaAlunos))
-    <table class="table table-striped">
+    <div class="col-md-11 centered">
+    <table class="table table-striped border">
         <thead>
 
             <tr>
                 <th>Nome</th>
-                <th>Número de faltas no mês</th>
+                <th class="text-center">Número de faltas no mês</th>
             </tr>
-    
+        </thead>
+        <tbody>
             @foreach ($listaAlunos as $c)
                 <?php
                     $cont=0;
                 ?>
                 <tr>
+                <div class="col-md-10">
                     <td>{{$c->nomepessoa}}</td>
-                    <td>
+                </div>  
+                    <td class="text-center">
                         @foreach($frequenciaAtual as $f)
                             @if($f->idmatricula==$c->idmatricula)
-                                <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control" type="text" value="{{$f->totalfaltas}}" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                            <div class="text-center">
+                            <div class="col-md-2 centered">
+                                <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control text-right" type="text" value="{{$f->totalfaltas}}" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                            </div> 
+                            </div>    
                                 <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">
                                 <input name="idfrequencia[]" class="form-control" type="hidden" value="{{$f->idfrequencia}}">
                                 <?php
@@ -88,7 +96,9 @@
                             @endif
                         @endforeach
                         @if($cont==0)
+                        <div class="col-md-2 centered">
                             <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                        </div> 
                             <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">
                             <input name="idfrequencia[]" class="form-control" type="hidden" value="">
                         @endif
@@ -96,16 +106,17 @@
                 </tr>
     
             @endforeach
-        </thead>
+        </tbody>
     </table>
-    <div class="footer">
-        <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Cancelar</a>
+    <div class="footer text-right">
         @if($dias_funcionamento[0]->numero=="")
         <button type="submit" class="btn btn-primary" disabled>Salvar</button>
         @else
         <button type="submit" class="btn btn-primary">Salvar</button>
         @endif
+        <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Cancelar</a>
     </div>
+</div>
 </form>
 @endif
 

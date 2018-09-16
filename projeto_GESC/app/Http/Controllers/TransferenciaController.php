@@ -69,7 +69,7 @@ class TransferenciaController extends Controller {
         $aux=0;
         $numeroAlunos=[];
         $listaTurmas = DB::select("select turma.idturma, turma.grupoconvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
-        where usuario.id = turma.idUsuario && turma.statusTurma = 1 && turma.idturma!='{$idturma}'");
+        where usuario.id = turma.idUsuario && turma.statusTurma = 1 && turma.idturma!='{$idturma}' ");
 
         foreach($listaTurmas as $c){
             $aux = DB::select("select count(idturma) as numero from gesc.`matriculas` where idturma='{$c->idturma}'");
@@ -79,7 +79,7 @@ class TransferenciaController extends Controller {
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula, pessoa.datanascimento from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
         && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
-        && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
+        && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}' ORDER BY nomepessoa ASC");
 
         for ($i=0; $i<count($listaAlunos); $i++){
             //calculaIdade("2000-02-20");

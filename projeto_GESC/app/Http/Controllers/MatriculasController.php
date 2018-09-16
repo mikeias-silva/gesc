@@ -57,10 +57,12 @@ class MatriculasController extends Controller
        // $matInativas = DadosMatricula::matriculasInativas();
         $turmas = Turma::all();
 
+        $vagas = Vaga::vagaMatricula();
+
         /*$matAtivas = Matricula::vagasMatriculas();
         return $matAtivas;*/
         return view('matricula.matriculas')->with('matAtivas', $matAtivas)->with('matInativas', $matInativas)
-        ->with('matEspera', $matEspera)->with('turmas', $turmas)->with('ano', $ano);
+        ->with('matEspera', $matEspera)->with('turmas', $turmas)->with('ano', $ano)->with('vagas', $vagas);
        
       //return view('matricula.matriculas');
     }
@@ -407,7 +409,7 @@ class MatriculasController extends Controller
 
         $idade = $hoje->diffInYears($datanascimentocrianca);
 
-        $vagas = Vaga::all();
+        $vagas = Vaga::vagaMatricula();
         foreach($vagas as $vaga){
             if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
                 $idademin = $vaga->idademin;
@@ -513,6 +515,7 @@ class MatriculasController extends Controller
         $escola = Escola::all();
         //return $nomematricula;
 
+        $vagas = Vaga::vagaRematricula();
         $ano = Carbon::now()->year+1;
         $dados = [
             'responsaveis'=>$parentes,
@@ -522,7 +525,8 @@ class MatriculasController extends Controller
             'cras'=>$cras,
             'pprioritario'=>$pprioritario,
             'escola'=>$escola,
-            'ano'=>$ano   
+            'ano'=>$ano,
+            'vagas'=>$vagas 
         ];
 
        // return $dados;
@@ -665,12 +669,15 @@ class MatriculasController extends Controller
 
     public function precisamRematricular(){
         //$idcriancarematriculada = DB::select('select idcrianca from dadosmatricula where anovaga > ?', [1]) 
-        $anovaga = Carbon::now()->year;
+        $ano = Carbon::now()->year+1;
 
-        $precisamRematricula = DadosMatricula::rematricula($anovaga);
+        $precisamRematricula = DadosMatricula::rematricula();
 
+        $vagas = Vaga::vagaRematricula();
         $dados = [
-            'matRematricula'=>$precisamRematricula
+            'matRematricula'=>$precisamRematricula,
+            'vagas'=>$vagas,
+            'ano'=>$ano
         ];
         return view('matricula.listagemRematricula', $dados);
     }

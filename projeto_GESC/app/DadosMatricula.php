@@ -72,7 +72,8 @@ class DadosMatricula extends Model
         return DadosMatricula::where('anovaga', $anovaga)->get();
     }
 
-    static function rematricula($anovaga){
+    static function rematricula(){
+        $anovaga = Carbon::now()->year;
         $dadomatricula = DadosMatricula::where('anovaga', '>', $anovaga);
         //dd($dadomatricula);
        // return dd($dadomatricula->idcrianca);

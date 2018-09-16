@@ -1,12 +1,21 @@
 @extends('layout.principal') 
 @section('conteudo')
-<div class="container">
-<h2>Matriculas ativas</h2>
 
-<table id="dtRematricula" class="table table-striped border">
+<h2>Precisam Rematricular</h2>
+
+@if (empty($vagas))
+
+<div class="alert alert-danger">
+   Não existem Vagas para {{ $ano }} cadastradas.
+</div>
+       
+@else
+       
+
+<table id="dtAtivas" class="table table-striped border">
         <thead>
             <tr>
-                    <th>
+                <th>
                     Nome
                        
                     <i class="material-icons float-right">
@@ -55,21 +64,21 @@
             <tr>
                 <td>{{ $matA->nomeMatricula() }}</td>
                 <td>{{ $matA->nomeTurma() }}</td>
-                @if ($matA->idadeMatricula() < 10)
-                <td>0{{ $matA->idadeMatricula() }} anos</td>
-                @endif
-                @if ($matA->idadeMatricula() > 9)
-                <td>{{ $matA->idadeMatricula() }} anos</td>
-                @endif
+                    @if ($matA->idadeMatricula() < 10)
+                    <td>0{{ $matA->idadeMatricula() }} anos</td>
+                    @endif
+                    @if ($matA->idadeMatricula() > 9)
+                    <td>{{ $matA->idadeMatricula() }} anos</td>
+                    @endif
                  
                  
                 <td>{{ $matA->anoMatricula() }}</td>
                 <td>
-                        <a href="/confirmarRematricula/{{ $matA->idmatricula }}" class="text text-info">
-                            <i class="material-icons">
-                                add_box
-                            </i>
-                        </a>
+                    <a href="/confirmarRematricula/{{ $matA->idmatricula }}" class="text text-info">
+                        <i class="material-icons">
+                            add_box
+                        </i>
+                    </a>
                       
                        <!--   href="/confirmarRematricula/ dadosmatricula->idmatricula "-->
                 </td>
@@ -79,7 +88,7 @@
           
             
     </table> 
-</div>
+
 <!-- Modal Center modal de inativacao-->
 <div class="modal fade" id="inativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -184,18 +193,15 @@
 
 
 
-<!--  -->
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
-
-
 
 <script>
 
     $(document).ready(function () {
-    $('#dtRematricula').DataTable();
+    $('#dtAtivas').DataTable();
     $('.dataTables_length').addClass('bs-select');
-  });
+  })
   
        
       
@@ -203,7 +209,7 @@
 
 
 <script>
-    $('#dtRematricula').DataTable({
+    $('#dtAtivas').DataTable({
         "language": {
             "zeroRecords": "nada encontrado",
             "infoEmpty": "Não há nenhum registro",
@@ -247,5 +253,5 @@
     
     });
 </script>
-
+@endif
 @stop

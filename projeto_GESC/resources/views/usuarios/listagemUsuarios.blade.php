@@ -24,6 +24,11 @@
         <td>{{ $c->email }}</td>
         <td>{{ $c->tipousuario }}</td>
         <td>
+            @if ($c->tipousuario == 'SuperUser')
+                
+            @else
+                
+            
           <!--    <button type="button" class="btn btn-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
                 data-myemail="{{ $c->email }}" data-mysenha="{{ $c->password }}" data-mytipousuario="{{ $c->tipousuario }}" 
                 data-mynomeusuario="{{ $c->nomeusuario }}" 
@@ -65,7 +70,7 @@
                 </a>
 
             @endif
-
+            @endif
         </td>
     </tr>
     @endforeach

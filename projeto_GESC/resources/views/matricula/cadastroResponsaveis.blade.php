@@ -13,7 +13,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-6">
                     <label>Nome*</label>
-                    <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
+                    <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off" autofocus/>
                     <span id="msgNomeResp1"></span>
                 </div>
                 
@@ -195,7 +195,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             <div class="row">
                 <div class="col-sm-6">
                     <label>Nome*</label>
-                    <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
+                    <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off" />
                     <span id="msgNomeResp2"></span>
                 </div>
             
@@ -218,7 +218,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
 
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-">
+                <div class="col-sm-2">
                     <label>RG</label>
                     <input type="text" class="form-control" name="rgresp2" id="rgresp2" autocomplete="off" onkeyup="mascara(this, Rg);" maxlength="9">
                     <span id="msgRgResp2"></span>
@@ -378,7 +378,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                 </div>
                 <div class="col-sm-3">
                     <label>CRAS/CREAS*</label>
-                    <select id="" class="custom-select" name="idcras">
+                    <select id="" class="custom-select form-control" name="idcras">
                         @foreach($cras as $c)
                             <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
                         @endforeach
@@ -387,7 +387,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                 <div class="col-sm-3">
                     <label>Renda familiar</label>
                     <select name="rendafamiliar" id="" class="custom-select form-control">
-                        <option value="1 a 2 salarios minimo">1 à 2 salários minimo</option>
+                        <option value="um minimo">1 à 2 salários minimo</option>
                         <option value="2 a 3 salarios minimo">2 à 3 salários minimo</option>
                         <option value="Mais de 3 salarios minimos">Mais de 3 salarios minimos</option>
                     </select>

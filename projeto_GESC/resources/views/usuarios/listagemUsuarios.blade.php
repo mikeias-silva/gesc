@@ -100,7 +100,7 @@
                     <input type="hidden" name="statususuario" value="1">
                     <input name="listaNomeUsuarios" class="form-control" type="hidden" value="{{$string}}" maxlength="255" autocomplete="off">
                     <label>Nome*</label>
-                    <input name="nome" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
+                    <input autofocus name="nome" class="form-control" type="text" value="" maxlength="255" autocomplete="off">
                     <label id="msgnome"></label>
                     <br>
                     <label>E-mail*</label>

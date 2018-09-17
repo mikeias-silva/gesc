@@ -90,11 +90,11 @@
                     <input type="hidden" name="statuscras" value="1">
 
                     <label>Nome*</label>
-                    <input name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
+                    <input  name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" autofocus />
                     <label id="msgcras"></label>
                     <br>
                     <label>Telefone*</label>
-                    <input name="telefone" id="telefone" class="form-control" maxlength="11" autocomplete="off" onkeyup="mascara( this, mtel );">
+                    <input name="telefone" id="telefone" class="form-control" maxlength="11" autocomplete="off" onkeyup="mascara( this, mtel );"/>
                     <label id="msgtelefone"></label>
                     <br>
                     <div class="modal-footer">

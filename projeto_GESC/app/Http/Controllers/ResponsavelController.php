@@ -19,6 +19,7 @@ use Request;
 
 use App\PublicoPrioritario;
 
+use App\Vaga;
 
 class ResponsavelController extends Controller
 {
@@ -26,8 +27,8 @@ class ResponsavelController extends Controller
     public function responsaveis(){
 
         $responsaveis = Responsavel::all();
-       // return $responsaveis;   
-        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis);
+        $vagas = Vaga::vagaMatricula();
+        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas);
     }
 
     public function novoResponsavel(){
@@ -61,7 +62,8 @@ class ResponsavelController extends Controller
         $familia->beneficiopc = Request::input('beneficiopc');
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('idcras');
-        $familia->rendafamiliar = Request::input('rendafamiliar');
+       // $familia->rendapercapta = Request::input('rendafamiliar');
+        // return $familia;
         $familia->save();
         //add familia aos responsavels adicionados por ultimo
         //  $responsavel1->update(array('idfamilia' =>$familia->id));

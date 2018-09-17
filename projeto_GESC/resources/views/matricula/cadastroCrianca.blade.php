@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-sm-6" >
                         <label>Nome</label>
-                        <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
+                        <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off" autofocus/>
                         <span id="msgNomeCrianca"></span>
                     </div>
                          

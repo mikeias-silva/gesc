@@ -31,10 +31,13 @@ passo 7 - acessar via terminal a pasta do local onde foi descompactada (C:/)
 passo 8 - executar o comando 
         composer install e composer update
 
-passo 9 - acessar via terminal a pasta do local onde foi descompactada (C:/)
+passo 9 - executar o comando de instalação do framework Laravel
+        - composer global require "laravel/installer"
+
+passo 10 - acessar via terminal a pasta do local onde foi descompactada (C:/)
      Ex: c:/gesc/projeto_gesc
 
-passo 10 - executar o comando php artisan serve
+passo 11 - executar o comando php artisan serve
         verificar se o comando está em execução
 
-passo 11 - acessar pelo navegador localhost:8000/login2
+passo 12 - acessar pelo navegador localhost:8000/login2

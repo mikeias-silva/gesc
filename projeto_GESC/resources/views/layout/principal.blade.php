@@ -1,154 +1,158 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <!-- =========== Trecho ABAIXO que nao esta sendo utilizado mais ======= -->
-    <!--webService CEP-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous">
-    </script>
-
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="pingback" href="http://themes.getbootstrap.com/xmlrpc.php">
-    <link rel="apple-touch-icon" sizes="180x180" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon-16x16.png">
-    <link rel="manifest" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/manifest.json">
-    <link rel="shortcut icon" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/favicon.ico">
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/jquery.min.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/Chart.min.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/Chart.bundle.min.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/tether.min.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/popper.min.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/bootstrap.min.js"></script>
-    <script src="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/javascript/scripts.js?ver=1516485707"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-   
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-   
-   
-   
-  <!-- =========== Trecho ACIMA que nao esta sendo utilizado mais ======= -->
+@extends('layout.header')
+@section('content')
    
 
-
-
-   <!--  <script src="{{ asset('js/app.js') }}" defer></script>
-   -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-   <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-   
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="js/btnAtivo-inativo.js"></script>
-
-    <title>GESC - Gerenciamento de Serviço de Convivência</title>
-</head>
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><h3>GESC</h3></a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">
+                <h3>GESC</h3>
+            </a>
         </nav>
         @yield('login')
         <div class="container-fluid">
             <div class="row">
                 <nav class=" col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
+                    <div class="sidebar-sticky navbar-collapse">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" id="btnmenu" href="dashboard">
-                                        <i class="fa fa-home fa-2x"></i> 
+                               
+                            <li class="nav-item active">
+                                <a class="nav-link  btn-light" id="menu" href="/dashboard">
+                                    <i class="material-icons">home</i> 
                                         Página inicial
-                                    
                                 </a>
                             </li>
                          
                             <li class="nav-item">
-                                <a class="nav-link btn-light" id="btnmenu" href="matriculas">
-                                        <i class="fa fa-address-book fa-2x"></i>
+                                <a class="nav-link  btn-light" href="" data-toggle="collapse" data-target="#collapseExample" >
+                                    <i class="material-icons">library_books</i>
                                         Matriculas
                                 </a>
+                                <div class="collapse" id="collapseExample">
+                                    <div>
+                                        <ul> 
+                                            <li>
+                                                <a class="nav-link btn-light" id="removerlink" href="/listagemResponsaveis">Nova Matrícula
+                                                </a>
+                                            </li>
+                                         
+                                            <li>
+                                                <a class="nav-link btn-light" id="removerlink" href="/listagemMatriculas">Matriculas atuais
+                                                </a>
+                                            </li>
+                                            {{-- <li >
+                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/seguinte">Matriculas seguinte
+                                                </a>
+                                            </li> --}}
+                                            <li >
+                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/anteriores">Matriculas anteriores
+                                                </a>
+                                            </li>
+                                             <li >
+                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/rematriculas">Rematricula
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </li>
-                  
-                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="instituicao">
-                                        <i class="fa fa-bank fa-2x"></i>
+                             
+                            <li class="nav-item">
+                                <a class="nav-link btn-light" href="" data-toggle="collapse" data-target="#collapseTurmas" >
+                                    <i class="material-icons">school</i>
+                                        Controle de Turmas
+                                </a>
+                                <div class="collapse" id="collapseTurmas">
+                                    <div>
+                                        <ul> 
+                                        <li class="nav-item">
+                                            <a class="nav-link btn-light" href="/turmas">
+                                               
+                                                Turmas
+                                            
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link  btn-light" href="/controle_frequencia">
+                                                
+                                                 Controle de Frequência
+                                               
+                                            </a>
+                                        </li>
+            
+                                        <li class="nav-item">
+                                            <a class="nav-link  btn-light" href="/transferencia_alunos">
+                                              
+                                                 Transferencia de Alunos
+                                               
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link  btn-light" href="/vagas">
+                                    <i class="material-icons">
+                                        compare_arrows
+                                    </i>
+                                     Controle de Vagas
+                                   
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  btn-light" href="/instituicao">
+                                    <i class="material-icons">
+                                        account_balance
+                                        </i>
                                          Instituição
                                     
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/cras">
-                                    <i class="fa fa-university fa-2x"></i>
-                                     CRAS/CREAS
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/turmas">
-                                    <i class="fa fa-teacher fa-2x"></i>
-                                     Turmas
-                                   
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/usuarios">
-                                    <i class="fa fa-user-plus fa-2x" ></i>
-                                     Gerenciamento de Usuário
-                                  
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/vagas">
-                                    <i class="fa fa-user-plus fa-2x" ></i>
-                                     Gerenciamento de Vagas
-                                   
-                                </a>
-                            </li>
+                            
 
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/controle_frequencia">
-                                    <i class="fa fa-graduation-cap fa-2x" ></i>
-                                     Controle de Frequência
-                                   
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link btn-light" href="/transferencia_alunos">
-                                    <i class="fa fa-graduation-cap fa-2x" ></i>
-                                     Transferencia de Alunos
-                                   
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link btn-light " href="/fichaFrequencia">
-                                    <i class="fa fa-graduation-cap fa-2x" ></i>
+                                <a class="nav-link  btn-light " href="/fichaFrequencia">
+                                    <i class="material-icons">
+                                        description
+                                    </i>
                                      Ficha de Frequência
                                     
                                 </a>
                             </li>
-
                             <li class="nav-item">
-                                <a class="nav-link btn-light" href="/logout">
-                                    <i class="fa fa-sign-out fa-2x" ></i>
-                                     Sair
+                                <a class="nav-link  btn-light" href="/cras">
+                                    <i class="material-icons">
+                                        location_city
+                                    </i>
+                                     CRAS/CREAS
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  btn-light" href="/usuarios">
+                                    <i class="material-icons">
+                                            person_add
+                                    </i>
+                                     Controle de Usuário
                                   
                                 </a>
                             </li>
 
+                            <li class="">
+                                <a class="nav-link  btn-light" href="/logout">
+                                    <i class="material-icons">power_settings_new 
+                                    </i>
+                                    Sair
+                                  <!--   <span>SAIR</span>--> 
+                                </a>
+                            </li>
+                            
                         </ul>
-
+                        
                     </div>
+                    
                 </nav>
             </div>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -160,11 +164,14 @@
                             <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
                         </div>
                     </div>       
+                  
                 @yield('conteudo')
 
             </main>
 
+           
 <script>
+
 
 $('#editar').on('show.bs.modal', function (event) {
     console.log('modal opened');
@@ -189,32 +196,6 @@ $('#excluir').on('show.bs.modal', function (event) {
    
     
 });
-$('#excluirturma').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
-    var modal = $(this)
-   // modal.find('.modal-body #crasId').val(id);
-    modal.find('.modal-body #idturma').val(id);
-    console.log(id);
-    console.log("EXCLUIR modal turma");
-    
-});
-
-$('#editarturma').on('show.bs.modal', function (event) {
-    console.log('modal opened');
-    var button = $(event.relatedTarget) 
-    var nome = button.data('mygrupo')
-    var turno = button.data('myturno')
-    var educador = button.data('myeducador') 
-    var id = button.data('myid') 
-    var modal = $(this)
-    console.log(turno.value);
-    modal.find('.modal-body #GrupoConvivencia').val(nome)
-    modal.find('.modal-body #turno').val(turno)
-    modal.find('.modal-body #educador').val(educador)
-    modal.find('.modal-body #idturma').val(id)
-
-});
 
 /*
     Valicações de usuários
@@ -223,19 +204,23 @@ $('#editarturma').on('show.bs.modal', function (event) {
 
 $('#incluirusuario').on('hidden.bs.modal', function (event) {
     $(this).find('input:text').val('');
+    $(this).find('input:password').val('');
     document.getElementById("adm").checked = true;
     document.getElementById("msgemail").innerHTML="";
     document.getElementById("msgnomeusuario").innerHTML="";
     document.getElementById("msgsenha").innerHTML="";
     document.getElementById("msgnome").innerHTML="";
+    document.getElementById("msgpasswordConfirm").innerHTML="";
 });
 
 $('#editarusuario').on('hidden.bs.modal', function (event) {
     $(this).find('input:text').val('');
+    $(this).find('input:password').val('');
     document.getElementById("msgemail_edit").innerHTML="";
     document.getElementById("msgnomeusuario_edit").innerHTML="";
     document.getElementById("msgsenha_edit").innerHTML="";
     document.getElementById("msgnome_edit").innerHTML="";
+    document.getElementById("msgpasswordConfirm_edit").innerHTML="";
 });
 
 $('#editarusuario').on('show.bs.modal', function (event) {
@@ -283,7 +268,7 @@ $('#inativar').on('show.bs.modal', function (event) {
     console.log(id);
 });
 
-function validar(nome, senha, email, nomeusuario, listaUsuario) {
+function validar(nome, senha, email, nomeusuario, listaUsuario, confirmacaoSenha) {
     //console.log(listaUsuario.value);
     var i, array_user;
     var cont=0;
@@ -294,6 +279,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario) {
     var tesSenha = senha.value;
     var tesEmail = email.value;
     var tesNomeUsuario = nomeusuario.value;
+    var confirmacaoSenha = confirmacaoSenha.value;
     usuario = email.value.substring(0, email.value.indexOf("@"));
     dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length);
 
@@ -305,7 +291,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario) {
     }
 
     if (tesNome == "") {
-        document.getElementById("msgnome").innerHTML="<font color='red'>Preencha o campo com seu nome</font>";
+        document.getElementById("msgnome").innerHTML="<font color='red'>Campo obrigatório</font>";
         console.log('Preencha o campo com seu nome');
         //alert('Preencha o campo com seu nome');
         //document.getElementById("msgnome").innerHTML="O campo nome é obrigatório";
@@ -315,7 +301,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario) {
     }
 
     if (tesSenha == "") {
-        document.getElementById("msgsenha").innerHTML="<font color='red'>Preencha o campo senha</font>";
+        document.getElementById("msgsenha").innerHTML="<font color='red'>Campo obrigatório</font>";
         console.log('Preencha o campo senha');
         permissao = false;
     } else {
@@ -323,7 +309,7 @@ function validar(nome, senha, email, nomeusuario, listaUsuario) {
     }
 
     if (tesEmail == "") {
-        document.getElementById("msgemail").innerHTML="<font color='red'>Informe o email</font>";
+        document.getElementById("msgemail").innerHTML="<font color='red'>Campo obrigatório</font>";
         //console.log('Preencha o campo senha');
         permissao = false;
     } else if ((usuario.length >=1) &&
@@ -337,28 +323,44 @@ function validar(nome, senha, email, nomeusuario, listaUsuario) {
             (dominio.lastIndexOf(".") < dominio.length - 1)) {
                 document.getElementById("msgemail").innerHTML="";
                 //alert("E-mail valido");
-                console.log("E-mail valido");
+                //console.log("E-mail valido");
     } else {
-        document.getElementById("msgemail").innerHTML="<font color='red'>E-mail inválido </font>";
+        document.getElementById("msgemail").innerHTML="<font color='red'>O e-mail informado não é válido, por favor verifique</font>";
         permissao = false;
     }
 
     if (tesNomeUsuario == "") {
-        document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Informe o nome de usuário</font>";
-        console.log('Preencha o campo nome usuário');
+        document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if (cont>0){
         document.getElementById("msgnomeusuario").innerHTML="<font color='red'>Nome de usuário já cadastrado, por favor informe outro</font>";
-        console.log('Nome de usuário repetido');
         permissao = false;
     } else {
         document.getElementById("msgnomeusuario").innerHTML="";
     }
 
+    if (confirmacaoSenha == "") {
+        document.getElementById("msgpasswordConfirm").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgpasswordConfirm").innerHTML="";
+    }
+
+    if(confirmacaoSenha != "" && tesSenha != ""){
+        if(confirmacaoSenha != tesSenha){
+            document.getElementById("msgsenha").innerHTML="<font color='red'>As senhas informadas não coincidem, por favor verifique</font>";
+            document.getElementById("msgpasswordConfirm").innerHTML="<font color='red'>As senhas informadas não coincidem, por favor verifique</font>";
+            permissao = false;
+        } else {
+            document.getElementById("msgsenha").innerHTML="";
+            document.getElementById("msgpasswordConfirm").innerHTML="";
+        }
+    }
+
     return permissao;
 }
 
-function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuarioAtual) {
+function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuarioAtual, confirmacaoSenha) {
     var i, array_user;
     var cont=0;
     array_user = listaUsuario.value.split("|");
@@ -369,35 +371,25 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     var tesEmail = email.value;
     var tesNomeUsuario = nomeusuario.value;
     var tesNomeUsuarioAtual = nomeUsuarioAtual.value;
+    var confirmacaoSenha = confirmacaoSenha.value;
     usuario = email.value.substring(0, email.value.indexOf("@"));
     dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length);
     console.log(tesNomeUsuarioAtual);
     for (i in array_user){
         if(array_user[i]==tesNomeUsuario){
-            console.log(array_user[i]);
+            //console.log(array_user[i]);
             cont++;
         }
     }
     if (tesNome == "") {
-        document.getElementById("msgnome_edit").innerHTML="<font color='red'>Preencha o campo com seu nome</font>";
-        console.log('Preencha o campo com seu nome');
-        //alert('Preencha o campo com seu nome');
-        //document.getElementById("msgnome").innerHTML="O campo nome é obrigatório";
+        document.getElementById("msgnome_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgnome_edit").innerHTML="";
     }
 
-    /*if (tesSenha == "") {
-        document.getElementById("msgsenha_edit").innerHTML="<font color='red'>Preencha o campo senha</font>";
-        console.log('Preencha o campo senha');
-        permissao = false;
-    } else {
-        document.getElementById("msgsenha_edit").innerHTML="";
-    }*/
-
     if (tesEmail == "") {
-        document.getElementById("msgemail_edit").innerHTML="<font color='red'>Informe o email</font>";
+        document.getElementById("msgemail_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         //console.log('Preencha o campo senha');
         permissao = false;
     } else if ((usuario.length >=1) &&
@@ -418,15 +410,24 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     }
 
     if (tesNomeUsuario == "") {
-        document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Informe o nome de usuário</font>";
-        console.log('Preencha o campo nome usuário');
+        document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(cont>1 && tesNomeUsuarioAtual!=tesNomeUsuario){
         document.getElementById("msgnomeusuario_edit").innerHTML="<font color='red'>Nome de usuário já cadastrado, por favor informe outro</font>";
-        console.log('Nome de usuário repetido');
         permissao = false;
     } else {
         document.getElementById("msgnomeusuario_edit").innerHTML="";
+    }
+
+    if(confirmacaoSenha != "" || tesSenha != ""){
+        if(confirmacaoSenha != tesSenha){
+            document.getElementById("msgsenha_edit").innerHTML="<font color='red'>As senhas informadas não coincidem, por favor verifique</font>";
+            document.getElementById("msgpasswordConfirm_edit").innerHTML="<font color='red'>As senhas informadas não coincidem, por favor verifique</font>";
+            permissao = false;
+        } else {
+            document.getElementById("msgsenha_edit").innerHTML="";
+            document.getElementById("msgpasswordConfirm_edit").innerHTML="";
+        }
     }
 
     return permissao;
@@ -461,6 +462,62 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
     validações de cras e cras
 */
 
+    function validarInclusao(nomeCras, telefone) {
+    var permissao = true;
+    var formulario = document.register;
+    var tesNome = nomeCras.value;
+    var tesTelefone = telefone.value;
+
+    if (tesNome == "") {
+        document.getElementById("msgcras").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgcras").innerHTML="";
+    }
+
+    if (tesTelefone == "") {
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else if(tesTelefone.length<10){
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Telefone inválido</font>";
+        permissao = false;
+    }
+    else {
+        document.getElementById("msgtelefone").innerHTML="";
+    }
+
+    return permissao;
+    
+    }
+
+    function validarEdicao(nomeCras, telefone) {
+    var permissao = true;
+    var formulario = document.register;
+    var tesNome = nomeCras.value;
+    var tesTelefone = telefone.value;
+
+    if (tesNome == "") {
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgcras_edit").innerHTML="";
+    }
+
+    if (tesTelefone == "") {
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else if(tesTelefone.length<10){
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Telefone inválido</font>";
+        permissao = false;
+    }
+    else {
+        document.getElementById("msgtelefone_edit").innerHTML="";
+    }
+
+    return permissao;
+    
+    }
+
 $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
@@ -485,4 +542,4 @@ $('#ativar').on('show.bs.modal', function (event) {
 
 </body>
 
-</html>
+@stop

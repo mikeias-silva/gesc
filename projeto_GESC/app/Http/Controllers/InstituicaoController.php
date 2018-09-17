@@ -17,10 +17,11 @@ class InstituicaoController extends Controller
         $ano = date('Y');
         $diasFuncionamento = DB::select("select * from dias_funcionamento where idano='{$ano}'");
 
-        // SELECT CIDADE E ESTADO ASSOCIADO A INSTITUIÇÃO
-     //   select nomeCidade, siglaEstado from cidade, estado join instituicao 
-     //   where cidade.idCidade = instituicao.idcidade and cidade.idUF = estado.idUF
-     $cidadeins= DB::select('select nomecidade, siglaestado from cidade, estado join instituicao where cidade.idcidade = instituicao.idcidade and cidade.iduf = estado.iduf');
+    // SELECT CIDADE E ESTADO ASSOCIADO A INSTITUIÇÃO
+    //  select nomeCidade, siglaEstado from cidade, estado join instituicao 
+    //  where cidade.idCidade = instituicao.idcidade and cidade.idUF = estado.idUF
+        $cidadeins= DB::select('select nomecidade, siglaestado from cidade, estado join instituicao where cidade.idcidade = 
+        instituicao.idcidade and cidade.iduf = estado.iduf');
 
      
 
@@ -42,9 +43,11 @@ class InstituicaoController extends Controller
 
     public function difinirDias(Request $request){
         $ano = date('Y');
+        $idInstituicao = DB::select("select max(idinstituicao) as id from instituicao");
         $diasFuncionamento_teste = dias_funcionamento::find($request->idano);
         if($diasFuncionamento_teste==null){
             $diasFuncionamento = new dias_funcionamento($request->all());
+            $diasFuncionamento->idinstituicao = $idInstituicao[0]->id;
             $diasFuncionamento->idano = $ano;
             $diasFuncionamento->save();
         } else {

@@ -1,6 +1,6 @@
 @extends('layout.principal') 
 @section('conteudo')
-<h2>Matriculas - APAM</h2>
+<h1>Matriculas {{ $ano }} - APAM</h1>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="ativas-tab" data-toggle="tab" href="#ativas" role="tab" aria-controls="ativas" aria-selected="true">Ativas</a>
@@ -13,23 +13,56 @@
         </li>
 </ul>
 
-<!--ABA ATIVAS-->
 
+<!-- TODAS ABAS -->
 <div class="tab-content" id="myTabContent">
-    <!--
-<div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
--->
-<div></div>
-   <div class="tab-pane show active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
+
+<!--ABA ATIVAS-->
+   <div class="tab-pane active" id="ativas" role="tabpanel" aria-labelledby="ativas-tab">
          <h2>Matriculas ativas</h2>
-        <table id="dtAtivas" class="table table-hover">
+        <table id="dtAtivas" class="table table-striped border">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Turma</th>
-                        <th>Idade</th>
-                        <th>Data Matricula</th>
-                        <th>Ações</th>
+                            <th>
+                            Nome
+                               
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                               
+                        </th>
+                        <th>Turma
+                            <i class="material-icons float-right">
+                            swap_vert
+                            </i>
+                       
+                        </th>
+                       
+                        <th>
+                            Idade
+                               
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                               
+                        </th>
+                        <th>
+                                
+                                    Data Matricula
+                                
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                                
+                        </th>
+                        <th>
+                            Opções
+                                
+                            <i class="material-icons float-right">
+                            swap_vert
+                            </i>
+                            
+                        </th>
                     </tr>
                 </thead>
                     
@@ -39,17 +72,50 @@
                     <tr>
                         <td>{{ $matA->nomeMatricula() }}</td>
                         <td>{{ $matA->nomeTurma() }}</td>
-                        <td>{{ $matA->idadeMatricula() }}</td>
+                        @if ($matA->idadeMatricula() < 10)
+                        <td>0{{ $matA->idadeMatricula() }} anos</td>
+                        @endif
+                        @if ($matA->idadeMatricula() > 9)
+                        <td>{{ $matA->idadeMatricula() }} anos</td>
+                        @endif
+                         
+                         
                         <td>{{ $matA->anoMatricula() }}</td>
                         <td>
-                            <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
-                            <a href="/inativarMatricula" class="text text-danger" 
-                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar"><i class=" text text-danger fa fa-minus fa-2x"></i></a>
-                            <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
-                            @if( empty($matA->idturma))
-                            <a data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}"><i class="fa fa-exclamation fa-2x"></i>
+                              <!--    <a href="/imprimematricula/{{ $matA->idmatricula }}" class=" text text-dark"   >
+                                    <i class="material-icons">
+                                        print
+                                    </i>
+                                </a>-->
+                             <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">
+                                <i class="material-icons">
+                                    print
+                                </i>
                             </a>
-                            @endif
+                            <a href="/editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
+                                <i class="material-icons">
+                                    edit
+                                </i>
+                            </a>
+                            <a href="/inativarMatricula" class="text text-danger" 
+                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">
+                                <i class="material-icons">
+                                    highlight_off
+                                </i>
+                            </a>
+                            
+                            
+                            <input type="hidden" name="idmatricula" value="{{ $matA->idmatricula }}" />
+                          @if (empty( $matA->idturma))
+                              
+                            <a class="text text-warning" href="" data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}">
+                                <i class="material-icons ">
+                                    group_add
+                                </i>
+                            </a>
+                           
+                          @endif
+                            
                         </td>
                     </tr>
                     @endforeach 
@@ -58,22 +124,40 @@
                     
             </table> 
         
-        
-        
-    </div>
-
+   </div>  
     <!--ABA INATIVAS-->
-    <div class="tab-pane fade" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
+    <div class="tab-pane" id="inativas" role="tabpanel" aria-labelledby="inativas-tab">
         <h2>Matriculas inativas</h2>
-        <table id="dtInativas" class="table table-hover">
+        <table id="dtInativas" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Turma</th>
-                        <th>Idade</th>
-                        <th>Data Matricula</th>
-                        <th>Ações</th>
-                        
+                        <th>
+                            Nome
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+                            
+                        <th>
+                            Idade
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+
+                        <th>
+                            Data Matricula
+                            <i class="material-icons float-right">
+                                swap_vert
+                            </i>
+                        </th>
+
+                        <th>
+                            Opções
+                            <i class="material-icons float-right">
+                            swap_vert
+                            </i>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,11 +165,16 @@
                         @foreach($matInativas as $matI)
                         <tr>
                             <td>{{ $matI->nomeMatricula() }}</td>
-                            <td>{{ $matI->nomeTurma() }}</td>
-                            <td>{{ $matI->idadeMatricula() }}</td>
+                            
+                            <td>{{ $matI->idadeMatricula() }} anos</td>
                             <td>{{ $matI->anoMatricula() }}</td>
-                            <td><a id="btn-imprimir" href="/pdfmatricula" target="_blank"><i class="fa fa-print fa-2x"></i></a>
-                                <a href="/ativarMatricula" class="text text-danger" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+                            <td>
+                                <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">
+                                    <i class="material-icons text-success">
+                                        done
+                                    </i>
+                                </a>
+
 
                             </td>
                             
@@ -96,21 +185,33 @@
             </table>
          
     </div>
-
-    
-
-    
-<!--ABA ESPERA-->
-    <div class="tab-pane fade" id="espera" role="tabpanel" aria-labelledby="espera-tab">
+    <!--ABA ESPERA-->
+     <div class="tab-pane" id="espera" role="tabpanel" aria-labelledby="espera-tab">
         <h2>Matriculas em espera</h2>
-        <table id="dtEspera" class="table table-hover">
+        <table id="dtEspera" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Turma</th>
-                        <th>Idade</th>
-                        <th>Data Matricula</th>
-                        <th>Ações</th>
+                        <th>Nome
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            
+                            <th>Idade
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Data Matricula
+                                <i class="material-icons float-right">
+                                    swap_vert
+                                </i>
+                            </th>
+                            <th>Opções
+                                <i class="material-icons float-right">
+                                swap_vert
+                                </i>
+                            </th>
                         
                     </tr>
                 </thead>
@@ -119,15 +220,16 @@
                         @foreach($matEspera as $matE)
                         <tr>
                             <td>{{ $matE->nomeMatricula() }}</td>
-                            <td>{{ $matE->nomeTurma() }}</td>
-                            <td>{{ $matE->idadeMatricula() }}</td>
+                             <td>{{ $matE->idadeMatricula() }} anos</td>
                             <td>{{ $matE->anoMatricula() }}</td>
                             <td>
                                 
-                                <a id="btn-imprimir" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matE->idmatricula }}"><i class="fa fa-print fa-2x"></i></a>
-                                
                                 <a href="/ativarMatricula" class="text text-danger" 
-                                data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">inativar</a>
+                                data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">
+                                    <i class="material-icons text-success">
+                                        done
+                                    </i>
+                                </a>
 
                             </td>
                             
@@ -141,7 +243,6 @@
          
     </div>
 </div>
-
 <!-- Modal Center modal de inativacao-->
 <div class="modal fade" id="inativar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -162,7 +263,7 @@
                     <h5>Você tem certeza que deseja realmente inativar esta Matrícula?</h5>
 
                     <label>Motivo<span id="campoobrigatorio">*</span></label>
-                    <textarea class="form-control" type="text" name="motivoinativacao" id="" 
+                    <textarea required class="form-control" type="text" name="motivoinativacao" id="" 
                     placeholder="Infome o motivo da inativação dessa matricula">
 
                     </textarea>
@@ -223,17 +324,17 @@
             </button>
             </div>
             
-            <form action="/pdfmatricula" method="get">
+            <form action="/imprimematricula" method="get">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
 
-                    <h5>Imprimir?</h5>
+                    <h5>Deseja imprimir?</h5>
 
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success" formtarget="_blank">Imprimir</button>
+                            <button type="submit" class="btn btn-success"  target="_blank"  >Preparar para impressão</button>
             
                     </div>
                 </div>
@@ -281,9 +382,10 @@
     </div>
 </div>
 
-<form action="/novaMatricula">
-    <button class="btn btn-secondary">Nova Matrícula</button>
+<form action="/listagemResponsaveis" class="float-right" id="btn-novamatricula">
+    <button class="btn btn-primary">Nova Matrícula</button>
 </form>
+<!--  -->
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
@@ -313,23 +415,23 @@
 
 
 <script>
-        $('#dtAtivas').DataTable({
-            "language": {
-                "zeroRecords": "nada encontrado",
-                "infoEmpty": "Não há nenhum registro",
-                "lengthMenu": "Itens por página _MENU_ ",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoFiltered": "(Total de registros _MAX_)",
-                "search": "Busca",
-                "paginate": {
-                    "first": "Primeira",
-                    "last": "Última",
-                    "next": "Próxima",
-                    "previous": "Anterior"
-                },
-                "loadingRecords": "Carregando"
-            }
-        });
+    $('#dtAtivas').DataTable({
+        "language": {
+            "zeroRecords": "nada encontrado",
+            "infoEmpty": "Não há nenhum registro",
+            "lengthMenu": "Itens por página _MENU_ ",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoFiltered": "(Total de registros _MAX_)",
+            "search": "Busca",
+            "paginate": {
+                "first": "Primeira",
+                "last": "Última",
+                "next": "Próxima",
+                "previous": "Anterior"
+            },
+            "loadingRecords": "Carregando"
+        }
+    });
 </script>
 
 

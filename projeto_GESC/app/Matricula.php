@@ -48,17 +48,32 @@ class Matricula extends Model
         
     }
 
+
+    static function vagasMatriculas(){
+
+        $idmatricula = $this->idmatricula;
+        return DB::select('select * from vagasdasmatriculas where idmatricula = ? '[$idmatricula]);
+    }
+
+    static function matriculasAnoAnterior($anovaga){
+        //return $anovaga;
+        return DB::select('select * from dadosmatricula where anovaga = ?', [$anovaga]);
+    }
+
+    static function matriculasAnoSeguinte(){
+        $anovaga = Carbon::now()->year;
+       // return Matricula::join('vagas', $this->idvaga, '=', 'vagas.?')
+        return DB::select('select * from matriculas, vagas where matriculas.idvaga = vagas.idvaga and vagas.anovaga > ? ', [$anovaga]);
+        //return DB::select('select * from dadosmatricula where anovaga > ?', [$anovaga]);
+    }
     static function matriculasAtiva(){
       
-        //DB::select('select * from matriculas where idmatricula = ?', 1);
-        
-        //return DB::table('matriculas')->where('statuscadastro', 'Ativo')->get();
         return Matricula::where('statuscadastro', 'Ativo')->get();
     }
 
     static function matriculasInativas(){
-
-        return Matricula::where('statuscadastro', 'Inativo')->get();
+        $hoje = Carbon::now();
+        return Matricula::where('statuscadastro', 'Inativo')->where('anomatricula', '<=', $hoje)->get();
     }
 
     static function matriculasEspera(){
@@ -69,10 +84,10 @@ class Matricula extends Model
     public function nomeTurma(){
         $id = $this->idturma;
 
-        $nometurma = DB::select('select GrupoConvivencia from turma where idturma = ?', array($id));
+        $nometurma = DB::select('select grupoconvivencia from turma where idturma = ?', array($id));
 
         foreach($nometurma as $nometurma){
-            return $nometurma->GrupoConvivencia;
+            return $nometurma->grupoconvivencia;
             
         }
 
@@ -80,12 +95,36 @@ class Matricula extends Model
 
     public function anoMatricula(){
        
-       return Carbon::parse($this->anomatricula)->format('d-m-y');
+       return Carbon::parse($this->anomatricula)->format('d/m/Y');
        
     }
 
 
-    public function vagasOcupadas(){
+    public function crasMatricula(){
+        //$id = $this->idcrianca;
+
+         $familiaMatricula = DB::select('select idfamilia from parentes where idcrianca = ?', array(48));
+
+
+         foreach ($familiaMatricula as $familiamt) {
+            
+            return $essafamilia = $familiamt->idfamilia;
+            
+            
+         }
+
+     //    return $essafamilia;
+        //  $essafamilia = $familiaMatricula[0]->idfamilia;
+          //return;
+      /*  
         
+        $crasMatricula = DB::select('select nomecras from dadosfamilia where idfamilia = ?', [$essafamilia]);
+        
+        foreach($crasMatricula as $crasMatricula){
+           
+            return $crasMatricula->nomecras;
+            
+        }*/
+  
     }
 }

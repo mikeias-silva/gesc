@@ -4,6 +4,20 @@
     padding-top: 2.5rem;
     overflow-x: hidden;
     overflow-y: auto;
+    border:black;
+    background-color: rgb(245, 245, 245);
+   
+    
+}
+
+.btn{
+    border-radius: 2.5px;
+    margin: 20px 3px 20px 3px;
+}
+
+.btn-light{
+    background-color: rgb(245, 245, 245);
+    
 }
 
 .sidebar {
@@ -41,6 +55,15 @@ main {
     margin-top: 35px;
 }
 
+#assinatura{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #343a40 !important;
+    margin-bottom: 35px;
+    margin-top: 35px;
+
+}
+
 #meiomenu{
     background-color: #343a40 !important;
     padding-top: .5px;
@@ -72,7 +95,7 @@ main {
     outline: 0;
 }
 
-#btn-imprimir {
+#removerlink {
     text-decoration: none;
     color: black;
 }
@@ -84,6 +107,20 @@ main {
 label{
     font-weight: bold;
     
+    
+}
+.titulo-novamat{
+    padding-right: 100px;
+    margin-right: 100px;
+    border-right: 100px
+}
+select, .form-control{
+    font-weight: bold;
+    color: black;
+    /*border-width: 2px;*/
+    border-color: rgb(177, 175, 175);
+    /*border: 1px;*/
+    border-radius: 2.5px;
 }
 
 #campoobrigatorio{
@@ -102,10 +139,49 @@ label{
 .fa{
     color: black;
 }
-/*
-.active {
-    background:green
+
+#cor{
+    background-color: rgb(218, 218, 218) !important;
+    color: black;
+    text-decoration-color: #343a40;
 }
-.inactive {
-    background:red
-}*/
+
+#btn-novamatricula{
+    margin-bottom: 20px;
+}
+
+#titulorematricula{
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+h2, h1{
+    margin: 20px 0px 50px 0px;
+}
+
+h4, h2, h1{
+    font-weight: bold;
+}
+
+#gesc{
+    background-color: #343a40;
+    margin-top: 150px;
+    
+}
+
+#bodylogin{
+    opacity: 0.6;
+}
+
+#btn-login{
+    margin-top: 40px;
+}
+
+.float-left .assinatura{
+    display: grid;
+    grid-template-columns: 15% 85%; 
+}
+
+#btn-frequencia{
+    margin: 0px 0px 0px 0px !important;
+}

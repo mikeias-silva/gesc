@@ -14,83 +14,84 @@
             <input type="hidden" name="idinstituicao" id="idinstituicao" value="">
             <div class="row">
                 <div class="col-sm-8">
-                    <h5 >Nome Instituição</h5>
+                    <label >Nome Instituição*</label>
                     <input name="nomeinstituicao" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgNomeInstituicao"></spam>
-                    </br>
+                    <span id="msgNomeInstituicao"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >CNPJ</h5>
+                    <label >CNPJ*</label>
                     <input name="cnpj" id="cnpj" class="form-control" type="text" value="" maxlength="14" autocomplete="off" onkeyup="mascara(this, Cnpj);">
-                    <spam id="msgCnpj"></spam>
-                    </br>
+                    <span id="msgCnpj"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
-                <h5 >Endereço</h5>
+                <label >Endereço*</label>
                     <input name="logradouro" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEndereco"></spam>
-                    </br>
+                    <span id="msgEndereco"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                <h5 >Cep</h5>
+                <label >Cep*</label>
                     <input name="cep" id="cep" class="form-control" type="text" value="" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
-                    <spam id="msgCep"></spam>
-                    </br>
+                    <span id="msgCep"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
-                    <h5 >E-mail</h5>
+                    <label >E-mail*</label>
                     <input name="email" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEmail"></spam>
-                    </br>
+                    <span id="msgEmail"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >Telefone</h5>
+                    <label >Telefone*</label>
                     <input name="telefone" id="telefone" class="form-control" type="text" value="" maxlength="11" autocomplete="off" onkeyup="mascara(this, Telefone);">
-                    <spam id="msgTelefone"></spam>
-                    </br>
+                    <span id="msgTelefone"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <h5 >N. de metas mensais</h5>
+                    <label >N. de metas mensais*</label>
                     <input name="nummetasmensais" id="nummetasmensais" class="form-control" type="text" value="" maxlength="255" autocomplete="off" onkeyup="mascara(this, retiraLetras);">
-                    <spam id="msgMetasMensais"></spam>
-                    </br>
+                    <span id="msgMetasMensais"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >N. do termo de colaboração</h5>
+                    <label >N. do termo de colaboração*</label>
                     <input name="numtermocolaboradorformento" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgTermoColab"></spam>
-                    </br>
+                    <span id="msgTermoColab"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >N. do plano de trabalho</h5>
+                    <label >N. do plano de trabalho*</label>
                     <input name="numplanotrabalho" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgNumTermoTrab"></spam>
-                    </br>
+                    <span id="msgNumTermoTrab"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <h5 >Entidade Mantedora</h5>
+                    <label >Entidade Mantedora*</label>
                     <input name="entidademantenedora" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeMantedora"></spam>
-                    </br>
+                    <span id="msgEntidadeMantedora"></span>
+                    <br>
                 </div>
                 <div class="col-sm-6">
-                    <h5 >Entidade Executora</h5>
+                    <label >Entidade Executora*</label>
                     <input name="entidadeexecutora" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeExecutora"></spam>
-                    </br>
+                    <span id="msgEntidadeExecutora"></span>
+                    <br>
                 </div>
-            </br>
+            <br>
             </div>
-            
+        <div class="float-right">
             <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+        </div>
         </form>
     @else
         <form class="form" action="/instituicao/edita" method="POST"  
@@ -102,82 +103,85 @@
             <input type="hidden" name="idinstituicao" id="idinstituicao" value="{{ $instituicao[0]->idinstituicao }}">
             <div class="row">
                 <div class="col-sm-8">
-                    <h5 >Nome Instituição</h5>
+                    <label >Nome Instituição*</label>
                     <input name="nomeinstituicao" class="form-control" type="text" value="{{ $instituicao[0]->nomeinstituicao }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgNomeInstituicao"></spam>
-                    </br>
+                    <span id="msgNomeInstituicao"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >CNPJ</h5>
+                    <label >CNPJ*</label>
                     <input name="cnpj" id="cnpj" class="form-control" type="text" value="{{ $instituicao[0]->cnpj }}" maxlength="14" autocomplete="off" onkeyup="mascara(this, Cnpj);">
-                    <spam id="msgCnpj"></spam>
-                    </br>
+                    <span id="msgCnpj"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
-                <h5 >Endereço</h5>
+                <label >Endereço*</label>
                     <input name="logradouro" class="form-control" type="text" value="{{ $instituicao[0]->logradouro }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEndereco"></spam>
-                    </br>
+                    <span id="msgEndereco"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                <h5 >Cep</h5>
+                <label >Cep*</label>
                     <input name="cep" id="cep" class="form-control" type="text" value="{{ $instituicao[0]->cep }}" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
-                    <spam id="msgCep"></spam>
-                    </br>
+                    <span id="msgCep"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
-                    <h5 >E-mail</h5>
+                    <label >E-mail*</label>
                     <input name="email" class="form-control" type="text" value="{{ $instituicao[0]->email }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEmail"></spam>
-                    </br>
+                    <span id="msgEmail"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >Telefone</h5>
+                    <label >Telefone*</label>
                     <input name="telefone" id="telefone" class="form-control" type="text" value="{{ $instituicao[0]->telefone }}" maxlength="11" autocomplete="off" onkeyup="mascara(this, Telefone);">
-                    <spam id="msgTelefone"></spam>
-                    </br>
+                    <span id="msgTelefone"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <h5 >N. de metas mensais</h5>
+                    <label >N. de metas mensais*</label>
                     <input name="nummetasmensais" id="nummetasmensais" class="form-control" type="text" value="{{ $instituicao[0]->nummetasmensais }}" maxlength="255" autocomplete="off" onkeyup="mascara(this, retiraLetras);">
-                    <spam id="msgMetasMensais"></spam>
-                    </br>
+                    <span id="msgMetasMensais"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >N. do termo de colaboração</h5>
+                    <label >N. do termo de colaboração*</label>
                     <input name="numtermocolaboradorformento" class="form-control" type="text" value="{{ $instituicao[0]->numtermocolaboradorformento }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgTermoColab"></spam>
-                    </br>
+                    <span id="msgTermoColab"></span>
+                    <br>
                 </div>
                 <div class="col-sm-4">
-                    <h5 >N. do plano de trabalho</h5>
+                    <label >N. do plano de trabalho*</label>
                     <input name="numplanotrabalho" class="form-control" type="text" value="{{ $instituicao[0]->numplanotrabalho }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgNumTermoTrab"></spam>
-                    </br>
+                    <span id="msgNumTermoTrab"></span>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <h5 >Entidade Mantedora</h5>
+                    <label >Entidade Mantedora*</label>
                     <input name="entidademantenedora" class="form-control" type="text" value="{{ $instituicao[0]->entidademantenedora }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeMantedora"></spam>
-                    </br>
+                    <span id="msgEntidadeMantedora"></span>
+                    <br>
                 </div>
                 <div class="col-sm-6">
-                    <h5 >Entidade Executora</h5>
+                    <label >Entidade Executora*</label>
                     <input name="entidadeexecutora" class="form-control" type="text" value="{{ $instituicao[0]->entidadeexecutora }}" maxlength="255" autocomplete="off" >
-                    <spam id="msgEntidadeExecutora"></spam>
-                    </br>
+                    <span id="msgEntidadeExecutora"></span>
+                    <br>
                 </div>
-            </br>
+            <br>
             </div>
-            <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+            <div class="footer text-right">
+                <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+            </div>
+        
         </form>
     @endif
     
@@ -190,115 +194,122 @@
     <input type="hidden" name="idano" value="{{$ano}}">
     <h5 value="{{$ano}}" name="idano">Ano - {{$ano}}</h5>
 
-    </br>
-    <table class="table table-striped container col-md-4" align="center">
+    <br>
+    <div class="col-md-6 centered form-group">
+    <table class="table table-striped table-bordered" align="center">
         <thead>
             <tr align="center">
+            <div class="col-md-6">
                 <th>Mês</th>
+            </div>
+            <div class="col-md-4">
                 <th>Numero de dias de funcionamento</th>
+            </div>
             </tr>
         </thead>
     
-            <tr>
-                <td align="center">Janeiro</td>
+            <tr >
+                <td align="center" class="font-weight-bold">Janeiro</td>
                 @if(empty($diasFuncionamento[0]->jan) || $diasFuncionamento[0]->jan==0)
-                    <td align="center"><input name="jan" id="jan" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="jan" id="jan" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input type="number" id="jan" class="combo-box col-2" name="jan" value="{{$diasFuncionamento[0]->jan}}" ></td>
+                    <td align="center"><input type="number" id="jan" class="combo-box col-3 form-control" name="jan" value="{{$diasFuncionamento[0]->jan}}" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Fevereiro</td>
+                <td align="center" class="font-weight-bold">Fevereiro</td>
                 @if(empty($diasFuncionamento[0]->fev) || $diasFuncionamento[0]->fev==0)
-                    <td align="center" ><input type="number" id="fev" class="combo-box col-2" name="fev"></td>
+                    <td align="center" ><input type="number" id="fev" class="combo-box col-3 form-control" name="fev" maxlength="2"></td>
                 @else
-                    <td align="center"><input type="number" name="fev" id="fev" value="{{$diasFuncionamento[0]->fev}}" class="combo-box col-2"></td>
+                    <td align="center"><input type="number" name="fev" id="fev" value="{{$diasFuncionamento[0]->fev}}" class="combo-box col-3 form-control" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Março</td>
+                <td align="center" class="font-weight-bold">Março</td>
                 @if(empty($diasFuncionamento[0]->mar) || $diasFuncionamento[0]->mar==0)
-                    <td align="center"><input name="mar" id="mar" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="mar" id="mar" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input type="number" name="mar" id="mar" value="{{$diasFuncionamento[0]->mar}}" class="combo-box col-2"></td>
+                    <td align="center"><input type="number" name="mar" id="mar" value="{{$diasFuncionamento[0]->mar}}" class="combo-box col-3 form-control" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Abril</td>
+                <td align="center" class="font-weight-bold">Abril</td>
                 @if(empty($diasFuncionamento[0]->abr) || $diasFuncionamento[0]->abr==0)
-                    <td align="center"><input  name="abr" id="abr" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input  name="abr" id="abr" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input class="combo-box col-2" type="number" id="abr" name="abr" value="{{$diasFuncionamento[0]->abr}}" ></td>
+                    <td align="center"><input class="combo-box col-3 form-control" type="number" id="abr" name="abr" value="{{$diasFuncionamento[0]->abr}}" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Maio</td>
+                <td align="center" class="font-weight-bold">Maio</td>
                 @if(empty($diasFuncionamento[0]->mai) || $diasFuncionamento[0]->mai==0)
-                    <td align="center" ><input name="mai" type="number" id="mai" class="combo-box col-2"></td>
+                    <td align="center" ><input name="mai" type="number" id="mai" class="combo-box col-3 form-control" maxlength="2"></td>
                 @else
-                    <td align="center" ><input  name="mai" value="{{$diasFuncionamento[0]->mai}}" id="mai" class="combo-box col-2" type="number"></td>
+                    <td align="center" ><input  name="mai" value="{{$diasFuncionamento[0]->mai}}" id="mai" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Junho</td>
+                <td align="center" class="font-weight-bold">Junho</td>
                 @if(empty($diasFuncionamento[0]->jun) || $diasFuncionamento[0]->jun==0)
-                    <td align="center" ><input name="jun" id="jun" class="combo-box col-2" type="number"></td>
+                    <td align="center" ><input name="jun" id="jun" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="jun" id="jun" value="{{$diasFuncionamento[0]->jun}}" type="number" class="combo-box col-2"></td>
+                    <td align="center"><input name="jun" id="jun" value="{{$diasFuncionamento[0]->jun}}" type="number" class="combo-box col-3 form-control" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Julho</td>
+                <td align="center" class="font-weight-bold">Julho</td>
                 @if(empty($diasFuncionamento[0]->jul) || $diasFuncionamento[0]->jul==0)
-                    <td align="center" ><input name="jul" id="jul" class="combo-box col-2" type="number"></td>
+                    <td align="center" ><input name="jul" id="jul" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center" ><input name="jul" id="jul" value="{{$diasFuncionamento[0]->jul}}" class="combo-box col-2" type="number"></td>
+                    <td align="center" ><input name="jul" id="jul" value="{{$diasFuncionamento[0]->jul}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Agosto</td>
+                <td align="center" class="font-weight-bold">Agosto</td>
                 @if(empty($diasFuncionamento[0]->ago) || $diasFuncionamento[0]->ago==0)
-                    <td align="center"><input name="ago" id="ago" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="ago" id="ago" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="ago" id="ago" value="{{$diasFuncionamento[0]->ago}}" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="ago" id="ago" value="{{$diasFuncionamento[0]->ago}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Setembro</td>
-                @if(empty($diasFuncionamento[0]->set) || $diasFuncionamento[0]->set==0)
-                    <td align="center"><input  name="set" id="set" class="combo-box col-2" type="number"></td>
+                <td align="center" class="font-weight-bold">Setembro</td>
+                @if(empty($diasFuncionamento[0]->setembro) || $diasFuncionamento[0]->setembro==0)
+                    <td align="center"><input  name="setembro" id="setembro" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="set" id="set" value="{{$diasFuncionamento[0]->set}}" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="setembro" id="setembro" value="{{$diasFuncionamento[0]->setembro}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Outubro</td>
-                @if(empty($diasFuncionamento[0]->out) || $diasFuncionamento[0]->out==0)
-                    <td align="center"><input name="out" id="out" class="combo-box col-2" type="number"></td>
+                <td align="center" class="font-weight-bold">Outubro</td>
+                @if(empty($diasFuncionamento[0]->outubro) || $diasFuncionamento[0]->outubro==0)
+                    <td align="center"><input name="outubro" id="outubro" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="out" id="out" value="{{$diasFuncionamento[0]->out}}" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="outubro" id="outubro" value="{{$diasFuncionamento[0]->outubro}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Novembro</td>
+                <td align="center" class="font-weight-bold">Novembro</td>
                 @if(empty($diasFuncionamento[0]->nov) || $diasFuncionamento[0]->nov==0)
-                    <td align="center"><input name="nov" id="nov" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="nov" id="nov" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="nov" id="nov" value="{{$diasFuncionamento[0]->nov}}" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="nov" id="nov" value="{{$diasFuncionamento[0]->nov}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
-                <td align="center">Dezembro</td>
+                <td align="center" class="font-weight-bold">Dezembro</td>
                 @if(empty($diasFuncionamento[0]->dez) || $diasFuncionamento[0]->dez==0)
-                    <td align="center"><input  name="dez" id="dez" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input  name="dez" id="dez" class="combo-box col-3" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-2" type="number"></td>
+                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-3" type="number" maxlength="2"></td>
                 @endif
             </tr>
         
             
     </table>
-    <div class="row">
+        
+    </div>
+    <div class="footer text-right">
         <button type="submit" class="btn btn-primary"  id="btn_instituicao">Salvar</button>
     </div>
     </form>
@@ -323,14 +334,14 @@
         var tesEntidadeExec = entidadeExec.value;
 
         if (tesNome == "") {
-            document.getElementById("msgNomeInstituicao").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgNomeInstituicao").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgNomeInstituicao").innerHTML="";
         }
 
         if (tesCnpj == "") {
-            document.getElementById("msgCnpj").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgCnpj").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(validarCNPJ(tesCnpj)){
             document.getElementById("msgCnpj").innerHTML="<font color='red'>O CNPJ informado não é válido, por favor verifique</font>";
@@ -340,14 +351,14 @@
         }
 
         if (tesEndereco == "") {
-            document.getElementById("msgEndereco").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEndereco").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgEndereco").innerHTML="";
         }
 
         if (tesCep == "") {
-            document.getElementById("msgCep").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgCep").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(tesCep.length<8){
             document.getElementById("msgCep").innerHTML="<font color='red'>O CEP informado não é válido, por favor verifique</font>";
@@ -357,7 +368,7 @@
         }
 
         if (tesEmail == "") {
-            document.getElementById("msgEmail").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEmail").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(validarEmail(email)){
             document.getElementById("msgEmail").innerHTML="<font color='red'>O email informado não é válido, por favor verifique</font>";
@@ -367,7 +378,7 @@
         }
 
         if (tesTelefone == "") {
-            document.getElementById("msgTelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgTelefone").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else if(tesTelefone.length<10){
             document.getElementById("msgTelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -377,35 +388,35 @@
         }
 
         if (tesMetasMensais == "") {
-            document.getElementById("msgMetasMensais").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgMetasMensais").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgMetasMensais").innerHTML="";
         }
         
         if (tesNumTermoColab == "") {
-            document.getElementById("msgTermoColab").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgTermoColab").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgTermoColab").innerHTML="";
         }
 
         if (tesNumTermoTrab == "") {
-            document.getElementById("msgNumTermoTrab").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgNumTermoTrab").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgNumTermoTrab").innerHTML="";
         }
 
         if (tesEntidadeMant == "") {
-            document.getElementById("msgEntidadeMantedora").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEntidadeMantedora").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgEntidadeMantedora").innerHTML="";
         }
 
         if (tesEntidadeExec == "") {
-            document.getElementById("msgEntidadeExecutora").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgEntidadeExecutora").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgEntidadeExecutora").innerHTML="";

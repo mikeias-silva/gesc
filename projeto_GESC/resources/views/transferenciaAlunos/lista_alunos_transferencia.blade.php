@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 <h1 class="text">Transferência de Alunos</h1>
-<h3 class="text">Turma: {{$nomeTurma[0]->GrupoConvivencia}} - Turno:
+<h3 class="text">Turma: {{$nomeTurma[0]->grupoconvivencia}} - Turno:
     @if($nomeTurma[0]->Turno=="m")
         <td>Manhã</td>
     @else 
@@ -27,7 +27,7 @@
             <h5>Nova Turma</h5>
             <select class="form-control" name="novaTurma" id="novaTurma">
             @foreach ($listaTurmas as $c)
-                <option value="{{$c->idturma}}">{{ $c->GrupoConvivencia }} - 
+                <option value="{{$c->idturma}}">{{ $c->grupoconvivencia }} - 
                 @if($c->Turno=="m")
                     <td>Manhã</td>
                 @else 
@@ -41,16 +41,18 @@
             @endforeach
             </select>
         </div>
-        </br>
-        <spam id="msgNenhumSelc"></spam>
-        <table class="table table-striped">
+        <br>
+        <span id="msgNenhumSelc"></span>
+        <table class="table table-striped border">
             <thead>
 
                 <tr>
-                    <th></th>
+                    <th>#</th>
                     <th>Nome</th>
                     <th>Idade</th>
                 </tr>
+            </thead>
+            <tbody>
                 @foreach ($listaAlunos as $c)
                 <tr>
                     <td><input type="checkbox" value="1" name="verificaTransferencia[]"></td>
@@ -59,12 +61,12 @@
                     <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">
                 </tr>
                 @endforeach
-
-                </thead>
+            </tbody>
+                
         </table>
-        <div class="footer">
-            <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Cancelar</a>
+        <div class="footer text-right">
             <button type="submit" class="btn btn-primary">Salvar</button>
+            <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Cancelar</a>
         </div>
     </form>
 @endif

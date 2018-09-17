@@ -8,43 +8,70 @@
     </div>
 
 @elseif(!empty($cras))
-<table class="table table-striped">
+<div>
+<table class="table table-striped text-center border">
     <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Opções</th>
+        <tr >
+            <th class="text-center">Nome</th>
+            <th class="text-center">Telefone</th>
+            <th class="text-center">Opções</th>
 
         </tr>
     </thead>
     @foreach ($cras as $c)
     <tr>
-        <td> {{ $c->nomecras }} </td>
-        <td> {{ $c->telefone }} </td>
+        <td class="text-center"> {{ $c->nomecras }} </td>
+        <td class="text-center"> {{ $c->telefone }} </td>
         
-        <td>
-            <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+        <td class="text-center">
+                <a href="" class="text text-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
+                        data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">
+                        <i class="material-icons">
+                                edit
+                            </i>
+                        </a>
+           <!--   <button type="button" class="btn btn-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                  data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">Editar</button>
-
+-->
             @if($c->statuscras=='1')     
+          <!--  
             <button type="button" class="btn btn-danger" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
-                data-toggle="modal" data-target="#inativar">Inativar</button>
+                data-toggle="modal" data-target="#inativar">Inativar
+            </button>-->  
+            <a href="" class="text text-danger" data-mytitle="{{ $c->nomecras }}" 
+                    data-myid="{{ $c->idcras }}" 
+                    data-toggle="modal" data-target="#inativar">
+           
+                <i class="material-icons">
+                    highlight_off
+                </i> </a> 
             @else
-            <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
+           <!--   <button type="button" class="btn btn-success" data-mytitle="{{ $c->nomecras }}" 
                 data-myid="{{ $c->idcras }}" 
-                data-toggle="modal" data-target="#ativar">Ativar</button>
+                data-toggle="modal" data-target="#ativar">Ativar
+            </button>-->
+
+            <a href="" class="text text-success" data-mytitle="{{ $c->nomecras }}" 
+                    data-myid="{{ $c->idcras }}" 
+                    data-toggle="modal" data-target="#ativar">
+                    <i class="material-icons">
+                            done
+                        </i>
+            </a>
             @endif
         </td>
     </tr>
     @endforeach
 </table>
+</div>
 @endif
 <!-- Button trigger modal -->
+<div class="float-right">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novoCras">
   Novo
 </button>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="novoCras" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
@@ -62,14 +89,14 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statuscras" value="1">
 
-                    <label>Nome</label>
-                    <input name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" >
+                    <label>Nome*</label>
+                    <input  name="nomecras" class="form-control" type="text" value="" maxlength="255" autocomplete="off" autofocus />
                     <label id="msgcras"></label>
-                    </br>
-                    <label>Telefone</label>
-                    <input name="telefone" id="telefone" class="form-control" maxlength="15" autocomplete="off" onkeyup="mascara( this, mtel );">
+                    <br>
+                    <label>Telefone*</label>
+                    <input name="telefone" id="telefone" class="form-control" maxlength="11" autocomplete="off" onkeyup="mascara( this, mtel );"/>
                     <label id="msgtelefone"></label>
-                    </br>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Confirmar</button>
@@ -150,27 +177,27 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Alterar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Alterar CRAS ou CREAS</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <form class="form" action="/cras/inativar" method="POST" name="editarCras"
-                onsubmit="return validarEdicao(editarCras.nomeCras, editarCras.telefone);">
+                onsubmit="return validarEdicao(editarCras.nomecras, editarCras.telefone);">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
                     <input type="hidden" name="statuscras" id="statuscras" type="text" value="">
                     
-                    <label>Nome</label>
+                    <label>Nome*</label>
                     <input name="nomecras" value="" class="form-control" id="nomecras" value="" maxlength="255" autocomplete="off">
                     <label id="msgcras_edit"></label>
-                    </br>
-                    <label>Telefone</label>
-                    <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" autocomplete="off">
+                    <br>
+                    <label>Telefone*</label>
+                    <input name="telefone" value="" class="form-control" id="telefone" onkeyup="mascara( this, mtel );" maxlength="11" autocomplete="off">
                     <label id="msgtelefone_edit"></label>
-                    </br>
+                    <br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Salvar Mudanças</button>
@@ -186,7 +213,7 @@
 <script>
 
 
-    $('#exampleModal').on('hidden.bs.modal', function (event) {
+    $('#novoCras').on('hidden.bs.modal', function (event) {
         $(this).find('input:text').val('');
         //document.getElementById("adm").checked = true;
         document.getElementById("msgcras").innerHTML="";
@@ -194,7 +221,7 @@
         //document.getElementById("msgsenha").innerHTML="";
         //document.getElementById("msgnome").innerHTML="";
     });
-/*
+
     function mascara(o,f){
         v_obj=o
         v_fun=f
@@ -202,13 +229,13 @@
     }
     function execmascara(){
         v_obj.value=v_fun(v_obj.value)
-    }/*
+    }
     function mtel(v){
         v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
         //v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
         //v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
         return v;
-    }*/
+    }
     function id( el ){
         return document.getElementById( el );
     }
@@ -217,22 +244,22 @@
             mascara( this, mtel );
         }
     }
-/*
-    function validarInclusao(nomeCras, telefone) {
+
+    /*function validarInclusao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
     var tesNome = nomeCras.value;
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone").innerHTML="<font color='red'>Este campo é de preenchimento brigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -245,7 +272,7 @@
     return permissao;
     
     }*/
-/*
+
     function validarEdicao(nomeCras, telefone) {
     var permissao = true;
     var formulario = document.register;
@@ -253,14 +280,14 @@
     var tesTelefone = telefone.value;
 
     if (tesNome == "") {
-        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgcras_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgcras_edit").innerHTML="";
     }
 
     if (tesTelefone == "") {
-        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+        document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else if(tesTelefone.length<10){
         document.getElementById("msgtelefone_edit").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
@@ -273,7 +300,7 @@
     return permissao;
     
     }
-*/
+
     $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
@@ -294,7 +321,7 @@
     console.log(id);
 });
 
-$('#editar').on('hidden.bs.modal', function (event) {
+    $('#editar').on('show.bs.modal', function (event) {
         $(this).find('input:text').val('');
         document.getElementById("msgcras_edit").innerHTML="";
         document.getElementById("msgtelefone_edit").innerHTML="";

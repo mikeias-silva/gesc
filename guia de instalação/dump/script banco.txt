@@ -1,0 +1,612 @@
+-- dump criação
+
+-- Table structure for table `cidade`
+--
+
+DROP TABLE IF EXISTS `cidade`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cidade` (
+  `idcidade` int(10) NOT NULL AUTO_INCREMENT,
+  `nomecidade` varchar(100) NOT NULL,
+  `idUF` int(10) NOT NULL,
+  PRIMARY KEY (`idcidade`),
+  KEY `idUF` (`idUF`),
+  CONSTRAINT `cidade_ibfk_1` FOREIGN KEY (`idUF`) REFERENCES `estado` (`iduf`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `cras`
+--
+
+DROP TABLE IF EXISTS `cras`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cras` (
+  `idcras` int(11) NOT NULL AUTO_INCREMENT,
+  `nomecras` varchar(255) NOT NULL,
+  `telefone` varchar(11) DEFAULT NULL,
+  `statuscras` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`idcras`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `crianca`
+--
+
+DROP TABLE IF EXISTS `crianca`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `crianca` (
+  `idcrianca` int(10) NOT NULL AUTO_INCREMENT,
+  `obssaude` varchar(255) DEFAULT NULL,
+  `datacadastro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `idpessoa` int(10) DEFAULT NULL,
+  `idescola` int(10) DEFAULT NULL,
+  `idpublicoprioritario` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idcrianca`),
+  KEY `idpessoa` (`idpessoa`),
+  KEY `idescola` (`idescola`),
+  KEY `idpublicoprioritario` (`idpublicoprioritario`)
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `dias_funcionamento`
+--
+
+DROP TABLE IF EXISTS `dias_funcionamento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dias_funcionamento` (
+  `idano` int(4) NOT NULL,
+  `jan` int(2) DEFAULT NULL,
+  `fev` int(2) DEFAULT NULL,
+  `mar` int(2) DEFAULT NULL,
+  `mai` int(2) DEFAULT NULL,
+  `abr` int(2) DEFAULT NULL,
+  `jun` int(2) DEFAULT NULL,
+  `jul` int(2) DEFAULT NULL,
+  `ago` int(2) DEFAULT NULL,
+  `setembro` int(2) DEFAULT NULL,
+  `outubro` int(2) DEFAULT NULL,
+  `nov` int(2) DEFAULT NULL,
+  `dez` int(2) DEFAULT NULL,
+  `idinstituicao` int(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idano`),
+  KEY `fk_idinstituicao` (`idinstituicao`),
+  CONSTRAINT `dias_funcionamento_ibfk_1` FOREIGN KEY (`idinstituicao`) REFERENCES `instituicao` (`idinstituicao`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `escola`
+--
+
+DROP TABLE IF EXISTS `escola`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `escola` (
+  `idescola` int(10) NOT NULL AUTO_INCREMENT,
+  `nomeescola` varchar(255) NOT NULL,
+  PRIMARY KEY (`idescola`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+-- Table structure for table `estado`
+--
+
+DROP TABLE IF EXISTS `estado`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estado` (
+  `iduf` int(10) NOT NULL AUTO_INCREMENT,
+  `siglaestado` varchar(2) NOT NULL DEFAULT 'PR',
+  PRIMARY KEY (`iduf`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `familia`
+--
+
+DROP TABLE IF EXISTS `familia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `familia` (
+  `idfamilia` int(10) NOT NULL AUTO_INCREMENT,
+  `rendapercapta` float(10,2) NOT NULL DEFAULT '0.00',
+  `moradia` enum('Cedida','Propria','Alugada') DEFAULT NULL,
+  `arearisco` tinyint(1) DEFAULT '0',
+  `tipohabitacao` enum('Alvenaria','Madeira','mista') DEFAULT NULL,
+  `numnis` varchar(50) DEFAULT NULL,
+  `beneficiopc` tinyint(1) DEFAULT '0',
+  `bolsafamilia` tinyint(1) DEFAULT '0',
+  `idcras` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idfamilia`),
+  KEY `idcras` (`idcras`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `frequencia`
+--
+
+DROP TABLE IF EXISTS `frequencia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `frequencia` (
+  `idfrequencia` int(10) NOT NULL AUTO_INCREMENT,
+  `anofrequencia` int(11) NOT NULL,
+  `mesfrequencia` int(11) NOT NULL,
+  `totalfaltas` int(10) NOT NULL,
+  `idmatricula` int(10) NOT NULL,
+  PRIMARY KEY (`idfrequencia`),
+  KEY `idmatricula` (`idmatricula`),
+  CONSTRAINT `frequencia_ibfk_1` FOREIGN KEY (`idmatricula`) REFERENCES `matriculas` (`idmatricula`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `historico_matricula`
+--
+
+DROP TABLE IF EXISTS `historico_matricula`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `historico_matricula` (
+  `idhistoricomatricula` int(10) NOT NULL AUTO_INCREMENT,
+  `dataativacao` datetime NOT NULL,
+  `datainativacao` datetime DEFAULT NULL,
+  `idmatricula` int(10) DEFAULT NULL,
+  `motivoinativacao` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idhistoricomatricula`),
+  KEY `idmatricula_idx` (`idmatricula`),
+  CONSTRAINT `idmatricula` FOREIGN KEY (`idmatricula`) REFERENCES `matriculas` (`idmatricula`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `instituicao`
+--
+
+DROP TABLE IF EXISTS `instituicao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instituicao` (
+  `idinstituicao` int(10) NOT NULL AUTO_INCREMENT,
+  `cnpj` varchar(14) DEFAULT NULL,
+  `numplanotrabalho` varchar(255) DEFAULT NULL,
+  `logradouro` varchar(255) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
+  `nummetasmensais` int(10) DEFAULT NULL,
+  `entidademantenedora` varchar(255) DEFAULT NULL,
+  `numtermocolaboradorformento` varchar(255) NOT NULL,
+  `nomeinstituicao` varchar(255) NOT NULL,
+  `telefone` varchar(255) DEFAULT NULL,
+  `entidadeexecutora` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `idcidade` int(10) NOT NULL DEFAULT '1',
+  `bairro` varchar(255) DEFAULT NULL,
+  `numlogradouro` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`idinstituicao`),
+  UNIQUE KEY `Cnpj` (`cnpj`),
+  KEY `idCidade` (`idcidade`),
+  CONSTRAINT `instituicao_ibfk_1` FOREIGN KEY (`idcidade`) REFERENCES `cidade` (`idcidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `matriculas`
+--
+
+DROP TABLE IF EXISTS `matriculas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `matriculas` (
+  `idmatricula` int(10) NOT NULL AUTO_INCREMENT,
+  `datasairespera` datetime DEFAULT NULL,
+  `statuscadastro` enum('Ativo','Espera','Inativo') NOT NULL,
+  `dataespera` datetime DEFAULT NULL,
+  `serieescolar` enum('1º Fundamental','2º Fundamental','3º Fundamental','4º Fundamental','5º Fundamental','6º Fundamental','7º Fundamental','8º Fundamental','9º Fundamental','1º Médio','2º Médio','3º Médio') DEFAULT NULL,
+  `anomatricula` date NOT NULL,
+  `idturma` int(10) DEFAULT NULL,
+  `idvaga` int(10) NOT NULL,
+  `idcrianca` int(10) NOT NULL,
+  PRIMARY KEY (`idmatricula`),
+  KEY `idturma` (`idturma`),
+  KEY `idvaga` (`idvaga`),
+  KEY `idcrianca` (`idcrianca`),
+  CONSTRAINT `matriculas_ibfk_1` FOREIGN KEY (`idturma`) REFERENCES `turma` (`idturma`),
+  CONSTRAINT `matriculas_ibfk_2` FOREIGN KEY (`idvaga`) REFERENCES `vagas` (`idvaga`),
+  CONSTRAINT `matriculas_ibfk_3` FOREIGN KEY (`idcrianca`) REFERENCES `crianca` (`idcrianca`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `membros_familia`
+--
+
+DROP TABLE IF EXISTS `membros_familia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `membros_familia` (
+  `idmembro` int(10) NOT NULL,
+  `nomemembro` varchar(240) NOT NULL,
+  `datanascimento` date NOT NULL,
+  `salario` float NOT NULL DEFAULT '0',
+  `localtrabalho` varchar(240) DEFAULT NULL,
+  `idescola` int(11) DEFAULT NULL,
+  `idfamilia` int(11) NOT NULL,
+  PRIMARY KEY (`idmembro`),
+  KEY `idescola` (`idescola`),
+  KEY `idfamilia` (`idfamilia`),
+  CONSTRAINT `idescola` FOREIGN KEY (`idescola`) REFERENCES `escola` (`idescola`),
+  CONSTRAINT `idfamilia` FOREIGN KEY (`idfamilia`) REFERENCES `familia` (`idfamilia`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `parentesco`
+--
+
+DROP TABLE IF EXISTS `parentesco`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `parentesco` (
+  `idresponsavel` int(10) NOT NULL,
+  `idcrianca` int(10) NOT NULL,
+  KEY `parentesco_ibfk_1` (`idresponsavel`),
+  KEY `parentesco_ibfk_2` (`idcrianca`),
+  CONSTRAINT `parentesco_ibfk_1` FOREIGN KEY (`idresponsavel`) REFERENCES `responsavel` (`idresponsavel`),
+  CONSTRAINT `parentesco_ibfk_2` FOREIGN KEY (`idcrianca`) REFERENCES `crianca` (`idcrianca`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `pessoa`
+--
+
+DROP TABLE IF EXISTS `pessoa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pessoa` (
+  `idpessoa` int(10) NOT NULL AUTO_INCREMENT,
+  `nomepessoa` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `datanascimento` date NOT NULL,
+  `rg` varchar(9) CHARACTER SET latin1 DEFAULT NULL,
+  `emissorrg` varchar(7) CHARACTER SET latin1 DEFAULT NULL,
+  `cpf` varchar(11) CHARACTER SET latin1 DEFAULT NULL,
+  `sexo` enum('M','F') CHARACTER SET latin1 NOT NULL,
+  `cep` varchar(8) CHARACTER SET latin1 DEFAULT NULL,
+  `logradouro` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `ncasa` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `bairro` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `complementoendereco` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `idcidade` int(10) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idpessoa`),
+  KEY `pessoa_ibfk_1` (`idcidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `publicoprioritario`
+--
+
+DROP TABLE IF EXISTS `publicoprioritario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `publicoprioritario` (
+  `idpublicoprioritario` int(10) NOT NULL AUTO_INCREMENT,
+  `publicoprioritario` varchar(100) NOT NULL,
+  PRIMARY KEY (`idpublicoprioritario`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `responsavel`
+--
+
+DROP TABLE IF EXISTS `responsavel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `responsavel` (
+  `idresponsavel` int(10) NOT NULL AUTO_INCREMENT,
+  `profissao` varchar(255) DEFAULT NULL,
+  `salario` float(10,2) DEFAULT '0.00',
+  `estadocivil` enum('Solteiro','Casado','Divorciado','Viúvo','Separado') DEFAULT NULL,
+  `localtrabalho` varchar(255) DEFAULT NULL,
+  `telefone` varchar(11) DEFAULT NULL,
+  `telefone2` varchar(11) DEFAULT NULL,
+  `escolaridade` enum('Ens. Fundamental incompleto','Ens. Fundaental completo','Ens. Médio incompleto','Ens. Médio completo','Ens. Superior incompleto','Ens. Superior Completo') DEFAULT NULL,
+  `outrasobs` varchar(255) DEFAULT NULL,
+  `idpessoa` int(10) NOT NULL,
+  `idfamilia` int(10) NOT NULL,
+  PRIMARY KEY (`idresponsavel`),
+  KEY `idpessoa` (`idpessoa`),
+  KEY `idfamilia` (`idfamilia`),
+  CONSTRAINT `responsavel_ibfk_1` FOREIGN KEY (`idpessoa`) REFERENCES `pessoa` (`idpessoa`),
+  CONSTRAINT `responsavel_ibfk_2` FOREIGN KEY (`idfamilia`) REFERENCES `familia` (`idfamilia`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `turma`
+--
+
+DROP TABLE IF EXISTS `turma`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `turma` (
+  `idturma` int(10) NOT NULL AUTO_INCREMENT,
+  `grupoconvivencia` varchar(40) NOT NULL,
+  `turno` enum('m','t') DEFAULT NULL,
+  `statusturma` tinyint(1) DEFAULT NULL,
+  `idusuario` int(10) DEFAULT NULL,
+  PRIMARY KEY (`idturma`),
+  KEY `IdUsuario` (`idusuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `statususuario` tinyint(1) NOT NULL,
+  `password` char(100) NOT NULL,
+  `nomeusuario` varchar(10) NOT NULL,
+  `tipousuario` enum('Administrador','Educador','SuperUser') NOT NULL,
+  `remember_token` char(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Table structure for table `vagas`
+--
+
+DROP TABLE IF EXISTS `vagas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vagas` (
+  `idvaga` int(10) NOT NULL AUTO_INCREMENT,
+  `idademin` int(2) NOT NULL,
+  `idademax` int(2) NOT NULL,
+  `numvaga` int(3) NOT NULL,
+  `anovaga` int(10) NOT NULL,
+  `idinstituicao` int(10) NOT NULL,
+  `statusvaga` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idvaga`),
+  KEY `vagas_ibfk_1` (`idinstituicao`),
+  CONSTRAINT `vagas_ibfk_1` FOREIGN KEY (`idinstituicao`) REFERENCES `instituicao` (`idinstituicao`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+drop function if exists validaCPF;
+-- função cpf
+DELIMITER $$
+CREATE  FUNCTION `validaCPF` (`CPF` VARCHAR(11))  
+RETURNS  TINYINT(4) 
+BEGIN 
+DECLARE INDICE, SOMA, DIG1, DIG2 INT; 
+SET INDICE = 1;  
+SET SOMA = 0;  
+ 
+WHILE (INDICE <= 9 )  
+DO
+SET SOMA = SOMA + CAST(SUBSTRING(CPF,  INDICE,  1)  AS  UNSIGNED) * (11 - INDICE);  
+SET INDICE = INDICE + 1; 
+END WHILE;  
+SET DIG1 = 11 - (SOMA % 11);
+ 
+IF DIG1 > 9 THEN 
+SET DIG1 = 0; 
+END IF;
+ 
+SET INDICE = 1; 
+SET SOMA = 0; 
+WHILE (INDICE <= 10)  
+DO  
+SET SOMA = SOMA + CAST(SUBSTRING(CPF, INDICE, 1) AS UNSIGNED) * (12 - INDICE);  
+SET INDICE = INDICE + 1; 
+END WHILE; 
+SET DIG2 = 11 - (SOMA % 11);  
+
+IF DIG2 > 9 THEN  
+SET DIG2 = 0; 
+END IF; 
+
+IF ((DIG1 = SUBSTRING(CPF, LENGTH(CPF)-1, 1))AND (DIG2 = SUBSTRING(CPF, LENGTH(CPF), 1) OR (CPF = NULL))
+AND NOT((CPF = "11111111111") OR (CPF = "22222222222")  
+OR (CPF = "33333333333") OR (CPF = "44444444444") OR (CPF = "55555555555")  
+OR (CPF = "66666666666") OR (CPF = "77777777777") OR (CPF = "88888888888") 
+OR (CPF = "99999999999") OR (CPF = "00000000000"))) THEN  
+RETURN TRUE;  
+ELSE RETURN FALSE;  
+END IF;  
+END$$ 
+DELIMITER ; 
+
+end;
+CREATE DEFINER=`root`@`localhost` TRIGGER `tr_valida_cpf` BEFORE insert ON `pessoa`
+FOR EACH ROW 
+BEGIN
+IF(NEW.cpf = null)THEN 
+BEGIN
+	IF (((SELECT count(*) from pessoa where pessoa.cpf = '11') > 0)) THEN BEGIN
+		SIGNAL SQLSTATE '45000'  
+		SET MESSAGE_TEXT = 'Erro: CPF ja cadastrado';
+	END;  
+	ELSEIF ((SELECT validaCPF(NEW.cpf)) = false) THEN BEGIN  
+		SIGNAL SQLSTATE '45000'  
+		SET MESSAGE_TEXT = 'Erro: CPF inválido';  
+	END;
+	END IF;
+END;
+END IF;    
+END
+
+drop trigger if exists tr_valida_cpfupd;
+-- gatilho cpf
+DELIMITER $$  
+CREATE TRIGGER `tr_valida_cpfupd` BEFORE update ON `pessoa`
+FOR EACH ROW 
+BEGIN
+IF(NEW.cpf = null)THEN BEGIN
+END;  
+ELSEIF ((SELECT validaCPF(NEW.cpf)) = false) THEN BEGIN  
+SIGNAL SQLSTATE '45000'  
+SET MESSAGE_TEXT = 'Erro: CPF inválido';  
+END;
+END IF; 
+END $$
+DELIMITER ;
+
+
+drop function if exists fn_validacep;
+-- função cep
+DELIMITER $$
+CREATE FUNCTION fn_validacep (cep varchar(8))
+RETURNS TINYINT(4)
+BEGIN
+    if(length(cep) = 8 || length(cep)= 0 )then
+RETURN true;
+else return false;
+end if;
+END$$
+DELIMITER ;
+drop trigger if exists tr_cep;
+-- gatilho cep
+DELIMITER $$
+create trigger tr_cep before insert on pessoa for each row
+begin
+if(new.cep = '')then
+begin
+end;
+elseif ((select fn_validacep(NEW.cep)) = false) then
+begin 
+signal sqlstate'45000'
+set message_text = 'cep invalido';
+end;
+end if;
+end $$ 
+delimiter ;
+
+
+drop trigger if exists tr_cepupd;
+DELIMITER $$
+create trigger tr_cepupd before update on pessoa for each row
+begin
+if(new.cep = '')then
+begin
+end;
+elseif ((select fn_validacep(NEW.cep)) = false) then
+begin 
+signal sqlstate'45000'
+set message_text = 'cep invalido';
+end;
+end if;
+end $$ 
+delimiter ;
+
+
+-- FUNÇÃO EMAIL
+drop function if exists `fn_validaemail`;
+DELIMITER $$
+CREATE FUNCTION fn_validaemail (email varchar(255))
+RETURNS TINYINT(4)
+BEGIN
+    if(email rlike '@')then
+RETURN true;
+else return false;
+end if;
+END$$
+DELIMITER ;
+
+
+drop trigger if exists tr_email;
+-- GATILHO EMAIL
+DELIMITER $$
+create trigger tr_email before insert on usuario for each row
+begin
+if ((select fn_validaemail(NEW.email)) = false) then
+begin 
+signal sqlstate'45000'
+set message_text = 'Email invalido';
+end;
+end if;
+end $$ 
+delimiter ;
+
+drop trigger if exists tr_emailupdate;
+-- GATILHO EMAIL
+DELIMITER $$
+create trigger tr_emailupdate before update on usuario for each row
+begin
+if ((select fn_validaemail(NEW.email)) = false) then
+begin 
+signal sqlstate'45000'
+set message_text = 'Email invalido';
+end;
+end if;
+end $$ 
+delimiter ;
+
+-- FUNÇÃO CNPJ
+DELIMITER $$
+CREATE FUNCTION VALIDACNPJ(CNPJ VARCHAR(14))
+RETURNS TINYINT(4)
+
+BEGIN
+DECLARE INDICE, SOMA, DIG1, DIG2 INT;
+SET INDICE = 1;
+SET SOMA = 0;
+
+WHILE (INDICE <= 12) DO
+IF (INDICE <= 4) THEN
+SET SOMA = SOMA + CAST(SUBSTRING(CNPJ, INDICE, 1) AS UNSIGNED) * (6 - INDICE);
+SET INDICE = INDICE + 1;
+ELSE
+SET SOMA = SOMA + CAST(SUBSTRING(CNPJ, INDICE, 1) AS UNSIGNED) * (14 - INDICE);
+SET INDICE = INDICE + 1;
+END IF;
+END WHILE;
+SET DIG1 = 11 - (SOMA % 11);
+IF DIG1 > 9 THEN
+SET DIG1 = 0;
+END IF;
+
+SET INDICE = 1;
+SET SOMA = 0;
+WHILE (INDICE <= 13) DO
+IF (INDICE <= 5) THEN
+SET SOMA = SOMA + CAST(SUBSTRING(CNPJ, INDICE, 1) AS UNSIGNED) * (7 - INDICE);
+SET INDICE = INDICE + 1;
+ELSE
+SET SOMA = SOMA + CAST(SUBSTRING(CNPJ, INDICE, 1) AS UNSIGNED) * (15 - INDICE);
+SET INDICE = INDICE + 1;
+END IF;
+END WHILE;
+SET DIG2 = 11 - (SOMA % 11);
+IF DIG2 > 9 THEN
+SET DIG2 = 0;
+END IF;
+IF ((DIG1 = SUBSTRING(CNPJ, LENGTH(CNPJ)-1, 1))
+AND (DIG2 = SUBSTRING(CNPJ, LENGTH(CNPJ), 1))) THEN
+RETURN TRUE;
+ELSE
+RETURN FALSE;
+END IF;
+
+END $$
+DELIMITER ;
+
+-- GATILHO CNPJ
+DELIMITER $$  
+CREATE TRIGGER `TR_VALIDA_CNPJ` BEFORE INSERT ON INSTITUIÇÃO
+FOR EACH ROW 
+BEGIN  
+IF ((SELECT  COUNT(*)  FROM INSTITUIÇÃO WHERE(CNPJ = NEW.CNPJ)) > 0) THEN  
+BEGIN SIGNAL SQLSTATE  '45000'  
+SET MESSAGE_TEXT = 'ERRO: CNPJ JA CADASTRADO';  
+END; 
+ELSEIF ((SELECT VALIDACNPJ(NEW.CNPJ)) = 0) THEN BEGIN  
+SIGNAL SQLSTATE  '45000'  
+SET MESSAGE_TEXT  =  'ERRO:  CNPJ  NAO  EXISTE';  
+END;   
+END IF; 
+END $$
+DELIMITER ;

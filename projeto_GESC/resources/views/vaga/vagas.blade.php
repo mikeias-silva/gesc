@@ -1,91 +1,104 @@
 @extends('layout.principal') 
 @section('conteudo')
+<div class="">
 <h1 class="text">Gerenciamento de vagas</h1>
 @if(count($vaga)==0)
-    <div class="alert alert-danger">
-        Você não tem nenhuma faixa etária cadastrada.
+    <div class="alert alert-danger container card-text">
+       Não existem vagas cadastradas
     </div>
 
 @elseif(!empty($vaga))
-<table class="table table-striped">
+
+<table class="table table-striped border">
     <thead>
         <tr>
-            <th>Idade Mínima</th>
-            <th>Idade Máxima</th>
-            <th>Número de Vagas</th>
-            <th>Ano</th>
-            <th>Opções</th>
+            <th class="text-center">Idade Mínima</th>
+            <th class="text-center">Idade Máxima</th>
+            <th class="text-center">Número de Vagas</th>
+            <th class="text-center">Ano</th>
+            <th class="text-center">Opções</th>
 
         </tr>
     </thead>
     @foreach ($vaga as $v)
     <tr>
-        <td> {{ $v->idademin }} </td>
-        <td> {{ $v->idademax }} </td>
-        <td> {{ $v->numvaga }} </td>
-        <td> {{ $v->anovaga }} </td>
+        <td class="text-center"> {{ $v->idademin }} </td>
+        <td class="text-center"> {{ $v->idademax }} </td>
+        <td class="text-center"> {{ $v->numvaga }} </td>
+        <td class="text-center"> {{ $v->anovaga }} </td>
         
-        <td>
-            <button type="button" class="btn btn-info" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
-            data-myidademax="{{ $v->idademax }}" data-mynumvaga="{{ $v->numvaga }}" data-myano="{{ $v->anovaga }}" data-toggle="modal" data-target="#editarVagas">Editar</button>    
-            <button type="button" class="btn btn-danger" data-myid="{{ $v->idvaga }}" data-toggle="modal" data-target="#excluirVaga">Excluir</button>
+        <td class="text-center">
+            <a href="" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
+            data-myidademax="{{ $v->idademax }}" data-mynumvaga="{{ $v->numvaga }}" data-myano="{{ $v->anovaga }}" data-toggle="modal" data-target="#editarVagas">
+           @if ($v->anovaga > 2017)
+           <i class="material-icons text-info">
+                edit
+            </i>
+           @endif
+            
+        </a>    
         </td>
     </tr>
     @endforeach
 </table>
+
 @endif
 <!-- Button trigger modal -->
+<div class="float-right">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Novo
 </button>
-
+</div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Novo faixa etária de vagas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nova faixa etária de vagas</h5>
                 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
             
             </div>
-            <div class ="row">
-            <spam id="msgiadadessobre" class="col-sm-12"></br></spam>
-            <spam id="msgintervaloinvalido" class="col-sm-12"></br></spam>
-            </div>
             <div class="modal-body">
+                
 
                 <form class="form" action="/vagas/adiciona" method="post" name="incluirVagas"
                 onsubmit="return incluirVaga(incluirVagas.idademin, incluirVagas.idademax, incluirVagas.numvaga, 
                 incluirVagas.listaAno, incluirVagas.listaIdadeMin, incluirVagas.listaIdadeMax, incluirVagas.anovaga);">
+                    <div class ="row">
+                        <!--<label class="col-sm-1"><br></label>-->
+                        <span><label id="msgiadadessobre" class="col-sm-12"></label><br></span>
+                        <span><label id="msgintervaloinvalido" class="col-sm-12"></label><br></span>
+                    </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="listaAno" value="{{ $listaAno }}">
                     <input type="hidden" name="listaIdadeMax" value="{{ $listaIdadeMax }}">
                     <input type="hidden" name="listaIdadeMin" value="{{ $listaIdadeMin }}">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Idade Mínima</label>
-                            <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
+                            <label>Idade Mínima*</label>
+                            <input autofocus name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin"></label>
-                            </br>
+                            <br>
                         </div>
                         <div class="col-sm-6">
-                            <label>Idade Máxima</label>
+                            <label>Idade Máxima*</label>
                             <input name="idademax" id="idademax"  type="text" class="form-control" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademax"></label>
-                            </br>
+                            <br>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Número de Vagas</label>
+                            <label>Número de Vagas*</label>
                             <input name="numvaga" id="numvaga" type="text" class="form-control" maxlength="4" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgnumvagas"></label>
                             </div>
                         <div class="col-sm-6">
-                            <label>Ano</label>
+                            <label>Ano*</label>
                             <select class="form-control" name="anovaga" id="anovaga">
                                 <option value="{{$ano}}">{{$ano}}</option>
                                 <option value="{{$a = $ano+1}}">{{$a = $ano+1}}</option>
@@ -116,8 +129,8 @@
             </button>
             </div>
             <div class ="row">
-            <spam id="msgiadadessobre_edit" class="col-sm-12"></br></spam>
-            <spam id="msgintervaloinvalido_edit" class="col-sm-12"></br></spam>
+            <span id="msgiadadessobre_edit" class="col-sm-12"><br></span>
+            <span id="msgintervaloinvalido_edit" class="col-sm-12"><br></span>
             </div>
             <div class="modal-body">
 
@@ -131,26 +144,26 @@
                     <input type="hidden" name="idvaga" id="idvaga" type="text" value="">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Idade Mínima</label>
+                            <label>Idade Mínima*</label>
                             <input name="idademin" id="idademin" class="form-control" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademin_edit"></label>
-                            </br>
+                            <br>
                         </div>
                         <div class="col-sm-6">
-                            <label>Idade Máxima</label>
+                            <label>Idade Máxima*</label>
                             <input name="idademax" id="idademax"  type="text" class="form-control" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgidademax_edit"></label>
-                            </br>
+                            <br>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>Número de Vagas</label>
+                            <label>Número de Vagas*</label>
                             <input name="numvaga" id="numvaga" type="text" class="form-control" maxlength="4" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             <label id="msgnumvagas_edit"></label>
                             </div>
                         <div class="col-sm-6">
-                            <label>Ano</label>
+                            <label>Ano*</label>
                             <select class="form-control" name="anovaga" id="anovaga">
                                 <option value="{{$ano}}">{{$ano}}</option>
                                 <option value="{{$a = $ano+1}}">{{$a = $ano+1}}</option>
@@ -300,7 +313,7 @@
         //console.log(cont);
         if(cont>0){
             //console.log("Entra");
-            document.getElementById("msgiadadessobre").innerHTML="<font color='red'>A faixa etária informada sobrepõe a autra cadastrada, por favor verifique</font>";
+            document.getElementById("msgiadadessobre").innerHTML="<font color='red'>A faixa etária informada sobrepõe a outra cadastrada, por favor verifique</font>";
             permissao = false;
         } else {
             document.getElementById("msgiadadessobre").innerHTML="";
@@ -308,21 +321,21 @@
 
 
         if (tesIdadeMin == "") {
-            document.getElementById("msgidademin").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademin").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademin").innerHTML="";
         }
 
         if (tesIdadeMax == "") {
-            document.getElementById("msgidademax").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademax").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademax").innerHTML="";
         }
 
         if (tesNumVgagas == "") {
-            document.getElementById("msgnumvagas").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgnumvagas").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgnumvagas").innerHTML="";
@@ -382,21 +395,21 @@
         }
 
         if (tesIdadeMin == "") {
-            document.getElementById("msgidademin_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademin_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademin_edit").innerHTML="";
         }
 
         if (tesIdadeMax == "") {
-            document.getElementById("msgidademax_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgidademax_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgidademax_edit").innerHTML="";
         }
 
         if (tesNumVgagas == "") {
-            document.getElementById("msgnumvagas_edit").innerHTML="<font color='red'>Este campo é de preenchimento obrigatório</font>";
+            document.getElementById("msgnumvagas_edit").innerHTML="<font color='red'>Campo obrigatório</font>";
             permissao = false;
         } else {
             document.getElementById("msgnumvagas_edit").innerHTML="";

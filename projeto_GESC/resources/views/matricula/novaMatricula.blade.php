@@ -1,8 +1,19 @@
 @extends('layout.principal') 
-@extends('matricula.identificacao')
+
 @section('conteudo')
 
-<h2>Nova Matrícula</h2>
+<form action="/novaMatricula/adiciona" method="POST">
+<div class="float-right">
+    <button type="submit" class="btn btn-primary" id="btn-mat"
+    data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
+
+</div>
+
+<div>
+    <h2>Nova Matrícula</h2>
+</div>
+
+
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -13,12 +24,11 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" id="familia-tab" data-toggle="tab" href="#familia" role="tab" aria-controls="familia" aria-selected="false">Constituição Familiar</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="conclusao-tab" data-toggle="tab" href="#conclusao" role="tab" aria-controls="conclusao" aria-selected="false">Conclusao</a>
-    </li>
+    </li>  
+    
 </ul>
 
+      
 <div class="tab-content" id="myTabContent">
     <!--ABA IDENTIFICAÇÃO -->
     <div class="tab-pane fade show active" id="identificacao" role="tabpanel" aria-labelledby="identificacao-tab">
@@ -27,7 +37,7 @@
     <div>
     <br>
 
-    <form  action="/novaMatricula/adiciona" method="POST" 
+    <form action="/novaMatricula/adiciona" method="POST" 
     onsubmit="return validarMatricula(matriculaNova.nomecrianca, matriculaNova.datanascimentocrianca, matriculaNova.rgcrianca,
     matriculaNova.cpfcrianca, matriculaNova.cep, matriculaNova.logradouro, matriculaNova.bairro, matriculaNova.nomeresp1,
     matriculaNova.datanascimentoresp1, matriculaNova.rgresp1, matriculaNova.cpfresp1, matriculaNova.salarioresp1, matriculaNova.tel1resp1, 
@@ -37,13 +47,13 @@
             {{ csrf_field() }}
             <div class="form-group ">
                 <div class="row">
-                    <div class="col-sm-8" >
-                        <label>Nome<span id="campoobrigatorio">*</span></label>
+                    <div class="col-sm-6" >
+                        <label>Nome</label>
                         <input type="text" class="form-control" name="nomecrianca" maxlength="255" autocomplete="off">
                         <span id="msgNomeCrianca"></span>
                     </div>
-                        
-                    <div class="col-sm-2">
+                     
+                    <div class="col-sm-4">
                         <label>Nascimento</label>
                         <input type="date" class="form-control" name="datanascimentocrianca">
                         <span id="msgDataNascimento"></span>
@@ -116,7 +126,6 @@
                     <div class="col-sm-6">
                         <label>CRAS/CREAS</label>
                         <select name="cras" id="" class="custom-select" name="cras">
-                            <option value="">Nenhum</option>
                             @foreach($cras as $c)
                                 <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
                             @endforeach
@@ -130,7 +139,6 @@
                     <div class="col-sm-6">
                         <label>Público Prioritário</label>
                         <select name="pprioritario" id="" class="custom-select">
-                            <option value="">Nenhum</option>
                             @foreach($pprioritario as $p)
                                 <option value="{{ $p->idpublicoprioritario }}">{{ $p->publicoprioritario }}</option>
                             @endforeach
@@ -145,7 +153,6 @@
                     <div class="col-sm-6">
                         <label>Escola</label>
                         <select name="escola" id="" class="custom-select" >
-                           <option value="">Nenhum</option>
                             @foreach($escola as $e)
                                 <option value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
                             @endforeach
@@ -191,17 +198,17 @@
     <div class="tab-pane fade" id="responsavel" role="tabpanel" aria-labelledby="responsavel-tab">
         <div class="form">
         <br>
-        <h2>Responsável 01</h2>
-
+        <h5>Responsável 01</h5>
+        <br>
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <label>Nome</label>
                     <input class="form-control" type="text" name="nomeresp1" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp1"></span>
                 </div>
                 
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <label>Data de Nascimento</label>
                     <input type="date" class="form-control" name="datanascimentoresp1">
                     <span id="msgDataResp1"></span>
@@ -297,16 +304,17 @@
 
         </div>
             
-        <h2>Responsável 02</h2>
+        <h5>Responsável 02</h5>
+        <br>
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <label>Nome:</label>
                     <input class="form-control" type="text" name="nomeresp2" id="nomeresp2" maxlength="255" autocomplete="off">
                     <span id="msgNomeResp2"></span>
                 </div>
 
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <label>Data de Nascimento</label>
                     <input type="date" class="form-control" name="datanascimentoresp2">
                     <span id="msgDataResp2"></span>
@@ -430,23 +438,23 @@
             <div class="row">
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <span class="form-check-label" for="rd-alvenaria">
+                        <label class="form-check-label" for="rd-alvenaria">
                             <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
-                        </span>
+                        </label>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <span class="form-check-label" for="rd-madeira">
+                        <label class="form-check-label" for="rd-madeira">
                             <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-                        </span>
+                        </label>
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-check">
-                        <span class="form-check-label" for="rd-mista">
+                        <label class="form-check-label" for="rd-mista">
                             <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-                        </span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -456,21 +464,21 @@
             <label>Programas Sociais</label>
             <div class="form-inline">
             <div class="form-check col-sm-2">
-                <span class="form-check-label">
+                <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
-                </span>
+                </label>
             </div>
 
             <div class="form-check col-sm-2">
-                <span class="form-check-label">
+                <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
-                </span>
+                </label>
             </div>
 
             <div class="form-check col-sm-2">
-                <span class="form-check-label">
+                <label class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
-                </span>
+                </label>
             </div>
         </div>
             <!--GRID MEMBRO FAMILIA-->
@@ -573,20 +581,7 @@
         
         </div>
     
-    
- 
-    <!-- CONCLUSÃO -->
-    <div class="tab-pane fade" id="conclusao" role="tabpanel" aria-labelledby="responsavel-tab">
-        
-        
-       
-           <button type="submit" class="btn btn-primary" id="btn-mat"
-        data-toggle="modal" data-target="#confirmarMatricula">Confirmar Matricula</button>
-    
-
-    </div>
-
-  
+    </form>
     
     
 </div> 
@@ -607,4 +602,5 @@
   <!--  <script src="js/nova_matricula.js"></script>
   -->
     <script src="js/membro_familia.js"></script>
+   
 @stop

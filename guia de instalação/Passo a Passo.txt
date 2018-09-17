@@ -1,0 +1,43 @@
+
+Instalação ambiente de homologação
+
+Passo 1 - instalar mysql 5.7
+        - realizar o download no link na pasta mysql
+        - executar o instalador do mysql 5.7 na pasta mysql
+        - seguir os passos para Instalação
+
+passo 2 - instalar o mysql workbench 6.3
+        - realizar o download no link na pasta mysql
+        - executar o instalado do workbench na pasta mysql 
+        - seguir os passos da Instalação
+
+passo 3 - executar o dump import da pasta dump_gesc 
+        - abrir o mysql workbench 
+        - acessar o menu server / data import
+        - selecionar a pasta dump e acionar o botão 'start import'
+
+passo 4 - extrair php 7.1
+        - extrair a pasta php 7.1 
+
+passo 5 - instalar composer
+        - executar o instalador do composer na pasta composer
+        - seguir os passos para Instalação
+
+passo 6 - descompactar pasta do projeto de preferencia na raiz do disco Rígido (C:/)
+        
+passo 7 - acessar via terminal a pasta do local onde foi descompactada (C:/)
+     Ex: c:/gesc/projeto_gesc
+
+passo 8 - executar o comando 
+        composer install e composer update
+
+passo 9 - executar o comando de instalação do framework Laravel
+        - composer global require "laravel/installer"
+
+passo 10 - acessar via terminal a pasta do local onde foi descompactada (C:/)
+     Ex: c:/gesc/projeto_gesc
+
+passo 11 - executar o comando php artisan serve
+        verificar se o comando está em execução
+
+passo 12 - acessar pelo navegador localhost:8000/login2

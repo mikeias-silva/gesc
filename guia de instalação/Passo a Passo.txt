@@ -2,10 +2,12 @@
 Instalação ambiente de homologação
 
 Passo 1 - instalar mysql 5.7
+        - realizar o download no link na pasta mysql
         - executar o instalador do mysql 5.7 na pasta mysql
         - seguir os passos para Instalação
 
 passo 2 - instalar o mysql workbench 6.3
+        - realizar o download no link na pasta mysql
         - executar o instalado do workbench na pasta mysql 
         - seguir os passos da Instalação
 

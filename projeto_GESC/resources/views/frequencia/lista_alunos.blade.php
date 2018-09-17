@@ -84,7 +84,7 @@
                         @foreach($frequenciaAtual as $f)
                             @if($f->idmatricula==$c->idmatricula)
                             <div class="text-center">
-                            <div class="col-md-2 centered">
+                            <div class="col-md-3 centered">
                                 <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control text-right" type="text" value="{{$f->totalfaltas}}" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                             </div> 
                             </div>    
@@ -96,7 +96,7 @@
                             @endif
                         @endforeach
                         @if($cont==0)
-                        <div class="col-md-2 centered">
+                        <div class="col-md-3 centered">
                             <input name="numerofaltas[]" id="numerofaltas[]" size="5" class="form-control text-right" type="text" value="" maxlength="2" autocomplete="off" onkeyup="mascara(this, retiraLetra);">
                         </div> 
                             <input name="idmatricula[]" class="form-control" type="hidden" value="{{$c->idmatricula}}">

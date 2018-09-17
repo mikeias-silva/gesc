@@ -114,7 +114,7 @@ class FichaExport implements FromView, WithEvents
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}'");
         
         $lista_ativos=DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
-        and mesfrequencia='{$this->mes}' group by idmatricula");
+        and mesfrequencia='{$this->mes}' group by idmatricula order by nomepessoa ASC");
         
         $lista_desligamentos=DB::select("select * from listaAlunosDesligados where
         EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula");

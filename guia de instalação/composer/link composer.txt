@@ -1,0 +1,1 @@
+https://getcomposer.org/download/1.7.2/composer.phar.sha256sum

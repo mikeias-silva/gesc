@@ -178,8 +178,9 @@
                 </div>
             <br>
             </div>
-        
-            <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+            <div class="footer text-right">
+                <button type="submit" class="btn btn-primary" id="btn_instituicao">Salvar</button>
+            </div>
         
         </form>
     @endif
@@ -210,97 +211,97 @@
             <tr >
                 <td align="center" class="font-weight-bold">Janeiro</td>
                 @if(empty($diasFuncionamento[0]->jan) || $diasFuncionamento[0]->jan==0)
-                    <td align="center"><input name="jan" id="jan" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="jan" id="jan" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input type="number" id="jan" class="combo-box col-2" name="jan" value="{{$diasFuncionamento[0]->jan}}" maxlength="2"></td>
+                    <td align="center"><input type="number" id="jan" class="combo-box col-3 form-control" name="jan" value="{{$diasFuncionamento[0]->jan}}" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Fevereiro</td>
                 @if(empty($diasFuncionamento[0]->fev) || $diasFuncionamento[0]->fev==0)
-                    <td align="center" ><input type="number" id="fev" class="combo-box col-2" name="fev" maxlength="2"></td>
+                    <td align="center" ><input type="number" id="fev" class="combo-box col-3 form-control" name="fev" maxlength="2"></td>
                 @else
-                    <td align="center"><input type="number" name="fev" id="fev" value="{{$diasFuncionamento[0]->fev}}" class="combo-box col-2" maxlength="2"></td>
+                    <td align="center"><input type="number" name="fev" id="fev" value="{{$diasFuncionamento[0]->fev}}" class="combo-box col-3 form-control" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Março</td>
                 @if(empty($diasFuncionamento[0]->mar) || $diasFuncionamento[0]->mar==0)
-                    <td align="center"><input name="mar" id="mar" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="mar" id="mar" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input type="number" name="mar" id="mar" value="{{$diasFuncionamento[0]->mar}}" class="combo-box col-2" maxlength="2"></td>
+                    <td align="center"><input type="number" name="mar" id="mar" value="{{$diasFuncionamento[0]->mar}}" class="combo-box col-3 form-control" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Abril</td>
                 @if(empty($diasFuncionamento[0]->abr) || $diasFuncionamento[0]->abr==0)
-                    <td align="center"><input  name="abr" id="abr" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input  name="abr" id="abr" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input class="combo-box col-2" type="number" id="abr" name="abr" value="{{$diasFuncionamento[0]->abr}}" maxlength="2"></td>
+                    <td align="center"><input class="combo-box col-3 form-control" type="number" id="abr" name="abr" value="{{$diasFuncionamento[0]->abr}}" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Maio</td>
                 @if(empty($diasFuncionamento[0]->mai) || $diasFuncionamento[0]->mai==0)
-                    <td align="center" ><input name="mai" type="number" id="mai" class="combo-box col-2" maxlength="2"></td>
+                    <td align="center" ><input name="mai" type="number" id="mai" class="combo-box col-3 form-control" maxlength="2"></td>
                 @else
-                    <td align="center" ><input  name="mai" value="{{$diasFuncionamento[0]->mai}}" id="mai" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center" ><input  name="mai" value="{{$diasFuncionamento[0]->mai}}" id="mai" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Junho</td>
                 @if(empty($diasFuncionamento[0]->jun) || $diasFuncionamento[0]->jun==0)
-                    <td align="center" ><input name="jun" id="jun" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center" ><input name="jun" id="jun" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="jun" id="jun" value="{{$diasFuncionamento[0]->jun}}" type="number" class="combo-box col-2" maxlength="2"></td>
+                    <td align="center"><input name="jun" id="jun" value="{{$diasFuncionamento[0]->jun}}" type="number" class="combo-box col-3 form-control" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Julho</td>
                 @if(empty($diasFuncionamento[0]->jul) || $diasFuncionamento[0]->jul==0)
-                    <td align="center" ><input name="jul" id="jul" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center" ><input name="jul" id="jul" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center" ><input name="jul" id="jul" value="{{$diasFuncionamento[0]->jul}}" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center" ><input name="jul" id="jul" value="{{$diasFuncionamento[0]->jul}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Agosto</td>
                 @if(empty($diasFuncionamento[0]->ago) || $diasFuncionamento[0]->ago==0)
-                    <td align="center"><input name="ago" id="ago" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="ago" id="ago" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="ago" id="ago" value="{{$diasFuncionamento[0]->ago}}" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="ago" id="ago" value="{{$diasFuncionamento[0]->ago}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Setembro</td>
                 @if(empty($diasFuncionamento[0]->setembro) || $diasFuncionamento[0]->setembro==0)
-                    <td align="center"><input  name="setembro" id="setembro" class="combo-box col-2 form-control" type="number" maxlength="2"></td>
+                    <td align="center"><input  name="setembro" id="setembro" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="setembro" id="setembro" value="{{$diasFuncionamento[0]->setembro}}" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="setembro" id="setembro" value="{{$diasFuncionamento[0]->setembro}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Outubro</td>
                 @if(empty($diasFuncionamento[0]->outubro) || $diasFuncionamento[0]->outubro==0)
-                    <td align="center"><input name="outubro" id="outubro" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="outubro" id="outubro" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="outubro" id="outubro" value="{{$diasFuncionamento[0]->outubro}}" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="outubro" id="outubro" value="{{$diasFuncionamento[0]->outubro}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Novembro</td>
                 @if(empty($diasFuncionamento[0]->nov) || $diasFuncionamento[0]->nov==0)
-                    <td align="center"><input name="nov" id="nov" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="nov" id="nov" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="nov" id="nov" value="{{$diasFuncionamento[0]->nov}}" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="nov" id="nov" value="{{$diasFuncionamento[0]->nov}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
             <tr>
                 <td align="center" class="font-weight-bold">Dezembro</td>
                 @if(empty($diasFuncionamento[0]->dez) || $diasFuncionamento[0]->dez==0)
-                    <td align="center"><input  name="dez" id="dez" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input  name="dez" id="dez" class="combo-box col-3" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-2" type="number" maxlength="2"></td>
+                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-3" type="number" maxlength="2"></td>
                 @endif
             </tr>
         
@@ -308,7 +309,7 @@
     </table>
         
     </div>
-    <div class="row">
+    <div class="footer text-right">
         <button type="submit" class="btn btn-primary"  id="btn_instituicao">Salvar</button>
     </div>
     </form>

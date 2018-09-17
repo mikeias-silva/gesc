@@ -604,7 +604,12 @@ class MatriculasController extends Controller
         $pprioritario = PublicoPrioritario::all();
         $escola = Escola::all();
         //return $nomematricula;
-
+        //$anoAtual = new date('Y');
+        /*$olha = date('Y');
+        $olha = $olha +1;
+        $anoAtual = date('$olha-m-d');
+        $anoAtual = strtotime($anoAtual);*/
+        //$ano = mktime (0, 0, 0, date("m"),  date("d"),  date("Y")+1);
         $ano = Carbon::now()->year+1;
         $dados = [
             'responsaveis'=>$parentes,
@@ -639,7 +644,15 @@ class MatriculasController extends Controller
         }
 
         $matricula = new Matricula();
-        
+        //$olha = date('Y');
+        //$olha = $olha +1;
+        //$hoje = date('Y-m-d');
+        //$hoje = mktime (0, 0, 0, date("m"),  date("d"),  date("Y")+1);
+        $date = date('Y-m-d');
+        $timestamp1 = strtotime($date);
+        $hoje = strtotime('+1 year', $timestamp1);
+        $hoje = date('Y-m-d', $hoje);
+        //$date = Carbon::now()->year+1;
         $matricula->anomatricula = $hoje;
         $matricula->idvaga = $essavaga;
         

@@ -9,12 +9,6 @@
    Não existem Vagas para {{ $ano }} cadastradas.
 </div>
        
-@elseif(empty($matRematricula))
-
-<div class="alert alert-danger">
-    Não há nenhuma matrícula que precisa realizar rematricula
-</div>
-       
 @else
 <table id="dtAtivas" class="table table-striped border">
         <thead>

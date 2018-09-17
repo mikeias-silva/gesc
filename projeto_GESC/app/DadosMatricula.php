@@ -74,8 +74,8 @@ class DadosMatricula extends Model
 
     static function rematricula(){
         $anovaga = Carbon::now()->year;
-        $dadomatricula = DB::select('select * from dadosmatricula where anovaga > ?', [$anovaga]);
-       // dd( $dadomatricula);
+        $dadomatricula = DB::select('select * from dadosmatricula where anovaga >= ?', [$anovaga]);
+        //  dd( $dadomatricula);
         foreach ($dadomatricula as $dadomatricula) {
            $essacrianca =  $dadomatricula->idcrianca;
         }
@@ -86,6 +86,8 @@ class DadosMatricula extends Model
             return DadosMatricula::where('anovaga', $anovaga)->where('idcrianca', '!=', $essacrianca)->get();
        }
         
+            
+            // dd($opa);
             return DadosMatricula::where('anovaga', $anovaga)->get();
     }
 

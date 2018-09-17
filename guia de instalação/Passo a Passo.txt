@@ -2,17 +2,27 @@
 Instalação ambiente de homologação
 
 Passo 1 - instalar mysql 5.7
-        
+        - executar o instalador do mysql 5.7 na pasta mysql
+        - seguir os passos para Instalação
+
 passo 2 - instalar o mysql workbench 6.3
+        - executar o instalado do workbench na pasta mysql 
+        - seguir os passos da Instalação
 
 passo 3 - executar o dump import da pasta dump_gesc 
+        - abrir o mysql workbench 
+        - acessar o menu server / data import
+        - selecionar a pasta dump e acionar o botão 'start import'
 
-passo 4 - instalar php 7.1
+passo 4 - extrair php 7.1
+        - extrair a pasta php 7.1 
 
 passo 5 - instalar composer
+        - executar o instalador do composer na pasta composer
+        - seguir os passos para Instalação
 
 passo 6 - descompactar pasta do projeto de preferencia na raiz do disco Rígido (C:/)
-
+        
 passo 7 - acessar via terminal a pasta do local onde foi descompactada (C:/)
      Ex: c:/gesc/projeto_gesc
 

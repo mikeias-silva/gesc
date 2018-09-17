@@ -70,7 +70,7 @@ class FichaFrequenciaController extends Controller
 
         return Excel::download(new FichaExport($mes, $nomeresponsaveltec, $cpfresponsavel, $profissao,
         $visitasdomiciliares, $atendimentosgrupo, $reuniaoacolhimento, $encaminhamentos, $atendimentosindividuais,  $encaminhamentoprivada, $planoelaborado,
-        $descricaoatividade, $obs, $mesdesc), 'teste.xlsx');
+        $descricaoatividade, $obs, $mesdesc), 'Ficha_Frequencia.xlsx');
 
         return redirect()->back();
 

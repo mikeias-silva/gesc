@@ -53,7 +53,7 @@ class TransferenciaController extends Controller {
         where usuario.id = turma.idUsuario && turma.statusTurma = 1');
 
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}'");
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
 
@@ -97,7 +97,7 @@ class TransferenciaController extends Controller {
         //$checkTransferencia = $_POST['verificaTransferencia'];
        // $checkTransferencia = (isset($_POST["verificaTransferencia"])) ? $_POST["verificaTransferencia"] : "0";
 
-       return         $idMatricula = $_POST['idmatricula'];
+        $idMatricula = $_POST['idmatricula'];
         $novaTurma = $_POST['novaTurma'];
 
         for ($i=0; $i<count($idMatricula); $i++){

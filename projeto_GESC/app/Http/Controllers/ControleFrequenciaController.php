@@ -18,7 +18,7 @@ class ControleFrequenciaController extends Controller {
         $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.id = turma.idusuario && turma.statusTurma = 1');
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}'");
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
 

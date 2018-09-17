@@ -58,56 +58,56 @@
             <tr>
                 <td><label>N. de visitas domiciliares:</label></td>
                 <td>
-                    <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" cols="2" class="form-control" name="visitasdomiciliares" id="visitasdomiciliares" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" cols="2" class="form-control" name="visitasdomiciliares" id="visitasdomiciliares" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label>N. de atendimentos em grupo:</label></td>
                 <td>
-                    <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="atendimentosgrupo" id="atendimentosgrupo" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="atendimentosgrupo" id="atendimentosgrupo" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label>N. de reuniões de acolhimento e/ou avaliação:</label></td>
                 <td>
-                    <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="reuniaoacolhimento" id="reuniaoacolhimento" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="reuniaoacolhimento" id="reuniaoacolhimento" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label>N. de encaminhamentos de CRAS e CREAS:</label></td>
                 <td>
-                    <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="encaminhamentos" id="encaminhamentos" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="encaminhamentos" id="encaminhamentos" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label>N. de atendimentos individuais:</label></td>
                 <td>
-                    <div class="col-md-2">
-                    <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="atendimentosindividuais" id="atendimentosindividuais" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                    <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="atendimentosindividuais" id="atendimentosindividuais" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label>N. de encaminhamentos para rede privada:</label></td>
                 <td>
-                    <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="encaminhamentoprivada" id="encaminhamentoprivada" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="encaminhamentoprivada" id="encaminhamentoprivada" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td><label>N. de planos individuais e/ou familiar elaborados:</label></td>
                 <td>
-                    <div class="col-md-2">
-                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="planoelaborado" id="planoelaborado" maxlength="4" autocomplete="off">
+                    <div class="col-md-3">
+                        <input type="text" onkeyup="mascara( this, removeLetra );" class="form-control" name="planoelaborado" id="planoelaborado" maxlength="3" autocomplete="off">
                     </div>
                 </td>
             </tr>

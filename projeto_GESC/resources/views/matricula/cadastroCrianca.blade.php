@@ -2,6 +2,7 @@
 @section('conteudo')
 <div class="container">
     <!--ABA IDENTIFICAÇÃO -->
+    <h1>Nova Matrícula</h1>
     <h2>Cadastro Criança</h2>
 
     <form action="/adicionaCrianca" method="POST" 
@@ -47,8 +48,8 @@
                     <div class="col-sm-2">
                         <label>Sexo</label>
                         <select name="sexocrianca" id="" class="custom-select" value="">
-                            <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
+                            <option value="M">Masculino</option>
                         </select>
                     </div>
                 </div>

@@ -6,6 +6,7 @@
     <div class="modal-dialog" role="document">
         <div data-backdrop="static" class="modal-content">
         <div class="modal-header">
+            <h1>Nova Matrícula</h1>
             <h5 class="modal-title">Defina uma turma para {{ $nomecrianca }}</h5>
             
         </div>

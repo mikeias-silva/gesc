@@ -109,12 +109,13 @@
         </tbody>
     </table>
     <div class="footer text-right">
+        <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Cancelar</a>
         @if($dias_funcionamento[0]->numero=="")
         <button type="submit" class="btn btn-primary" disabled>Salvar</button>
         @else
         <button type="submit" class="btn btn-primary">Salvar</button>
         @endif
-        <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Cancelar</a>
+        
     </div>
 </div>
 </form>

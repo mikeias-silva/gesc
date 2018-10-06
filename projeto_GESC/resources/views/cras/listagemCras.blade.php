@@ -186,7 +186,6 @@
                 onsubmit="return validarEdicao(editarCras.nomecras, editarCras.telefone);">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
                     <input type="hidden" name="statuscras" id="statuscras" type="text" value="">
                     

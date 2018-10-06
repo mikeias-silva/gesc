@@ -126,7 +126,7 @@
 
     
     <div class="footer">
-        <button type="submit" class="btn btn-primary">Inprimir Ficha de Frequência</button>
+        <button type="submit" class="btn btn-primary">Gerar Ficha de Frequência</button>
     </div>
 </form>
 

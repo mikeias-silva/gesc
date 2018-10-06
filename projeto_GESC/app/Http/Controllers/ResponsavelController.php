@@ -44,7 +44,7 @@ class ResponsavelController extends Controller
     }
 
     public function adicionaResponsavel(){
-
+        
         $cep = Request::input('cep');
         $bairro = Request::input('bairro');
         $logradouro = Request::input('logradouro');

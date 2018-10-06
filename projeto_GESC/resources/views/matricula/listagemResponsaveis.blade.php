@@ -1,16 +1,16 @@
 @extends('layout.principal') 
 @section('conteudo')
-@if (empty($vagas))
-<div class="alert alert-danger">
-   Não existem vagas neste ano para realizar uma matricula
-</div>
 
+@if (empty($vagas))
+    <div class="alert alert-danger">
+        Não existem vagas neste ano para realizar uma matricula
+    </div>
 @else
-    
 
 <form action="/crianca" method="POST" onsubmit="return validaSelecao();">
     {{ csrf_field() }}
-<h2>Responsáveis</h2>
+<h1>Nova Matrícula</h1>
+<h2>Responsaveis</h2>
 <div>
 <span id="msgValidaSelec"></span>
 <table id="dtResponsavel" class="table table-striped border">
@@ -84,12 +84,12 @@
 
 <script>
 
-$(document).ready(function () {
-$('#dtResponsavel').DataTable(
-    
-);
-$('.dataTables_length').addClass('bs-select');
-});
+    $(document).ready(function () {
+        $('#dtResponsavel').DataTable(
+            
+        );
+        $('.dataTables_length').addClass('bs-select');
+    });
 
 
 </script>

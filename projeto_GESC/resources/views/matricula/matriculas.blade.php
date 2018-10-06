@@ -23,7 +23,7 @@
         <table id="dtAtivas" class="table table-striped border">
                 <thead>
                     <tr>
-                            <th>
+                        <th>
                             Nome
                                
                             <i class="material-icons float-right">
@@ -46,15 +46,7 @@
                             </i>
                                
                         </th>
-                        <th>
-                                
-                                    Data Matricula
-                                
-                            <i class="material-icons float-right">
-                                swap_vert
-                            </i>
-                                
-                        </th>
+                       
                         <th>
                             Opções
                                 
@@ -80,7 +72,6 @@
                         @endif
                          
                          
-                        <td>{{ $matA->anoMatricula() }}</td>
                         <td>
                               <!--    <a href="/imprimematricula/{{ $matA->idmatricula }}" class=" text text-dark"   >
                                     <i class="material-icons">
@@ -98,7 +89,7 @@
                                 </i>
                             </a>
                             <a href="/inativarMatricula" class="text text-danger" 
-                            data-myid="{{ $matA->idmatricula }}" data-toggle="modal" data-target="#inativar">
+                            data-myid="{{ $matA->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#inativar">
                                 <i class="material-icons">
                                     highlight_off
                                 </i>
@@ -145,12 +136,7 @@
                             </i>
                         </th>
 
-                        <th>
-                            Data Matricula
-                            <i class="material-icons float-right">
-                                swap_vert
-                            </i>
-                        </th>
+                        
 
                         <th>
                             Opções
@@ -167,9 +153,10 @@
                             <td>{{ $matI->nomeMatricula() }}</td>
                             
                             <td>{{ $matI->idadeMatricula() }} anos</td>
-                            <td>{{ $matI->anoMatricula() }}</td>
+                            
                             <td>
-                                <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" data-toggle="modal" data-target="#ativar">
+                                <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" 
+                                    data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#ativar">
                                     <i class="material-icons text-success">
                                         done
                                     </i>
@@ -202,11 +189,7 @@
                                     swap_vert
                                 </i>
                             </th>
-                            <th>Data Matricula
-                                <i class="material-icons float-right">
-                                    swap_vert
-                                </i>
-                            </th>
+                           
                             <th>Opções
                                 <i class="material-icons float-right">
                                 swap_vert
@@ -221,11 +204,12 @@
                         <tr>
                             <td>{{ $matE->nomeMatricula() }}</td>
                              <td>{{ $matE->idadeMatricula() }} anos</td>
-                            <td>{{ $matE->anoMatricula() }}</td>
+                            
                             <td>
                                 
                                 <a href="/ativarMatricula" class="text text-danger" 
-                                data-myid="{{ $matE->idmatricula }}" data-toggle="modal" data-target="#ativar">
+                                    data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" 
+                                    data-toggle="modal" data-target="#ativar">
                                     <i class="material-icons text-success">
                                         done
                                     </i>
@@ -248,34 +232,26 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content panel-warning">
             <div class="modal-header panel-heading">
+                
                 <h2 class="modal-title text-center" id="exampleModalCenterTitle">Atenção!!!</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             
             <form action="/inativarMatricula" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                     <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
-
-                    <h5>Você tem certeza que deseja realmente inativar esta Matrícula?</h5>
-
+                    <h5>Você tem certeza que deseja realmente inativar<u> <label id="nomecrianca" value=""></label></u> ?</h5>
                     <label>Motivo<span id="campoobrigatorio">*</span></label>
-                    <textarea required class="form-control" type="text" name="motivoinativacao" id="" 
-                    placeholder="Infome o motivo da inativação dessa matricula">
-
-                    </textarea>
+                    <textarea required class="form-control" type="text" name="motivoinativacao" id=""></textarea>
                     <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger">Inativar</button>
-            
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Inativar</button>
                     </div>
                 </div>
             </form>
-            
-            
         </div>
     </div>
 </div>
@@ -297,7 +273,7 @@
 
                     <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente Ativar esta Matrícula?</h5>
+                    <h5>Você tem certeza que deseja realmente Ativar <label id="nomecrianca" value=""></label>?</h5>
 
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

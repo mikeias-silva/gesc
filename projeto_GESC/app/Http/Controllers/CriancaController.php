@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use Request;
+
 use App\Responsavel;
 
 use App\Escola;
@@ -36,37 +36,56 @@ class CriancaController extends Controller
         $escolas = Escola::all();
         $idresponsaveis = Request::input('idresponsavel');
 
-        $idresponsavel1 = Request::input('idresponsavel1');
-        $idresponsavel2 = Request::input('idresponsavel2');
+        $idresponsavel1 = $idresponsaveis[0];
+        if (!empty($idresponsaveis[1])) {
+            $idresponsavel2 = $idresponsaveis[1];
+        }
+        
+        
         $nomepessoa = Request::input('nomeresp1');
         
         $pprioritario = PublicoPrioritario::all();
-        $cep = Request::input('cep');
-        $bairro = Request::input('bairro');
-        $logradouro = Request::input('logradouro');
-        $complemento = Request::input('complementoendereco');
-        $ncasa = Request::input('ncasa');
+     
+        $endereco = DB::select('select * from dadosresponsavel where idresponsavel = ?', [$idresponsavel1]);
+        foreach ( $endereco as  $endereco) {
+            $cep = $endereco->cep;
+            $bairro = $endereco->bairro;
+            $logradouro = $endereco->logradouro;
+            $complemento = $endereco->complementoendereco;
+            $ncasa = $endereco->ncasa;
+        }
+        
        
-       /* $dados = [
-            'idresponsavel'=>$idresponsaveis,
-            'escolas'=>$escolas,
-            'pprioritario'=>$pprioritario,
-            ''
-        ];*/
         $escolas = Escola::all();
+
+
+        if (!empty($idresponsaveis[1])) {
+            $dados = [
+                'responsaveis'=>$idresponsaveis,
+                'logradouro'=>$logradouro,
+                'cep'=>$cep,
+                'bairro'=>$bairro,
+                'ncasa'=>$ncasa,
+                'complemento'=>$complemento,
+                'idresponsavel1'=>$idresponsaveis[0],
+                'idresponsavel2'=>$idresponsaveis[1],
+                'escolas'=>$escolas,
+                'pprioritario'=>$pprioritario,
+            ]; 
+            return view('matricula.cadastroCrianca', $dados);
+        }
+        
         $dados = [
             'responsaveis'=>$idresponsaveis,
+            'logradouro'=>$logradouro,
             'cep'=>$cep,
             'bairro'=>$bairro,
-            'logradouro'=>$logradouro,
             'ncasa'=>$ncasa,
             'complemento'=>$complemento,
-            'idresponsavel1'=>$idresponsavel1,
-            'idresponsavel2'=>$idresponsavel2,
+            'idresponsavel1'=>$idresponsaveis[0],
             'escolas'=>$escolas,
             'pprioritario'=>$pprioritario,
-        ];
-
+        ]; 
         
         return view('matricula.cadastroCrianca', $dados);
     }

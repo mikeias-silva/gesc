@@ -6,8 +6,8 @@
     <div class="modal-dialog" role="document">
         <div data-backdrop="static" class="modal-content">
         <div class="modal-header">
+            <h1>Nova Matrícula</h1>
             <h5 class="modal-title">Defina uma turma para {{ $nomecrianca }}</h5>
-            
         </div>
         <form action="\turmaMatricula" method="POST">
                 {{ csrf_field() }}
@@ -22,7 +22,6 @@
         <div class="modal-footer">
             <button type="submit" class="btn btn-success">Confirmar Turma</button>
         </div>
-        
         </div>
     </form>
     </div>

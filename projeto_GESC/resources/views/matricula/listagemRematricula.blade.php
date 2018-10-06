@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 
-<h2>Precisam Rematricular</h2>
+<h2>Rematrícula para $ano</h2>
 
 @if (empty($vagas))
 
@@ -36,15 +36,7 @@
                     </i>
                        
                 </th>
-                <th>
-                        
-                            Data Matricula
-                        
-                    <i class="material-icons float-right">
-                        swap_vert
-                    </i>
-                        
-                </th>
+               
                 <th>
                     Rematricular
                         
@@ -70,7 +62,7 @@
                     @endif
                  
                  
-                <td>{{ $matA->anoMatricula() }}</td>
+              
                 <td>
                     <a href="/confirmarRematricula/{{ $matA->idmatricula }}" class="text text-info">
                         <i class="material-icons">

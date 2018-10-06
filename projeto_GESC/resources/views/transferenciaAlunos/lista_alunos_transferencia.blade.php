@@ -65,8 +65,8 @@
                 
         </table>
         <div class="footer text-right">
-            <button type="submit" class="btn btn-primary">Salvar</button>
             <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>
 @endif

@@ -521,19 +521,22 @@ function validarEditar(nome, senha, email, nomeusuario, listaUsuario, nomeUsuari
 $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid')
+    var nome = button.data('mynome') 
     var modal = $(this)
-   // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #idmatricula').val(id);
-    
+    modal.find('.modal-body #nomecrianca').text(nome);
+    console.log(nome);
 });
 $('#ativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
     var id = button.data('myid') 
+    var nome = button.data('mynome') 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #idmatricula').val(id);
+    modal.find('.modal-body #nomecrianca').text(nome);
     
 });
 

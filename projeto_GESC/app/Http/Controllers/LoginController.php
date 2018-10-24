@@ -38,7 +38,7 @@ class LoginController extends Controller {
 
         try{
             if(Auth::attempt($credenciais, false)){
-                toastr()->success('Bem vindo!');
+                toastr()->success('Bem vindo! '.$nomeusuario);
                 return redirect('dashboard');
             }else{
                 return redirect()->back()->with('fail', $fail)

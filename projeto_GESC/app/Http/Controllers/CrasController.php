@@ -43,6 +43,7 @@ class CrasController extends Controller {
 
        //Cras::create($request->all());
     
+       toastr()->success($request->nomecras.' adicionado com sucesso!');
        return redirect()->action('CrasController@listaCras');
     }
 
@@ -63,6 +64,8 @@ class CrasController extends Controller {
         $cras = Cras::find($request->idcras);
         $cras->statuscras='0';
         $cras->update($request->all());
+
+        toastr()->success('Inativado com sucesso');
         return redirect()->action('CrasController@listaCras');
     }
 
@@ -71,15 +74,18 @@ class CrasController extends Controller {
         $cras = Cras::find($request->idcras);
         $cras->statuscras='1';
         $cras->update($request->all());
+
+        toastr()->success('Ativado com sucesso');
         return redirect()->action('CrasController@listaCras');
     }
 
     public function editar(Request $request){
         $cras = Cras::find($request->idcras);
       
+        
         $cras->update($request->all());
         
-
+        toastr()->success($request->nomecras.' alterado com sucesso!');
         return back();
     }
 }

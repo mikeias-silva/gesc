@@ -182,7 +182,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form class="form" action="/cras/inativar" method="POST" name="editarCras"
+            <form class="form" action="/cras/edita" method="POST" name="editarCras"
                 onsubmit="return validarEdicao(editarCras.nomecras, editarCras.telefone);">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

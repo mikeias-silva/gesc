@@ -169,6 +169,9 @@
 
             </main>
 
+<script type="text/javascript" src="js/app.js"></script>
+{!! toastr()->render() !!}
+
            
 <script>
 

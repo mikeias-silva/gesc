@@ -326,11 +326,8 @@
                 </div>
                 <div class="col-md-12">
                     </br>
-                    <h5 class="text-left">Teste</h5>
-                    <p class="text-justify">O que temos que ter sempre em mente é que a necessidade de renovação processual nos obriga à análise das direções preferenciais no sentido do progresso. Podemos já vislumbrar o modo pelo qual a revolução dos costumes faz parte de um processo de gerenciamento das diretrizes de desenvolvimento para o futuro. Assim mesmo, 
-                    a hegemonia do ambiente político aponta para a melhoria das posturas dos órgãos dirigentes com relação às suas atribuições. </p>
-                    <p class="text-justify">No entanto, não podemos esquecer que a estrutura atual da organização cumpre um papel essencial na formulação do sistema de participação geral. Do mesmo modo, o novo modelo estrutural aqui preconizado apresenta tendências no sentido de aprovar a manutenção das novas proposições. Pensando mais a longo prazo, a percepção das dificuldades oferece uma interessante oportunidade para verificação do impacto na agilidade decisória. Todas estas questões, devidamente ponderadas, 
-                    levantam dúvidas sobre se a contínua expansão de nossa atividade facilita a criação das diversas correntes de <i class="material-icons">edit</i> pensamento. </p>
+                    <p class="text-justify">Esta tela é separada em duas partes, na primeira parte são informados os dados da instituição que serão usadas na ficha de frequência, para atualizar os mesmos basta realizar as alterações necessárias e clicar no botão “Salvar”. Nos dados da instituição deve ser informado um CNPJ e CEP válidos assim como um e-mail em formato válido, por exemplo: exemplo@email.com.</p>
+                    <p class="text-justify">A segunda parte da tela é onde deve ser informado o número de dias de funcionamento de cada mês, onde é permitido somente números inteiros e positivos.</p>
                                 
                 </div>
             </div>

@@ -79,18 +79,18 @@
                                     </i>
                                 </a>-->
                              <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">
-                                <i class="material-icons">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Imprimir Matrícula">
                                     print
                                 </i>
                             </a>
                             <a href="/editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
-                                <i class="material-icons">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                                     edit
                                 </i>
                             </a>
                             <a href="/inativarMatricula" class="text text-danger" 
                             data-myid="{{ $matA->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#inativar">
-                                <i class="material-icons">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                                     highlight_off
                                 </i>
                             </a>
@@ -100,7 +100,7 @@
                           @if (empty( $matA->idturma))
                               
                             <a class="text text-warning" href="" data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}">
-                                <i class="material-icons ">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Vincular a uma turma">
                                     group_add
                                 </i>
                             </a>
@@ -157,7 +157,7 @@
                             <td>
                                 <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" 
                                     data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#ativar">
-                                    <i class="material-icons text-success">
+                                    <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
                                     </i>
                                 </a>
@@ -210,7 +210,7 @@
                                 <a href="/ativarMatricula" class="text text-danger" 
                                     data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" 
                                     data-toggle="modal" data-target="#ativar">
-                                    <i class="material-icons text-success">
+                                    <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
                                     </i>
                                 </a>
@@ -375,11 +375,8 @@
             </div>
             <div class="col-md-12">
                 </br>
-                <h5 class="text-left">Teste</h5>
-                <p class="text-justify">O que temos que ter sempre em mente é que a necessidade de renovação processual nos obriga à análise das direções preferenciais no sentido do progresso. Podemos já vislumbrar o modo pelo qual a revolução dos costumes faz parte de um processo de gerenciamento das diretrizes de desenvolvimento para o futuro. Assim mesmo, 
-                a hegemonia do ambiente político aponta para a melhoria das posturas dos órgãos dirigentes com relação às suas atribuições. </p>
-                <p class="text-justify">No entanto, não podemos esquecer que a estrutura atual da organização cumpre um papel essencial na formulação do sistema de participação geral. Do mesmo modo, o novo modelo estrutural aqui preconizado apresenta tendências no sentido de aprovar a manutenção das novas proposições. Pensando mais a longo prazo, a percepção das dificuldades oferece uma interessante oportunidade para verificação do impacto na agilidade decisória. Todas estas questões, devidamente ponderadas, 
-                levantam dúvidas sobre se a contínua expansão de nossa atividade facilita a criação das diversas correntes de <i class="material-icons">edit</i> pensamento. </p>
+                <p class="text-justify">Nesta tela são listadas matrículas separadas em 3 abas de acordo com a situação da mesma. Na aba “Ativas” são listadas as matrículas de alunos que estão frequentando a instituição atualmente, na aba “Inativas” são listadas as matrículas de alunos que deixaram de frequentar a instituição e a aba “Em espera” são listadas as matrículas de alunos que estão aguardando a abertura de uma vaga.</p>
+                <p class="text-justify">Através do campo “Busca” é  possível efetuar uma busca por qualquer informação listada, seja idade, nome ou turma o filtro será aplicado automaticamente assim que o campo for preenchido.</p>
                             
             </div>
         </div>

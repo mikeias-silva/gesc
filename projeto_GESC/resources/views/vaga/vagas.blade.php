@@ -226,11 +226,8 @@
             </div>
             <div class="col-md-12">
                 </br>
-                <h5 class="text-left">Teste</h5>
-                <p class="text-justify">O que temos que ter sempre em mente é que a necessidade de renovação processual nos obriga à análise das direções preferenciais no sentido do progresso. Podemos já vislumbrar o modo pelo qual a revolução dos costumes faz parte de um processo de gerenciamento das diretrizes de desenvolvimento para o futuro. Assim mesmo, 
-                a hegemonia do ambiente político aponta para a melhoria das posturas dos órgãos dirigentes com relação às suas atribuições. </p>
-                <p class="text-justify">No entanto, não podemos esquecer que a estrutura atual da organização cumpre um papel essencial na formulação do sistema de participação geral. Do mesmo modo, o novo modelo estrutural aqui preconizado apresenta tendências no sentido de aprovar a manutenção das novas proposições. Pensando mais a longo prazo, a percepção das dificuldades oferece uma interessante oportunidade para verificação do impacto na agilidade decisória. Todas estas questões, devidamente ponderadas, 
-                levantam dúvidas sobre se a contínua expansão de nossa atividade facilita a criação das diversas correntes de <i class="material-icons">edit</i> pensamento. </p>
+                <p class="text-justify">Nesta tela é realizada o gerenciamento de vagas da instituição, onde é informado um número de vagas para uma respectiva faixa etária de idade (idade mínima e máxima), onde é possível informar as vagas do ano atual e do próximo. As vagas de anos anteriores só estão disponíveis para consulta, ou seja, não é possível editar.</p>
+                <p class="text-justify">Ao cadastrar ou editar uma vaga e sua respectiva faixa etária, deverá ser informado somente números inteiros e positivos. </p>
                             
             </div>
         </div>

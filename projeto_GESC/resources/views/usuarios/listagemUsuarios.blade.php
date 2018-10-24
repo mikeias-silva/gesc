@@ -38,8 +38,8 @@
             <a href="" class="text text-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
                     data-myemail="{{ $c->email }}" data-mysenha="{{ $c->password }}" data-mytipousuario="{{ $c->tipousuario }}" 
                     data-mynomeusuario="{{ $c->nomeusuario }}" 
-                    data-toggle="modal" data-target="#editarusuario">
-                    <i class="material-icons">
+                    data-toggle="modal" data-target="#editarusuario" >
+                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                             edit
                     </i>
             </a>
@@ -52,7 +52,7 @@
                 <a href="" class="text text-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
                         data-toggle="modal" data-target="#inativar">
                     
-                <i class="material-icons">
+                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar usuário">
                         highlight_off
                 </i>
             </a>
@@ -64,7 +64,7 @@
 
                 <a href="" class="text text-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
                     data-toggle="modal" data-target="#ativar">
-                    <i class="material-icons">
+                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar usuário">
                             done
                     </i>
                 </a>
@@ -263,11 +263,8 @@
             </div>
             <div class="col-md-12">
                 </br>
-                <h5 class="text-left">Teste</h5>
-                <p class="text-justify">O que temos que ter sempre em mente é que a necessidade de renovação processual nos obriga à análise das direções preferenciais no sentido do progresso. Podemos já vislumbrar o modo pelo qual a revolução dos costumes faz parte de um processo de gerenciamento das diretrizes de desenvolvimento para o futuro. Assim mesmo, 
-                a hegemonia do ambiente político aponta para a melhoria das posturas dos órgãos dirigentes com relação às suas atribuições. </p>
-                <p class="text-justify">No entanto, não podemos esquecer que a estrutura atual da organização cumpre um papel essencial na formulação do sistema de participação geral. Do mesmo modo, o novo modelo estrutural aqui preconizado apresenta tendências no sentido de aprovar a manutenção das novas proposições. Pensando mais a longo prazo, a percepção das dificuldades oferece uma interessante oportunidade para verificação do impacto na agilidade decisória. Todas estas questões, devidamente ponderadas, 
-                levantam dúvidas sobre se a contínua expansão de nossa atividade facilita a criação das diversas correntes de <i class="material-icons">edit</i> pensamento. </p>
+                <p class="text-justify">Esta tela tem como objetivo permitir o cadastro de novos usuários, assim como também a atualização dos seus dados. Também é possível executar a ativação e inativação de um usuário, onde usuário inativos não conseguirão acessar o sistema.</p>
+                <p class="text-justify">Ao cadastrar ou editar um usuário será obrigatório informar uma senha com no mínimo 6 caracteres e o e-mail deve possuir um formato válido, por exemplo: exemplo@email.com.</p>
                             
             </div>
         </div>

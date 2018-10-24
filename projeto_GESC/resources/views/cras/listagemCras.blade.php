@@ -26,7 +26,7 @@
         <td class="text-center">
                 <a href="" class="text text-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                         data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">
-                        <i class="material-icons">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                                 edit
                             </i>
                         </a>
@@ -43,7 +43,7 @@
                     data-myid="{{ $c->idcras }}" 
                     data-toggle="modal" data-target="#inativar">
            
-                <i class="material-icons">
+                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                     highlight_off
                 </i> </a> 
             @else
@@ -55,7 +55,7 @@
             <a href="" class="text text-success" data-mytitle="{{ $c->nomecras }}" 
                     data-myid="{{ $c->idcras }}" 
                     data-toggle="modal" data-target="#ativar">
-                    <i class="material-icons">
+                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar">
                             done
                         </i>
             </a>
@@ -221,12 +221,10 @@
             </div>
             <div class="col-md-12">
                 </br>
-                <h5 class="text-left">Teste</h5>
-                <p class="text-justify">O que temos que ter sempre em mente é que a necessidade de renovação processual nos obriga à análise das direções preferenciais no sentido do progresso. Podemos já vislumbrar o modo pelo qual a revolução dos costumes faz parte de um processo de gerenciamento das diretrizes de desenvolvimento para o futuro. Assim mesmo, 
-                a hegemonia do ambiente político aponta para a melhoria das posturas dos órgãos dirigentes com relação às suas atribuições. </p>
-                <p class="text-justify">No entanto, não podemos esquecer que a estrutura atual da organização cumpre um papel essencial na formulação do sistema de participação geral. Do mesmo modo, o novo modelo estrutural aqui preconizado apresenta tendências no sentido de aprovar a manutenção das novas proposições. Pensando mais a longo prazo, a percepção das dificuldades oferece uma interessante oportunidade para verificação do impacto na agilidade decisória. Todas estas questões, devidamente ponderadas, 
-                levantam dúvidas sobre se a contínua expansão de nossa atividade facilita a criação das diversas correntes de <i class="material-icons">edit</i> pensamento. </p>
-                            
+                <p class="text-justify">Nesta tela é feita o gerenciamento de CRAS e CREAS, onde as mesmas serão disponibilizadas para seleção ao cadastrar uma família, onde só serão disponibilizadas para seleção  CRAS ou CREAS com o status ativo. </p>
+                <p class="text-justify">Ao informar um número de telefone de um CRAS ou CREAS, deverá ser informado somente os dígitos do mesmo.</p>
+                <p class="text-justify">CRAS - Centro de Referências de Assistência Social</p>
+                <p class="text-justify">CREAS - Centro de Referências Especializada em Assistência Social</p>            
             </div>
         </div>
     </div>

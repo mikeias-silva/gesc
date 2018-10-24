@@ -4,3 +4,7 @@ addEventListener("keydown", function(event) {
         $("#help").modal("show");  
     }
   });
+  
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

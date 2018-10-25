@@ -486,12 +486,10 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             </div>
             <div class="col-md-12">
                 </br>
-                <h5 class="text-left">Teste</h5>
-                <p class="text-justify">O que temos que ter sempre em mente é que a necessidade de renovação processual nos obriga à análise das direções preferenciais no sentido do progresso. Podemos já vislumbrar o modo pelo qual a revolução dos costumes faz parte de um processo de gerenciamento das diretrizes de desenvolvimento para o futuro. Assim mesmo, 
-                a hegemonia do ambiente político aponta para a melhoria das posturas dos órgãos dirigentes com relação às suas atribuições. </p>
-                <p class="text-justify">No entanto, não podemos esquecer que a estrutura atual da organização cumpre um papel essencial na formulação do sistema de participação geral. Do mesmo modo, o novo modelo estrutural aqui preconizado apresenta tendências no sentido de aprovar a manutenção das novas proposições. Pensando mais a longo prazo, a percepção das dificuldades oferece uma interessante oportunidade para verificação do impacto na agilidade decisória. Todas estas questões, devidamente ponderadas, 
-                levantam dúvidas sobre se a contínua expansão de nossa atividade facilita a criação das diversas correntes de <i class="material-icons">edit</i> pensamento. </p>
-                            
+                <p class="text-justify">Nesta tela é efetuada o cadastro de responsáveis, podendo ser cadastrado um OU dois responsáveis, junto dos dados  sociais da mesma, como programas sociais, renda familiar, CRAS/CREAS vinculados, etc. </p>
+                <p class="text-justify">Para cada responsável é obrigatório informar o seu nome, data de nascimento, sexo, escolaridade, estado civil e o endereço do mesmo. O endereço é informado somente uma vez, sendo que os campos “Endereço” e “Bairro” serão preenchidos automaticamente caso seja informado um número de CEP válido.</p>
+                <p class="text-justify">A lista de membros da família é dinâmica, ou seja, é possível adicionar novos espaços para o cadastro dos mesmos, permitindo assim a inclusão de quantos membros for desejado. Também é permitir remover membros da família. </p>
+                <p class="text-justify">Não é necessário informar pontuação nos campos de RG, CPF e Telefone, somente dígitos.</p>                            
             </div>
         </div>
     </div>

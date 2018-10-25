@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 
-<h2>Rematrícula para $ano</h2>
+<h2>Rematrícula para {{ $ano }}</h2>
 
 @if (empty($vagas))
 

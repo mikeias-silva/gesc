@@ -3,12 +3,12 @@ var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
 
-$('.table-add').click(function() {
-    var $clone = $TABLE.find('tr.hide').clone(true).attr("id", "idpraremover");
-    //$TABLE.find('linha').val($linha + 1);
-    // console.log($("linha"));
-    $TABLE.find('table').append($clone);
-});
+// $('.table-add').click(function() {
+//     var $clone = $TABLE.find('tr.hide').clone(true).attr("id", "idpraremover");
+//     //$TABLE.find('linha').val($linha + 1);
+//     // console.log($("linha"));
+//     $TABLE.find('table').append($clone);
+// });
 
 $('.table-remove').click(function() {
     var nomevazio = $("#nomemembro").text();
@@ -73,3 +73,51 @@ $BTN.click(function() {
     // Output the result
     $EXPORT.text(JSON.stringify(data));
 });
+
+
+$('.table-add').click(function(){
+        
+    var newRow = $("<tr>");
+    var cols = "";
+    
+    cols += '<td><input type="text" name="id"></td>';
+
+    cols += '<td><input type="text" name="nome"></td>'; 
+    
+    cols += '<td><select name="cargo">'; 
+    cols += '<option value="gerente" name="gerente">Gerente</option>';
+    cols += '<option value="Professor" name="Professor">Professor</option>';
+    cols += '<option value="Programador" name="Programador">Programador</option>';
+    cols += '</select></td>';
+
+    cols += '<td><input type="text" name="email"></td>'; 
+
+    cols += '<td><input type="text" name="cpf"></td>'; 
+    
+    cols += '<td class="actions">';
+    cols += '<button class="btn btn-large btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>';
+    cols += '</td>';
+    
+    newRow.append(cols);
+    
+    $("tr.hide").append(newRow);
+  
+    console.log('clicou');
+});
+
+
+(function($) {
+
+    RemoveTableRow = function(handler) {
+      var tr = $(handler).closest('tr');
+  
+      tr.fadeOut(400, function(){ 
+        tr.remove(); 
+      }); 
+  
+      return false;
+    };
+    
+    
+  
+  })(jQuery);

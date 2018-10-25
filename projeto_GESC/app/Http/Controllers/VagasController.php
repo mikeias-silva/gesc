@@ -64,12 +64,15 @@ class VagasController extends Controller {
         $teste=DB::select('select min(idinstituicao) AS idinstituicao from instituicao;');
         $vaga->idinstituicao = $teste[0]->idinstituicao;
         $vaga->save();
+        toastr()->success('Vaga inserida com sucesso!');
         return redirect()->action('VagasController@listaVagas');
     }
 
     public function edita(Request $request){
         $vaga = Vaga::find($request->idvaga);
         $vaga->update($request->all());
+        toastr()->success('Vaga editada com sucesso!');
+
         return redirect()->action('VagasController@listaVagas');
     }
 /*

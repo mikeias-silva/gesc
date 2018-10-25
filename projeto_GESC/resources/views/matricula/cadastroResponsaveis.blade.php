@@ -418,10 +418,11 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
         </div>
             <!--GRID MEMBRO FAMILIA-->
             <!--<h5 class="text-center font-weight-bold text-uppercase py-5">Membros Familia</h5>-->
-     <!--       <div class="">
+            <div class="">
                 <div id="table" class="table-editable">
                     
-                       
+                    <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x"
+                        aria-hidden="true"></i></a></span>
                     <table class="table table-bordered table-responsive-md text-center">
                         <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
                     
@@ -445,25 +446,14 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                  
                             
                         </tr>
-                        <tr class="hide">
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro2"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro2"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro2"/></td>
-                            <td> 
-                               <select id="tdedit" name="escolamembro2" id="" class="custom-select" >
-                                   INSERIR LOGICA DAS ESCOLAS PARA MEMBRO FAMILIA    
-                               </select>
-                            </td>
-                           
-                            
-                        </tr>
+                      
                        
                     </table>
                     
                 </div>
             
            </div>
-        -->
+        
         
         </div>
 
@@ -476,6 +466,6 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
 <script src="js/buscaCep.js"></script>
 
 <script src="js/validaResponsaveis.js"></script>
-
+<script src="js/membro_familia.js"></script>
 
 @stop

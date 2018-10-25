@@ -214,6 +214,27 @@
     </div>
 </div>
 
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela é realizada o gerenciamento de vagas da instituição, onde é informado um número de vagas para uma respectiva faixa etária de idade (idade mínima e máxima), onde é possível informar as vagas do ano atual e do próximo. As vagas de anos anteriores só estão disponíveis para consulta, ou seja, não é possível editar.</p>
+                <p class="text-justify">Ao cadastrar ou editar uma vaga e sua respectiva faixa etária, deverá ser informado somente números inteiros e positivos. </p>
+                            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/vagas.js"></script>
 
 <script>
     $('#editarVagas').on('show.bs.modal', function (event) {

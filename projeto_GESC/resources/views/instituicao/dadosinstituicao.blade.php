@@ -314,6 +314,28 @@
     </div>
     </form>
 
+    <!-- Modal de help -->
+    <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="font-weight-bold">Ajuda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="col-md-12">
+                    </br>
+                    <p class="text-justify">Esta tela é separada em duas partes, na primeira parte são informados os dados da instituição que serão usadas na ficha de frequência, para atualizar os mesmos basta realizar as alterações necessárias e clicar no botão “Salvar”. Nos dados da instituição deve ser informado um CNPJ e CEP válidos assim como um e-mail em formato válido, por exemplo: exemplo@email.com.</p>
+                    <p class="text-justify">A segunda parte da tela é onde deve ser informado o número de dias de funcionamento de cada mês, onde é permitido somente números inteiros e positivos.</p>
+                                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dadosinstituicao.js"></script>
+
 <script>
 
 

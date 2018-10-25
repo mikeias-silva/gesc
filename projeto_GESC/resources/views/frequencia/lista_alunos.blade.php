@@ -121,7 +121,35 @@
 </form>
 @endif
 
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela deve ser informada o número de faltas de cada aluno listado, para que seja calculado o percentual de frequência na ficha de frequência.</p>            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/lista_alunos.js"></script>
+
 <script>
+
+    addEventListener("keydown", function(event) {
+        if (event.keyCode == 112){
+            event.preventDefault();
+            $("#help").modal("show");  
+        }
+    });
+
     function validaFaltas(diasFuncionamento, local){
         //var document = $(this);
         var permissao = true;

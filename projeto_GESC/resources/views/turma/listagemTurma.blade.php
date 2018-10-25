@@ -37,7 +37,7 @@
             <a href="" class="text text-info" data-mygrupo="{{ $t->grupoconvivencia }}" 
                 data-myturno="{{ $t->turno }}" data-myid="{{ $t->idturma }}" data-myeducador="{{ $t->idusuario }}"
                  data-toggle="modal" data-target="#editarturma">
-                 <i class="material-icons">
+                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                     edit
                 </i>
             </a>
@@ -49,7 +49,7 @@
                 data-toggle="modal" data-target="#inativarturma">Inativar</button>--> 
              <a  href="" class="text text-danger" data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#inativarturma">
-                <i class="material-icons">
+                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                         highlight_off
                     </i>
             </a>
@@ -64,7 +64,7 @@
           <a href="" class="text text-success" data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#ativarturma">
                 
-                <i class="material-icons">
+                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar">
                         done
                     </i>
               
@@ -262,7 +262,26 @@
         </div>
     </div>
 </div>
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Esta tela tem como objetivo permitir o gerenciamento das turmas das instituição, as turmas cadastradas nesta tela serão disponibilizadas para alocar aluno, sejam novos ou transferidos, mas só serão disponibilizadas turmas que estejam ativas.</p>
+                <p class="text-justify">Ao cadastrar ou editar uma turma é importante observar que é necessário selecionar um educados para a mesma.</p>       
+            </div>
+        </div>
+    </div>
+</div>
 
+<script src="js/listagemTurma.js"></script>
 <script>
     
 $('#excluirturma').on('show.bs.modal', function (event) {
@@ -367,10 +386,6 @@ $('#inativar').on('show.bs.modal', function (event) {
     }
     return permissao;
     }
-
-    
-
-
 </script>
 
 @stop

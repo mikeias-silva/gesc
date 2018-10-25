@@ -473,6 +473,28 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
             </button>
       </form>
     </div>
+
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela é efetuada o cadastro de responsáveis, podendo ser cadastrado um OU dois responsáveis, junto dos dados  sociais da mesma, como programas sociais, renda familiar, CRAS/CREAS vinculados, etc. </p>
+                <p class="text-justify">Para cada responsável é obrigatório informar o seu nome, data de nascimento, sexo, escolaridade, estado civil e o endereço do mesmo. O endereço é informado somente uma vez, sendo que os campos “Endereço” e “Bairro” serão preenchidos automaticamente caso seja informado um número de CEP válido.</p>
+                <p class="text-justify">A lista de membros da família é dinâmica, ou seja, é possível adicionar novos espaços para o cadastro dos mesmos, permitindo assim a inclusão de quantos membros for desejado. Também é permitir remover membros da família. </p>
+                <p class="text-justify">Não é necessário informar pontuação nos campos de RG, CPF e Telefone, somente dígitos.</p>                            
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/buscaCep.js"></script>
 
 <script src="js/validaResponsaveis.js"></script>

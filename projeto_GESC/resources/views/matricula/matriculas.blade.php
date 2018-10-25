@@ -79,18 +79,18 @@
                                     </i>
                                 </a>-->
                              <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matA->idmatricula }}">
-                                <i class="material-icons">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Imprimir Matrícula">
                                     print
                                 </i>
                             </a>
                             <a href="/editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
-                                <i class="material-icons">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                                     edit
                                 </i>
                             </a>
                             <a href="/inativarMatricula" class="text text-danger" 
                             data-myid="{{ $matA->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#inativar">
-                                <i class="material-icons">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                                     highlight_off
                                 </i>
                             </a>
@@ -100,7 +100,7 @@
                           @if (empty( $matA->idturma))
                               
                             <a class="text text-warning" href="" data-toggle="modal" data-target="#turma"data-myid="{{ $matA->idmatricula }}">
-                                <i class="material-icons ">
+                                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Vincular a uma turma">
                                     group_add
                                 </i>
                             </a>
@@ -157,7 +157,7 @@
                             <td>
                                 <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" 
                                     data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#ativar">
-                                    <i class="material-icons text-success">
+                                    <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
                                     </i>
                                 </a>
@@ -210,7 +210,7 @@
                                 <a href="/ativarMatricula" class="text text-danger" 
                                     data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" 
                                     data-toggle="modal" data-target="#ativar">
-                                    <i class="material-icons text-success">
+                                    <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
                                     </i>
                                 </a>
@@ -362,6 +362,28 @@
     <button class="btn btn-primary">Nova Matrícula</button>
 </form>
 <!--  -->
+
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela são listadas matrículas separadas em 3 abas de acordo com a situação da mesma. Na aba “Ativas” são listadas as matrículas de alunos que estão frequentando a instituição atualmente, na aba “Inativas” são listadas as matrículas de alunos que deixaram de frequentar a instituição e a aba “Em espera” são listadas as matrículas de alunos que estão aguardando a abertura de uma vaga.</p>
+                <p class="text-justify">Através do campo “Busca” é  possível efetuar uma busca por qualquer informação listada, seja idade, nome ou turma o filtro será aplicado automaticamente assim que o campo for preenchido.</p>
+                            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/matriculas.js"></script>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 

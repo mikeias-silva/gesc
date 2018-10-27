@@ -6,7 +6,7 @@
     <div class="modal-dialog" role="document">
         <div data-backdrop="static" class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Defina uma turma para {{ $nomecrianca }}</h5>
+            <h5 class="modal-title">Defina uma turma para <strong> {{ $nomecrianca }}</strong></h5>
         </div>
         <form action="\turmaMatricula" method="POST">
                 {{ csrf_field() }}

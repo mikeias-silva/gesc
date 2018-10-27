@@ -70,9 +70,7 @@ class ResponsavelController extends Controller
         //  $responsavel1->update(array('idfamilia' =>$familia->id));
         //  $responsavel2->update(array('idfamilia' =>$familia->id));
         //---------------------------------------------------
-        //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
-
-      
+    
       
         //------MEMBRO FAMILIA--------
         $membros = Request::input('nomemembro');
@@ -293,6 +291,7 @@ class ResponsavelController extends Controller
             'escolas'=>$escolas
     
         ];
+        toastr()->success('Responsável adicionado com sucesso!');
         return view('matricula.cadastroCrianca', $dados);
     }$dados = [
         'responsaveis'=>123654,
@@ -308,6 +307,7 @@ class ResponsavelController extends Controller
     ];
 
     //return $responsavel1->id;
+    toastr()->success('Responsável adicionado com sucesso!');
     return view('matricula.cadastroCrianca', $dados);
     
 

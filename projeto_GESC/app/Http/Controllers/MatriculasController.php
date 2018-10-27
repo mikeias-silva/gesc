@@ -336,7 +336,7 @@ class MatriculasController extends Controller
         $turma = Request::input('idturma');
 
         $newMatricula->update(['idturma'=>$turma]);
-
+        toastr()->Success('Adicionado com sucesso!');
         return redirect()->action('MatriculasController@listaMatriculas');
     }
 

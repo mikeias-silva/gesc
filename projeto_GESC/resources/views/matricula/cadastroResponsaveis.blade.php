@@ -387,9 +387,9 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                 <div class="col-sm-3">
                     <label>Renda familiar</label>
                     <select name="rendafamiliar" id="" class="custom-select form-control">
-                        <option value="um minimo">1 à 2 salários minimo</option>
-                        <option value="2 a 3 salarios minimo">2 à 3 salários minimo</option>
-                        <option value="Mais de 3 salarios minimos">Mais de 3 salarios minimos</option>
+                        <option value="1 a 2 salarios minimo">1 à 2 salários mínimo</option>
+                        <option value="2 a 3 salarios minimo">2 à 3 salários mínimo</option>
+                        <option value="Mais de 3 salarios minimos">Mais de 3 salarios mínimos</option>
                     </select>
                 </div>
             </div>
@@ -427,37 +427,34 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                         <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
                     
                         <tr>
+                            
                             <th class="text-center">Nome</th>
                             <th class="text-center">Data Nascimento</th>
                             <th class="text-center">Local Trabalha</th>
-                            
                             <th class="text-center">Escola</th>
-                        </tr>
+                            <th class="text-center">Opções</th>
+                        
+                        </tr> 
                         <tr class="hide">
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro1"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro1"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro1"/></td>
-                            <td> 
-                               <select id="tdedit" name="escolamembro1" id="" class="custom-select" >
-                                   <option value="">Não estuda</option>
-                                INSERIR LOGICA DAS ESCOLAS PARA MEMBRO FAMILIA    
-                                </select>
-                            </td>
-                 
-                            
-                        </tr>
-                      
-                       
-                    </table>
-                    
-                </div>
-            
-           </div>
-        
-        
-        </div>
 
-      
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   @foreach ($escolas as $escola)
+                                       <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
+                                   @endforeach
+                                    
+                                </select>
+                            </td>             
+                        </tr>
+                       
+                    </table>            
+                </div>     
+           </div>       
+        </div>
+    
             <button class="btn btn-success float-right" type="submit">
                 Avançar
             </button>

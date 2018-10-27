@@ -1,4 +1,3 @@
-
 var $TABLE = $('#table');
 var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
@@ -77,10 +76,11 @@ $BTN.click(function() {
 
 $('.table-add').click(function(){
         
-    var newRow = $("<tr>");
+    var newRow = $("<tr><td class='pt-3-half'><input id='tdedit' type='text' value='' name='nomemembro[]'/></td><td class='pt-3-half'><input id='tdedit' type='date' value='' name='nascimentomembro[]'/></td><td class='pt-3-half'><input id='tdedit' type='text' name='trabmembro[]'/></td><td><select id='tdedit' name='escolamembro[]' id='' class='custom-select'><option value=''>Não estuda</option><option value=''> INSERIR LOGICA DAS ESCOLAS PARA MEMBRO FAMILIA</option></select></td>");
     var cols = "";
-    
-    cols += '<td><input type="text" name="id"></td>';
+    var fimLinha =  $("<td class='actions'><button class='text text-sm btn-danger' onclick='RemoveTableRow(this)' type='button'>Remover</button></td></tr>");
+    cols += '<tr>';
+    cols += '<td><input type="text" name="id">teste</td>';
 
     cols += '<td><input type="text" name="nome"></td>'; 
     
@@ -95,14 +95,14 @@ $('.table-add').click(function(){
     cols += '<td><input type="text" name="cpf"></td>'; 
     
     cols += '<td class="actions">';
-    cols += '<button class="btn btn-large btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>';
+    cols += '<button class="text text-sm btn-danger" onclick="RemoveTableRow(this)" type="button">Remover</button>';
     cols += '</td>';
-    
-    newRow.append(cols);
-    
-    $("tr.hide").append(newRow);
+    cols += '</tr>';
+    //newRow.append(cols);
+    newRow.append(fimLinha);
+    (newRow).insertAfter($(".hide"));
   
-    console.log('clicou');
+    // console.log(cols);
 });
 
 

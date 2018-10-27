@@ -117,3 +117,10 @@ function Rg(v){
     //v=v.replace(/\.(\d{3})(\d)/,".$1-$2")
     return v;
 }
+
+addEventListener("keydown", function(event) {
+    if (event.keyCode == 112){
+        event.preventDefault();
+        $("#help").modal("show");  
+    }
+});

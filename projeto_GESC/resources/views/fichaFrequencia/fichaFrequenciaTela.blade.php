@@ -130,6 +130,26 @@
     </div>
 </form>
 
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela é gerada a ficha de frequência que deverá ser encaminhada para a FASPG, antes de gerar a ficha é necessário preencher os campos da tela, onde os dados informados serão usados para finalizar o relatório. Ao gerar a ficha de frequência, a mesma será exportada em uma planilha com os dados correspondentes ao mês e ano selecionados.</p>           
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/fichaFrequenciaTela.js"></script>
+
 <script>
     function validaDados(nomeResp, cpf, profissao, visitasdomiciliares, atendimentosgrupo, reuniaoacolhimento, encaminhamentos, atendimentosindividuais,
                         encaminhamentoprivada, planoelaborado){

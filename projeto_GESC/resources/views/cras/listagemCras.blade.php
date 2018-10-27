@@ -26,7 +26,7 @@
         <td class="text-center">
                 <a href="" class="text text-info" data-mytitle="{{ $c->nomecras }}" data-mytelefone="{{ $c->telefone }}"
                         data-myid="{{ $c->idcras }}" data-mystatuscras="{{ $c->statuscras }}" data-toggle="modal" data-target="#editar">
-                        <i class="material-icons">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                                 edit
                             </i>
                         </a>
@@ -43,7 +43,7 @@
                     data-myid="{{ $c->idcras }}" 
                     data-toggle="modal" data-target="#inativar">
            
-                <i class="material-icons">
+                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                     highlight_off
                 </i> </a> 
             @else
@@ -55,7 +55,7 @@
             <a href="" class="text text-success" data-mytitle="{{ $c->nomecras }}" 
                     data-myid="{{ $c->idcras }}" 
                     data-toggle="modal" data-target="#ativar">
-                    <i class="material-icons">
+                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar">
                             done
                         </i>
             </a>
@@ -208,6 +208,29 @@
         </div>
     </div>
 </div>
+
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela é feita o gerenciamento de CRAS e CREAS, onde as mesmas serão disponibilizadas para seleção ao cadastrar uma família, onde só serão disponibilizadas para seleção  CRAS ou CREAS com o status ativo. </p>
+                <p class="text-justify">Ao informar um número de telefone de um CRAS ou CREAS, deverá ser informado somente os dígitos do mesmo.</p>
+                <p class="text-justify">CRAS - Centro de Referências de Assistência Social</p>
+                <p class="text-justify">CREAS - Centro de Referências Especializada em Assistência Social</p>            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/listagemCras.js"></script>
 
 <script>
 

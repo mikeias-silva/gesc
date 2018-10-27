@@ -166,6 +166,25 @@
 </div>
 
 
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela são listadas as matrículas de alunos que frequentavam a instituição no ano selecionado na tela anterior.</p>           
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <form action="/listagemMatriculas/anteriores" class="float-right" id="btn-novamatricula">
     <button class="btn btn-secondary">Voltar</button>
 </form>
@@ -181,7 +200,12 @@
     $('#dtAnterior').DataTable();
     $('.dataTables_length').addClass('bs-select');
   });
-  
+    addEventListener("keydown", function(event) {
+        if (event.keyCode == 112){
+            event.preventDefault();
+            $("#help").modal("show");  
+        }
+    });
        
       
 </script>

@@ -76,6 +76,25 @@
     </form>
 </div>
 
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Esta tela é o início do processo de uma nova matrícula, aqui é possível selecionar até dois responsáveis já cadastrado no sistema para serem responsáveis pela criança da nova matrícula, basta selecionar os responsáveis desejados e clicar no botão “Próximo”.</p>
+                <p class="text-justify">Caso seja necessário o cadastro de novos responsáveis, basta clicar no botão “Novo responsável”.</p>
+                            
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>

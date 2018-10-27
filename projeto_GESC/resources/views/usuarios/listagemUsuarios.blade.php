@@ -38,8 +38,8 @@
             <a href="" class="text text-info" data-myid="{{ $c->id }}" data-mynome="{{ $c->nome }}" 
                     data-myemail="{{ $c->email }}" data-mysenha="{{ $c->password }}" data-mytipousuario="{{ $c->tipousuario }}" 
                     data-mynomeusuario="{{ $c->nomeusuario }}" 
-                    data-toggle="modal" data-target="#editarusuario">
-                    <i class="material-icons">
+                    data-toggle="modal" data-target="#editarusuario" >
+                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                             edit
                     </i>
             </a>
@@ -52,7 +52,7 @@
                 <a href="" class="text text-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
                         data-toggle="modal" data-target="#inativar">
                     
-                <i class="material-icons">
+                <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar usuário">
                         highlight_off
                 </i>
             </a>
@@ -64,7 +64,7 @@
 
                 <a href="" class="text text-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
                     data-toggle="modal" data-target="#ativar">
-                    <i class="material-icons">
+                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar usuário">
                             done
                     </i>
                 </a>
@@ -251,5 +251,26 @@
     </div>
 </div>
 
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Esta tela tem como objetivo permitir o cadastro de novos usuários, assim como também a atualização dos seus dados. Também é possível executar a ativação e inativação de um usuário, onde usuário inativos não conseguirão acessar o sistema.</p>
+                <p class="text-justify">Ao cadastrar ou editar um usuário será obrigatório informar uma senha com no mínimo 6 caracteres e o e-mail deve possuir um formato válido, por exemplo: exemplo@email.com.</p>
+                            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/listagemUsuarios.js"></script>
 
 @stop

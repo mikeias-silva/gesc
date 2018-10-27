@@ -549,7 +549,38 @@
         <br>
     
 </body>
+
+<!-- Modal de help -->
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="font-weight-bold">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="col-md-12">
+                </br>
+                <p class="text-justify">Nesta tela é possível atualizar todos os dados relacionados e uma matrícula, sendo eles dados da criança, responsáveis e sociais.</p>
+                <p class="text-justify">A lista de membros da família é dinâmica, ou seja, é possível adicionar novos espaços para o cadastro dos mesmos, permitindo assim a inclusão de quantos membros for desejado. Também é permitir remover membros da família. </p>
+                <p class="text-justify">Não é necessário informar pontuação nos campos de RG, CPF e Telefone, somente dígitos. </p>
+                            
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/editMatricula.js"></script>
+
 <script>
+    addEventListener("keydown", function(event) {
+        if (event.keyCode == 112){
+            event.preventDefault();
+            $("#help").modal("show");  
+        }
+    });
+
     function myFunction(){
         var conteudo = document.getElementById('conteudoimprimir').innerHTML,
         tela_impressao = window.open('about:blank');

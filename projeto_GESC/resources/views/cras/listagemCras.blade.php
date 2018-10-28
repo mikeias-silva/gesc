@@ -126,7 +126,7 @@
 
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente inativar este CRAS/CREAS?</h5>
+                    <h5>Você tem certeza que deseja realmente inativar a unidade <label id="nomecras" value=""></label>?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger">Inativar</button>
@@ -157,7 +157,7 @@
 
                     <input type="hidden" name="idcras" id="idcras" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente ativar este CRAS/CREAS?</h5>
+                    <h5>Você tem certeza que deseja realmente ativar a unidade <label id="nomecras" value=""></label>?</h5>
 
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -326,20 +326,25 @@
     $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mytitle');
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #idcras').val(id);
+    //modal.find('.modal-body #nomecras').val(nome);
+    modal.find('.modal-body #nomecras').text(nome);
     
     console.log(id);
 });
 
     $('#ativar').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mytitle'); 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #idcras').val(id);
+    modal.find('.modal-body #nomecras').text(nome);
     console.log(id);
 });
 

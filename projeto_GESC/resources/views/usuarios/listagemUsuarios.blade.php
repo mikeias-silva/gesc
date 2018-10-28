@@ -49,7 +49,7 @@
                     data-toggle="modal" data-target="#inativar">Inativar
                 </button>
                 -->
-                <a href="" class="text text-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
+                <a href="" class="text text-danger" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" data-mynome="{{ $c->nome }}"
                         data-toggle="modal" data-target="#inativar">
                     
                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar usuário">
@@ -63,7 +63,7 @@
                 --> 
 
                 <a href="" class="text text-success" data-myid="{{ $c->id }}" data-mystatususuario="{{ $c->statususuario }}" 
-                    data-toggle="modal" data-target="#ativar">
+                    data-toggle="modal" data-target="#ativar" data-mynome="{{ $c->nome }}">
                     <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar usuário">
                             done
                     </i>
@@ -206,7 +206,7 @@
 
                     <input type="hidden" name="id" id="id" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente inativar este usuário?</h5>
+                    <h5>Você tem certeza que deseja realmente inativar o(a) usuário(a) <label id="nomeusuario" value=""></label>?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger">Inativar</button>
@@ -237,7 +237,7 @@
 
                     <input type="hidden" name="id" id="id" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente ativar este usuário?</h5>
+                    <h5>Você tem certeza que deseja realmente ativar o(a) usuário(a) <label id="nomeusuario" value=""></label>?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success">Ativar</button>

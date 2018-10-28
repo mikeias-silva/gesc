@@ -47,8 +47,8 @@
        <!--  <button type="button" class="btn btn-danger"  
                 data-myid="{{ $t->idturma }}" 
                 data-toggle="modal" data-target="#inativarturma">Inativar</button>--> 
-             <a  href="" class="text text-danger" data-myid="{{ $t->idturma }}" 
-                data-toggle="modal" data-target="#inativarturma">
+             <a  href="" class="text text-danger" data-myid="{{ $t->idturma }}" data-mygrupo="{{ $t->grupoconvivencia }}"
+                data-toggle="modal" data-target="#inativarturma" >
                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                         highlight_off
                     </i>
@@ -62,7 +62,7 @@
                 data-toggle="modal" data-target="#ativarturma">Ativar
             </button> --> 
           <a href="" class="text text-success" data-myid="{{ $t->idturma }}" 
-                data-toggle="modal" data-target="#ativarturma">
+                data-toggle="modal" data-target="#ativarturma" data-mygrupo="{{ $t->grupoconvivencia }}">
                 
                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Ativar">
                         done
@@ -175,7 +175,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente ativar esta turma?</h5>
+                    <h5>Você tem certeza que deseja realmente ativar a turma <label id="nometurma" value=""></label>?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-success">Ativar</button>
@@ -204,7 +204,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
 
-                    <h5>Você tem certeza que deseja realmente inativar esta turma?</h5>
+                    <h5>Você tem certeza que deseja realmente inativar a turma <label id="nometurma" value=""></label>?</h5>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger">Inativar</button>
@@ -315,20 +315,23 @@ $('#editarturma').on('show.bs.modal', function (event) {
 $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mygrupo'); 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #id').val(id);
-    
-    console.log(id);
+    modal.find('.modal-body #nometurma').text(nome);
+    console.log(nome);
 });
 
     $('#ativar').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mygrupo');  
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #nometurma').text(nome);
     console.log(id);
 });
     
@@ -339,19 +342,22 @@ $('#inativar').on('show.bs.modal', function (event) {
 
     $('#ativarturma').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mygrupo');  
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #idturma').val(id);
-    
+    modal.find('.modal-body #nometurma').text(nome);
     });
 
     $('#inativarturma').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mygrupo');  
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #idturma').val(id);
+    modal.find('.modal-body #nometurma').text(nome);
     
     });
     function validarInclusaoTurma(nomeGrupo) {

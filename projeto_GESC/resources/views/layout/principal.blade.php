@@ -254,20 +254,24 @@ $('#editarusuario').on('show.bs.modal', function (event) {
 $('#inativar').on('show.bs.modal', function (event) {
     console.log("Modal aberta");
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mynome'); 
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #nomeusuario').text(nome);
     
     console.log(id);
 });
 
     $('#ativar').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) 
-    var id = button.data('myid') 
+    var id = button.data('myid');
+    var nome = button.data('mynome');  
     var modal = $(this)
    // modal.find('.modal-body #crasId').val(id);
     modal.find('.modal-body #id').val(id);
+    modal.find('.modal-body #nomeusuario').text(nome);
     console.log(id);
 });
 

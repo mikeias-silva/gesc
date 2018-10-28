@@ -243,7 +243,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
-                    <h5>Você tem certeza que deseja realmente inativar<u> <label id="nomecrianca" value=""></label></u> ?</h5>
+                    <h5>Você tem certeza que deseja realmente inativar a matrícula de <label id="nomecrianca" value=""></label> ?</h5>
                     <label>Motivo<span id="campoobrigatorio">*</span></label>
                     <textarea required class="form-control" type="text" name="motivoinativacao" id=""></textarea>
                     <div class="modal-footer">

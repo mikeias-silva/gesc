@@ -37,14 +37,15 @@ class ResponsavelController extends Controller
         $cras = Cras::all();
 
         $dados = [
-            'cras'=>$cras
+            'cras'=>$cras,
+            'escolas'=>$escolas
         ];
 
         return view('matricula.cadastroResponsaveis', $dados);
     }
 
     public function adicionaResponsavel(){
-        
+        // return dd($request->all());
         $cep = Request::input('cep');
         $bairro = Request::input('bairro');
         $logradouro = Request::input('logradouro');
@@ -64,65 +65,81 @@ class ResponsavelController extends Controller
         $familia->idcras = Request::input('idcras');
        // $familia->rendapercapta = Request::input('rendafamiliar');
         // return $familia;
-        $familia->save();
+         $familia->save();
         //add familia aos responsavels adicionados por ultimo
         //  $responsavel1->update(array('idfamilia' =>$familia->id));
         //  $responsavel2->update(array('idfamilia' =>$familia->id));
         //---------------------------------------------------
-        //MUDAR FK DE MEMBRO FAMILIA EM FAMILIA PARA MEMMBRO FAMILIA COM FK DE FAMILIA
-
+    
+      
         //------MEMBRO FAMILIA--------
-
-        
-
-        /*if(!empty(Request::input('nomemembro1'))) {
-            $membro = new Membro_Familia();
-            $membro->nomemembro = Request::input('nomemembro1');
-            $membro->datanascimento = Request::input('nascimentomembro1');
-            $membro->localtrabalho = Request::input('trabmembro1');
-            $membro->idescola = Request::input('escolamembro1');
-            $membro->idfamilia = $familia->id;
-            $membro->save();
-        }
-        if(!empty(Request::input('nomemembro2'))) {
-            $membro = new Membro_Familia();
-            $membro->nomemembro = Request::input('nomemembro2');
-            $membro->datanascimento = Request::input('nascimentomembro2');
-            $membro->localtrabalho = Request::input('trabmembro2');
-            $membro->idescola = Request::input('escolamembro2');
-            $membro->idfamilia = $familia->id;
-            $membro->save();
-        }
-        if(!empty(Request::input('nomemembro3'))) {
-            $membro = new Membro_Familia();
-            $membro->nomemembro = Request::input('nomemembro3');
-            $membro->datanascimento = Request::input('nascimentomembro3');
-            $membro->localtrabalho = Request::input('trabmembro3');
-            $membro->idescola = Request::input('escolamembro3');
-            $membro->idfamilia = $familia->id;
-            $membro->save();
-        }
-        if(!empty(Request::input('nomemembro4'))) {
-            $membro = new Membro_Familia();
-            $membro->nomemembro = Request::input('nomemembro4');
-            $membro->datanascimento = Request::input('nascimentomembro4');
-            $membro->localtrabalho = Request::input('trabmembro4');
-            $membro->idescola = Request::input('escolamembro4');
-            $membro->idfamilia = $familia->id;
-            $membro->save();
-        }
-
-        if(!empty(Request::input('nomemembro5'))) {
-            $membro = new Membro_Familia();
-            $membro->nomemembro = Request::input('nomemembro5');
-            $membro->datanascimento = Request::input('nascimentomembro5');
-            $membro->localtrabalho = Request::input('trabmembro5');
-            $membro->idescola = Request::input('escolamembro5');
-            $membro->idfamilia = $familia->id;
-            $membro->save();
-        }
+        $membros = Request::input('nomemembro');
+        $nascimentomembro = Request::input('nascimentomembro');
+        $localtrabalhamembro = Request::input('trabmembro');
+        $escolamembro = Request::input('escolamembro');
+        $i = 0;
+        foreach ($membros as $nomemembro) {
             
-        */
+            $membro = new Membro_Familia();
+            $membro->nomemembro = $membros[$i];
+            $membro->datanascimento = $nascimentomembro[$i];
+            $membro->localtrabalho = $localtrabalhamembro[$i];
+            $membro->idescola = $escolamembro[$i];
+            $membro->idfamilia = $familia->idfamilia;
+            $membro->save();
+            $i++;
+            
+            
+        }
+       //return $teste;
+        // if(!empty(Request::input('nomemembro1'))) {
+        //     $membro = new Membro_Familia();
+        //     $membro->nomemembro = Request::input('nomemembro1');
+        //     $membro->datanascimento = Request::input('nascimentomembro1');
+        //     $membro->localtrabalho = Request::input('trabmembro1');
+        //     $membro->idescola = Request::input('escolamembro1');
+        //     $membro->idfamilia = $familia->id;
+        //     $membro->save();
+        // }
+        // if(!empty(Request::input('nomemembro2'))) {
+        //     $membro = new Membro_Familia();
+        //     $membro->nomemembro = Request::input('nomemembro2');
+        //     $membro->datanascimento = Request::input('nascimentomembro2');
+        //     $membro->localtrabalho = Request::input('trabmembro2');
+        //     $membro->idescola = Request::input('escolamembro2');
+        //     $membro->idfamilia = $familia->id;
+        //     $membro->save();
+        // }
+        // if(!empty(Request::input('nomemembro3'))) {
+        //     $membro = new Membro_Familia();
+        //     $membro->nomemembro = Request::input('nomemembro3');
+        //     $membro->datanascimento = Request::input('nascimentomembro3');
+        //     $membro->localtrabalho = Request::input('trabmembro3');
+        //     $membro->idescola = Request::input('escolamembro3');
+        //     $membro->idfamilia = $familia->id;
+        //     $membro->save();
+        // }
+        // if(!empty(Request::input('nomemembro4'))) {
+        //     $membro = new Membro_Familia();
+        //     $membro->nomemembro = Request::input('nomemembro4');
+        //     $membro->datanascimento = Request::input('nascimentomembro4');
+        //     $membro->localtrabalho = Request::input('trabmembro4');
+        //     $membro->idescola = Request::input('escolamembro4');
+        //     $membro->idfamilia = $familia->id;
+        //     $membro->save();
+        // }
+
+        // if(!empty(Request::input('nomemembro5'))) {
+        //     $membro = new Membro_Familia();
+        //     $membro->nomemembro = Request::input('nomemembro5');
+        //     $membro->datanascimento = Request::input('nascimentomembro5');
+        //     $membro->localtrabalho = Request::input('trabmembro5');
+        //     $membro->idescola = Request::input('escolamembro5');
+        //     $membro->idfamilia = $familia->id;
+        //     $membro->save();
+        // }
+            
+        
 
                 
         
@@ -274,6 +291,7 @@ class ResponsavelController extends Controller
             'escolas'=>$escolas
     
         ];
+        toastr()->success('Responsável adicionado com sucesso!');
         return view('matricula.cadastroCrianca', $dados);
     }$dados = [
         'responsaveis'=>123654,
@@ -289,6 +307,7 @@ class ResponsavelController extends Controller
     ];
 
     //return $responsavel1->id;
+    toastr()->success('Responsável adicionado com sucesso!');
     return view('matricula.cadastroCrianca', $dados);
     
 

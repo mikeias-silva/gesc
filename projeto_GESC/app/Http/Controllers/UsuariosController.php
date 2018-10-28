@@ -30,6 +30,7 @@ class UsuariosController extends Controller {
         $usuario = new usuario($request->all());
         $usuario->password=bcrypt($request->password);
         $usuario->save();
+        toastr()->success('Usuário "'.$request->nomeusuario.'" adicionado com sucesso');
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);
     }
@@ -44,6 +45,8 @@ class UsuariosController extends Controller {
         $usuario->nomeusuario=($request->nomeusuario);
         $usuario->tipousuario=($request->tipousuario);
         $usuario->update();
+        
+        toastr()->success('Usuário "'.$request->nomeusuario.'" alterado com sucesso');
         return redirect()->action('UsuariosController@listaUsuarios');
         //dump($usuario);
     }
@@ -52,6 +55,8 @@ class UsuariosController extends Controller {
         $usuario = Usuario::find($request->id);
         $usuario->statususuario='0';
         $usuario->update($request->all());
+        
+        toastr()->success('Usuário '.$request->nomeusuario.' inativado com sucesso');
         return redirect()->action('UsuariosController@listaUsuarios');
     }
 
@@ -59,6 +64,8 @@ class UsuariosController extends Controller {
         $usuario = Usuario::find($request->id);
         $usuario->statususuario='1';
         $usuario->update($request->all());
+        
+        toastr()->success('Usuário ' .$request->nomeusuario.' ativado com sucesso');
         return redirect()->action('UsuariosController@listaUsuarios');
     }
 }

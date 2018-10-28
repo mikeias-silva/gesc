@@ -1,0 +1,18 @@
+Atualizar e conferir se tudas as dependencias estao funcionando
+
+- npm install
+    - caso há erros(as vezes apresenta erros nesse momento e nao instala), 
+    - resolver os erros que normalmente são erros de estar faltando instalar alguma outra dependencia 
+    ex: "npm WARN webpack-dev-server@2.11.3 requires a peer of webpack@^2.2.0 || ^3.0.0 but none is installed.
+You must install peer dependencies yourself." 
+    - neste caso executar "npm install webpack@^2.2.0"
+
+após rodar o npm install e não apresentar mais erros, compilar as dependencias com
+    - 'npm run dev' ou 'npm run prod'
+
+após compilar com sucesso executar
+    - composer install
+após executar com sucesso
+    - composer update
+
+    

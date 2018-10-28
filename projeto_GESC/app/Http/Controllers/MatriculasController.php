@@ -327,7 +327,7 @@ class MatriculasController extends Controller
         
         //return Request::all();
         $idmatricula->update(['idturma'=> $turma]);
-
+        toastr()->Success('Adicionado a turma com sucesso!');
         return redirect()->action('MatriculasController@listaMatriculas');
     }
     
@@ -336,64 +336,64 @@ class MatriculasController extends Controller
         $turma = Request::input('idturma');
 
         $newMatricula->update(['idturma'=>$turma]);
-        toastr()->Success('Adicionado com sucesso!');
+        toastr()->Success('Adicionado a turma com sucesso!');
         return redirect()->action('MatriculasController@listaMatriculas');
     }
 
 
     public function inativaMatricula(Request $request){
-            $hoje = Carbon::now();
+        $hoje = Carbon::now();
 
-            $matricula = Matricula::find(
-            Request::input('idmatricula'));
+        $matricula = Matricula::find(
+        Request::input('idmatricula'));
 
-            $motivoinativacao = Request::input('motivoinativacao');
-          
-            $historico_matricula = DB::select('select * from historico_matricula 
-            where idmatricula = ?', array($matricula->idmatricula));
+        $motivoinativacao = Request::input('motivoinativacao');
+        
+        $historico_matricula = DB::select('select * from historico_matricula 
+        where idmatricula = ?', array($matricula->idmatricula));
 
-            //return $historico_matricula;
+        //return $historico_matricula;
 
-            foreach ($historico_matricula as $ht) {
-                if($ht->datainativacao == null){
-                    $essehistorico = $ht->idhistoricomatricula;
-                    $atualizahistorico = Historico_Matricula::find($essehistorico);
-                    $atualizahistorico->update([
-                        'datainativacao'=>$hoje,
-                        'motivoinativacao'=>$motivoinativacao
-                    ]);
-                }
+        foreach ($historico_matricula as $ht) {
+            if($ht->datainativacao == null){
+                $essehistorico = $ht->idhistoricomatricula;
+                $atualizahistorico = Historico_Matricula::find($essehistorico);
+                $atualizahistorico->update([
+                    'datainativacao'=>$hoje,
+                    'motivoinativacao'=>$motivoinativacao
+                ]);
             }
+        }
            
-            
-            
 
-            $matricula->update([
-                'statuscadastro'=>'Inativo',
-                'idturma'=>null]);
+        $matricula->update([
+            'statuscadastro'=>'Inativo',
+            'idturma'=>null]);
 
 
-    
+        toastr()->Warning('Inativado com sucesso');
+
         return redirect()->action('MatriculasController@listaMatriculas');
     }
 
     public function reativarMatricula(Request $request){
-            $hoje = Carbon::now();
+        $hoje = Carbon::now();
 
-            $matricula = Matricula::find(
-                Request::input('idmatricula'));
-            
+        $matricula = Matricula::find(
+            Request::input('idmatricula'));
+        
 
-        // $idadedessamatricula = Matricula::idadeMatricula($matricula);
+    // $idadedessamatricula = Matricula::idadeMatricula($matricula);
 
-            $matricula->update(['statuscadastro'=>'Ativo']);
+        $matricula->update(['statuscadastro'=>'Ativo']);
 
-            $historico_matricula = new Historico_Matricula();
+        $historico_matricula = new Historico_Matricula();
 
-            $historico_matricula->dataativacao = $hoje;
-            $historico_matricula->idmatricula = Request::input('idmatricula');
-            $historico_matricula->save();
+        $historico_matricula->dataativacao = $hoje;
+        $historico_matricula->idmatricula = Request::input('idmatricula');
+        $historico_matricula->save();
 
+        toastr()->Success('Ativado com sucesso!');
 
         return back();
     }

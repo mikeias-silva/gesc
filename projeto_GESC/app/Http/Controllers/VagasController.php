@@ -71,8 +71,7 @@ class VagasController extends Controller {
     public function edita(Request $request){
         $vaga = Vaga::find($request->idvaga);
         $vaga->update($request->all());
-        toastr()->success('Vaga editada com sucesso!');
-
+        toastr()->success('Vaga atualizada com sucesso!');
         return redirect()->action('VagasController@listaVagas');
     }
 /*

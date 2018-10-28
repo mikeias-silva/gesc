@@ -50,6 +50,7 @@ class TurmaController extends Controller
         // Turma::create($request->all());
 
         //dd($request->all());
+        toastr()->success('Turma '.$request->grupoconvivencia.' adicionada com sucesso!');
         return redirect()->action('TurmaController@listaTurma');
     }
 
@@ -65,7 +66,7 @@ class TurmaController extends Controller
       
         $turma->update($request->all());
         
-        
+        toastr()->success('Turma '.$request->grupoconvivencia.' atualizada com sucesso!');
         return redirect()->action('TurmaController@listaTurma');
     }
 
@@ -79,7 +80,7 @@ class TurmaController extends Controller
 
 
 
-        
+        toastr()->success('Turma inativada com sucesso!');
          return redirect()->action('TurmaController@listaTurma');
     }
 
@@ -94,7 +95,8 @@ class TurmaController extends Controller
       $cras->statuscras='1';
       $cras->update($request->all());
       return redirect()->action('CrasController@listaCras');*/
-         return redirect()->action('TurmaController@listaTurma');
+      toastr()->success('Turma ativada com sucesso!');
+        return redirect()->action('TurmaController@listaTurma');
     }
 
        

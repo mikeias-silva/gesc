@@ -256,13 +256,15 @@ class CriancaController extends Controller
         //return $idade;
 
         if($matricula->statuscadastro == 'Espera'){
-
+            toastr()->warning('Não há vagas disponíveis '.$nomecrianca.' está na fila de espera');
             return redirect()->action('MatriculasController@listaMatriculas');
         }else{
             $historico_matricula->idmatricula = $matricula->idmatricula;
             $historico_matricula->save(); 
             
             $turmas = Turma::turmasAtiva();
+
+            toastr()->success('Matrícula de '.$nomecrianca.' adicionado com sucesso!');
             return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
             $nomecrianca)->with('idmatricula', $matricula->idmatricula);
         }

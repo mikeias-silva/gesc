@@ -10,5 +10,7 @@ class Membro_Familia extends Model
     public $timestamps = false;
 
     protected $fillable = array('nomemembro', 'datanascimento', 'localtrabalho', 'salario', 'idescola', 'idfamilia');
+    //protected $primaryKey = 'idmembro';
     protected $primaryKey = 'idmembro';
+
 }

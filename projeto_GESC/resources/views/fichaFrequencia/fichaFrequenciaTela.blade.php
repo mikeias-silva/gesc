@@ -53,7 +53,7 @@
     </div>  
     </br>
 
-    <table class="table col-sm-8">
+    <table class="table col-sm-12">
         <thead>
             <tr>
                 <td><label>N. de visitas domiciliares:</label></td>

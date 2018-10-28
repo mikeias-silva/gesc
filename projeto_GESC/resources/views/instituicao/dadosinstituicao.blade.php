@@ -299,9 +299,9 @@
             <tr>
                 <td align="center" class="font-weight-bold">Dezembro</td>
                 @if(empty($diasFuncionamento[0]->dez) || $diasFuncionamento[0]->dez==0)
-                    <td align="center"><input  name="dez" id="dez" class="combo-box col-3" type="number" maxlength="2"></td>
+                    <td align="center"><input  name="dez" id="dez" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @else
-                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-3" type="number" maxlength="2"></td>
+                    <td align="center"><input name="dez" id="dez" value="{{$diasFuncionamento[0]->dez}}" class="combo-box col-3 form-control" type="number" maxlength="2"></td>
                 @endif
             </tr>
         

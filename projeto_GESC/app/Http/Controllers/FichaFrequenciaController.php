@@ -71,7 +71,7 @@ class FichaFrequenciaController extends Controller
         return Excel::download(new FichaExport($mes, $nomeresponsaveltec, $cpfresponsavel, $profissao,
         $visitasdomiciliares, $atendimentosgrupo, $reuniaoacolhimento, $encaminhamentos, $atendimentosindividuais,  $encaminhamentoprivada, $planoelaborado,
         $descricaoatividade, $obs, $mesdesc), 'Ficha_Frequencia.xlsx');
-
+        toastr()->Success('Ficha de Frenquênicia gerada com sucesso!');
         return redirect()->back();
 
         //echo("Teste");

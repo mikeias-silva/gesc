@@ -371,7 +371,7 @@ class MatriculasController extends Controller
             'idturma'=>null]);
 
 
-        toastr()->Warning('Inativado com sucesso');
+        toastr()->Success('Inativado com sucesso');
 
         return redirect()->action('MatriculasController@listaMatriculas');
     }

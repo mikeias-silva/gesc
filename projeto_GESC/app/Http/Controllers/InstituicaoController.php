@@ -38,6 +38,7 @@ class InstituicaoController extends Controller
             $instituicao = instituicao::find($request->idinstituicao);
             $instituicao->update($request->all());
         }
+        toastr()->success('Dados atualizados com sucesso!');
         return redirect()->action('InstituicaoController@mostraInstituicao');
     }
 
@@ -54,6 +55,7 @@ class InstituicaoController extends Controller
             $diasFuncionamento = dias_funcionamento::find($request->idano);
             $diasFuncionamento->update($request->all());
         }
+        toastr()->success('Dados atualizados com sucesso!');
         return redirect()->action('InstituicaoController@mostraInstituicao');
     }
 }

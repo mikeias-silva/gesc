@@ -65,7 +65,7 @@ class CrasController extends Controller {
         $cras->statuscras='0';
         $cras->update($request->all());
 
-        toastr()->success('Inativado com sucesso');
+        toastr()->success('CRAS/CREAS inativado com sucesso');
         return redirect()->action('CrasController@listaCras');
     }
 
@@ -75,7 +75,7 @@ class CrasController extends Controller {
         $cras->statuscras='1';
         $cras->update($request->all());
 
-        toastr()->success('Ativado com sucesso');
+        toastr()->success('CRAS/CREAS ativado com sucesso');
         return redirect()->action('CrasController@listaCras');
     }
 

@@ -48,12 +48,13 @@ class TransferenciaController extends Controller {
 
     public function listaTurmasDois(){
         $aux=0;
+        $ano= date("Y");
         $numeroAlunos=[];
         $listaTurmas = DB::select('select turma.idturma, turma.grupoconvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.id = turma.idUsuario && turma.statusTurma = 1');
 
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo'");
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
 
@@ -111,7 +112,7 @@ class TransferenciaController extends Controller {
                 $matricula->update();
             }
         }
-
+        toastr()->success('Transferência(s) realizada(s) com sucesso!');
         return redirect()->action('TransferenciaController@listaTurmasDois');
 
 

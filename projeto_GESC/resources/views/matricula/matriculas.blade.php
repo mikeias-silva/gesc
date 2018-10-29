@@ -156,7 +156,7 @@
                             
                             <td>
                                 <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" 
-                                    data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#ativar">
+                                    data-mynome="{{ $matI->nomeMatricula() }}" data-toggle="modal" data-target="#ativar">
                                     <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
                                     </i>
@@ -164,6 +164,8 @@
 
 
                             </td>
+
+                            
                             
                         </tr>
                         @endforeach
@@ -208,10 +210,17 @@
                             <td>
                                 
                                 <a href="/ativarMatricula" class="text text-danger" 
-                                    data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" 
+                                    data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matE->nomeMatricula() }}" 
                                     data-toggle="modal" data-target="#ativar">
                                     <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
+                                    </i>
+                                </a>
+
+                                <a href="/inativarMatricula" class="text text-danger" 
+                                data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matE->nomeMatricula() }}" data-toggle="modal" data-target="#inativar">
+                                    <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
+                                        highlight_off
                                     </i>
                                 </a>
 

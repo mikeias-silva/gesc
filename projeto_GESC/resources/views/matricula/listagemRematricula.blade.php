@@ -64,7 +64,7 @@
                  
               
                 <td>
-                    <a href="confirmarRematricula/{{ $matA->idmatricula }}" class="text text-info">
+                    <a href="confirmarRematricula_{{ $matA->idmatricula }}" class="text text-info">
                         <i class="material-icons">
                             add_box
                         </i>

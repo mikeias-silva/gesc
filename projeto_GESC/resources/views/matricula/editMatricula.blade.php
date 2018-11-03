@@ -8,7 +8,7 @@
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano-1 }}</h5>
         <br>
         <form action="confirmarEdit" method="post">
-            <input name="idmatricula" type="text" value="{{ $idmatricula }}">
+           <!-- <input name="idmatricula" type="text" value="{{ $idmatricula }}"> -->
                <!-- {{ csrf_token() }} -->
             {{ csrf_field() }} 
            <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}">-->

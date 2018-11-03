@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 <div class="container" id="responsavel">
-<form action="/adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
+<form action="adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
 responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
 responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, responsavel.rgresp2, responsavel.tel1resp2, responsavel.tel2resp2);">
     {{ csrf_field() }}
@@ -482,9 +482,9 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
     </div>
 </div>
 
-<script src="js/buscaCep.js"></script>
+<script src="/js/buscaCep.js"></script>
 
-<script src="js/validaResponsaveis.js"></script>
-<script src="js/membro_familia.js"></script>
+<script src="/js/validaResponsaveis.js"></script>
+<script src="/js/membro_familia.js"></script>
 
 @stop

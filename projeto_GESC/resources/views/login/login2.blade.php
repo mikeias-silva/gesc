@@ -6,7 +6,7 @@
 <body class="container text-center" id="gesc" >
         
 <div class="card-body ">
-    <form class="form" action="/login/autenticar"  role="form" autocomplete="off" name="login" id="formLogin" method="POST">
+    <form class="form" action="	login/autenticar"  role="form" autocomplete="off" name="login" id="formLogin" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="statususuario" value="1">
             @if((old('nomeusuario'))=="")

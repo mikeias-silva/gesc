@@ -8,7 +8,7 @@
         <div class="modal-header">
             <h5 class="modal-title">Defina uma turma para <strong> {{ $nomecrianca }}</strong></h5>
         </div>
-        <form action="\turmaMatricula" method="POST">
+        <form action="turmaMatricula" method="POST">
                 {{ csrf_field() }}
         <div class="modal-body">
             <input type="hidden" name="idmatricula" value="{{ $idmatricula }}"/>
@@ -49,6 +49,6 @@
     </div>
 </div>
 
-<script src="js/modalTurma.js"></script>
+<script src="/js/modalTurma.js"></script>
 
 @stop

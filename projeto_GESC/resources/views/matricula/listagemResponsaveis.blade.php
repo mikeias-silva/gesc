@@ -7,7 +7,7 @@
     </div>
 @else
 
-<form action="/crianca" method="POST" onsubmit="return validaSelecao();">
+<form action="crianca" method="POST" onsubmit="return validaSelecao();">
     {{ csrf_field() }}
 <h1>Nova Matrícula</h1>
 <h2>Responsaveis</h2>
@@ -69,7 +69,7 @@
 </div>
 </form>
 <div class="float-right">
-    <form action="/responsavel">
+    <form action="responsavel">
         <button class="btn btn-primary">
             Novo Responsável
         </button>
@@ -96,7 +96,7 @@
     </div>
 </div>
 
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 <script src="/js/valisaResponsavelSelecionado.js" type="text/javascript"></script>
 

@@ -7,7 +7,7 @@
             <h4 class="text-center content text-uppercase" id="titulorematricula">ASSOCIAÇÃO DE PROMOÇÃO À MENINA - APAM</h4>
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano-1 }}</h5>
         <br>
-        <form action="/confirmarEdit" method="POST">
+        <form action="confirmarEdit" method="POST">
             {{ csrf_field() }}
             <input name="idcrianca" type="hidden" value="{{ $dadoscrianca->idcrianca }}">
             <input name="idpessoacrianca" type="hidden" value="{{  $dadoscrianca->idpessoa}}">
@@ -571,7 +571,7 @@
     </div>
 </div>
 
-<script src="js/editMatricula.js"></script>
+<script src="/js/editMatricula.js"></script>
 
 <script>
     addEventListener("keydown", function(event) {

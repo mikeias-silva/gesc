@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'WelcomeController@index');
-
+/*
 Route::get('/teste1',function(){
 	return "<h1>Teste push</h1>";
 });
-
+*/
 
 Route::get('/dashboard', 'DashboardController@painel')->middleware('auth');
 
@@ -111,10 +111,18 @@ Route::get('/login', function(){
     return view('login.login');
 });*/
 //Auth::routes();
-Route::get('/login', 'LoginController@login')->name('login');
+Route::get('login', 'LoginController@login')->name('login');
 Route::get('/login2', 'LoginController@login2')->name('login');
 Route::post('/login/autenticar', 'LoginController@tentativaLogin');
-Route::get('/logout', 'LoginController@logout')->middleware('auth');
+Route::get('logout', 'LoginController@logout')->middleware('auth');
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-

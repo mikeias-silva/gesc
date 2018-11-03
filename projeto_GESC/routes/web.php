@@ -71,10 +71,10 @@ Route::post('/inativarMatricula', 'MatriculasController@inativaMatricula')->midd
 Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middleware('auth');
 Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middleware('auth');
 Route::post('/associaturma', 'MatriculasController@turmaVazia')->middleware('auth');
-Route::get('/rematricula/{idmatricula}', 'MatriculasController@rematricula')->middleware('auth');
-Route::get('/editarMatricula{idmatricula}', 'MatriculasController@editarMatricula')->middleware('auth');
+Route::get('/rematricula_{idmatricula}', 'MatriculasController@rematricula')->middleware('auth');
+Route::get('/editarMatricula_{idmatricula}', 'MatriculasController@editarMatricula')->middleware('auth');
 Route::post('confirmarEdit', 'MatriculasController@confirmarEdit')->middleware('auth');
-Route::get('/confirmarRematricula/{idmatricula}', 'MatriculasController@confirmarRematricula')->middleware('auth');
+Route::get('/confirmarRematricula_{idmatricula}', 'MatriculasController@confirmarRematricula')->middleware('auth');
 Route::post('/matricula', 'MatriculasController@adicionaMatricula')->middleware('auth');
 Route::get('/matriculasAtuais', 'MatriculasController@matriculasAtuais')->middleware('auth');
 
@@ -96,11 +96,11 @@ Route::post('/vagas/excluir', 'VagasController@exclui')->middleware('auth');
 Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas')->middleware('auth');
 
 //Route::get('/controle_frequencia/{idturma}/turma', 'ControleFrequenciaController@listaAlunos');
-Route::get('/controle_frequencia/{idturma}/turma/{mes}', 'ControleFrequenciaController@listaAlunos')->middleware('auth');
+Route::get('/controle_frequencia_{idturma}_turma_{mes}', 'ControleFrequenciaController@listaAlunos')->middleware('auth');
 Route::post('/lanca_frequencia', 'ControleFrequenciaController@lancaFrequancia')->middleware('auth');
 
 Route::get('/transferencia_alunos', 'TransferenciaController@listaTurmasDois')->middleware('auth');
-Route::get('/transferencia_alunos/{idturma}', 'TransferenciaController@listaAlunos')->middleware('auth');
+Route::get('/transferencia_alunos_{idturma}', 'TransferenciaController@listaAlunos')->middleware('auth');
 Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos')->middleware('auth');
 
 Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia')->middleware('auth');

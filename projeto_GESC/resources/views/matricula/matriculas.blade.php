@@ -83,7 +83,7 @@
                                     print
                                 </i>
                             </a>
-                            <a href="editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
+                            <a href="editarMatricula{{ $matA->idmatricula }}" class="text text-info">
                                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                                     edit
                                 </i>

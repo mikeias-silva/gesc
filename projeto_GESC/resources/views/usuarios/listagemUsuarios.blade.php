@@ -94,7 +94,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/usuarios/adiciona" method="post" name="incluirUsuario" 
+                <form class="form" action="usuarios/adiciona" method="post" name="incluirUsuario" 
                 onsubmit="return validar(incluirUsuario.nome, incluirUsuario.password, incluirUsuario.email, incluirUsuario.nomeusuario, incluirUsuario.listaNomeUsuarios, incluirUsuario.passwordConfirm);">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statususuario" value="1">
@@ -144,7 +144,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form class="form" action="/usuarios/edita" method="POST" name="editarUsuario"
+            <form class="form" action="usuarios/edita" method="POST" name="editarUsuario"
             onsubmit="return validarEditar(editarUsuario.nome, editarUsuario.password, editarUsuario.email, editarUsuario.nomeusuario, 
             editarUsuario.listaNomeUsuarios, editarUsuario.nomeUsuarioAtual, editarUsuario.passwordConfirm);">
                 <div class="modal-body">
@@ -200,7 +200,7 @@
             </button>
             </div>
             
-            <form action="/usuarios/inativa" method="POST">
+            <form action="usuarios/inativa" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -231,7 +231,7 @@
             </button>
             </div>
             
-            <form action="/usuarios/ativa" method="POST">
+            <form action="usuarios/ativa" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -271,6 +271,6 @@
     </div>
 </div>
 
-<script src="js/listagemUsuarios.js"></script>
+<script src="/js/listagemUsuarios.js"></script>
 
 @stop

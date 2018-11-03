@@ -4,7 +4,7 @@
 <div class="container" id="meio"> </div>
 
     @if(count($instituicao)==0)
-    <form class="form" action="/instituicao/edita" method="POST"  
+    <form class="form" action="instituicao/edita" method="POST"  
         onsubmit="return validarInstituicao(instituicao.nomeinstituicao, instituicao.cnpj, instituicao.logradouro, instituicao.cep, instituicao.email, 
         instituicao.telefone, instituicao.nummetasmensais, instituicao.numtermocolaboradorformento, instituicao.numplanotrabalho,
         instituicao.entidademantenedora, instituicao.entidadeexecutora);" name="instituicao">
@@ -94,7 +94,7 @@
         </div>
         </form>
     @else
-        <form class="form" action="/instituicao/edita" method="POST"  
+        <form class="form" action="instituicao/edita" method="POST"  
         onsubmit="return validarInstituicao(instituicao.nomeinstituicao, instituicao.cnpj, instituicao.logradouro, instituicao.cep, instituicao.email, 
         instituicao.telefone, instituicao.nummetasmensais, instituicao.numtermocolaboradorformento, instituicao.numplanotrabalho,
         instituicao.entidademantenedora, instituicao.entidadeexecutora);" name="instituicao">
@@ -189,7 +189,7 @@
 
     <div class="container" id="meio"></div>
     <h4 class="text">Número de dias de funcionamento por mês</h4>
-    <form class="form" action="/instituicao/diasFuncionamento" method="POST">
+    <form class="form" action="instituicao/diasFuncionamento" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="idano" value="{{$ano}}">
     <h5 value="{{$ano}}" name="idano">Ano - {{$ano}}</h5>
@@ -334,7 +334,7 @@
         </div>
     </div>
 
-    <script src="js/dadosinstituicao.js"></script>
+    <script src="/js/dadosinstituicao.js"></script>
 
 <script>
 

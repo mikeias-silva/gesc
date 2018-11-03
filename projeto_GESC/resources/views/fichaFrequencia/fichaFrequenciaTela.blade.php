@@ -5,7 +5,7 @@
 <hr>
 <spam id="campoObrigatorio"></spam>
 <spam id="cpfInvalido"></spam>
-<form class="form" action="/fichaFrequencia/imprimir" method="post" name="imprimeFicha" id="imprimeFicha"
+<form class="form" action="fichaFrequencia/imprimir" method="post" name="imprimeFicha" id="imprimeFicha"
     onsubmit = "return validaDados(imprimeFicha.nomeresponsaveltec, imprimeFicha.cpfresponsavel, imprimeFicha.profissao, imprimeFicha.visitasdomiciliares,
     imprimeFicha.atendimentosgrupo, imprimeFicha.reuniaoacolhimento, imprimeFicha.encaminhamentos, imprimeFicha.atendimentosindividuais,
     imprimeFicha.encaminhamentoprivada, imprimeFicha.planoelaborado);">
@@ -148,7 +148,7 @@
     </div>
 </div>
 
-<script src="js/fichaFrequenciaTela.js"></script>
+<script src="/js/fichaFrequenciaTela.js"></script>
 
 <script>
     function validaDados(nomeResp, cpf, profissao, visitasdomiciliares, atendimentosgrupo, reuniaoacolhimento, encaminhamentos, atendimentosindividuais,

@@ -18,9 +18,9 @@
         Esta turma não possui nenhum aluno matriculado.
     </div>
 
-    <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Voltar</a>
+    <a class="btn btn-secondary" href="{{"transferencia_alunos"}}">Voltar</a>
 @else
-    <form class="form" action="/efetua_transferencia" method="post" name="transfereAluno" id="transfereAluno"
+    <form class="form" action="efetua_transferencia" method="post" name="transfereAluno" id="transfereAluno"
         onsubmit="return validaTransferencia();">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-sm-3">
@@ -65,7 +65,7 @@
                 
         </table>
         <div class="footer text-right">
-            <a class="btn btn-secondary" href="{{"/transferencia_alunos"}}">Cancelar</a>
+            <a class="btn btn-secondary" href="{{"transferencia_alunos"}}">Cancelar</a>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>
@@ -89,7 +89,7 @@
     </div>
 </div>
 
-<script src="js/lista_alunos_transferencia.js"></script>
+<script src="/js/lista_alunos_transferencia.js"></script>
 
 <script>
     addEventListener("keydown", function(event) {

@@ -94,7 +94,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/turmas/adiciona" method="post" name="incluirTurma" 
+                <form class="form" action="turmas/adiciona" method="post" name="incluirTurma" 
                 onsubmit="return validarInclusaoTurma(incluirTurma.grupoconvivencia);">
 
 
@@ -170,7 +170,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="/turmas/ativa" method="post">
+            <form action="turmas/ativa" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
@@ -199,7 +199,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="/turmas/inativa" method="post">
+            <form action="turmas/inativa" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
@@ -281,7 +281,7 @@
     </div>
 </div>
 
-<script src="js/listagemTurma.js"></script>
+<script src="/js/listagemTurma.js"></script>
 <script>
     
 $('#excluirturma').on('show.bs.modal', function (event) {

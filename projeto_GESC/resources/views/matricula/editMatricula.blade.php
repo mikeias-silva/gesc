@@ -7,7 +7,7 @@
             <h4 class="text-center content text-uppercase" id="titulorematricula">ASSOCIAÇÃO DE PROMOÇÃO À MENINA - APAM</h4>
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano-1 }}</h5>
         <br>
-        <form action="confirmarEdit" method="POST">
+        <form action="confirmarEdit" method="GET">
             {{ csrf_field() }}
             <input name="idcrianca" type="hidden" value="{{ $dadoscrianca->idcrianca }}">
             <input name="idpessoacrianca" type="hidden" value="{{  $dadoscrianca->idpessoa}}">
@@ -538,11 +538,11 @@
 
             <div class="float-right">
 
-                
-                <button type="submit" class="btn btn-primary">Alterar</button>
-                <a href="/listagemMatriculas">
+                <a href="listagemMatriculas">
                     <button class="btn btn-secondary">Cancelar</button>
                 </a>
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                
             </div>
         </div>
     </form>

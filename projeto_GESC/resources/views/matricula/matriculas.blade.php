@@ -83,12 +83,12 @@
                                     print
                                 </i>
                             </a>
-                            <a href="/editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
+                            <a href="editarMatricula/{{ $matA->idmatricula }}" class="text text-info">
                                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Editar">
                                     edit
                                 </i>
                             </a>
-                            <a href="/inativarMatricula" class="text text-danger" 
+                            <a href="inativarMatricula" class="text text-danger" 
                             data-myid="{{ $matA->idmatricula }}" data-mynome="{{ $matA->nomeMatricula() }}" data-toggle="modal" data-target="#inativar">
                                 <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                                     highlight_off
@@ -155,7 +155,7 @@
                             <td>{{ $matI->idadeMatricula() }} anos</td>
                             
                             <td>
-                                <a href="/ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" 
+                                <a href="ativarMatricula" class="text text-success" data-myid="{{ $matI->idmatricula }}" 
                                     data-mynome="{{ $matI->nomeMatricula() }}" data-toggle="modal" data-target="#ativar">
                                     <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
                                         done
@@ -209,7 +209,7 @@
                             
                             <td>
                                 
-                                <a href="/ativarMatricula" class="text text-danger" 
+                                <a href="ativarMatricula" class="text text-danger" 
                                     data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matE->nomeMatricula() }}" 
                                     data-toggle="modal" data-target="#ativar">
                                     <i class="material-icons text-success" data-toggle="tooltip" data-placement="right" title="Ativar Matrícula">
@@ -217,7 +217,7 @@
                                     </i>
                                 </a>
 
-                                <a href="/inativarMatricula" class="text text-danger" 
+                                <a href="inativarMatricula" class="text text-danger" 
                                 data-myid="{{ $matE->idmatricula }}" data-mynome="{{ $matE->nomeMatricula() }}" data-toggle="modal" data-target="#inativar">
                                     <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Inativar">
                                         highlight_off
@@ -248,7 +248,7 @@
                 </button>
             </div>
             
-            <form action="/inativarMatricula" method="post">
+            <form action="inativarMatricula" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="idmatricula" id="idmatricula" type="text" value="">
@@ -276,7 +276,7 @@
             </button>
             </div>
             
-            <form action="/ativarMatricula" method="post">
+            <form action="ativarMatricula" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -309,7 +309,7 @@
             </button>
             </div>
             
-            <form action="/imprimematricula" method="get">
+            <form action="imprimematricula" method="get">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -342,7 +342,7 @@
             </button>
             </div>
             
-            <form action="/associaturma" method="post">
+            <form action="associaturma" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -367,7 +367,7 @@
     </div>
 </div>
 
-<form action="/listagemResponsaveis" class="float-right" id="btn-novamatricula">
+<form action="listagemResponsaveis" class="float-right" id="btn-novamatricula">
     <button class="btn btn-primary">Nova Matrícula</button>
 </form>
 <!--  -->
@@ -392,8 +392,8 @@
     </div>
 </div>
 
-<script src="js/matriculas.js"></script>
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="/js/matriculas.js"></script>
+<script src="/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
 

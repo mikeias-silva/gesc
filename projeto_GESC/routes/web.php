@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Route::get('/home', 'WelcomeController@index');
 /*
 Route::get('/teste1',function(){
@@ -72,8 +72,8 @@ Route::post('/ativarMatricula', 'MatriculasController@reativarMatricula')->middl
 Route::post('/turmaMatricula', 'MatriculasController@matriculaEmTurma')->middleware('auth');
 Route::post('/associaturma', 'MatriculasController@turmaVazia')->middleware('auth');
 Route::get('/rematricula/{idmatricula}', 'MatriculasController@rematricula')->middleware('auth');
-Route::get('/editarMatricula/{idmatricula}', 'MatriculasController@editarMatricula')->middleware('auth');
-Route::post('/confirmarEdit', 'MatriculasController@confirmarEdit')->middleware('auth');
+Route::get('/editarMatricula{idmatricula}', 'MatriculasController@editarMatricula')->middleware('auth');
+Route::post('confirmarEdit', 'MatriculasController@confirmarEdit')->middleware('auth');
 Route::get('/confirmarRematricula/{idmatricula}', 'MatriculasController@confirmarRematricula')->middleware('auth');
 Route::post('/matricula', 'MatriculasController@adicionaMatricula')->middleware('auth');
 Route::get('/matriculasAtuais', 'MatriculasController@matriculasAtuais')->middleware('auth');
@@ -114,7 +114,7 @@ Route::get('/login', function(){
 Route::get('login', 'LoginController@login')->name('login');
 Route::get('/login2', 'LoginController@login2')->name('login');
 Route::post('/login/autenticar', 'LoginController@tentativaLogin');
-Route::get('logout', 'LoginController@logout')->middleware('auth');
+Route::get('/logout', 'LoginController@logout')->middleware('auth');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 

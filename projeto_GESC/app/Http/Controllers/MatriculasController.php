@@ -704,7 +704,7 @@ class MatriculasController extends Controller
 
         //$idmatricula = Request::input('idmatricula');
 
-       // return $idmatricula;
+        //return $idmatricula;
 
       // return $idmatricula;
         $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
@@ -781,7 +781,8 @@ class MatriculasController extends Controller
             'cras'=>$cras,
             'pprioritario'=>$pprioritario,
             'escola'=>$escola,
-            'ano'=>$ano   
+            'ano'=>$ano,
+            'idmatricula'=>$idmatricula   
         ];
         
         // return $dadoscrianca;

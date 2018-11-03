@@ -7,8 +7,11 @@
             <h4 class="text-center content text-uppercase" id="titulorematricula">ASSOCIAÇÃO DE PROMOÇÃO À MENINA - APAM</h4>
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano-1 }}</h5>
         <br>
-        <form action="confirmarEdit" method="GET">
-            {{ csrf_field() }}
+        <form action="confirmarEdit" method="post">
+            <input name="idmatricula" type="text" value="{{ $idmatricula }}">
+               <!-- {{ csrf_token() }} -->
+            {{ csrf_field() }} 
+           <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}">-->
             <input name="idcrianca" type="hidden" value="{{ $dadoscrianca->idcrianca }}">
             <input name="idpessoacrianca" type="hidden" value="{{  $dadoscrianca->idpessoa}}">
             <input name="idresponsavel1" type="hidden" value="{{  $responsaveis[0]->idresponsavel}}">

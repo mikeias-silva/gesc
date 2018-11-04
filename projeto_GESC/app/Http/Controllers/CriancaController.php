@@ -86,8 +86,8 @@ class CriancaController extends Controller
             'escolas'=>$escolas,
             'pprioritario'=>$pprioritario,
         ]; 
-        
-        return view('matricula.cadastroCrianca', $dados);
+        $ano = date('Y');
+        return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
     }
 
 
@@ -186,8 +186,9 @@ class CriancaController extends Controller
         $vagas = Vaga::vagaMatricula();
         //return  $vagas;
         //lógica para pegar vaga de acordo com a idade da criança
+        $anoSelecionado = Request::input('anomatricula');
         foreach($vagas as $vaga){
-            if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
+            if($vaga->idademin <= $idade and $vaga->idademax >= $idade and $vaga->anovaga == $anoSelecionado){
                 $idademin = $vaga->idademin;
                 $idademax = $vaga->idademax; 
                
@@ -212,10 +213,20 @@ class CriancaController extends Controller
 
         $anomatricula = Carbon::now();
         $idturma = Request::input('turma');
-
+        
+        $anoAtual = date('Y');
         $matricula = new Matricula();
         
-        $matricula->anomatricula = $hoje;
+        if($anoAtual == $anoSelecionado){
+            $matricula->anomatricula = $hoje;
+        }
+        elseif($anoAtual < $anoSelecionado){
+            $date = date('Y-m-d');
+            $date = strtotime($date);
+            $proximoAno = strtotime('+1 year', $date);
+            $proximoAno = date('Y-m-d', $proximoAno);
+            $matricula->anomatricula = $proximoAno;
+        }
 
         $matricula->serieescolar = Request::input('serie');
         $matricula->idcrianca = $crianca->idcrianca;

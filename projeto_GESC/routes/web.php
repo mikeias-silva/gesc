@@ -51,6 +51,7 @@ Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias
 Route::get('/listagemResponsaveis', 'ResponsavelController@responsaveis')->middleware('auth');
 Route::get('/listagemResponsaveis/{idcrianca}/{idresponsavel}', 'ResponsavelController@torcaResponsaveis')->middleware('auth');
 Route::get('/responsavel', 'ResponsavelController@novoResponsavel')->middleware('auth');
+Route::get('/responsavel/{idcrianca}/{idresponsavel}', 'ResponsavelController@novoResponsavel')->middleware('auth');
 Route::post('/adicionaResponsavel', 'ResponsavelController@adicionaResponsavel')->middleware('auth');
 Route::post('/atualizaParentesco/{idcrianca}/{idresponsavel}', 'ResponsavelController@atualizaParentesco')->middleware('auth');
 

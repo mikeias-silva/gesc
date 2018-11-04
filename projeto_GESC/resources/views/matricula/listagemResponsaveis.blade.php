@@ -76,13 +76,23 @@
     
 </div>
 </form>
-<div class="float-right">
-    <form action="/responsavel">
-        <button class="btn btn-primary">
-            Novo Responsável
-        </button>
-    </form>
-</div>
+@if(empty($idcrianca))
+    <div class="float-right">
+        <form action="/responsavel">
+            <button class="btn btn-primary">
+                Novo Responsável
+            </button>
+        </form>
+    </div>
+@else
+    <div class="float-right">   
+        <form action="/responsavel/{{$idcrianca}}/{{$idresponsavel}}">
+            <button class="btn btn-primary">
+                Novo Responsável
+            </button>
+        </form>
+    </div>
+@endif
 
 <!-- Modal de help -->
 <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">

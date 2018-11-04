@@ -154,6 +154,13 @@
                             <option value="12">3º Médio</option>   
                         </select>
                     </div>
+                    <div class="col-sm-3">
+                        <label>Ano da matrícula</label>
+                        <select class="form-control" name="anomatricula" id="anomatricula">
+                            <option value="{{$ano}}">{{$ano}}</option>
+                            <option value="{{$a = $ano+1}}">{{$a = $ano+1}}</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 

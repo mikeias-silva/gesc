@@ -31,7 +31,7 @@
             <a href="" data-myid="{{ $v->idvaga }}" data-myidademin="{{ $v->idademin }}"
             data-myidademax="{{ $v->idademax }}" data-mynumvaga="{{ $v->numvaga }}" data-myano="{{ $v->anovaga }}" data-toggle="modal" data-target="#editarVagas">
            @if ($v->anovaga > 2017)
-           <i class="material-icons text-info">
+           <i class="material-icons text-info" data-toggle="tooltip" data-placement="right" title="Editar vaga">
                 edit
             </i>
            @endif

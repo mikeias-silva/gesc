@@ -14,12 +14,17 @@ use App\Cras;
 
 use App\Pessoa;
 
+use App\Parentesco;
 
 use Request;
 
 use App\PublicoPrioritario;
 
 use App\Vaga;
+
+use Illuminate\Support\Facades\DB;
+
+
 
 class ResponsavelController extends Controller
 {
@@ -28,7 +33,16 @@ class ResponsavelController extends Controller
 
         $responsaveis = Responsavel::all();
         $vagas = Vaga::vagaMatricula();
-        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas);
+        $idcrianca='';
+        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas)->with('idcrianca', $idcrianca);
+    }
+
+    public function torcaResponsaveis($idcrianca, $idresponsavel){
+
+        $responsaveis = Responsavel::all();
+        $vagas = Vaga::vagaMatricula();
+        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas)->with('idcrianca', $idcrianca)
+        ->with('idresponsavel', $idresponsavel);
     }
 
     public function novoResponsavel(){
@@ -314,4 +328,21 @@ class ResponsavelController extends Controller
     //return $pessoaresponsavel1->nomepessoa ;
     return view('matricula.cadastroCrianca', $dados);
     }
+    
+    public function atualizaParentesco($idcrianca, $idresponsavel){
+        $ano = date("Y");
+        $idresponsaveis = Request::input('idresponsavel');
+
+        $idresponsavel1 = $idresponsaveis[0];
+        if (!empty($idresponsaveis[1])) {
+            $idresponsavel2 = $idresponsaveis[1];
+        }
+
+        DB::update("update parentesco set idresponsavel = '{$idresponsavel1}' where idcrianca='{$idcrianca}' and idresponsavel='{$idresponsavel}'");
+        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
+        //var_dump ($idmatricula);
+        //toastr()->success('Troca de responsável efetuada com sucesso!');
+        return redirect("editarMatricula/{$idmatricula[0]->idmatricula}");
+    }
+    
 }

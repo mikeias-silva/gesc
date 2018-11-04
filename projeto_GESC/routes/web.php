@@ -49,8 +49,10 @@ Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias
 
 //Rotas para as telas de Responsaveis
 Route::get('/listagemResponsaveis', 'ResponsavelController@responsaveis')->middleware('auth');
+Route::get('/listagemResponsaveis/{idcrianca}/{idresponsavel}', 'ResponsavelController@torcaResponsaveis')->middleware('auth');
 Route::get('/responsavel', 'ResponsavelController@novoResponsavel')->middleware('auth');
 Route::post('/adicionaResponsavel', 'ResponsavelController@adicionaResponsavel')->middleware('auth');
+Route::post('/atualizaParentesco/{idcrianca}/{idresponsavel}', 'ResponsavelController@atualizaParentesco')->middleware('auth');
 
 //Rotas para as telas de criança
 Route::post('/crianca', 'CriancaController@cadastroCrianca')->middleware('auth');

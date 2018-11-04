@@ -7,9 +7,17 @@
     </div>
 @else
 
-<form action="/crianca" method="POST" onsubmit="return validaSelecao();">
+@if(empty($idcrianca))
+    <form action="/crianca" method="POST" onsubmit="return validaSelecao();">
+@else
+    <form action="/atualizaParentesco/{{$idcrianca}}/{{$idresponsavel}}" method="POST" onsubmit="return validaSelecao();">
+@endif
     {{ csrf_field() }}
-<h1>Nova Matrícula</h1>
+    @if(empty($idcrianca))
+        <h1>Nova Matrícula</h1>
+    @else
+        <h1>Edição de Matrícula</h1>
+    @endif
 <h2>Responsaveis</h2>
 <div>
 <span id="msgValidaSelec"></span>

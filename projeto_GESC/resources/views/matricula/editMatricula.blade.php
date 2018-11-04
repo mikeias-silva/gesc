@@ -182,7 +182,11 @@
     
     <div class="form">
             <br>
-            <h4>Responsável 01</h4>
+            <h4>Responsável 01 
+                <a href="/listagemResponsaveis/{{ $dadoscrianca->idcrianca }}/{{$responsaveis[0]->idresponsavel}}">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
+                </a>
+            </h4>
     
             <div class="form-group">
                 <div class="row">
@@ -307,7 +311,11 @@
     
                 </div>
             <br>
-            <h4>Responsável 02</h4>
+            <h4>Responsável 02
+                <a href="/listagemResponsaveis/{{ $dadoscrianca->idcrianca }}/{{$responsaveis[0]->idresponsavel}}">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
+                </a>
+            </h4>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">

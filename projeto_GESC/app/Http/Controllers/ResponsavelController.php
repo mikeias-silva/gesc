@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Carbon;
 namespace App\Http\Controllers;
 
 use App\Responsavel;
@@ -277,8 +277,7 @@ class ResponsavelController extends Controller
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
 
-    $ano = Carbon::now()->year;
-
+    $ano = date('Y');
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,

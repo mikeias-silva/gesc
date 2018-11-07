@@ -5,7 +5,7 @@
 <hr>
 <spam id="campoObrigatorio"></spam>
 <spam id="cpfInvalido"></spam>
-<form class="form" action="fichaFrequencia/imprimir" method="post" name="imprimeFicha" id="imprimeFicha"
+<form class="form" action="fichaFrequencia_imprimir" method="post" name="imprimeFicha" id="imprimeFicha"
     onsubmit = "return validaDados(imprimeFicha.nomeresponsaveltec, imprimeFicha.cpfresponsavel, imprimeFicha.profissao, imprimeFicha.visitasdomiciliares,
     imprimeFicha.atendimentosgrupo, imprimeFicha.reuniaoacolhimento, imprimeFicha.encaminhamentos, imprimeFicha.atendimentosindividuais,
     imprimeFicha.encaminhamentoprivada, imprimeFicha.planoelaborado);">

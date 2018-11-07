@@ -44,11 +44,11 @@
                                                 </a>
                                             </li> --}}
                                             <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas/anteriores">Matriculas anteriores
+                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas_anteriores">Matriculas anteriores
                                                 </a>
                                             </li>
                                              <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas/rematriculas">Rematricula
+                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas_rematriculas">Rematricula
                                                 </a>
                                             </li>
                                         </ul>

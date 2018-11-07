@@ -14,6 +14,8 @@ use App\Cras;
 
 use App\Pessoa;
 
+use Illuminate\Support\Carbon;
+
 
 use Request;
 

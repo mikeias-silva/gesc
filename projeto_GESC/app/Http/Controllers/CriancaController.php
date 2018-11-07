@@ -57,7 +57,7 @@ class CriancaController extends Controller
         
        
         $escolas = Escola::all();
-
+        $ano = date('Y');
 
         if (!empty($idresponsaveis[1])) {
             $dados = [
@@ -72,7 +72,7 @@ class CriancaController extends Controller
                 'escolas'=>$escolas,
                 'pprioritario'=>$pprioritario,
             ]; 
-            return view('matricula.cadastroCrianca', $dados);
+            return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
         }
         
         $dados = [
@@ -86,7 +86,7 @@ class CriancaController extends Controller
             'escolas'=>$escolas,
             'pprioritario'=>$pprioritario,
         ]; 
-        $ano = date('Y');
+        
         return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
     }
 

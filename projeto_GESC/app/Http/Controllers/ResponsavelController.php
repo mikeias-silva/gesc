@@ -278,9 +278,7 @@ class ResponsavelController extends Controller
         values(?, ?, ?, ?, ?, ?, ?)',
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
-
-    $ano = Carbon::now()->year;
-
+    $ano = date('Y');    
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,
@@ -297,7 +295,7 @@ class ResponsavelController extends Controller
     
         ];
         toastr()->success('Responsável adicionado com sucesso!');
-        return view('matricula.cadastroCrianca', $dados);
+        return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
     }$dados = [
         'responsaveis'=>123654,
         'cep'=>$cep,
@@ -314,10 +312,10 @@ class ResponsavelController extends Controller
 
     //return $responsavel1->id;
     toastr()->success('Responsável adicionado com sucesso!');
-    return view('matricula.cadastroCrianca', $dados);
+    return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
     
 
     //return $pessoaresponsavel1->nomepessoa ;
-    return view('matricula.cadastroCrianca', $dados);
+    return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
     }
 }

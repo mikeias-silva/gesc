@@ -277,6 +277,8 @@ class ResponsavelController extends Controller
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
 
+    $ano = Carbon::now()->year;
+
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,
@@ -288,7 +290,8 @@ class ResponsavelController extends Controller
             'idresponsavel1'=>$responsavel1->idresponsavel,
             'idresponsavel2'=>$responsavel2->idresponsavel,
             'pprioritario'=>$pprioritario,
-            'escolas'=>$escolas
+            'escolas'=>$escolas,
+            'ano'=>$ano
     
         ];
         toastr()->success('Responsável adicionado com sucesso!');
@@ -302,7 +305,8 @@ class ResponsavelController extends Controller
         'complemento'=>$complemento,
         'idresponsavel1'=>$responsavel1->idresponsavel,
         'pprioritario'=>$pprioritario,
-        'escolas'=>$escolas
+        'escolas'=>$escolas,
+        'ano'=>$ano
 
     ];
 

@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ Route::post('/turmas/ativa', 'TurmaController@ativar')->middleware('auth');
 //Rotas para as telas de instituição
 Route::get('/instituicao', 'InstituicaoController@mostraInstituicao')->middleware('auth');
 Route::post('/instituicao/edita', 'InstituicaoController@editar')->middleware('auth');
-Route::post('/instituicao/diasFuncionamento', 'InstituicaoController@difinirDias')->middleware('auth');
+Route::post('/instituicao_diasFuncionamento', 'InstituicaoController@difinirDias')->middleware('auth');
 
 //Rotas para as telas de Responsaveis
 Route::get('/listagemResponsaveis', 'ResponsavelController@responsaveis')->middleware('auth');
@@ -59,10 +59,10 @@ Route::post('/adicionaCrianca', 'CriancaController@adicionaCrianca')->middleware
 
 //Rotas para as telas de Matrícula  
 Route::get('/listagemMatriculas', 'MatriculasController@listaMatriculas')->middleware('auth');
-Route::get('/listagemMatriculas/anteriores', 'MatriculasController@selecionaAno')->middleware('auth');
-Route::get('/listagemMatriculas/rematriculas', 'MatriculasController@precisamRematricular')->middleware('auth');
+Route::get('/listagemMatriculas_anteriores', 'MatriculasController@selecionaAno')->middleware('auth');
+Route::get('/listagemMatriculas_rematriculas', 'MatriculasController@precisamRematricular')->middleware('auth');
 Route::post('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
-Route::get('/listagemMatriculas/seguinte', 'MatriculasController@matriculasSeguinte')->middleware('auth');
+Route::get('/listagemMatriculas_seguinte', 'MatriculasController@matriculasSeguinte')->middleware('auth');
 
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula')->middleware('auth');
 //Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
@@ -89,9 +89,9 @@ Route::post('/usuarios/ativa', 'UsuariosController@ativa');
 
 //Rotas para a tela de vagas
 Route::get('/vagas', 'VagasController@listaVagas')->middleware('auth');
-Route::post('/vagas/adiciona', 'VagasController@adiciona')->middleware('auth');
-Route::post('/vagas/editar', 'VagasController@edita')->middleware('auth');
-Route::post('/vagas/excluir', 'VagasController@exclui')->middleware('auth');
+Route::post('/vagas_adiciona', 'VagasController@adiciona')->middleware('auth');
+Route::post('/vagas_editar', 'VagasController@edita')->middleware('auth');
+Route::post('/vagas_excluir', 'VagasController@exclui')->middleware('auth');
 
 Route::get('/controle_frequencia', 'ControleFrequenciaController@listaTurmas')->middleware('auth');
 
@@ -104,7 +104,7 @@ Route::get('/transferencia_alunos_{idturma}', 'TransferenciaController@listaAlun
 Route::post('/efetua_transferencia', 'TransferenciaController@transfereAlunos')->middleware('auth');
 
 Route::get('/fichaFrequencia', 'FichaFrequenciaController@apresentaFichaFrequencia')->middleware('auth');
-Route::post('/fichaFrequencia/imprimir', 'FichaFrequenciaController@excel')->middleware('auth');
+Route::post('/fichaFrequencia_imprimir', 'FichaFrequenciaController@excel')->middleware('auth');
 
 /*
 Route::get('/login', function(){

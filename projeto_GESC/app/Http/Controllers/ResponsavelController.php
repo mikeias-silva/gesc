@@ -14,6 +14,8 @@ use App\Cras;
 
 use App\Pessoa;
 
+use Illuminate\Support\Carbon;
+
 
 use Request;
 
@@ -288,7 +290,8 @@ class ResponsavelController extends Controller
             'idresponsavel1'=>$responsavel1->idresponsavel,
             'idresponsavel2'=>$responsavel2->idresponsavel,
             'pprioritario'=>$pprioritario,
-            'escolas'=>$escolas
+            'escolas'=>$escolas,
+            'ano'=>$ano
     
         ];
         toastr()->success('Responsável adicionado com sucesso!');
@@ -302,7 +305,8 @@ class ResponsavelController extends Controller
         'complemento'=>$complemento,
         'idresponsavel1'=>$responsavel1->idresponsavel,
         'pprioritario'=>$pprioritario,
-        'escolas'=>$escolas
+        'escolas'=>$escolas,
+        'ano'=>$ano
 
     ];
 

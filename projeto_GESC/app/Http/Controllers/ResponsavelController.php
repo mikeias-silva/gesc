@@ -57,6 +57,9 @@ class ResponsavelController extends Controller
         $pprioritario = PublicoPrioritario::all();
         $escolas = Escola::all();
        
+
+        //Dados família 
+        /*
         $familia = new Familia();
         $familia->moradia = Request::input('moradia');
         $familia->arearisco = Request::input('arearisco');
@@ -92,7 +95,7 @@ class ResponsavelController extends Controller
             $i++;
             
             
-        }
+        }*/
        //return $teste;
         // if(!empty(Request::input('nomemembro1'))) {
         //     $membro = new Membro_Familia();
@@ -192,7 +195,7 @@ class ResponsavelController extends Controller
         $responsavel1->escolaridade = Request::input('escolaridaderesp1');
         $responsavel1->outrasobs = Request::input('obsresp1');
         $responsavel1->idpessoa = $pessoaresponsavel1->idpessoa;
-        $responsavel1->idfamilia = $familia->idfamilia;
+        //$responsavel1->idfamilia = $familia->idfamilia;
         $responsavel1->save();
 
         //return $responsavel1->idresponsavel;
@@ -254,7 +257,7 @@ class ResponsavelController extends Controller
             $responsavel2->escolaridade = Request::input('escolaridaderesp2');
             $responsavel2->outrasobs = Request::input('obsresp2');
             $responsavel2->idpessoa = $pessoaresponsavel2->idpessoa;
-            $responsavel2->idfamilia = $familia->idfamilia;
+            //$responsavel2->idfamilia = $familia->idfamilia;
             $responsavel2->save();
 
             

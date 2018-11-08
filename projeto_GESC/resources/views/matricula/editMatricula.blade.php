@@ -113,7 +113,11 @@
                                 <select class="form-control" name="idcras" id="" >
                                    
                                     @foreach ($cras as $cras)
-                                        <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
+                                        @if($cras->idcras=!$dadosfamilia[0]->idcras)
+                                            <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
+                                        @else 
+                                            <option value="{{ $cras->idcras }}" selected='selected'>{{ $cras->nomecras }}</option>
+                                        @endif    
                                     @endforeach
                                 </select>
                             </div>
@@ -127,7 +131,11 @@
                                 <label>Público Prioritário</label>
                                 <select class="form-control" name="idpublicoprioritario" id="">
                                     @foreach ($pprioritario as $pprioritario)
-                                        <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
+                                        @if($pprioritario->idpublicoprioritario=!$dadoscrianca->idpublicoprioritario)
+                                            <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
+                                        @else 
+                                            <option value="{{ $pprioritario->idpublicoprioritario }}" selected='selected'>{{ $pprioritario->publicoprioritario }}</option>
+                                        @endif 
                                     @endforeach
                                 </select>
                             </div>

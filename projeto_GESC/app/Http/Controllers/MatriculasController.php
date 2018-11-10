@@ -53,6 +53,7 @@ class MatriculasController extends Controller
       //  $matEspera = Matricula::matriculasEspera();
 
         $matAtivas = Matricula::matriculasAtiva();
+        
         $matEspera = Matricula::matriculasEspera();
        // $matInativas = DadosMatricula::matriculasInativas();
         $turmas = Turma::all();

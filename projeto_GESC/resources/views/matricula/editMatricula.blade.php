@@ -113,10 +113,10 @@
                                 <select class="form-control" name="idcras" id="" >
                                    
                                     @foreach ($cras as $cras)
-                                        @if($cras->idcras=!$dadosfamilia[0]->idcras)
-                                            <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
-                                        @else 
+                                        @if($cras->idcras==$dadosfamilia[0]->idcras)
                                             <option value="{{ $cras->idcras }}" selected='selected'>{{ $cras->nomecras }}</option>
+                                        @else 
+                                            <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
                                         @endif    
                                     @endforeach
                                 </select>
@@ -131,10 +131,10 @@
                                 <label>Público Prioritário</label>
                                 <select class="form-control" name="idpublicoprioritario" id="">
                                     @foreach ($pprioritario as $pprioritario)
-                                        @if($pprioritario->idpublicoprioritario=!$dadoscrianca->idpublicoprioritario)
-                                            <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
-                                        @else 
+                                        @if($pprioritario->idpublicoprioritario==$dadoscrianca->idpublicoprioritario)
                                             <option value="{{ $pprioritario->idpublicoprioritario }}" selected='selected'>{{ $pprioritario->publicoprioritario }}</option>
+                                        @else 
+                                            <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
                                         @endif 
                                     @endforeach
                                 </select>
@@ -436,6 +436,9 @@
             </div>
             </div>
             <br>
+            
+            @endif
+            <br>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-8">
@@ -446,16 +449,31 @@
                     <div class="col-sm-4">
                         <label>Moradia</label>
                         <select class="form-control" name="moradia" id="">
-                            <option value="{{ $dadosfamilia[0]->moradia }}">atual {{ $dadosfamilia[0]->moradia }}</option>
-                            <option value="1">Alugada</option>
-                            <option value="2">Cedida</option>
-                            <option value="3">Própria</option>
+                            <option value="{{ $dadosfamilia[0]->moradia }}">{{ $dadosfamilia[0]->moradia }}</option>
+                            @if( $dadosfamilia[0]->moradia =='Alugada')
+                                <option value="1" selected='selected'>Alugada</option>
+                            @else
+                                <option value="1">Alugada</option>
+                            @endif
+
+                            @if( $dadosfamilia[0]->moradia =='Cedida')
+                                <option value="2" selected='selected'>Cedida</option>
+                            @else
+                                <option value="2">Cedida</option>
+                            @endif
+
+                            @if($dadosfamilia[0]->moradia =='Propria')
+                                <option value="3" selected='selected'>Própria</option>
+                            @else
+                                <option value="3">Própria</option>
+                            @endif
+                            
+                            
                         </select>
                     </div>
                 </div>
             </div>
             <br>
-            @endif
             
             <!-- radio buttons -->
             <div class="form-group">
@@ -549,8 +567,8 @@
 
             <div class="float-right">
 
-                <a href="listagemMatriculas">
-                    <button class="btn btn-secondary">Cancelar</button>
+                <a class="btn btn-secondary" href="{{"listagemMatriculas"}}">
+                    Cancelar
                 </a>
                 <button type="submit" class="btn btn-primary">Alterar</button>
                 

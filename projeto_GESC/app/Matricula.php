@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Carbon;
+
 class Matricula extends Model
 {
     protected $table = 'matriculas';
@@ -22,8 +23,7 @@ class Matricula extends Model
             $id = $this->idmatricula;
             
             
-            $nomecrianca = DB::select('select nomepessoa from nomeidadematricula where idmatricula
-             = ?', array($id));
+            $nomecrianca = DB::select('select nomepessoa from nomeidadematricula where idmatricula = ?', array($id));
            
          //   dd($nomecrianca);
             foreach($nomecrianca as $nome){
@@ -112,19 +112,17 @@ class Matricula extends Model
             
             
          }
-
-     //    return $essafamilia;
-        //  $essafamilia = $familiaMatricula[0]->idfamilia;
-          //return;
-      /*  
-        
-        $crasMatricula = DB::select('select nomecras from dadosfamilia where idfamilia = ?', [$essafamilia]);
-        
-        foreach($crasMatricula as $crasMatricula){
-           
-            return $crasMatricula->nomecras;
-            
-        }*/
   
+    }
+
+    static function rematricula(){
+       $qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
+
+       foreach ($qtdcrianca as $crianca) {
+           $idcrianca[] = $crianca->idcrianca;
+       }
+      // return dd($idcrianca);
+        return Matricula::whereNotIn('idcrianca', $idcrianca)->get();
+       
     }
 }

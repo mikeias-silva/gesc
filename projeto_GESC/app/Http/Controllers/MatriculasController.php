@@ -540,7 +540,8 @@ class MatriculasController extends Controller
 
     public function confirmarRematricula($idmatricula){
         $hoje = Carbon::now();
-        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
+         $anorematricula = Carbon::now();
+         $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
         = ?', array($idmatricula));
 
         foreach ($dadosmatricula as $dadosmt) {
@@ -555,75 +556,9 @@ class MatriculasController extends Controller
         $dadoscrianca = DB::select('select * from dadoscrianca where idcrianca = ?', [$dadosmt->idcrianca]);
 
         foreach ($dadoscrianca as $dadoscr) {
-            $dadoscr->nomecrianca;
             $idade = $dadoscr->nascimentocrianca;
-            $dadoscr->logradouro;
-            $dadoscr->bairro;
-            $dadoscr->ncasa;
-            $dadoscr->complementoendereco;
-            $dadoscr->cpfcrianca;
-            $dadoscr->rgcrianca;
-            $dadoscr->sexocrianca;
-            $dadoscr->emissorcrianca;
-            $dadoscr->idmatricula;
-            $dadoscr->nomeescola;
-        }
-
-
-        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
-        
-        foreach($parentes as $parente){
-            $parente->nomeresponsavel;
-            $parente->idfamilia;
-        }
-
-        //return ;
-
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
-        
-        foreach($dadosfamilia as $dadosfm){
-            $dadosfm->idfamilia;
-            $dadosfm->arearisco;
-            $dadosfm->bolsafamilia;
-            $dadosfm->moradia;
-            $dadosfm->numnis;
-            $dadosfm->tipohabitacao;
-            $dadosfm->nomecras;
-        }
-        
-        foreach($dadoscrianca as $dadoscrianca){
-            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
-            $logradouro = $dadoscrianca->logradouro;
-            $bairro = $dadoscrianca->bairro;
-            $ncasa = $dadoscrianca->ncasa;
-           
-        
         }
             
-        $cras = Cras::all();
-        $pprioritario = PublicoPrioritario::all();
-        $escola = Escola::all();
-        //return $nomematricula;
-        //$anoAtual = new date('Y');
-        /*$olha = date('Y');
-        $olha = $olha +1;
-        $anoAtual = date('$olha-m-d');
-        $anoAtual = strtotime($anoAtual);*/
-        //$ano = mktime (0, 0, 0, date("m"),  date("d"),  date("Y")+1);
-        $ano = Carbon::now()->year+1;
-        $dados = [
-            'responsaveis'=>$parentes,
-            'dadoscrianca'=>$dadoscrianca,
-            'dadosfamilia'=>$dadosfamilia,
-            'dadosmatricula'=>$dadosmatricula,
-            'cras'=>$cras,
-            'pprioritario'=>$pprioritario,
-            'escola'=>$escola,
-            'ano'=>$ano   
-        ];/*
-        $impressao = PDF::loadView('matricula.rematricula', $dados);
-        $impressao->stream('Matricula');*/
-
         $idade = $hoje->diffInYears($idade);
 
         $vagas = Vaga::vagaRematricula();
@@ -666,14 +601,24 @@ class MatriculasController extends Controller
             
         }elseif($matAtivas >= $essanumvaga){
             $matricula->statuscadastro = 'Espera';
-            $matricula->dataespera = $hoje;
                 
         }
         
         
-        //return $matricula;
-        $matricula->save();
         
+        $matricula->save();
+        //return $matricula->idmatricula;
+        if($matricula->statuscadastro == 'Espera'){
+            toastr()->warning('Não há vagas disponíveis fila de espera');
+            return redirect()->action('MatriculasController@precisamRematricular');
+        }else{
+             
+            $turmas = Turma::turmasAtiva();
+
+            toastr()->success('Rematrícula realizado com sucesso!');
+            return redirect()->action('MatriculasController@precisamRematricular');
+        }
+
         $turmas = Turma::turmasAtiva();
         return view('matricula.modalTurma')->with('turmas', $turmas)->with('nomecrianca',
         $dadoscrianca->nomecrianca)->with('idmatricula', $matricula->idmatricula);
@@ -688,8 +633,8 @@ class MatriculasController extends Controller
         //$idcriancarematriculada = DB::select('select idcrianca from dadosmatricula where anovaga > ?', [1]) 
         $ano = Carbon::now()->year+1;
 
-        $precisamRematricula = DadosMatricula::rematricula();
-
+       // $precisamRematricula = DadosMatricula::rematricula();
+        $precisamRematricula = Matricula::rematricula();
         $vagas = Vaga::vagaRematricula();
         $dados = [
             'matRematricula'=>$precisamRematricula,
@@ -707,8 +652,7 @@ class MatriculasController extends Controller
         //return $idmatricula;
 
       // return $idmatricula;
-        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula
-        = ?', array($idmatricula));
+        $dadosmatricula = DB::select('select * from dadosmatricula where idmatricula = ?', array($idmatricula));
 
         foreach ($dadosmatricula as $dadosmt) {
             $dadosmt->idcrianca;

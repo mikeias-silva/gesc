@@ -166,7 +166,7 @@ class MatriculasController extends Controller
 
         //return ;
 
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$dadosmt->idcrianca]);
         
         foreach($dadosfamilia as $dadosfm){
             $dadosfm->idfamilia;
@@ -558,6 +558,50 @@ class MatriculasController extends Controller
 
         foreach ($dadoscrianca as $dadoscr) {
             $idade = $dadoscr->nascimentocrianca;
+<<<<<<< HEAD
+=======
+            $dadoscr->logradouro;
+            $dadoscr->bairro;
+            $dadoscr->ncasa;
+            $dadoscr->complementoendereco;
+            $dadoscr->cpfcrianca;
+            $dadoscr->rgcrianca;
+            $dadoscr->sexocrianca;
+            $dadoscr->emissorcrianca;
+            $dadoscr->idmatricula;
+            $dadoscr->nomeescola;
+        }
+
+
+        $parentes = DB::select('select * from parentes where idcrianca = ? ', [$dadosmt->idcrianca]);
+        
+        foreach($parentes as $parente){
+            $parente->nomeresponsavel;
+            //$parente->idfamilia;
+        }
+
+        //return ;
+
+        $dadosfamilia = DB::select('select * from dadosfamilia where idcrianca = ?', [$dadosmt->idcrianca]);
+        
+        foreach($dadosfamilia as $dadosfm){
+            $dadosfm->idfamilia;
+            $dadosfm->arearisco;
+            $dadosfm->bolsafamilia;
+            $dadosfm->moradia;
+            $dadosfm->numnis;
+            $dadosfm->tipohabitacao;
+            $dadosfm->nomecras;
+        }
+        
+        foreach($dadoscrianca as $dadoscrianca){
+            $nascimentocrianca = Carbon::parse($dadoscrianca->nascimentocrianca)->format('d/m/y');
+            $logradouro = $dadoscrianca->logradouro;
+            $bairro = $dadoscrianca->bairro;
+            $ncasa = $dadoscrianca->ncasa;
+           
+        
+>>>>>>> e371929da30692a1dce3a851c4bc5e5b7c6a72b7
         }
             
         $idade = $hoje->diffInYears($idade);
@@ -691,8 +735,7 @@ class MatriculasController extends Controller
 
         //return ;
 
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
-        
+        $dadosfamilia = DB::select('select * from dadosfamilia where idcrianca = ?', [$dadosmt->idcrianca]);
         foreach($dadosfamilia as $dadosfm){
             $dadosfm->idfamilia;
             $dadosfm->arearisco;
@@ -701,6 +744,7 @@ class MatriculasController extends Controller
             $dadosfm->numnis;
             $dadosfm->tipohabitacao;
             $dadosfm->nomecras;
+            $dadosfm->idcras;
         }
         
         foreach($dadoscrianca as $dadoscrianca){

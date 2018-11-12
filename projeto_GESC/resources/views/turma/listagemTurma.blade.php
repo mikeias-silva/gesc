@@ -94,7 +94,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="turmas/adiciona" method="post" name="incluirTurma" 
+                <form class="form" action="turmas_adiciona" method="post" name="incluirTurma" 
                 onsubmit="return validarInclusaoTurma(incluirTurma.grupoconvivencia);">
 
 
@@ -141,7 +141,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="turmas/remove" method="post">
+            <form action="turmas_remove" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
@@ -170,7 +170,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="turmas/ativa" method="post">
+            <form action="turmas_ativa" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
@@ -199,7 +199,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="turmas/inativa" method="post">
+            <form action="turmas_inativa" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="idturma" name="idturma" type="text" value="">
@@ -228,7 +228,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form class="form" action="turmas/edita" method="post" name="editarTurma"
+            <form class="form" action="turmas_edita" method="post" name="editarTurma"
             onsubmit="return validarEdicaoTurma(editarTurma.grupoconvivencia);">
                
                 {{ csrf_field() }}

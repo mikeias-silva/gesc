@@ -12,7 +12,7 @@ class Responsavel extends Model
     public $timestamps = false;
 
     protected $fillable = array('profissao', 'estadocivil', 'localtrabalho', 'telefone', 'telefone2', 'escolaridade',
-    'outrasobs', 'idpessoa', 'idpessoa', 'idfamilia');
+    'outrasobs', 'idpessoa', 'idpessoa');
 
     protected $primaryKey = 'idresponsavel';
 

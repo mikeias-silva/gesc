@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Carbon;
 
+use App\Familia;
+
+use App\Membro_Familia;
+
 use App\Crianca;
 
 use App\Vaga;
@@ -57,6 +61,7 @@ class CriancaController extends Controller
         
        
         $escolas = Escola::all();
+        $cras = Cras::all();
         $ano = date('Y');
 
         if (!empty($idresponsaveis[1])) {
@@ -70,6 +75,7 @@ class CriancaController extends Controller
                 'idresponsavel1'=>$idresponsaveis[0],
                 'idresponsavel2'=>$idresponsaveis[1],
                 'escolas'=>$escolas,
+                'cras'=>$cras,
                 'pprioritario'=>$pprioritario,
             ]; 
             return view('matricula.cadastroCrianca', $dados)->with('ano', $ano);
@@ -84,6 +90,7 @@ class CriancaController extends Controller
             'complemento'=>$complemento,
             'idresponsavel1'=>$idresponsaveis[0],
             'escolas'=>$escolas,
+            'cras'=>$cras,
             'pprioritario'=>$pprioritario,
         ]; 
         
@@ -126,6 +133,8 @@ class CriancaController extends Controller
         $pessoacrianca->logradouro = $logradouro;
         $pessoacrianca->complementoendereco = $complemento;
         $pessoacrianca->save();
+
+        
         
         /* DB::insert('insert into pessoa(nomepessoa, datanascimento, sexo, rg, cpf, cep, bairro, logradouro, complementoendereco)
             values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
@@ -255,6 +264,41 @@ class CriancaController extends Controller
         
         //return $matricula;
         $matricula->save();
+
+        //Cadastro família 
+        
+        $familia = new Familia();
+        $familia->moradia = Request::input('moradia');
+        $familia->arearisco = Request::input('arearisco');
+        $familia->tipohabitacao = Request::input('tipohabitacao');
+        $familia->numnis = Request::input('numnis');
+        $familia->beneficiopc = Request::input('beneficiopc');
+        $familia->bolsafamilia = Request::input('bolsafamilia');
+        $familia->idcras = Request::input('idcras');
+        $familia->idcrianca = $crianca->idcrianca;
+       // $familia->rendapercapta = Request::input('rendafamiliar');
+        // return $familia;
+         $familia->save();
+
+         //------MEMBRO FAMILIA-------- 
+        $membros = Request::input('nomemembro');
+        $nascimentomembro = Request::input('nascimentomembro');
+        $localtrabalhamembro = Request::input('trabmembro');
+        $escolamembro = Request::input('escolamembro');
+        $i = 0;
+        foreach ($membros as $nomemembro) {
+            
+            $membro = new Membro_Familia();
+            $membro->nomemembro = $membros[$i];
+            $membro->datanascimento = $nascimentomembro[$i];
+            $membro->localtrabalho = $localtrabalhamembro[$i];
+            $membro->idescola = $escolamembro[$i];
+            $membro->idfamilia = $familia->idfamilia;
+            $membro->save();
+            $i++;
+            
+            
+        }
         
         
     /*

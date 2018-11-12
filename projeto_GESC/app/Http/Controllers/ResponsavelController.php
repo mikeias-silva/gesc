@@ -57,6 +57,9 @@ class ResponsavelController extends Controller
         $pprioritario = PublicoPrioritario::all();
         $escolas = Escola::all();
        
+
+        //Dados família 
+        /*
         $familia = new Familia();
         $familia->moradia = Request::input('moradia');
         $familia->arearisco = Request::input('arearisco');
@@ -92,7 +95,7 @@ class ResponsavelController extends Controller
             $i++;
             
             
-        }
+        }*/
        //return $teste;
         // if(!empty(Request::input('nomemembro1'))) {
         //     $membro = new Membro_Familia();
@@ -192,7 +195,7 @@ class ResponsavelController extends Controller
         $responsavel1->escolaridade = Request::input('escolaridaderesp1');
         $responsavel1->outrasobs = Request::input('obsresp1');
         $responsavel1->idpessoa = $pessoaresponsavel1->idpessoa;
-        $responsavel1->idfamilia = $familia->idfamilia;
+        //$responsavel1->idfamilia = $familia->idfamilia;
         $responsavel1->save();
 
         //return $responsavel1->idresponsavel;
@@ -254,7 +257,7 @@ class ResponsavelController extends Controller
             $responsavel2->escolaridade = Request::input('escolaridaderesp2');
             $responsavel2->outrasobs = Request::input('obsresp2');
             $responsavel2->idpessoa = $pessoaresponsavel2->idpessoa;
-            $responsavel2->idfamilia = $familia->idfamilia;
+            //$responsavel2->idfamilia = $familia->idfamilia;
             $responsavel2->save();
 
             
@@ -278,8 +281,13 @@ class ResponsavelController extends Controller
         values(?, ?, ?, ?, ?, ?, ?)',
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
+<<<<<<< HEAD
 
     $ano = date('Y');
+=======
+    $ano = date('Y');    
+    $cras = Cras::all();
+>>>>>>> 2e12ed537eca644577166e6b4c53765b5dc4f461
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,
@@ -296,7 +304,7 @@ class ResponsavelController extends Controller
     
         ];
         toastr()->success('Responsável adicionado com sucesso!');
-        return view('matricula.cadastroCrianca', $dados);
+        return view('matricula.cadastroCrianca', $dados)->with('ano', $ano)->with('cras', $cras);
     }$dados = [
         'responsaveis'=>123654,
         'cep'=>$cep,
@@ -313,10 +321,10 @@ class ResponsavelController extends Controller
 
     //return $responsavel1->id;
     toastr()->success('Responsável adicionado com sucesso!');
-    return view('matricula.cadastroCrianca', $dados);
+    return view('matricula.cadastroCrianca', $dados)->with('ano', $ano)->with('cras', $cras);
     
 
     //return $pessoaresponsavel1->nomepessoa ;
-    return view('matricula.cadastroCrianca', $dados);
+    return view('matricula.cadastroCrianca', $dados)->with('ano', $ano)->with('cras', $cras);
     }
 }

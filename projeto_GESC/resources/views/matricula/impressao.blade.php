@@ -437,6 +437,10 @@
             </div>
             </div>
             <br>
+            
+            
+            @endif
+            </br>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-8">
@@ -455,9 +459,7 @@
                     </div>
                 </div>
             </div>
-            <br>
-            @endif
-            
+
             <!-- radio buttons -->
             <div class="form-group">
                 <label>Tipo Habitação</label>

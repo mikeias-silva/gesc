@@ -165,7 +165,7 @@ class MatriculasController extends Controller
 
         //return ;
 
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$dadosmt->idcrianca]);
         
         foreach($dadosfamilia as $dadosfm){
             $dadosfm->idfamilia;
@@ -574,12 +574,12 @@ class MatriculasController extends Controller
         
         foreach($parentes as $parente){
             $parente->nomeresponsavel;
-            $parente->idfamilia;
+            //$parente->idfamilia;
         }
 
         //return ;
 
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
+        $dadosfamilia = DB::select('select * from dadosfamilia where idcrianca = ?', [$dadosmt->idcrianca]);
         
         foreach($dadosfamilia as $dadosfm){
             $dadosfm->idfamilia;
@@ -746,8 +746,7 @@ class MatriculasController extends Controller
 
         //return ;
 
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$parente->idfamilia]);
-        
+        $dadosfamilia = DB::select('select * from dadosfamilia where idcrianca = ?', [$dadosmt->idcrianca]);
         foreach($dadosfamilia as $dadosfm){
             $dadosfm->idfamilia;
             $dadosfm->arearisco;
@@ -756,6 +755,7 @@ class MatriculasController extends Controller
             $dadosfm->numnis;
             $dadosfm->tipohabitacao;
             $dadosfm->nomecras;
+            $dadosfm->idcras;
         }
         
         foreach($dadoscrianca as $dadoscrianca){

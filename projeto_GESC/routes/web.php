@@ -27,24 +27,24 @@ Route::get('/dashboard', 'DashboardController@painel')->middleware('auth');
 //Rotas para a tela controle de CRAS
 Route::get('/cras', 'CrasController@listaCras')->middleware('auth');
 Route::get('/modalCras','CrasController@novo')->middleware('auth');
-Route::post('/cras/adiciona', 'CrasController@adiciona')->middleware('auth');
-Route::post('/cras/remove', 'CrasController@remover')->middleware('auth');
-Route::post('/cras/edita', 'CrasController@editar')->middleware('auth');
-Route::post('/cras/ativar', 'CrasController@ativar')->middleware('auth');
-Route::post('/cras/inativar', 'CrasController@inativar')->middleware('auth');
+Route::post('/cras_adiciona', 'CrasController@adiciona')->middleware('auth');
+Route::post('/cras_remove', 'CrasController@remover')->middleware('auth');
+Route::post('/cras_edita', 'CrasController@editar')->middleware('auth');
+Route::post('/cras_ativar', 'CrasController@ativar')->middleware('auth');
+Route::post('/cras_inativar', 'CrasController@inativar')->middleware('auth');
 
 
 //Rotas para as telas de controle de Turmas
 Route::get('/turmas', 'TurmaController@listaTurma')->middleware('auth');
-Route::post('/turmas/adiciona', 'TurmaController@adiciona')->middleware('auth');
-Route::post('/turmas/remove', 'TurmaController@remover')->middleware('auth');
-Route::post('/turmas/edita', 'TurmaController@editar')->middleware('auth');
-Route::post('/turmas/inativa', 'TurmaController@inativar')->middleware('auth');
-Route::post('/turmas/ativa', 'TurmaController@ativar')->middleware('auth');
+Route::post('/turmas_adiciona', 'TurmaController@adiciona')->middleware('auth');
+Route::post('/turmas_remove', 'TurmaController@remover')->middleware('auth');
+Route::post('/turmas_edita', 'TurmaController@editar')->middleware('auth');
+Route::post('/turmas_inativa', 'TurmaController@inativar')->middleware('auth');
+Route::post('/turmas_ativa', 'TurmaController@ativar')->middleware('auth');
 
 //Rotas para as telas de instituição
 Route::get('/instituicao', 'InstituicaoController@mostraInstituicao')->middleware('auth');
-Route::post('/instituicao/edita', 'InstituicaoController@editar')->middleware('auth');
+Route::post('/instituicao_edita', 'InstituicaoController@editar')->middleware('auth');
 Route::post('/instituicao_diasFuncionamento', 'InstituicaoController@difinirDias')->middleware('auth');
 
 //Rotas para as telas de Responsaveis
@@ -82,10 +82,10 @@ Route::get('/matriculasAtuais', 'MatriculasController@matriculasAtuais')->middle
 
 //Rotas para a tela controle de Usuarios
 Route::get('/usuarios', 'UsuariosController@listaUsuarios');
-Route::post('/usuarios/adiciona', 'UsuariosController@adiciona');
-Route::post('/usuarios/edita', 'UsuariosController@edita');
-Route::post('/usuarios/inativa', 'UsuariosController@inativa');
-Route::post('/usuarios/ativa', 'UsuariosController@ativa');
+Route::post('/usuarios_adiciona', 'UsuariosController@adiciona');
+Route::post('/usuarios_edita', 'UsuariosController@edita');
+Route::post('/usuarios_inativa', 'UsuariosController@inativa');
+Route::post('/usuarios_ativa', 'UsuariosController@ativa');
 
 //Rotas para a tela de vagas
 Route::get('/vagas', 'VagasController@listaVagas')->middleware('auth');

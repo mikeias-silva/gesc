@@ -4,7 +4,7 @@
 
     <body>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap shadow">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/dashboard">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="dashboard">
                 <h3>GESC</h3>
             </a>
         </nav>
@@ -16,7 +16,7 @@
                         <ul class="nav flex-column">
                                
                             <li class="nav-item active">
-                                <a class="nav-link  btn-light" id="menu" href="/dashboard">
+                                <a class="nav-link  btn-light" id="menu" href="dashboard">
                                     <i class="material-icons">home</i> 
                                         Página inicial
                                 </a>
@@ -31,24 +31,24 @@
                                     <div>
                                         <ul> 
                                             <li>
-                                                <a class="nav-link btn-light" id="removerlink" href="/listagemResponsaveis">Nova Matrícula
+                                                <a class="nav-link btn-light" id="removerlink" href="listagemResponsaveis">Nova Matrícula
                                                 </a>
                                             </li>
                                          
                                             <li>
-                                                <a class="nav-link btn-light" id="removerlink" href="/listagemMatriculas">Matriculas atuais
+                                                <a class="nav-link btn-light" id="removerlink" href="listagemMatriculas">Matriculas atuais
                                                 </a>
                                             </li>
                                             {{-- <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/seguinte">Matriculas seguinte
+                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas/seguinte">Matriculas seguinte
                                                 </a>
                                             </li> --}}
                                             <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/anteriores">Matriculas anteriores
+                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas_anteriores">Matriculas anteriores
                                                 </a>
                                             </li>
                                              <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="/listagemMatriculas/rematriculas">Rematricula
+                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas_rematriculas">Rematricula
                                                 </a>
                                             </li>
                                         </ul>
@@ -66,14 +66,14 @@
                                     <div>
                                         <ul> 
                                         <li class="nav-item">
-                                            <a class="nav-link btn-light" href="/turmas">
+                                            <a class="nav-link btn-light" href="turmas">
                                                
                                                 Turmas
                                             
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link  btn-light" href="/controle_frequencia">
+                                            <a class="nav-link  btn-light" href="controle_frequencia">
                                                 
                                                  Controle de Frequência
                                                
@@ -81,7 +81,7 @@
                                         </li>
             
                                         <li class="nav-item">
-                                            <a class="nav-link  btn-light" href="/transferencia_alunos">
+                                            <a class="nav-link  btn-light" href="transferencia_alunos">
                                               
                                                  Transferencia de Alunos
                                                
@@ -93,7 +93,7 @@
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/vagas">
+                                <a class="nav-link  btn-light" href="vagas">
                                     <i class="material-icons">
                                         compare_arrows
                                     </i>
@@ -103,7 +103,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/instituicao">
+                                <a class="nav-link  btn-light" href="instituicao">
                                     <i class="material-icons">
                                         account_balance
                                         </i>
@@ -114,7 +114,7 @@
                             
 
                             <li class="nav-item">
-                                <a class="nav-link  btn-light " href="/fichaFrequencia">
+                                <a class="nav-link  btn-light " href="fichaFrequencia">
                                     <i class="material-icons">
                                         description
                                     </i>
@@ -123,7 +123,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/cras">
+                                <a class="nav-link  btn-light" href="cras">
                                     <i class="material-icons">
                                         location_city
                                     </i>
@@ -131,7 +131,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  btn-light" href="/usuarios">
+                                <a class="nav-link  btn-light" href="usuarios">
                                     <i class="material-icons">
                                             person_add
                                     </i>
@@ -141,7 +141,7 @@
                             </li>
 
                             <li class="">
-                                <a class="nav-link  btn-light" href="/logout">
+                                <a class="nav-link  btn-light" href="logout">
                                     <i class="material-icons">power_settings_new 
                                     </i>
                                     Sair
@@ -169,7 +169,7 @@
 
             </main>
 
-<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 {!! toastr()->render() !!}
 
            

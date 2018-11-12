@@ -64,7 +64,7 @@
                  
               
                 <td>
-                    <a href="/confirmarRematricula/{{ $matA->idmatricula }}" class="text text-info">
+                    <a href="confirmarRematricula_{{ $matA->idmatricula }}" class="text text-info">
                         <i class="material-icons">
                             add_box
                         </i>
@@ -90,7 +90,7 @@
             </button>
             </div>
             
-            <form action="/inativarMatricula" method="post">
+            <form action="inativarMatricula" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -127,7 +127,7 @@
             </button>
             </div>
             
-            <form action="/ativarMatricula" method="post">
+            <form action="ativarMatricula" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -160,7 +160,7 @@
             </button>
             </div>
             
-            <form action="/pdfmatricula" method="get">
+            <form action="pdfmatricula" method="get">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -183,7 +183,7 @@
 
 
 
-<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
 
@@ -205,7 +205,7 @@
     </div>
 </div>
 
-<script src="js/listagemRematricula.js"></script>
+<script src="/js/listagemRematricula.js"></script>
 
 <script>
 

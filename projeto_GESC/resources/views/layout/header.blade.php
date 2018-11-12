@@ -14,7 +14,8 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous">
     </script>
-<!-- 
+
+<!--
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="http://themes.getbootstrap.com/xmlrpc.php">
     <link rel="apple-touch-icon" sizes="180x180" href="http://themes.getbootstrap.com/wp-content/themes/bootstrap-marketplace/assets/images/fav/apple-touch-icon.png">
@@ -34,7 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
    
-     --><script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    --> <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   
 
@@ -43,14 +44,14 @@
    
 
  
-   <!--  <script src="{{ asset('js/app.js') }}" defer></script>
+   <!--  <script src="{{ asset('.../js/app.js') }}" defer></script>
  -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+    <link href="/css/app.css" rel="stylesheet"> 
    
-    <link rel="stylesheet" href="/css/style.css">
-   <!--   <script src="js/Ativo-inativo.js"></script>
+   <link rel="stylesheet" href="/css/style.css">
+  <!--    <script src="js/Ativo-inativo.js"></script>
 -->
     
     <title>GESC - Gerenciamento de Serviço de Convivência</title>

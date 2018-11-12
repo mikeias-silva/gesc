@@ -34,7 +34,7 @@
                 <td>{{ $c->Nome }}</td>
                 <td>{{$numeroAlunos[$cont]}}</td>
                 <td>
-                    <a class="btn btn-info" id="btn-frequencia" href="{{"/transferencia_alunos/{$c->idturma }/"}}">Transferir Alunos</a>
+                    <a class="btn btn-info" id="btn-frequencia" href="{{"transferencia_alunos_{$c->idturma }"}}">Transferir Alunos</a>
                 </td>
             </tr>
             <?php

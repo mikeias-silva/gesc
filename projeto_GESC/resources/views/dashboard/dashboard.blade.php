@@ -120,6 +120,6 @@
     </div>
 </div>
 
-<script src="js/dashboard.js"></script>
+<script src="/js/dashboard.js"></script>
 
 @stop

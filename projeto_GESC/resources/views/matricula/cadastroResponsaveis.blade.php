@@ -1,7 +1,7 @@
 @extends('layout.principal') 
 @section('conteudo')
 <div class="container" id="responsavel">
-<form action="/adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
+<form action="adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
 responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
 responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, responsavel.rgresp2, responsavel.tel1resp2, responsavel.tel2resp2);">
     {{ csrf_field() }}
@@ -328,138 +328,6 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
     
 
     <!-- ABA FAMILIA -->
-    <div class="" id="familia" >
-        
-        <br>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-8">
-                    <label>Número do NIS</label>
-                    <input type="text" class="form-control" name="numnis" autocomplete="off">
-                    <span id="msgNumNis"></span>
-                </div>
-                <div class="col-sm-4">
-                    <label>Moradia*</label>
-                    <select class="form-control" name="moradia" id="">
-                        <option value="1">Alugada</option>
-                        <option value="2">Cedida</option>
-                        <option value="3">Própria</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <br>
-
-        
-        <!-- radio buttons -->
-        <div class="form-group">
-            <label>Tipo Habitação*</label>
-            <div class="row">
-                <div class="col-sm-1">
-                    <div class="form-check">
-                        <label class="form-check-label" for="rd-alvenaria">
-                            <input type="radio" class="form-check-input" id="rd-alvenaria" name="tipohabitacao" value="alvenaria" checked>Alvenaria
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="form-check">
-                        <label class="form-check-label" for="rd-madeira">
-                            <input type="radio" class="form-check-input" id="rd-madeira" name="tipohabitacao" value="madeira">Madeira
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-1">
-                    <div class="form-check">
-                        <label class="form-check-label" for="rd-mista">
-                            <input type="radio" class="form-check-input" id="rd-mista" name="tipohabitacao" value="Mista">Mista
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <label>CRAS/CREAS*</label>
-                    <select id="" class="custom-select form-control" name="idcras">
-                        @foreach($cras as $c)
-                            <option value="{{ $c->idcras}}">{{ $c->nomecras }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <label>Renda familiar</label>
-                    <select name="rendafamiliar" id="" class="custom-select form-control">
-                        <option value="1 a 2 salarios minimo">1 à 2 salários mínimo</option>
-                        <option value="2 a 3 salarios minimo">2 à 3 salários mínimo</option>
-                        <option value="Mais de 3 salarios minimos">Mais de 3 salarios mínimos</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-                    
-            <!-- checkboxes -->
-            <label>Programas Sociais</label>
-            <div class="form-inline">
-            <div class="form-check col-sm-2">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="arearisco" value="1">Mora em área de risco
-                </label>
-            </div>
-
-            <div class="form-check col-sm-2">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="bolsafamilia" value="1">Beneficiário do Bolsa Familia
-                </label>
-            </div>
-
-            <div class="form-check col-sm-2">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="beneficiopc" value="1">Benefício Pessoa Continuada
-                </label>
-            </div>
-        </div>
-            <!--GRID MEMBRO FAMILIA-->
-            <!--<h5 class="text-center font-weight-bold text-uppercase py-5">Membros Familia</h5>-->
-            <div class="">
-                <div id="table" class="table-editable">
-                    
-                    <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x"
-                        aria-hidden="true"></i></a></span>
-                    <table class="table table-bordered table-responsive-md text-center">
-                        <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
-                    
-                        <tr>
-                            
-                            <th class="text-center">Nome</th>
-                            <th class="text-center">Data Nascimento</th>
-                            <th class="text-center">Local Trabalha</th>
-                            <th class="text-center">Escola</th>
-                            <th class="text-center">Opções</th>
-                        
-                        </tr> 
-                        <tr class="hide">
-
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
-                            <td> 
-                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
-                                   @foreach ($escolas as $escola)
-                                       <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
-                                   @endforeach
-                                    
-                                </select>
-                            </td>             
-                        </tr>
-                       
-                    </table>            
-                </div>     
-           </div>       
-        </div>
-    
-            <button class="btn btn-success float-right" type="submit">
-                Avançar
-            </button>
-      </form>
-    </div>
 
 <!-- Modal de help -->
 <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
@@ -482,9 +350,13 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
     </div>
 </div>
 
-<script src="js/buscaCep.js"></script>
+            <button class="btn btn-success float-right" type="submit">
+                Avançar
+            </button>
 
-<script src="js/validaResponsaveis.js"></script>
-<script src="js/membro_familia.js"></script>
+<script src="/js/buscaCep.js"></script>
+
+<script src="/js/validaResponsaveis.js"></script>
+<script src="/js/membro_familia.js"></script>
 
 @stop

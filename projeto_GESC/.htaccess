@@ -17,15 +17,6 @@
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME}\.html -f
-    RewriteCond %{REQUEST_FILENAME}\.php -f
-    RewriteBase /
-    RewriteRule ([^/]*)/?$ /$1.php [QSA,L] 
-    #// RewriteRule ^([0-9,A-Z,a-z,_-]+)/?$ /$1.html /$1.php [QSA,L]
-    #// RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
-    #controller=$1&action=$2
-    RewriteRule ^control/([^/]+)/(.*)$ index.php?control=$1&query=$2
-    #RewriteRule ^ index.php [L]
-  #  RewriteCond ^([a-z]*)/([a-z0-9_]*)/?$ index.php?controller=$1&action=$2
+    RewriteRule ^ index.php [L]
 </IfModule>
 

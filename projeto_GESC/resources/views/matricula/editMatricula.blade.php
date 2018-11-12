@@ -7,8 +7,11 @@
             <h4 class="text-center content text-uppercase" id="titulorematricula">ASSOCIAÇÃO DE PROMOÇÃO À MENINA - APAM</h4>
             <h5 class="text-center content text-uppercase" style="font-weight: bold;">Matrícula {{ $ano-1 }}</h5>
         <br>
-        <form action="/confirmarEdit" method="POST">
-            {{ csrf_field() }}
+        <form action="confirmarEdit" method="post">
+           <!-- <input name="idmatricula" type="text" value="{{ $idmatricula }}"> -->
+               <!-- {{ csrf_token() }} -->
+            {{ csrf_field() }} 
+           <!--  <input type="hidden" name="_token" value="{{ csrf_token() }}">-->
             <input name="idcrianca" type="hidden" value="{{ $dadoscrianca->idcrianca }}">
             <input name="idpessoacrianca" type="hidden" value="{{  $dadoscrianca->idpessoa}}">
             <input name="idresponsavel1" type="hidden" value="{{  $responsaveis[0]->idresponsavel}}">
@@ -110,7 +113,11 @@
                                 <select class="form-control" name="idcras" id="" >
                                    
                                     @foreach ($cras as $cras)
-                                        <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
+                                        @if($cras->idcras==$dadosfamilia[0]->idcras)
+                                            <option value="{{ $cras->idcras }}" selected='selected'>{{ $cras->nomecras }}</option>
+                                        @else 
+                                            <option value="{{ $cras->idcras }}">{{ $cras->nomecras }}</option>
+                                        @endif    
                                     @endforeach
                                 </select>
                             </div>
@@ -124,7 +131,11 @@
                                 <label>Público Prioritário</label>
                                 <select class="form-control" name="idpublicoprioritario" id="">
                                     @foreach ($pprioritario as $pprioritario)
-                                        <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
+                                        @if($pprioritario->idpublicoprioritario==$dadoscrianca->idpublicoprioritario)
+                                            <option value="{{ $pprioritario->idpublicoprioritario }}" selected='selected'>{{ $pprioritario->publicoprioritario }}</option>
+                                        @else 
+                                            <option value="{{ $pprioritario->idpublicoprioritario }}">{{ $pprioritario->publicoprioritario }}</option>
+                                        @endif 
                                     @endforeach
                                 </select>
                             </div>
@@ -433,6 +444,9 @@
             </div>
             </div>
             <br>
+            
+            @endif
+            <br>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-8">
@@ -443,16 +457,31 @@
                     <div class="col-sm-4">
                         <label>Moradia</label>
                         <select class="form-control" name="moradia" id="">
-                            <option value="{{ $dadosfamilia[0]->moradia }}">atual {{ $dadosfamilia[0]->moradia }}</option>
-                            <option value="1">Alugada</option>
-                            <option value="2">Cedida</option>
-                            <option value="3">Própria</option>
+                            <option value="{{ $dadosfamilia[0]->moradia }}">{{ $dadosfamilia[0]->moradia }}</option>
+                            @if( $dadosfamilia[0]->moradia =='Alugada')
+                                <option value="1" selected='selected'>Alugada</option>
+                            @else
+                                <option value="1">Alugada</option>
+                            @endif
+
+                            @if( $dadosfamilia[0]->moradia =='Cedida')
+                                <option value="2" selected='selected'>Cedida</option>
+                            @else
+                                <option value="2">Cedida</option>
+                            @endif
+
+                            @if($dadosfamilia[0]->moradia =='Propria')
+                                <option value="3" selected='selected'>Própria</option>
+                            @else
+                                <option value="3">Própria</option>
+                            @endif
+                            
+                            
                         </select>
                     </div>
                 </div>
             </div>
             <br>
-            @endif
             
             <!-- radio buttons -->
             <div class="form-group">
@@ -546,11 +575,11 @@
 
             <div class="float-right">
 
-                
-                <button type="submit" class="btn btn-primary">Alterar</button>
-                <a href="/listagemMatriculas">
-                    <button class="btn btn-secondary">Cancelar</button>
+                <a class="btn btn-secondary" href="{{"listagemMatriculas"}}">
+                    Cancelar
                 </a>
+                <button type="submit" class="btn btn-primary">Alterar</button>
+                
             </div>
         </div>
     </form>
@@ -579,7 +608,7 @@
     </div>
 </div>
 
-<script src="js/editMatricula.js"></script>
+<script src="/js/editMatricula.js"></script>
 
 <script>
     addEventListener("keydown", function(event) {

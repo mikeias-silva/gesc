@@ -1,0 +1,187 @@
+.sidebar-sticky {
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 2.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border:black;
+    background-color: rgb(245, 245, 245);
+   
+    
+}
+
+.btn{
+    border-radius: 2.5px;
+    margin: 20px 3px 20px 3px;
+}
+
+.btn-light{
+    background-color: rgb(245, 245, 245);
+    
+}
+
+.sidebar {
+    
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+body {
+    font-size: .875rem;
+    background-color: white; 
+}
+
+main {
+    padding-top: 80px;
+}
+
+
+#footer {
+    margin-top: 100%;
+    background-color: #343a40 !important;
+    padding: 1px, 1px, 1px;
+}
+
+#meio {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #343a40 !important;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+#assinatura{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #343a40 !important;
+    margin-bottom: 35px;
+    margin-top: 35px;
+
+}
+
+#meiomenu{
+    background-color: #343a40 !important;
+    padding-top: .5px;
+    padding-bottom: .5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#btn_instituicao {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#identmatricula {
+    display: inline-flex;
+}
+
+#btn-mat {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pt-3-half {
+    padding-top: 1.4rem;
+}
+
+#tdedit {
+    border: 0 none;
+    outline: 0;
+}
+
+#removerlink {
+    text-decoration: none;
+    color: black;
+}
+
+#atencao {
+    color: red;
+}
+
+label{
+    font-weight: bold;
+    
+    
+}
+.titulo-novamat{
+    padding-right: 100px;
+    margin-right: 100px;
+    border-right: 100px
+}
+select, .form-control{
+    font-weight: bold;
+    color: black;
+    /*border-width: 2px;*/
+    border-color: rgb(177, 175, 175);
+    /*border: 1px;*/
+    border-radius: 2.5px;
+}
+
+#campoobrigatorio{
+    color: red;
+}
+
+#tituloimpressao{
+    padding-bottom: 80px;
+}
+
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.fa{
+    color: black;
+}
+
+#cor{
+    background-color: rgb(218, 218, 218) !important;
+    color: black;
+    text-decoration-color: #343a40;
+}
+
+#btn-novamatricula{
+    margin-bottom: 20px;
+}
+
+#titulorematricula{
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+h2, h1{
+    margin: 20px 0px 50px 0px;
+}
+
+h4, h2, h1{
+    font-weight: bold;
+}
+
+#gesc{
+    background-color: #343a40;
+    margin-top: 150px;
+    
+}
+
+#bodylogin{
+    opacity: 0.6;
+}
+
+#btn-login{
+    margin-top: 40px;
+}
+
+.float-left .assinatura{
+    display: grid;
+    grid-template-columns: 15% 85%; 
+}
+
+#btn-frequencia{
+    margin: 0px 0px 0px 0px !important;
+}

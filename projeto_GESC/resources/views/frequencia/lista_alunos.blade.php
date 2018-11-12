@@ -10,7 +10,7 @@
     - Educador: {{ $nomeTurma[0]->nome }}
 </h3>
 <br>
-<form class="form" action="/lanca_frequencia" method="post" name="lancaFrequencia" id="lancaFrequencia"
+<form class="form" action="lanca_frequencia" method="post" name="lancaFrequencia" id="lancaFrequencia"
         onsubmit="return validaFaltas({{$dias_funcionamento[0]->numero}}, 'lancaFrequencia');">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="row">   
@@ -18,24 +18,24 @@
         <h5>Mês/Ano</h5>
             <select class="form-control" onchange="location=this.value;" name="listaData" id="listaData">
             @if($mesSelect==$mes)
-            <option value="{{"/controle_frequencia/{$idturma}/turma/{$mes}"}}" selected>{{$mes}}/{{$ano}}</option>
+            <option value="{{"controle_frequencia/{$idturma}/turma/{$mes}"}}" selected>{{$mes}}/{{$ano}}</option>
                 @if($mes==1)
-                    <option value="/controle_frequencia/{$idturma}/turma/12">12/{{$a=$ano-1}}</option>
+                    <option value="controle_frequencia/{$idturma}/turma/12">12/{{$a=$ano-1}}</option>
                 @else
                 <?php
                     $m = $mes-1;
                 ?>
-                <option value="{{"/controle_frequencia/{$idturma}/turma/{$m}"}}">0{{$m = $mes-1}}/{{$ano}}</option>
+                <option value="{{"controle_frequencia/{$idturma}/turma/{$m}"}}">0{{$m = $mes-1}}/{{$ano}}</option>
                 @endif
             @else
-            <option value="{{"/controle_frequencia/{$idturma}/turma/{$mes}"}}">{{$mes}}/{{$ano}}</option>
+            <option value="{{"controle_frequencia/{$idturma}/turma/{$mes}"}}">{{$mes}}/{{$ano}}</option>
                 @if($mes==1)
-                    <option value="{{"/controle_frequencia/{$idturma}/turma/12"}}" selected>12/{{$a=$ano-1}}</option>
+                    <option value="{{"controle_frequencia/{$idturma}/turma/12"}}" selected>12/{{$a=$ano-1}}</option>
                 @else
                 <?php
                     $m = $mes-1;
                 ?>
-                <option value="{{"/controle_frequencia/{$idturma}/turma/{$m}"}}" selected>0{{$m = $mes-1}}/{{$ano}}</option>
+                <option value="{{"controle_frequencia/{$idturma}/turma/{$m}"}}" selected>0{{$m = $mes-1}}/{{$ano}}</option>
                 @endif
             @endif  
             </select>
@@ -59,7 +59,7 @@
             Esta turma não possui nenhum aluno matriculado referente ao período informado.
         </div>
 
-        <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Voltar</a>
+        <a class="btn btn-secondary" href="{{"controle_frequencia"}}">Voltar</a>
 
     @elseif(!empty($listaAlunos))
     <div class="col-md-11 centered">
@@ -109,7 +109,7 @@
         </tbody>
     </table>
     <div class="footer text-right">
-        <a class="btn btn-secondary" href="{{"/controle_frequencia"}}">Cancelar</a>
+        <a class="btn btn-secondary" href="{{"controle_frequencia"}}">Cancelar</a>
         @if($dias_funcionamento[0]->numero=="")
         <button type="submit" class="btn btn-primary" disabled>Salvar</button>
         @else
@@ -139,7 +139,7 @@
     </div>
 </div>
 
-<script src="js/lista_alunos.js"></script>
+<script src="/js/lista_alunos.js"></script>
 
 <script>
 

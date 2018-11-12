@@ -166,7 +166,11 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->datanascimento = Request::input('datanascimentoresp1');
         $pessoaresponsavel1->rg = Request::input('rgresp1');
         $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
-        $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+
+        if (!empty(Request::input('cpfresp1'))) {
+            $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+        } 
+        
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
         $pessoaresponsavel1->cep = $cep;
         $pessoaresponsavel1->bairro = $bairro;
@@ -223,7 +227,11 @@ class ResponsavelController extends Controller
             $pessoaresponsavel2->datanascimento = Request::input('datanascimentoresp2');
             $pessoaresponsavel2->rg = Request::input('rgresp2');
             $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel2');
-            $pessoaresponsavel2->cpf = Request::input('cpfresp2');
+
+            if (!empty(Request::input('cpfresp2'))) {
+                $pessoaresponsavel2->cpf = Request::input('cpfresp2');
+            } 
+
             $pessoaresponsavel2->sexo = Request::input('sexoresp2');;
             $pessoaresponsavel2->cep = $cep;
             $pessoaresponsavel2->bairro = $bairro;

@@ -281,13 +281,10 @@ class ResponsavelController extends Controller
         values(?, ?, ?, ?, ?, ?, ?)',
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
-<<<<<<< HEAD
 
-    $ano = date('Y');
-=======
-    $ano = date('Y');    
-    $cras = Cras::all();
->>>>>>> 2e12ed537eca644577166e6b4c53765b5dc4f461
+     $ano = date('Y');
+     $cras = Cras::all();
+
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,

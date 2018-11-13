@@ -94,42 +94,6 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                 </div>
             </div>
         </div>
-        <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-2">
-                        <label>CEP</label>
-                        <input class="form-control" type="text" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);"/>
-                        <span id="msgCep"></span>
-                    </div>
-                    <div class="col-sm-5">
-                        <label>Endereço*</label>
-                        <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
-                        <span id="msgEndereco"></span>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <label>Nº</label>
-                        <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
-                    </div>
-
-                    
-                    <div class="col-sm-3">
-                        <label>Bairro*</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
-                        <span id="msgBairro"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-8">
-                        <label>Complemento</label>
-                        <input type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
-                    </div>
-
-                    
-                </div>
-            </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-8">

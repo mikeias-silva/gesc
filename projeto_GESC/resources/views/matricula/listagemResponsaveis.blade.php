@@ -8,9 +8,9 @@
 @else
 
 @if(empty($idcrianca))
-    <form action="/crianca" method="POST" onsubmit="return validaSelecao();">
+    <form action="crianca" method="POST" onsubmit="return validaSelecao();">
 @else
-    <form action="/atualizaParentesco/{{$idcrianca}}/{{$idresponsavel}}" method="POST" onsubmit="return validaSelecao();">
+    <form action="atualizaParentesco_{{$idcrianca}}_{{$idresponsavel}}" method="POST" onsubmit="return validaSelecao();">
 @endif
 
     {{ csrf_field() }}
@@ -77,10 +77,10 @@
     
 </div>
 </form>
-<<<<<<< HEAD
+
 @if(empty($idcrianca))
     <div class="float-right">
-        <form action="/responsavel">
+        <form action="responsavel">
             <button class="btn btn-primary">
                 Novo Responsável
             </button>
@@ -88,22 +88,13 @@
     </div>
 @else
     <div class="float-right">   
-        <form action="/responsavel/{{$idcrianca}}/{{$idresponsavel}}">
+        <form action="responsavel_{{$idcrianca}}_{{$idresponsavel}}">
             <button class="btn btn-primary">
                 Novo Responsável
             </button>
         </form>
     </div>
 @endif
-=======
-<div class="float-right">
-    <form action="responsavel">
-        <button class="btn btn-primary">
-            Novo Responsável
-        </button>
-    </form>
-</div>
->>>>>>> 2e12ed537eca644577166e6b4c53765b5dc4f461
 
 <!-- Modal de help -->
 <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">

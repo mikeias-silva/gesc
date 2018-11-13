@@ -62,11 +62,11 @@ class ResponsavelController extends Controller
 
     public function adicionaResponsavel(){
         // return dd($request->all());
-        $cep = Request::input('cep');
+       /* $cep = Request::input('cep');
         $bairro = Request::input('bairro');
         $logradouro = Request::input('logradouro');
         $complemento = Request::input('complemento');
-        $ncasa = Request::input('ncasa');
+        $ncasa = Request::input('ncasa');*/
 
         $pprioritario = PublicoPrioritario::all();
         $escolas = Escola::all();
@@ -182,11 +182,11 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
         $pessoaresponsavel1->cpf = Request::input('cpfresp1');
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
-        $pessoaresponsavel1->cep = $cep;
-        $pessoaresponsavel1->bairro = $bairro;
-        $pessoaresponsavel1->logradouro = $logradouro;
-        $pessoaresponsavel1->complementoendereco = $complemento;
-        $pessoaresponsavel1->ncasa = $ncasa;
+        //$pessoaresponsavel1->cep = $cep;
+        //$pessoaresponsavel1->bairro = $bairro;
+        //$pessoaresponsavel1->logradouro = $logradouro;
+        //$pessoaresponsavel1->complementoendereco = $complemento;
+        //$pessoaresponsavel1->ncasa = $ncasa;
 
         $pessoaresponsavel1->save();
         
@@ -238,12 +238,12 @@ class ResponsavelController extends Controller
             $pessoaresponsavel2->rg = Request::input('rgresp2');
             $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel2');
             $pessoaresponsavel2->cpf = Request::input('cpfresp2');
-            $pessoaresponsavel2->sexo = Request::input('sexoresp2');;
-            $pessoaresponsavel2->cep = $cep;
+            $pessoaresponsavel2->sexo = Request::input('sexoresp2');
+            /*$pessoaresponsavel2->cep = $cep;
             $pessoaresponsavel2->bairro = $bairro;
             $pessoaresponsavel2->logradouro = $logradouro;
             $pessoaresponsavel2->complementoendereco = $complemento;
-            $pessoaresponsavel2->ncasa = $ncasa;
+            $pessoaresponsavel2->ncasa = $ncasa;*/
             $pessoaresponsavel2->save();
         
         
@@ -300,11 +300,11 @@ class ResponsavelController extends Controller
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,
-            'cep'=>$cep,
+            /*'cep'=>$cep,
             'bairro'=>$bairro,
             'logradouro'=>$logradouro,
             'ncasa'=>$ncasa,
-            'complemento'=>$complemento,
+            'complemento'=>$complemento,*/
             'idresponsavel1'=>$responsavel1->idresponsavel,
             'idresponsavel2'=>$responsavel2->idresponsavel,
             'pprioritario'=>$pprioritario,
@@ -316,11 +316,11 @@ class ResponsavelController extends Controller
         return view('matricula.cadastroCrianca', $dados)->with('ano', $ano)->with('cras', $cras);
     }$dados = [
         'responsaveis'=>123654,
-        'cep'=>$cep,
+        /*'cep'=>$cep,
         'bairro'=>$bairro,
         'logradouro'=>$logradouro,
         'ncasa'=>$ncasa,
-        'complemento'=>$complemento,
+        'complemento'=>$complemento,*/
         'idresponsavel1'=>$responsavel1->idresponsavel,
         'pprioritario'=>$pprioritario,
         'escolas'=>$escolas,
@@ -350,7 +350,7 @@ class ResponsavelController extends Controller
         $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
         //var_dump ($idmatricula);
         //toastr()->success('Troca de responsável efetuada com sucesso!');
-        return redirect("editarMatricula/{$idmatricula[0]->idmatricula}");
+        return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
     }
     
 }

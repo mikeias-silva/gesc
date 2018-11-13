@@ -194,7 +194,7 @@
     <div class="form">
             <br>
             <h4>Responsável 01 
-                <a href="/listagemResponsaveis/{{ $dadoscrianca->idcrianca }}/{{$responsaveis[0]->idresponsavel}}">
+                <a href="listagemResponsaveis_{{ $dadoscrianca->idcrianca }}_{{$responsaveis[0]->idresponsavel}}">
                         <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
                 </a>
             </h4>

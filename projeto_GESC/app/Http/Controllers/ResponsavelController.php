@@ -51,10 +51,30 @@ class ResponsavelController extends Controller
 
         $escolas = Escola::all();
         $cras = Cras::all();
+        $idcrianca = "";
+        $idresponsavel = "";
 
         $dados = [
             'cras'=>$cras,
-            'escolas'=>$escolas
+            'escolas'=>$escolas,
+            'idcrianca'=>$idcrianca,
+            'idresponsavel'=>$idresponsavel
+        ];
+
+        return view('matricula.cadastroResponsaveis', $dados);
+    }
+
+    //Troca de responsável, cadastro de novo responsável
+    public function novoResponsavelTroca($idcrianca, $idresponsavel){
+
+        $escolas = Escola::all();
+        $cras = Cras::all();
+
+        $dados = [
+            'cras'=>$cras,
+            'escolas'=>$escolas,
+            'idcrianca'=>$idcrianca,
+            'idresponsavel'=>$idresponsavel
         ];
 
         return view('matricula.cadastroResponsaveis', $dados);

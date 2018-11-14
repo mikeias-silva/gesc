@@ -148,7 +148,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
 
         <label>Observações</label>
         <textarea name="obsresp1" id="" cols="10" rows="2" class="form-control"></textarea>
-
+        @if(empty($idcrianca))
         <div class="container" id="meio">
 
         </div>
@@ -289,6 +289,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
         <textarea name="obsresp2" id="" cols="10" rows="2" class="form-control"></textarea>
     
         </div>
+        @endif
     
 
     <!-- ABA FAMILIA -->

@@ -119,9 +119,9 @@ class MatriculasController extends Controller
    
 
     public function imprime(){
-        $matAtivas = Matricula::matriculasAtiva();
-        $matInativas = Matricula::matriculasInativas();
-        $matEspera = Matricula::matriculasEspera();
+        //$matAtivas = Matricula::matriculasAtiva();
+        //$matInativas = Matricula::matriculasInativas();
+        //$matEspera = Matricula::matriculasEspera();
         $hoje = Carbon::now()->year;
     
 
@@ -161,11 +161,12 @@ class MatriculasController extends Controller
         
         foreach($parentes as $parente){
             $parente->nomeresponsavel;
+            $parente->idfamilia;
         }
 
         //return ;
 
-        $dadosfamilia = DB::select('select * from dadosfamilia where idfamilia = ?', [$dadosmt->idcrianca]);
+       $dadosfamilia = DB::select('select * from dadosfamilia where idcrianca = ?', [$dadosmt->idcrianca]);
         
         foreach($dadosfamilia as $dadosfm){
             $dadosfm->idfamilia;

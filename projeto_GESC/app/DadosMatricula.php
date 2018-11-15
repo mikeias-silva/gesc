@@ -66,7 +66,7 @@ class DadosMatricula extends Model
     }
 
     static function matriculasAnoSeguinte(){
-        $anovaga = Carbon::now()->year+1;
+        $anovaga = Carbon::now()->year;
         // dd($anovaga);
         return DB::select('select * from dadosmatricula where anovaga > ? ', [$anovaga]);
         return DadosMatricula::where('anovaga', $anovaga)->get();
@@ -80,7 +80,13 @@ class DadosMatricula extends Model
            $essacrianca =  $dadomatricula->idcrianca;
         }
         // dd($essacrianca);
-       
+       $qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
+
+       foreach ($qtdcrianca as $crianca) {
+           $idcrianca = $crianca->idcrianca;
+       }
+     
+       return DadosMatricula::where('idcrianca', '!=', $idcrianca)->get();
        if (!empty($essacrianca)) {
            
             return DadosMatricula::where('anovaga', $anovaga)->where('idcrianca', '!=', $essacrianca)->get();

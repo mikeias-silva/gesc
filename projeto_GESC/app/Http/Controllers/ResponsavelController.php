@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Carbon;
 namespace App\Http\Controllers;
 
 use App\Responsavel;
@@ -200,7 +200,11 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->datanascimento = Request::input('datanascimentoresp1');
         $pessoaresponsavel1->rg = Request::input('rgresp1');
         $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
-        $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+
+        if (!empty(Request::input('cpfresp1'))) {
+            $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+        } 
+        
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
         //$pessoaresponsavel1->cep = $cep;
         //$pessoaresponsavel1->bairro = $bairro;
@@ -260,6 +264,15 @@ class ResponsavelController extends Controller
             $pessoaresponsavel2->cpf = Request::input('cpfresp2');
             $pessoaresponsavel2->sexo = Request::input('sexoresp2');
             /*$pessoaresponsavel2->cep = $cep;
+
+
+            if (!empty(Request::input('cpfresp2'))) {
+                $pessoaresponsavel2->cpf = Request::input('cpfresp2');
+            } 
+
+            $pessoaresponsavel2->sexo = Request::input('sexoresp2');;
+            $pessoaresponsavel2->cep = $cep;
+
             $pessoaresponsavel2->bairro = $bairro;
             $pessoaresponsavel2->logradouro = $logradouro;
             $pessoaresponsavel2->complementoendereco = $complemento;
@@ -315,8 +328,10 @@ class ResponsavelController extends Controller
         values(?, ?, ?, ?, ?, ?, ?)',
         array($moradia, $arearisco, $tipohabitacao, $numnis, $beneficiopc, $bolsafamilia, $cras));
     */
-    $ano = date('Y');    
-    $cras = Cras::all();
+
+     $ano = date('Y');
+     $cras = Cras::all();
+
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,

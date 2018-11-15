@@ -84,7 +84,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/cras/adiciona" method="post" name="incluirCras"
+                <form class="form" action="cras_adiciona" method="post" name="incluirCras"
                 onsubmit="return validarInclusao(incluirCras.nomecras, incluirCras.telefone);">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="statuscras" value="1">
@@ -120,7 +120,7 @@
             </button>
             </div>
             
-            <form action="cras/inativar" method="post">
+            <form action="cras_inativar" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -151,7 +151,7 @@
             </button>
             </div>
             
-            <form action="cras/ativar" method="post">
+            <form action="cras_ativar" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -182,7 +182,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form class="form" action="cras/edita" method="POST" name="editarCras"
+            <form class="form" action="cras_edita" method="POST" name="editarCras"
                 onsubmit="return validarEdicao(editarCras.nomecras, editarCras.telefone);">
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

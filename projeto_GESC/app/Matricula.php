@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Carbon;
+
 class Matricula extends Model
 {
     protected $table = 'matriculas';
@@ -19,13 +20,13 @@ class Matricula extends Model
     protected $primaryKey = 'idmatricula';
 
     public function nomeMatricula(){
+      //  return dd('p');
             $id = $this->idmatricula;
             
             
-            $nomecrianca = DB::select('select nomepessoa from nomeidadematricula where idmatricula
-             = ?', array($id));
+             $nomecrianca = DB::select('select nomepessoa from nomeidadematricula where idmatricula = ?', array($id));
            
-         //   dd($nomecrianca);
+         //return dd($nomecrianca);
             foreach($nomecrianca as $nome){
                 
                return $nome->nomepessoa;
@@ -61,14 +62,15 @@ class Matricula extends Model
     }
 
     static function matriculasAnoSeguinte(){
-        $anovaga = Carbon::now()->year;
+        $anovaga = Carbon::now();
        // return Matricula::join('vagas', $this->idvaga, '=', 'vagas.?')
-        return DB::select('select * from matriculas, vagas where matriculas.idvaga = vagas.idvaga and vagas.anovaga > ? ', [$anovaga]);
+       return Matricula::where('anomatricula', '>', $anovaga)->get();
+      //  return DB::select('select * from matriculas where anomatricula > ? ', [$anovaga]);
         //return DB::select('select * from dadosmatricula where anovaga > ?', [$anovaga]);
     }
     static function matriculasAtiva(){
-      
-        return Matricula::where('statuscadastro', 'Ativo')->get();
+        $agora = Carbon::now();
+        return Matricula::where('statuscadastro', 'Ativo')->where('anomatricula', '<=', $agora)->get();
     }
 
     static function matriculasInativas(){
@@ -112,19 +114,17 @@ class Matricula extends Model
             
             
          }
-
-     //    return $essafamilia;
-        //  $essafamilia = $familiaMatricula[0]->idfamilia;
-          //return;
-      /*  
-        
-        $crasMatricula = DB::select('select nomecras from dadosfamilia where idfamilia = ?', [$essafamilia]);
-        
-        foreach($crasMatricula as $crasMatricula){
-           
-            return $crasMatricula->nomecras;
-            
-        }*/
   
+    }
+
+    static function rematricula(){
+       $qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
+
+       foreach ($qtdcrianca as $crianca) {
+           $idcrianca[] = $crianca->idcrianca;
+       }
+      // return dd($idcrianca);
+        return Matricula::whereNotIn('idcrianca', $idcrianca)->get();
+       
     }
 }

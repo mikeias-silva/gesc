@@ -65,7 +65,7 @@
             <div class="modal-body">
                 
 
-                <form class="form" action="/vagas/adiciona" method="post" name="incluirVagas"
+                <form class="form" action="vagas_adiciona" method="post" name="incluirVagas"
                 onsubmit="return incluirVaga(incluirVagas.idademin, incluirVagas.idademax, incluirVagas.numvaga, 
                 incluirVagas.listaAno, incluirVagas.listaIdadeMin, incluirVagas.listaIdadeMax, incluirVagas.anovaga);">
                     <div class ="row">
@@ -134,7 +134,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form" action="/vagas/editar" method="post" name="editarVagas"
+                <form class="form" action="vagas_editar" method="post" name="editarVagas"
                 onsubmit="return editarVaga(editarVagas.idademin, editarVagas.idademax, editarVagas.numvaga,
                 editarVagas.listaAno, editarVagas.listaIdadeMin, editarVagas.listaIdadeMax, editarVagas.anovaga);">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

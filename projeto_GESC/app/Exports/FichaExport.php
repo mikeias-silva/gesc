@@ -186,6 +186,9 @@ class FichaExport implements FromView, WithEvents
             AfterSheet::class    => function(AfterSheet $event) {
                 $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
                 //$event->sheet->mergeCells('A1:I1');
+                $event->sheet->getPageMargins()->setTop(0.30);
+                $event->sheet->getPageMargins()->setLeft(0.50);
+                $event->sheet->getPageMargins()->setBottom(0.30);
                 /*$event->sheet->getPageMargins()->setTop(-1.27);
                 $event->sheet->getPageMargins()->setRight(1.27);
                 $event->sheet->getPageMargins()->setLeft(1.27);

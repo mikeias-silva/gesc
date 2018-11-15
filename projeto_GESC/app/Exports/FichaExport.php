@@ -62,11 +62,11 @@ class FichaExport implements FromView, WithEvents
         $this->obs = $obs;
         $this->mesdesc = $mesdesc;
         $this->numlinhasativos = count (DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
-        and mesfrequencia='{$this->mes}' group by idmatricula"));
+        and mesfrequencia='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, bairro, publicoprioritario, totalfaltas, idademin, idademax"));
         $this->desligamentos = count (DB::select("select * from listaAlunosDesligados where
-        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula"));
+        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, datainativacao, motivoinativacao"));
         $this->novos = count (DB::select("select * from listaAlunosNovos where
-        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula"));
+        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, dataativacao, telefone, bairro"));
     }
 
     public function view(): View
@@ -117,13 +117,13 @@ class FichaExport implements FromView, WithEvents
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and matriculas.statuscadastro='Ativo'");
         
         $lista_ativos=DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
-        and mesfrequencia='{$this->mes}' group by idmatricula order by nomepessoa ASC");
+        and mesfrequencia='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, bairro, publicoprioritario, totalfaltas, idademin, idademax order by nomepessoa ASC");
         
         $lista_desligamentos=DB::select("select * from listaAlunosDesligados where
-        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula");
+        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, datainativacao, motivoinativacao");
         
         $lista_novos=DB::select("select * from listaAlunosNovos where
-        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula");
+        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, dataativacao, telefone, bairro");
 
         /*lista usuários ativos = select matriculas.idmatricula, pessoa.nomepessoa, familia.numnis, cras.nomecras, pessoa.bairro, publicoprioritario.publicoprioritario from gesc.matriculas, gesc.crianca, gesc.parentesco, gesc.responsavel, gesc.familia, gesc.pessoa, gesc.cras, gesc.publicoprioritario
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and parentesco.idresponsavel=responsavel.idresponsavel 

@@ -559,8 +559,7 @@ class MatriculasController extends Controller
 
         foreach ($dadoscrianca as $dadoscr) {
             $idade = $dadoscr->nascimentocrianca;
-<<<<<<< HEAD
-=======
+
             $dadoscr->logradouro;
             $dadoscr->bairro;
             $dadoscr->ncasa;
@@ -602,7 +601,6 @@ class MatriculasController extends Controller
             $ncasa = $dadoscrianca->ncasa;
            
         
->>>>>>> e371929da30692a1dce3a851c4bc5e5b7c6a72b7
         }
             
         $idade = $hoje->diffInYears($idade);

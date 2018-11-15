@@ -374,7 +374,34 @@ class ResponsavelController extends Controller
     }
 
     public function adicionaoResponsavelTroca($idcrianca, $idresponsavel){
-        echo($idcrianca);
+        $ano = date("Y");
+        //Cadastra Pessoa
+        $pessoaresponsavel1 = new Pessoa();
+        $pessoaresponsavel1->nomepessoa = Request::input('nomeresp1');
+        $pessoaresponsavel1->datanascimento = Request::input('datanascimentoresp1');
+        $pessoaresponsavel1->rg = Request::input('rgresp1');
+        $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
+        $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+        $pessoaresponsavel1->sexo = Request::input('sexoresp1');
+        $pessoaresponsavel1->save();
+        //Cadastra responsável
+        $responsavel1 = new Responsavel();
+        $responsavel1->estadocivil = Request::input('estadocivilresp1');
+        $responsavel1->profissao = Request::input('profissaoresp1');
+        $responsavel1->localtrabalho = Request::input('trabalhoresp1');
+        $responsavel1->telefone = Request::input('tel1resp1');
+        $responsavel1->telefone2 = Request::input('tel2resp1');
+        $responsavel1->escolaridade = Request::input('escolaridaderesp1');
+        $responsavel1->outrasobs = Request::input('obsresp1');
+        $responsavel1->idpessoa = $pessoaresponsavel1->idpessoa;
+        //$responsavel1->idfamilia = $familia->idfamilia;
+        $responsavel1->save();
+
+        DB::update("update parentesco set idresponsavel = '{$responsavel1->idresponsavel}' where idcrianca='{$idcrianca}' and idresponsavel='{$idresponsavel}'");
+        
+        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
+        return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
+
         //return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
     }
     

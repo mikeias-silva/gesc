@@ -6,9 +6,8 @@
 responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
 responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, responsavel.rgresp2, responsavel.tel1resp2, responsavel.tel2resp2);">
 @else
-<form action="adicionaResponsavelTroca_{{$idcrianca}}_{{$idresponsavel}}" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
-responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
-responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, responsavel.rgresp2, responsavel.tel1resp2, responsavel.tel2resp2);">
+<form action="adicionaResponsavelTroca_{{$idcrianca}}_{{$idresponsavel}}" method="POST" name = "responsavel" onsubmit="return validarDadosRespTroca(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
+responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1);">
 @endif
 
     {{ csrf_field() }}

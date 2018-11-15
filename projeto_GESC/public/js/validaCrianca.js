@@ -1,4 +1,4 @@
-function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianca){
+function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianca, logradouro, bairro){
     var permissao = true;
     var nomecrianca = nomecrianca.value;
     var datanascimentocrianca = datanascimentocrianca.value;
@@ -6,6 +6,8 @@ function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianc
     var cpfcrianca = cpfcrianca.value;
     var hoje = new Date();
     var dataSelecionada = new Date(datanascimentocrianca);
+    var logradouro = logradouro.value;
+    var bairro = bairro.value;
 
     if(nomecrianca==""){
         document.getElementById("msgNomeCrianca").innerHTML="<font color='red'>Campo obrigatório</font>";
@@ -43,6 +45,20 @@ function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianc
         permissao = false;
     } else {
         document.getElementById("msgRg").innerHTML="";
+    }
+
+    if(logradouro==""){
+        document.getElementById("msgEndereco").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgEndereco").innerHTML="";
+    }
+
+    if(bairro==""){
+        document.getElementById("msgBairro").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgBairro").innerHTML="";
     }
 
     return permissao;
@@ -112,6 +128,13 @@ function Cpf(v){
 }
 
 function Rg(v){
+    v=v.replace(/\D/g,"");
+    //v=v.replace(/^(\d{2})(\d)/,"$1.$2")
+    //v=v.replace(/\.(\d{3})(\d)/,".$1-$2")
+    return v;
+}
+
+function Cep(v){
     v=v.replace(/\D/g,"");
     //v=v.replace(/^(\d{2})(\d)/,"$1.$2")
     //v=v.replace(/\.(\d{3})(\d)/,".$1-$2")

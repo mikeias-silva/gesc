@@ -6,7 +6,8 @@
     <h2>Cadastro Criança</h2>
 
     <form action="adicionaCrianca" method="POST" 
-    onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca);" name="novaCrianca">
+    onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca,
+        novaCrianca.logradouro, novaCrianca.bairro);" name="novaCrianca">
             {{ csrf_field() }}
             <div class="form-group">
             

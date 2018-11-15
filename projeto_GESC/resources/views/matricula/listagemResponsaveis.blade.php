@@ -70,11 +70,15 @@
     </table>
 </div>
 <div class="float-right">
-    
+@if(empty($idcrianca))
     <button class="btn btn-success">
         Próximo
     </button>
-    
+@else
+    <button class="btn btn-success">
+        Trocar Responsável
+    </button>
+@endif
 </div>
 </form>
 
@@ -91,6 +95,13 @@
         <form action="responsavel_{{$idcrianca}}_{{$idresponsavel}}">
             <button class="btn btn-primary">
                 Novo Responsável
+            </button>
+        </form>
+    </div>
+    <div class="float-right">   
+        <form action="listagemMatriculas">
+            <button class="btn btn-secondary">
+                Cancelar
             </button>
         </form>
     </div>

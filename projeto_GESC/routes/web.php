@@ -52,6 +52,7 @@ Route::get('/listagemResponsaveis', 'ResponsavelController@responsaveis')->middl
 Route::get('/listagemResponsaveis_{idcrianca}_{idresponsavel}', 'ResponsavelController@torcaResponsaveis')->middleware('auth');
 Route::get('/responsavel', 'ResponsavelController@novoResponsavel')->middleware('auth');
 Route::get('/responsavel_{idcrianca}_{idresponsavel}', 'ResponsavelController@novoResponsavelTroca')->middleware('auth');
+Route::post('/adicionaResponsavelTroca_{idcrianca}_{idresponsavel}', 'ResponsavelController@adicionaoResponsavelTroca')->middleware('auth');
 Route::post('/adicionaResponsavel', 'ResponsavelController@adicionaResponsavel')->middleware('auth');
 Route::post('/atualizaParentesco_{idcrianca}_{idresponsavel}', 'ResponsavelController@atualizaParentesco')->middleware('auth');
 

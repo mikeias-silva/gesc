@@ -372,5 +372,10 @@ class ResponsavelController extends Controller
         //toastr()->success('Troca de responsável efetuada com sucesso!');
         return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
     }
+
+    public function adicionaoResponsavelTroca($idcrianca, $idresponsavel){
+        echo($idcrianca);
+        //return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
+    }
     
 }

@@ -74,7 +74,7 @@
     
                         <div class="col-sm-4">
                             <label>CEP</label>
-                            <input value="{{ $responsaveis[0]->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
+                            <input value="{{ $dadoscrianca->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
                             <span id="msgCep"></span>
                         </div>
                     </div>
@@ -84,19 +84,19 @@
                     <div class="row" >
                         <div class="col-sm-5">
                             <label>Endereço</label>
-                            <input value="{{ $responsaveis[0]->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                            <input value="{{ $dadoscrianca->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
                             <span id="msgEndereco"></span>
                         </div>
     
                         <div class="col-sm-1">
                             <label>Nº</label>
-                            <input value="{{ $responsaveis[0]->ncasa }}" class="form-control" type="text" name="ncasa"/>
+                            <input value="{{ $dadoscrianca->ncasa }}" class="form-control" type="text" name="ncasa"/>
                         </div>
     
                         
                         <div class="col-sm-4">
                             <label>Bairro</label>
-                            <input value="{{ $responsaveis[0]->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                            <input value="{{ $dadoscrianca->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                             <span id="msgBairro"></span>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                         <div class="row" >
                             <div class="col-sm-6">
                                 <label>Complemento</label>
-                                <input value="{{ $responsaveis[0]->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                                <input value="{{ $dadoscrianca->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
                             </div>
                             @foreach ($dadosfamilia as $dadofamilia)
                             <div class="col-sm-6">
@@ -193,7 +193,11 @@
     
     <div class="form">
             <br>
-            <h4>Responsável 01</h4>
+            <h4>Responsável 01 
+                <a href="listagemResponsaveis_{{ $dadoscrianca->idcrianca }}_{{$responsaveis[0]->idresponsavel}}">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
+                </a>
+            </h4>
     
             <div class="form-group">
                 <div class="row">
@@ -318,7 +322,11 @@
     
                 </div>
             <br>
-            <h4>Responsável 02</h4>
+            <h4>Responsável 02
+                <a href="/listagemResponsaveis/{{ $dadoscrianca->idcrianca }}/{{$responsaveis[0]->idresponsavel}}">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
+                </a>
+            </h4>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">

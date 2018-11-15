@@ -120,7 +120,8 @@ class CriancaController extends Controller
         $cep = Request::input('cep');
         $bairro = Request::input('bairro');
         $logradouro = Request::input('logradouro');
-        $complemento = Request::input('complementoendereco');
+        $complemento = Request::input('complemento');
+        $ncasa = Request::input('ncasa');
 
         $pessoacrianca = new Pessoa();
         $pessoacrianca->nomepessoa = $nomecrianca;
@@ -134,6 +135,7 @@ class CriancaController extends Controller
         $pessoacrianca->bairro = $bairro;
         $pessoacrianca->logradouro = $logradouro;
         $pessoacrianca->complementoendereco = $complemento;
+        $pessoacrianca->ncasa = $ncasa;
         $pessoacrianca->save();
 
         

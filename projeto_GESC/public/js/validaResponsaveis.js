@@ -1,10 +1,10 @@
-function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cpfresp1, rgresp1, tel1resp1, tel2resp1,
+function validarDadosResp(nomeresp1, datanascimentoresp1, cpfresp1, rgresp1, tel1resp1, tel2resp1,
     nomeresp2, datanascimentoresp2, cpfresp2, rgresp2, tel1resp2, tel2resp2) {
     var permissao = true;
     var nomeresp1 = nomeresp1.value;
     var datanascimentoresp1 = datanascimentoresp1.value;
-    var logradouro = logradouro.value;
-    var bairro = bairro.value;
+    //var logradouro = logradouro.value;
+    //var bairro = bairro.value;
     var cpfresp1 = cpfresp1.value;
     var rgresp1 = rgresp1.value;
     var hoje = new Date();
@@ -37,19 +37,19 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
         document.getElementById("msgDataResp1").innerHTML="";
     }
 
-    if(logradouro==""){
+   /* if(logradouro==""){
         document.getElementById("msgEndereco").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgEndereco").innerHTML="";
-    }
+    }*/
 
-    if(bairro==""){
+    /*if(bairro==""){
         document.getElementById("msgBairro").innerHTML="<font color='red'>Campo obrigatório</font>";
         permissao = false;
     } else {
         document.getElementById("msgBairro").innerHTML="";
-    }
+    }*/
 
     if(cpfresp1!=""){
         if(validarCPF(cpfresp1)){
@@ -62,21 +62,21 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
         document.getElementById("msgCpfResp1").innerHTML="";
     }
 
-    if(rgresp1!="" && rgresp1.length < 9){
+    if(rgresp1!="" && rgresp1.length < 8){
         document.getElementById("msgRgResp1").innerHTML="<font color='red'>O RG informado não é válido, por favor verifique</font>";
         permissao = false;
     } else {
         document.getElementById("msgRgResp1").innerHTML="";
     }
 
-    if(tel1resp1!="" && tel1resp1.length < 10){
+    if(tel1resp1!="" && tel1resp1.length < 8){
         document.getElementById("msgTel1Resp1").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
         permissao = false;
     } else {
         document.getElementById("msgTel1Resp1").innerHTML="";
     }
 
-    if(tel2resp1!="" && tel2resp1.length < 10){
+    if(tel2resp1!="" && tel2resp1.length < 8){
         document.getElementById("msgTel2Resp1").innerHTML="<font color='red'>O RG telefone não é válido, por favor verifique</font>";
         permissao = false;
     } else {
@@ -112,21 +112,21 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
             document.getElementById("msgCpfResp2").innerHTML="";
         }
     
-        if(rgresp2!="" && rgresp2.length < 9){
+        if(rgresp2!="" && rgresp2.length < 8){
             document.getElementById("msgRgResp2").innerHTML="<font color='red'>O RG informado não é válido, por favor verifique</font>";
             permissao = false;
         } else {
             document.getElementById("msgRgResp2").innerHTML="";
         }
     
-        if(tel1resp2!="" && tel1resp2.length < 10){
+        if(tel1resp2!="" && tel1resp2.length < 8){
             document.getElementById("msgTel1Resp2").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
             permissao = false;
         } else {
             document.getElementById("msgTel1Resp2").innerHTML="";
         }
     
-        if(tel2resp2!="" && tel2resp1.length < 10){
+        if(tel2resp2!="" && tel2resp1.length < 8){
             document.getElementById("msgTel2Resp2").innerHTML="<font color='red'>O RG telefone não é válido, por favor verifique</font>";
             permissao = false;
         } else {
@@ -136,6 +136,68 @@ function validarDadosResp(nomeresp1, datanascimentoresp1, logradouro, bairro, cp
 
     return permissao;
 }
+
+function validarDadosRespTroca(nomeresp1, datanascimentoresp1, cpfresp1, rgresp1, tel1resp1, tel2resp1) {
+    var permissao = true;
+    var nomeresp1 = nomeresp1.value;
+    var datanascimentoresp1 = datanascimentoresp1.value;
+    var cpfresp1 = cpfresp1.value;
+    var rgresp1 = rgresp1.value;
+    var hoje = new Date();
+    var dataSelecionada = new Date(datanascimentoresp1);
+    var tel1resp1 = tel1resp1.value;
+    var tel2resp1 = tel2resp1.value;
+
+    if(nomeresp1==""){
+        document.getElementById("msgNomeResp1").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgNomeResp1").innerHTML="";
+    }
+
+    if(datanascimentoresp1==""){
+        document.getElementById("msgDataResp1").innerHTML="<font color='red'>Campo obrigatório</font>";
+        permissao = false;
+    } else if(hoje < dataSelecionada){
+        document.getElementById("msgDataResp1").innerHTML="<font color='red'>Data de nascimento inválida, por favor verifique</font>";
+    } else {
+        document.getElementById("msgDataResp1").innerHTML="";
+    }
+
+    if(cpfresp1!=""){
+        if(validarCPF(cpfresp1)){
+            document.getElementById("msgCpfResp1").innerHTML="<font color='red'>O CPF informado não é válido, por favor verifique</font>";
+            permissao = false;
+        } else {
+            document.getElementById("msgCpfResp1").innerHTML="";
+        }
+    } else {
+        document.getElementById("msgCpfResp1").innerHTML="";
+    }
+
+    if(rgresp1!="" && rgresp1.length < 8){
+        document.getElementById("msgRgResp1").innerHTML="<font color='red'>O RG informado não é válido, por favor verifique</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgRgResp1").innerHTML="";
+    }
+
+    if(tel1resp1!="" && tel1resp1.length < 8){
+        document.getElementById("msgTel1Resp1").innerHTML="<font color='red'>O telefone informado não é válido, por favor verifique</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgTel1Resp1").innerHTML="";
+    }
+
+    if(tel2resp1!="" && tel2resp1.length < 8){
+        document.getElementById("msgTel2Resp1").innerHTML="<font color='red'>O RG telefone não é válido, por favor verifique</font>";
+        permissao = false;
+    } else {
+        document.getElementById("msgTel2Resp1").innerHTML="";
+    }
+
+    return permissao;
+    }
 
 function validarCPF(cpf) {	
 	cpf = cpf.replace(/[^\d]+/g,'');	

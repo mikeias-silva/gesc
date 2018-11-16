@@ -186,6 +186,7 @@ class MatriculasController extends Controller
            
         
         }
+        $dadosmembros = DB::select('select * from membros_familia where idfamilia = ?', [$dadosfm->idfamilia]);
 
         $cras = Cras::all();
         $pprioritario = PublicoPrioritario::all();
@@ -201,7 +202,8 @@ class MatriculasController extends Controller
             'cras'=>$cras,
             'pprioritario'=>$pprioritario,
             'escola'=>$escola,
-            'ano'=>$ano   
+            'ano'=>$ano,
+            'membros'=:$dadosmembros   
         ];
 
         //return $dadosmatricula;
@@ -753,7 +755,7 @@ class MatriculasController extends Controller
         
         }
             
-       $dadosmembros     = DB::select('select * from membros_familia where idfamilia = ?', [$dadosfm->idfamilia]);
+       $dadosmembros = DB::select('select * from membros_familia where idfamilia = ?', [$dadosfm->idfamilia]);
 
         foreach ($dadosmembros as $membros) {
             

@@ -204,7 +204,7 @@ class MatriculasController extends Controller
             'pprioritario'=>$pprioritario,
             'escola'=>$escola,
             'ano'=>$ano,
-            'membros'=:$dadosmembros   
+            'membros'=>$dadosmembros
         ];
 
         //return $dadosmatricula;

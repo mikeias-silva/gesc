@@ -63,7 +63,6 @@ Route::get('/listagemMatriculas_anteriores', 'MatriculasController@selecionaAno'
 Route::get('/listagemMatriculas_rematriculas', 'MatriculasController@precisamRematricular')->middleware('auth');
 Route::post('/matriculasAnteriores', 'MatriculasController@matriculasAnteriores')->middleware('auth');
 Route::get('/listagemMatriculas_seguinte', 'MatriculasController@matriculasSeguinte')->middleware('auth');
-
 Route::get('/novaMatricula', 'MatriculasController@novaMatricula')->middleware('auth');
 //Route::post('/novaMatricula/adiciona', 'MatriculasController@adicionaMatricula')->middleware('auth');
 Route::get('/imprimematricula', 'MatriculasController@imprime')->middleware('auth');

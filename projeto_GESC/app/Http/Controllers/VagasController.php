@@ -30,6 +30,10 @@ class VagasController extends Controller {
         }
     }
     public function listaVagas(){
+
+
+        
+
         $this->vagasAnoAnterior();
         
         //$vaga = vaga::all();

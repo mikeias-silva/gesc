@@ -167,9 +167,9 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->rg = Request::input('rgresp1');
         $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
 
-        if (!empty(Request::input('cpfresp1'))) {
+      //  if (!empty(Request::input('cpfresp1'))) {
             $pessoaresponsavel1->cpf = Request::input('cpfresp1');
-        } 
+      //  } 
         
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
         $pessoaresponsavel1->cep = $cep;
@@ -177,7 +177,6 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->logradouro = $logradouro;
         $pessoaresponsavel1->complementoendereco = $complemento;
         $pessoaresponsavel1->ncasa = $ncasa;
-
         $pessoaresponsavel1->save();
         
         

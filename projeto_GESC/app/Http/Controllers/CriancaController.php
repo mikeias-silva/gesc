@@ -151,7 +151,7 @@ class CriancaController extends Controller
         $idescola = Request::input('escola');
         $pprioritario = Request::input('pprioritario');
         $obssaude = Request::input('obssaude');
-        $hoje = Carbon::now();
+        $hoje = Carbon::now()->year;
       //  $idpessoa = 1; 
 
         $crianca = new Crianca();
@@ -236,7 +236,7 @@ class CriancaController extends Controller
             $date = strtotime($date);
             $proximoAno = strtotime('+1 year', $date);
             $proximoAno = date('Y-m-d', $proximoAno);
-            $matricula->anomatricula = $proximoAno;
+            $matricula->anomatricula = $hoje+1;
         }
 
         $matricula->serieescolar = Request::input('serie');
@@ -283,24 +283,28 @@ class CriancaController extends Controller
          $familia->save();
 
          //------MEMBRO FAMILIA-------- 
-        $membros = Request::input('nomemembro');
-        $nascimentomembro = Request::input('nascimentomembro');
-        $localtrabalhamembro = Request::input('trabmembro');
-        $escolamembro = Request::input('escolamembro');
-        $i = 0;
-        foreach ($membros as $nomemembro) {
-            
-            $membro = new Membro_Familia();
-            $membro->nomemembro = $membros[$i];
-            $membro->datanascimento = $nascimentomembro[$i];
-            $membro->localtrabalho = $localtrabalhamembro[$i];
-            $membro->idescola = $escolamembro[$i];
-            $membro->idfamilia = $familia->idfamilia;
-            $membro->save();
-            $i++;
-            
-            
-        }
+       // return Request::input('nomemembro');
+         if (empty(Request::input('nomemembro'))) {
+            $membros = Request::input('nomemembro');
+            $nascimentomembro = Request::input('nascimentomembro');
+            $localtrabalhamembro = Request::input('trabmembro');
+            $escolamembro = Request::input('escolamembro');
+            $i = 0;
+            foreach ($membros as $nomemembro) {
+                
+                $membro = new Membro_Familia();
+                $membro->nomemembro = $membros[$i];
+                $membro->datanascimento = $nascimentomembro[$i];
+                $membro->localtrabalho = $localtrabalhamembro[$i];
+                $membro->idescola = $escolamembro[$i];
+                $membro->idfamilia = $familia->idfamilia;
+                $membro->save();
+                $i++;
+                
+                
+            }
+         }
+        
         
         
     /*

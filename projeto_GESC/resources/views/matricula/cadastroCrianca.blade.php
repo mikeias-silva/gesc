@@ -66,7 +66,7 @@
                             <label>Órgão Emissor RG</label>
                             <select class="form-control" name="emissorrgcrianca" id="">
                                     <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
-                                    <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                    {{-- <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
                                     <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
                                     <option value="CRA">CRA - Conselho Regional de Administração</option>
                                     <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
@@ -93,7 +93,7 @@
                                     <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
                                     <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
                                     <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
-                                    <option value="OUT">OUT - Outros Emissores</option>
+                                    <option value="OUT">OUT - Outros Emissores</option> --}}
                             </select>
                         </div>
 

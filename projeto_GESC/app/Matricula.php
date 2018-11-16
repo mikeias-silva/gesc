@@ -62,9 +62,9 @@ class Matricula extends Model
     }
 
     static function matriculasAnoSeguinte(){
-        $anovaga = Carbon::now();
+        $anovaga = Carbon::now()->year+1;
        // return Matricula::join('vagas', $this->idvaga, '=', 'vagas.?')
-       return Matricula::where('anomatricula', '>', $anovaga)->get();
+       return Matricula::where('anomatricula', $anovaga)->get();
       //  return DB::select('select * from matriculas where anomatricula > ? ', [$anovaga]);
         //return DB::select('select * from dadosmatricula where anovaga > ?', [$anovaga]);
     }
@@ -118,12 +118,17 @@ class Matricula extends Model
     }
 
     static function rematricula(){
-       $qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
+       //$qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
 
-       foreach ($qtdcrianca as $crianca) {
+       $qtdcriancaseg = DB::select('select idcrianca from matriculas where anomatricula = 2019');
+
+       foreach ($qtdcriancaseg as $crianca) {
            $idcrianca[] = $crianca->idcrianca;
        }
+
+       //$qtdcriancaatual = DB::select('select idcrianca from matriculas where')
       // return dd($idcrianca);
+       //return Matricula::where('idcrianca', $idcrianca)->get();
         return Matricula::whereNotIn('idcrianca', $idcrianca)->get();
        
     }

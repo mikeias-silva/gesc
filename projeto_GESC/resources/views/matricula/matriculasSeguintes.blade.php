@@ -166,9 +166,7 @@
 </div>
 
 
-<form action="/listagemMatriculas/anteriores" class="float-right" id="btn-novamatricula">
-    <button class="btn btn-secondary">Voltar</button>
-</form>
+
 <!--  -->
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>

@@ -201,11 +201,12 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->rg = Request::input('rgresp1');
         $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
 
-        if (!empty(Request::input('cpfresp1'))) {
+      //  if (!empty(Request::input('cpfresp1'))) {
             $pessoaresponsavel1->cpf = Request::input('cpfresp1');
-        } 
+      //  } 
         
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
+
         //$pessoaresponsavel1->cep = $cep;
         //$pessoaresponsavel1->bairro = $bairro;
         //$pessoaresponsavel1->logradouro = $logradouro;

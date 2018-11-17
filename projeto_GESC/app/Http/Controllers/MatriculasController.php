@@ -189,6 +189,8 @@ class MatriculasController extends Controller
         }
         $dadosmembros = DB::select('select * from membros_familia where idfamilia = ?', [$dadosfm->idfamilia]);
 
+        $familia = DB::select('select * from familia where idfamilia = ?',  [$dadosfm->idfamilia]);
+        
         $cras = Cras::all();
         $pprioritario = PublicoPrioritario::all();
         $escola = Escola::all();
@@ -204,7 +206,8 @@ class MatriculasController extends Controller
             'pprioritario'=>$pprioritario,
             'escola'=>$escola,
             'ano'=>$ano,
-            'membros'=>$dadosmembros
+            'membros'=>$dadosmembros,
+            'familia'=>$familia
         ];
 
         //return $dadosmatricula;
@@ -766,6 +769,7 @@ class MatriculasController extends Controller
         $escola = Escola::all();
         //return $nomematricula;
 
+        $familia = DB::select('select * from familia where idfamilia = ?',  [$dadosfm->idfamilia]);
         $ano = Carbon::now()->year+1;
         $dados = [
             'responsaveis'=>$parentes,
@@ -777,7 +781,8 @@ class MatriculasController extends Controller
             'escola'=>$escola,
             'ano'=>$ano,
             'idmatricula'=>$idmatricula,
-            'membros'=>$dadosmembros   
+            'membros'=>$dadosmembros,
+            'familia'=>$familia   
         ];
         
         // return $dadoscrianca;

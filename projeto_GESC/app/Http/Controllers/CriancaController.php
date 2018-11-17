@@ -280,7 +280,7 @@ class CriancaController extends Controller
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('idcras');
         $familia->idcrianca = $crianca->idcrianca;
-       // $familia->rendapercapta = Request::input('rendafamiliar');
+        $familia->rendapercapta = Request::input('rendafamiliar');
         // return $familia;
          $familia->save();
 

@@ -507,6 +507,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-3">
+                    <label>Renda familiar</label>
+                    <select name="rendafamiliar" id="" class="custom-select form-control">
+                        <option disabled value={{ $familia->rendapercapta }}>{{ $familia->rendapercapta }}</option>
+                        <option value="1 a 2 salarios minimos">1 à 2 salários mínimo</option>
+                        <option value="2 a 3 salarios minimos">2 à 3 salários mínimo</option>
+                        <option value="Mais de 3 salarios minimos">Mais de 3 salarios mínimos</option>
+                    </select>
+                </div>
+                  
                         
                 <!-- checkboxes -->
                 <label>Programas Sociais</label>

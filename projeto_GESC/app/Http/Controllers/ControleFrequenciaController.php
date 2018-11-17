@@ -5,6 +5,7 @@ use App\Http\Requests\SetTimezone;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Carbon;
 use App\ControleFrequancia;
 use App\Turma;
 use App\Dias_funcionamento;
@@ -14,12 +15,13 @@ class ControleFrequenciaController extends Controller {
 
     public function listaTurmas(){
         $aux=0;
-        $ano= date("Y");
+      //  $ano= date("Y");
+        $ano = Carbon::now()->year;
         $numeroAlunos=[];
         $listaTurmas = DB::select('select turma.idturma, turma.GrupoConvivencia, turma.statusTurma, turma.Turno, turma.idusuario, usuario.Nome from usuario, turma
         where usuario.id = turma.idusuario && turma.statusTurma = 1');
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo' and matriculas.anomatricula ='{$ano}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
 
@@ -42,10 +44,9 @@ class ControleFrequenciaController extends Controller {
         where usuario.id = turma.idusuario && turma.idturma='{$idturma}'");
 
         
-        $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa
-        where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
-        && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
-        && EXTRACT(MONTH FROM crianca.datacadastro)<='{$mes}' && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}' ORDER BY nomepessoa ASC");
+        $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula from matriculas, crianca, pessoa where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
+&& matriculas.idturma='{$idturma}' && matriculas.statuscadastro= 'Ativo'
+&& EXTRACT(MONTH FROM crianca.datacadastro)<='{$mes}' && matriculas.anomatricula = '{$ano}' ORDER BY nomepessoa ASC");
 
         
         $mes= date("m");

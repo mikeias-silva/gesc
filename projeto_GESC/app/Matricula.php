@@ -118,11 +118,11 @@ class Matricula extends Model
     }
 
     static function rematricula(){
-       //$qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
+       $qtdcrianca = DB::select('select idcrianca from matriculas group by idcrianca having count(*) > 1');
 
-       $qtdcriancaseg = DB::select('select idcrianca from matriculas where anomatricula = 2019');
+    //    $qtdcrianca = DB::select('select idcrianca from matriculas where anomatricula = 2019');
 
-       foreach ($qtdcriancaseg as $crianca) {
+       foreach ($qtdcrianca as $crianca) {
            $idcrianca[] = $crianca->idcrianca;
        }
 

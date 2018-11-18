@@ -54,7 +54,7 @@ class TransferenciaController extends Controller {
         where usuario.id = turma.idUsuario && turma.statusTurma = 1');
 
         foreach($listaTurmas as $c){
-            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'");
+            $aux = DB::select("select count(idturma) as numero from matriculas where idturma='{$c->idturma}' and statuscadastro='Ativo' and  matriculas.anomatricula = '{$ano}'");
             array_push($numeroAlunos, $aux[0]->numero);
         }
 

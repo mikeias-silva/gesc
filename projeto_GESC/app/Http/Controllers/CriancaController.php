@@ -158,7 +158,7 @@ class CriancaController extends Controller
 
         $crianca = new Crianca();
         $crianca->obssaude = Request::input('obssaude');
-        $crianca->datacadastro = $hoje;
+        $crianca->datacadastro = Carbon::now();
         $crianca->idescola = Request::input('escola');;
         $crianca->idpublicoprioritario = Request::input('pprioritario');
         $crianca->idpessoa = $pessoacrianca->idpessoa;
@@ -193,7 +193,7 @@ class CriancaController extends Controller
         $dataespera = Carbon::now();
         // $datasairespera;
 
-        $idade = $hoje->diffInYears($datanascimentocrianca);
+        $idade =  Carbon::now()->diffInYears($datanascimentocrianca);
         
         //$vagas = DB::select('select * from vagas where ? >= idademin and ? <= idademax', [$idade, $idade]); 
         $vagas = Vaga::vagaMatricula();
@@ -254,16 +254,16 @@ class CriancaController extends Controller
 
             if($matAtivas < $essanumvaga){
                 $matricula->statuscadastro = 'Ativo';
-                $historico_matricula->dataativacao = $hoje;
+                $historico_matricula->dataativacao = Carbon::now();
                 
             }elseif($matAtivas >= $essanumvaga){
                 $matricula->statuscadastro = 'Espera';
-                $matricula->dataespera = $hoje;
+                $matricula->dataespera = Carbon::now();
                     
             }
         }elseif(empty($essavaga)){
             $matricula->statuscadastro = 'Espera';
-            $matricula->dataespera = $hoje;
+            $matricula->dataespera =  Carbon::now();
         }
         
         //return $matricula;
@@ -280,7 +280,7 @@ class CriancaController extends Controller
         $familia->bolsafamilia = Request::input('bolsafamilia');
         $familia->idcras = Request::input('idcras');
         $familia->idcrianca = $crianca->idcrianca;
-        $familia->rendapercapta = Request::input('rendafamiliar');
+       // $familia->rendapercapta = Request::input('rendafamiliar');
         // return $familia;
          $familia->save();
 

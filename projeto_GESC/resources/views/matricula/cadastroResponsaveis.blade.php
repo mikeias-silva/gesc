@@ -1,13 +1,23 @@
 @extends('layout.principal') 
 @section('conteudo')
 <div class="container" id="responsavel">
+@if(empty($idcrianca))
 <form action="adicionaResponsavel" method="POST" name = "responsavel" onsubmit="return validarDadosResp(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
-responsavel.logradouro, responsavel.bairro, responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
+responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1,
 responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, responsavel.rgresp2, responsavel.tel1resp2, responsavel.tel2resp2);">
+@else
+<form action="adicionaResponsavelTroca_{{$idcrianca}}_{{$idresponsavel}}" method="POST" name = "responsavel" onsubmit="return validarDadosRespTroca(responsavel.nomeresp1, responsavel.datanascimentoresp1, 
+responsavel.cpfresp1, responsavel.rgresp1, responsavel.tel1resp1, responsavel.tel2resp1);">
+@endif
+
     {{ csrf_field() }}
         <div class="form">
-        
-        <h2>Responsável 01</h2>
+        @if(empty($idcrianca))
+            <h2>Responsável 01</h2>
+        @else
+            <h1>Troca de Responsável</h2>
+            <h2>Responsável</h2>
+        @endif
         
         <div class="form-group">
             <div class="row">
@@ -45,7 +55,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                         <label>Órgão Emissor RG</label>
                         <select class="form-control" name="emissorrgresposnavel1" id="">
                                 <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
-                                <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                {{-- <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
                                 <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
                                 <option value="CRA">CRA - Conselho Regional de Administração</option>
                                 <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
@@ -72,7 +82,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                                 <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
                                 <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
                                 <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
-                                <option value="OUT">OUT - Outros Emissores</option>
+                                <option value="OUT">OUT - Outros Emissores</option> --}}
                         </select>
                     </div>
 
@@ -94,42 +104,6 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                 </div>
             </div>
         </div>
-        <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-2">
-                        <label>CEP</label>
-                        <input class="form-control" type="text" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);"/>
-                        <span id="msgCep"></span>
-                    </div>
-                    <div class="col-sm-5">
-                        <label>Endereço*</label>
-                        <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
-                        <span id="msgEndereco"></span>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <label>Nº</label>
-                        <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
-                    </div>
-
-                    
-                    <div class="col-sm-3">
-                        <label>Bairro*</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
-                        <span id="msgBairro"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group ">
-                <div class="row" >
-                    <div class="col-sm-8">
-                        <label>Complemento</label>
-                        <input type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
-                    </div>
-
-                    
-                </div>
-            </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-8">
@@ -184,7 +158,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
 
         <label>Observações</label>
         <textarea name="obsresp1" id="" cols="10" rows="2" class="form-control"></textarea>
-
+       @if(empty($idcrianca)) 
         <div class="container" id="meio">
 
         </div>
@@ -227,7 +201,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                         <label>Órgão Emissor RG</label>
                         <select class="form-control" name="emissorrgresposnavel2" id="">
                                 <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
-                                <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                {{-- <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
                                 <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
                                 <option value="CRA">CRA - Conselho Regional de Administração</option>
                                 <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
@@ -254,7 +228,7 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
                                 <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
                                 <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
                                 <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
-                                <option value="OUT">OUT - Outros Emissores</option>
+                                <option value="OUT">OUT - Outros Emissores</option> --}}
                         </select>
                     </div>
 
@@ -325,9 +299,30 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
         <textarea name="obsresp2" id="" cols="10" rows="2" class="form-control"></textarea>
     
         </div>
+        @endif
     
 
     <!-- ABA FAMILIA -->
+
+
+
+    @if(empty($idcrianca))
+            <button class="btn btn-success float-right" type="submit">
+                Avançar
+            </button>
+    @else
+        <div class="float-right">   
+            <a href="listagemMatriculas">
+                <button class="btn btn-secondary">
+                    Cancelar
+                </button>
+            </a>
+        </div> 
+                <button class="btn btn-success float-right" type="submit">
+                    Confirmar Troca
+                </button>
+    @endif
+    </form>
 
 <!-- Modal de help -->
 <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">
@@ -349,11 +344,6 @@ responsavel.nomeresp2, responsavel.datanascimentoresp2, responsavel.cpfresp2, re
         </div>
     </div>
 </div>
-
-            <button class="btn btn-success float-right" type="submit">
-                Avançar
-            </button>
-
 <script src="/js/buscaCep.js"></script>
 
 <script src="/js/validaResponsaveis.js"></script>

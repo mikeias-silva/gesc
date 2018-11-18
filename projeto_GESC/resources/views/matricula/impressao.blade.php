@@ -507,6 +507,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-3">
+                    <label>Renda familiar</label>
+                    <select name="rendafamiliar" id="" class="custom-select form-control">
+                        <option disabled value={{ $familia->rendapercapta }}>{{ $familia->rendapercapta }}</option>
+                    </select>
+                </div>
+                  
                         
                 <!-- checkboxes -->
                 <label>Programas Sociais</label>
@@ -547,6 +554,58 @@
                 </div>
             </div>
             
+           @if (!empty($membros))
+               
+           <div class="">
+               <div id="table" class="table-editable">
+{{--                     
+                   <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x"
+                       aria-hidden="true"></i></a></span> --}}
+                   <table class="table table-bordered table-responsive-md text-center">
+                       <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
+                   
+                       <tr>
+                           
+                           <th class="text-center">Nome</th>
+                           <th class="text-center">Data Nascimento</th>
+                           <th class="text-center">Local Trabalha</th>
+                           <th class="text-center">Escola</th>
+                           <th class="text-center">Opções</th>
+                       
+                       </tr> 
+                       <tr class="hide">
+                           @foreach ($membros as $membro)
+                           <input disabled name="idmembro" type="hidden" value={{ $membro->idmembro }}>
+                           <td class="pt-3-half"><input disabled id="tdedit" type="text" value={{ $membro->nomemembro }} name="nomemembro[]"/></td>
+                           <td class="pt-3-half"><input disabled id="tdedit" type="date" value={{ $membro->datanascimento }} name="nascimentomembro[]"/></td>
+                           <td class="pt-3-half"><input disabled id="tdedit" type="text" value={{ $membro->localtrabalho }} name="trabmembro[]"/></td>
+                           <td> 
+                              <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                               
+                                  @foreach ($escola as $escola)
+                                      <option disabled value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
+                                  @endforeach
+                                   
+                               </select>
+                           </td>        
+                           @endforeach
+                           {{-- <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                           <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                           <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                           <td> 
+                              <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                  @foreach ($escola as $escola)
+                                      <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
+                                  @endforeach
+                                   
+                               </select>
+                           </td>              --}}
+                       </tr>
+                   </table>            
+               </div>     
+          </div>       
+
+          @endif
            <div class="row">
                 <div class="float-left"  style="margin: 40px 0px 40px 0px">
                     <div class="col-md-3">

@@ -6,16 +6,12 @@
     <h2>Cadastro Criança</h2>
 
     <form action="adicionaCrianca" method="POST" 
-    onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca);" name="novaCrianca">
+    onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca,
+        novaCrianca.logradouro, novaCrianca.bairro);" name="novaCrianca">
             {{ csrf_field() }}
             <div class="form-group">
             
                 <input name="idresponsavel1" type="hidden" value="{{ $idresponsavel1 }}"/>
-                <input name="cep" type="hidden" value="{{ $cep }}"/>
-                <input name="bairro" type="hidden" value="{{ $bairro }}"/>
-                <input name="logradouro" type="hidden" value="{{ $logradouro }}"/>
-                <input name="ncasa" type="hidden" value="{{ $ncasa }}"/>
-                <input name="complemento" type="hidden" value="{{ $complemento }}"/>
                 
                 @if (!empty($idresponsavel2 ))
                     <input name="idresponsavel2" type="hidden" value="{{ $idresponsavel2 }}"/> 
@@ -66,7 +62,7 @@
                             <label>Órgão Emissor RG</label>
                             <select class="form-control" name="emissorrgcrianca" id="">
                                     <option class="form-control" value="SSP">SSP - Secretaria de Segurança Pública</option>
-                                    <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
+                                    {{-- <option value="CRAS">CRAS - Conselho Regional de Assistentes Sociais</option>
                                     <option value="COREN">COREN - Conselho Regional de Enfermagem</option>
                                     <option value="CRA">CRA - Conselho Regional de Administração</option>
                                     <option value="CRB">CRB - Conselho Regional de Biblioteconomia</option>
@@ -93,7 +89,7 @@
                                     <option value="OAB">OAB - Ordem dos Advogados do Brasil</option>
                                     <option value="OMB">OMB - Ordens dos Músicos do Brasil</option>
                                     <option value="IFP">IFP - Instituto de Identificação Félix Pacheco</option>
-                                    <option value="OUT">OUT - Outros Emissores</option>
+                                    <option value="OUT">OUT - Outros Emissores</option> --}}
                             </select>
                         </div>
 
@@ -170,6 +166,42 @@
             </div>
             
         </form>
+
+        <div class="form-group ">
+            <div class="row" >
+                <div class="col-sm-2">
+                    <label>CEP</label>
+                    <input class="form-control" type="text" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);"/>
+                    <span id="msgCep"></span>
+                </div>
+                <div class="col-sm-5">
+                    <label>Endereço*</label>
+                    <input type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                    <span id="msgEndereco"></span>
+                </div>
+
+                <div class="col-sm-2">
+                    <label>Nº</label>
+                    <input class="form-control" type="number" name="ncasa" maxlength="255" autocomplete="off"/>
+                </div>
+
+                    
+                <div class="col-sm-3">
+                    <label>Bairro*</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                    <span id="msgBairro"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="row" >
+                <div class="col-sm-8">
+                    <label>Complemento</label>
+                    <input type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                </div>      
+            </div>
+        </div>
+
         <div class="" id="familia" >
         
         <br>
@@ -328,5 +360,6 @@
 
 <script src="/js/validaCrianca.js"></script>
 <script src="/js/membro_familia.js"></script>
+<script src="/js/buscaCep.js"></script>
 
 @stop

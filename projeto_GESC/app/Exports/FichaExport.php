@@ -62,11 +62,11 @@ class FichaExport implements FromView, WithEvents
         $this->obs = $obs;
         $this->mesdesc = $mesdesc;
         $this->numlinhasativos = count (DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
-        and mesfrequencia='{$this->mes}' group by idmatricula"));
-        $this->desligamentos = count (DB::select("select * from listaAlunosDesligados where
-        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula"));
-        $this->novos = count (DB::select("select * from listaAlunosNovos where
-        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula"));
+        and mesfrequencia='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, bairro, publicoprioritario, totalfaltas, idademin, idademax"));
+        $this->desligamentos = count (DB::select("select * from listaalunosdesligados where
+        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, datainativacao, motivoinativacao"));
+        $this->novos = count (DB::select("select * from listaalunosnovos where
+        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, dataativacao, telefone, bairro"));
     }
 
     public function view(): View
@@ -77,7 +77,7 @@ class FichaExport implements FromView, WithEvents
         
         $espera=DB::select("select count(idmatricula) as emespera from matriculas where statuscadastro='Espera' and EXTRACT(MONTH FROM dataespera)>='{$this->mes}'");
         
-        $atendidos_mes=DB::select("select count(idmatricula) as atendidosmes from (select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        $atendidos_mes=DB::select("select count(idmatricula) as atendidosmes from (select idmatricula from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
         and mesfrequencia='{$this->mes}' group by idmatricula) as lista");
 
         $atendidos_mes_passado=DB::select("select count(matriculas.idmatricula) as atendidosmespassado from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
@@ -95,7 +95,7 @@ class FichaExport implements FromView, WithEvents
         /*$novos_mes=DB::select("select count(matriculas.idmatricula) as totalmatriculanovas from gesc.matriculas, gesc.crianca where matriculas.statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'
         and EXTRACT(MONTH FROM crianca.datacadastro)='{$this->mes}' and crianca.idcrianca=matriculas.idcrianca");*/
 
-        $novos_mes=DB::select("select count(idmatricula) as totalmatriculanovas from (select * from listaAlunosNovos where
+        $novos_mes=DB::select("select count(idmatricula) as totalmatriculanovas from (select idmatricula from listaalunosnovos where
         dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula) as lista");
 
         $desligados_mes=DB::select("select count(matriculas.idmatricula) as totaldesligamentos from matriculas, historico_matricula where matriculas.statuscadastro='Inativo'
@@ -117,13 +117,13 @@ class FichaExport implements FromView, WithEvents
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and matriculas.statuscadastro='Ativo'");
         
         $lista_ativos=DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
-        and mesfrequencia='{$this->mes}' group by idmatricula order by nomepessoa ASC");
+        and mesfrequencia='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, bairro, publicoprioritario, totalfaltas, idademin, idademax order by nomepessoa ASC");
         
-        $lista_desligamentos=DB::select("select * from listaAlunosDesligados where
-        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula");
+        $lista_desligamentos=DB::select("select * from listaalunosdesligados where
+        EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, datainativacao, motivoinativacao");
         
-        $lista_novos=DB::select("select * from listaAlunosNovos where
-        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula");
+        $lista_novos=DB::select("select * from listaalunosnovos where
+        dataativacao LIKE '%{$ano}' and dataativacao LIKE '%{$this->mes}%' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, dataativacao, telefone, bairro");
 
         /*lista usuários ativos = select matriculas.idmatricula, pessoa.nomepessoa, familia.numnis, cras.nomecras, pessoa.bairro, publicoprioritario.publicoprioritario from gesc.matriculas, gesc.crianca, gesc.parentesco, gesc.responsavel, gesc.familia, gesc.pessoa, gesc.cras, gesc.publicoprioritario
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and parentesco.idresponsavel=responsavel.idresponsavel 
@@ -186,6 +186,9 @@ class FichaExport implements FromView, WithEvents
             AfterSheet::class    => function(AfterSheet $event) {
                 $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
                 //$event->sheet->mergeCells('A1:I1');
+                $event->sheet->getPageMargins()->setTop(0.30);
+                $event->sheet->getPageMargins()->setLeft(0.50);
+                $event->sheet->getPageMargins()->setBottom(0.30);
                 /*$event->sheet->getPageMargins()->setTop(-1.27);
                 $event->sheet->getPageMargins()->setRight(1.27);
                 $event->sheet->getPageMargins()->setLeft(1.27);

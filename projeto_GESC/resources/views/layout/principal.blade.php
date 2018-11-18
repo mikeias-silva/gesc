@@ -39,10 +39,10 @@
                                                 <a class="nav-link btn-light" id="removerlink" href="listagemMatriculas">Matriculas atuais
                                                 </a>
                                             </li>
-                                            {{-- <li >
-                                                <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas/seguinte">Matriculas seguinte
+                                            <li>
+                                                <a class="nav-link btn-light"id="removerlink"href="listagemMatriculas_seguinte">Matriculas seguinte
                                                 </a>
-                                            </li> --}}
+                                            </li>
                                             <li >
                                                 <a class="nav-link  btn-light" id="removerlink" href="listagemMatriculas_anteriores">Matriculas anteriores
                                                 </a>

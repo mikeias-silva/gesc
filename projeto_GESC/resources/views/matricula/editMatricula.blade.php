@@ -18,6 +18,7 @@
             <input name="idpessoaresponsavel1" type="hidden" value="{{  $responsaveis[0]->idpessoa}}">
             <input name="idfamilia" type="hidden" value="{{ $dadosfamilia[0]->idfamilia }}">
             
+            
         <div>
                 <div class="form-group " >
                
@@ -74,7 +75,7 @@
     
                         <div class="col-sm-4">
                             <label>CEP</label>
-                            <input value="{{ $responsaveis[0]->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
+                            <input value="{{ $dadoscrianca->cep }}" type="text" class="form-control" name="cep" id="cep" maxlength="8" autocomplete="off" onkeyup="mascara(this, Cep);">
                             <span id="msgCep"></span>
                         </div>
                     </div>
@@ -84,19 +85,19 @@
                     <div class="row" >
                         <div class="col-sm-5">
                             <label>Endereço</label>
-                            <input value="{{ $responsaveis[0]->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
+                            <input value="{{ $dadoscrianca->logradouro }}" type="text" class="form-control" id="logradouro" name="logradouro" maxlength="255" autocomplete="off">
                             <span id="msgEndereco"></span>
                         </div>
     
                         <div class="col-sm-1">
                             <label>Nº</label>
-                            <input value="{{ $responsaveis[0]->ncasa }}" class="form-control" type="text" name="ncasa"/>
+                            <input value="{{ $dadoscrianca->ncasa }}" class="form-control" type="text" name="ncasa"/>
                         </div>
     
                         
                         <div class="col-sm-4">
                             <label>Bairro</label>
-                            <input value="{{ $responsaveis[0]->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
+                            <input value="{{ $dadoscrianca->bairro }}" type="text" class="form-control" id="bairro" name="bairro" maxlength="255" autocomplete="off">
                             <span id="msgBairro"></span>
                         </div>
                     </div>
@@ -105,7 +106,7 @@
                         <div class="row" >
                             <div class="col-sm-6">
                                 <label>Complemento</label>
-                                <input value="{{ $responsaveis[0]->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
+                                <input value="{{ $dadoscrianca->complementoendereco }}" type="text" class="form-control" name="complemento" maxlength="255" autocomplete="off">
                             </div>
                             @foreach ($dadosfamilia as $dadofamilia)
                             <div class="col-sm-6">
@@ -193,7 +194,11 @@
     
     <div class="form">
             <br>
-            <h4>Responsável 01</h4>
+            <h4>Responsável 01 
+                <a href="listagemResponsaveis_{{ $dadoscrianca->idcrianca }}_{{$responsaveis[0]->idresponsavel}}">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
+                </a>
+            </h4>
     
             <div class="form-group">
                 <div class="row">
@@ -318,7 +323,11 @@
     
                 </div>
             <br>
-            <h4>Responsável 02</h4>
+            <h4>Responsável 02
+                <a href="/listagemResponsaveis/{{ $dadoscrianca->idcrianca }}/{{$responsaveis[0]->idresponsavel}}">
+                        <i class="material-icons" data-toggle="tooltip" data-placement="right" title="Trocar responsável">sync</i>
+                </a>
+            </h4>
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-6">
@@ -522,6 +531,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-sm-3">
+                <label>Renda familiar</label>
+                <select name="rendafamiliar" id="" class="custom-select form-control">
+                    <option value={{ $familia->rendapercapta }}>{{ $familia->rendapercapta }}</option>
+                    <option value="1 a 2 salarios minimos">1 à 2 salários mínimo</option>
+                    <option value="2 a 3 salarios minimos">2 à 3 salários mínimo</option>
+                    <option value="Mais de 3 salarios minimos">Mais de 3 salarios mínimos</option>
+                </select>
+            </div>
                         
                 <!-- checkboxes -->
                 <label>Programas Sociais</label>
@@ -562,9 +581,58 @@
                 </div>
             </div>
             
-           
-         
+           @if (!empty($membros))
+               
+            <div class="">
+                <div id="table" class="table-editable">
+{{--                     
+                    <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fa fa-plus fa-2x"
+                        aria-hidden="true"></i></a></span> --}}
+                    <table class="table table-bordered table-responsive-md text-center">
+                        <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
+                    
+                        <tr>
+                            
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">Data Nascimento</th>
+                            <th class="text-center">Local Trabalha</th>
+                            <th class="text-center">Escola</th>
+                            <th class="text-center">Opções</th>
+                        
+                        </tr> 
+                        <tr class="hide">
+                            @foreach ($membros as $membro)
+                            <input name="idmembro" type="hidden" value={{ $membro->idmembro }}>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value={{ $membro->nomemembro }} name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value={{ $membro->datanascimento }} name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value={{ $membro->localtrabalho }} name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                
+                                   @foreach ($escola as $escola)
+                                       <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
+                                   @endforeach
+                                    
+                                </select>
+                            </td>        
+                            @endforeach
+                            {{-- <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   @foreach ($escola as $escola)
+                                       <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
+                                   @endforeach
+                                    
+                                </select>
+                            </td>              --}}
+                        </tr>
+                    </table>            
+                </div>     
+           </div>       
 
+           @endif
             <div class="float-right">
 
                 <a class="btn btn-secondary" href="{{"listagemMatriculas"}}">

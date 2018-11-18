@@ -14,14 +14,19 @@ use App\Cras;
 
 use App\Pessoa;
 
-use Illuminate\Support\Carbon;
+use App\Parentesco;
 
+use Illuminate\Support\Carbon;
 
 use Request;
 
 use App\PublicoPrioritario;
 
 use App\Vaga;
+
+use Illuminate\Support\Facades\DB;
+
+
 
 class ResponsavelController extends Controller
 {
@@ -30,17 +35,46 @@ class ResponsavelController extends Controller
 
         $responsaveis = Responsavel::all();
         $vagas = Vaga::vagaMatricula();
-        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas);
+        $idcrianca='';
+        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas)->with('idcrianca', $idcrianca);
+    }
+
+    public function torcaResponsaveis($idcrianca, $idresponsavel){
+
+        $responsaveis = Responsavel::all();
+        $vagas = Vaga::vagaMatricula();
+        return view('matricula.listagemResponsaveis')->with('responsaveis', $responsaveis)->with('vagas', $vagas)->with('idcrianca', $idcrianca)
+        ->with('idresponsavel', $idresponsavel);
     }
 
     public function novoResponsavel(){
 
         $escolas = Escola::all();
         $cras = Cras::all();
+        $idcrianca = "";
+        $idresponsavel = "";
 
         $dados = [
             'cras'=>$cras,
-            'escolas'=>$escolas
+            'escolas'=>$escolas,
+            'idcrianca'=>$idcrianca,
+            'idresponsavel'=>$idresponsavel
+        ];
+
+        return view('matricula.cadastroResponsaveis', $dados);
+    }
+
+    //Troca de responsável, cadastro de novo responsável
+    public function novoResponsavelTroca($idcrianca, $idresponsavel){
+
+        $escolas = Escola::all();
+        $cras = Cras::all();
+
+        $dados = [
+            'cras'=>$cras,
+            'escolas'=>$escolas,
+            'idcrianca'=>$idcrianca,
+            'idresponsavel'=>$idresponsavel
         ];
 
         return view('matricula.cadastroResponsaveis', $dados);
@@ -48,11 +82,11 @@ class ResponsavelController extends Controller
 
     public function adicionaResponsavel(){
         // return dd($request->all());
-        $cep = Request::input('cep');
+       /* $cep = Request::input('cep');
         $bairro = Request::input('bairro');
         $logradouro = Request::input('logradouro');
         $complemento = Request::input('complemento');
-        $ncasa = Request::input('ncasa');
+        $ncasa = Request::input('ncasa');*/
 
         $pprioritario = PublicoPrioritario::all();
         $escolas = Escola::all();
@@ -166,13 +200,18 @@ class ResponsavelController extends Controller
         $pessoaresponsavel1->datanascimento = Request::input('datanascimentoresp1');
         $pessoaresponsavel1->rg = Request::input('rgresp1');
         $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
-        $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+
+      //  if (!empty(Request::input('cpfresp1'))) {
+            $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+      //  } 
+        
         $pessoaresponsavel1->sexo = Request::input('sexoresp1');;
-        $pessoaresponsavel1->cep = $cep;
-        $pessoaresponsavel1->bairro = $bairro;
-        $pessoaresponsavel1->logradouro = $logradouro;
-        $pessoaresponsavel1->complementoendereco = $complemento;
-        $pessoaresponsavel1->ncasa = $ncasa;
+
+        //$pessoaresponsavel1->cep = $cep;
+        //$pessoaresponsavel1->bairro = $bairro;
+        //$pessoaresponsavel1->logradouro = $logradouro;
+        //$pessoaresponsavel1->complementoendereco = $complemento;
+        //$pessoaresponsavel1->ncasa = $ncasa;
 
         $pessoaresponsavel1->save();
         
@@ -224,12 +263,21 @@ class ResponsavelController extends Controller
             $pessoaresponsavel2->rg = Request::input('rgresp2');
             $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel2');
             $pessoaresponsavel2->cpf = Request::input('cpfresp2');
+            $pessoaresponsavel2->sexo = Request::input('sexoresp2');
+            /*$pessoaresponsavel2->cep = $cep;
+
+
+            if (!empty(Request::input('cpfresp2'))) {
+                $pessoaresponsavel2->cpf = Request::input('cpfresp2');
+            } 
+
             $pessoaresponsavel2->sexo = Request::input('sexoresp2');;
             $pessoaresponsavel2->cep = $cep;
+
             $pessoaresponsavel2->bairro = $bairro;
             $pessoaresponsavel2->logradouro = $logradouro;
             $pessoaresponsavel2->complementoendereco = $complemento;
-            $pessoaresponsavel2->ncasa = $ncasa;
+            $pessoaresponsavel2->ncasa = $ncasa;*/
             $pessoaresponsavel2->save();
         
         
@@ -288,11 +336,11 @@ class ResponsavelController extends Controller
     if (!empty($responsavel2->idfamilia)) {
         $dados = [
             'responsaveis'=>123654,
-            'cep'=>$cep,
+            /*'cep'=>$cep,
             'bairro'=>$bairro,
             'logradouro'=>$logradouro,
             'ncasa'=>$ncasa,
-            'complemento'=>$complemento,
+            'complemento'=>$complemento,*/
             'idresponsavel1'=>$responsavel1->idresponsavel,
             'idresponsavel2'=>$responsavel2->idresponsavel,
             'pprioritario'=>$pprioritario,
@@ -304,11 +352,11 @@ class ResponsavelController extends Controller
         return view('matricula.cadastroCrianca', $dados)->with('ano', $ano)->with('cras', $cras);
     }$dados = [
         'responsaveis'=>123654,
-        'cep'=>$cep,
+        /*'cep'=>$cep,
         'bairro'=>$bairro,
         'logradouro'=>$logradouro,
         'ncasa'=>$ncasa,
-        'complemento'=>$complemento,
+        'complemento'=>$complemento,*/
         'idresponsavel1'=>$responsavel1->idresponsavel,
         'pprioritario'=>$pprioritario,
         'escolas'=>$escolas,
@@ -324,4 +372,53 @@ class ResponsavelController extends Controller
     //return $pessoaresponsavel1->nomepessoa ;
     return view('matricula.cadastroCrianca', $dados)->with('ano', $ano)->with('cras', $cras);
     }
+    
+    public function atualizaParentesco($idcrianca, $idresponsavel){
+        $ano = date("Y");
+        $idresponsaveis = Request::input('idresponsavel');
+
+        $idresponsavel1 = $idresponsaveis[0];
+        if (!empty($idresponsaveis[1])) {
+            $idresponsavel2 = $idresponsaveis[1];
+        }
+
+        DB::update("update parentesco set idresponsavel = '{$idresponsavel1}' where idcrianca='{$idcrianca}' and idresponsavel='{$idresponsavel}'");
+        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
+        //var_dump ($idmatricula);
+        //toastr()->success('Troca de responsável efetuada com sucesso!');
+        return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
+    }
+
+    public function adicionaoResponsavelTroca($idcrianca, $idresponsavel){
+        $ano = date("Y");
+        //Cadastra Pessoa
+        $pessoaresponsavel1 = new Pessoa();
+        $pessoaresponsavel1->nomepessoa = Request::input('nomeresp1');
+        $pessoaresponsavel1->datanascimento = Request::input('datanascimentoresp1');
+        $pessoaresponsavel1->rg = Request::input('rgresp1');
+        $pessoaresponsavel1->emissorrg = Request::input('emissorrgresponsavel1');
+        $pessoaresponsavel1->cpf = Request::input('cpfresp1');
+        $pessoaresponsavel1->sexo = Request::input('sexoresp1');
+        $pessoaresponsavel1->save();
+        //Cadastra responsável
+        $responsavel1 = new Responsavel();
+        $responsavel1->estadocivil = Request::input('estadocivilresp1');
+        $responsavel1->profissao = Request::input('profissaoresp1');
+        $responsavel1->localtrabalho = Request::input('trabalhoresp1');
+        $responsavel1->telefone = Request::input('tel1resp1');
+        $responsavel1->telefone2 = Request::input('tel2resp1');
+        $responsavel1->escolaridade = Request::input('escolaridaderesp1');
+        $responsavel1->outrasobs = Request::input('obsresp1');
+        $responsavel1->idpessoa = $pessoaresponsavel1->idpessoa;
+        //$responsavel1->idfamilia = $familia->idfamilia;
+        $responsavel1->save();
+
+        DB::update("update parentesco set idresponsavel = '{$responsavel1->idresponsavel}' where idcrianca='{$idcrianca}' and idresponsavel='{$idresponsavel}'");
+        
+        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
+        return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
+
+        //return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
+    }
+    
 }

@@ -30,8 +30,8 @@ class VagasController extends Controller {
         }
     }
     public function listaVagas(){
-     $this->vagasAnoAnterior();
-        
+
+     $this->vagasAnoAnterior();        
         //$vaga = vaga::all();
         $vaga = DB::select("select * from vagas order by anovaga, idademin");
         $idadeMin=[];

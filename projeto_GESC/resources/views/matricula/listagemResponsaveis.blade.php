@@ -7,9 +7,18 @@
     </div>
 @else
 
-<form action="crianca" method="POST" onsubmit="return validaSelecao();">
+@if(empty($idcrianca))
+    <form action="crianca" method="POST" onsubmit="return validaSelecao();">
+@else
+    <form action="atualizaParentesco_{{$idcrianca}}_{{$idresponsavel}}" method="POST" onsubmit="return validaSelecao();">
+@endif
+
     {{ csrf_field() }}
-<h1>Nova Matrícula</h1>
+    @if(empty($idcrianca))
+        <h1>Nova Matrícula</h1>
+    @else
+        <h1>Edição de Matrícula</h1>
+    @endif
 <h2>Responsaveis</h2>
 <div>
 <span id="msgValidaSelec"></span>
@@ -61,20 +70,42 @@
     </table>
 </div>
 <div class="float-right">
-    
+@if(empty($idcrianca))
     <button class="btn btn-success">
         Próximo
     </button>
-    
+@else
+    <button class="btn btn-success">
+        Trocar Responsável
+    </button>
+@endif
 </div>
 </form>
-<div class="float-right">
-    <form action="responsavel">
-        <button class="btn btn-primary">
-            Novo Responsável
-        </button>
-    </form>
-</div>
+
+@if(empty($idcrianca))
+    <div class="float-right">
+        <form action="responsavel">
+            <button class="btn btn-primary">
+                Novo Responsável
+            </button>
+        </form>
+    </div>
+@else
+    <div class="float-right">   
+        <form action="responsavel_{{$idcrianca}}_{{$idresponsavel}}">
+            <button class="btn btn-primary">
+                Novo Responsável
+            </button>
+        </form>
+    </div>
+    <div class="float-right">   
+        <form action="listagemMatriculas">
+            <button class="btn btn-secondary">
+                Cancelar
+            </button>
+        </form>
+    </div>
+@endif
 
 <!-- Modal de help -->
 <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help" aria-hidden="true">

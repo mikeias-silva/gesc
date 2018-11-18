@@ -154,11 +154,12 @@ class CriancaController extends Controller
         $pprioritario = Request::input('pprioritario');
         $obssaude = Request::input('obssaude');
         $hoje = Carbon::now()->year;
+        $diaAtual = Carbon::now();
       //  $idpessoa = 1; 
 
         $crianca = new Crianca();
         $crianca->obssaude = Request::input('obssaude');
-        $crianca->datacadastro = $hoje;
+        $crianca->datacadastro = $diaAtual;
         $crianca->idescola = Request::input('escola');;
         $crianca->idpublicoprioritario = Request::input('pprioritario');
         $crianca->idpessoa = $pessoacrianca->idpessoa;
@@ -193,7 +194,7 @@ class CriancaController extends Controller
         $dataespera = Carbon::now();
         // $datasairespera;
 
-        $idade = $hoje->diffInYears($datanascimentocrianca);
+        $idade = $diaAtual->diffInYears($datanascimentocrianca);
         
         //$vagas = DB::select('select * from vagas where ? >= idademin and ? <= idademax', [$idade, $idade]); 
         $vagas = Vaga::vagaMatricula();
@@ -254,16 +255,16 @@ class CriancaController extends Controller
 
             if($matAtivas < $essanumvaga){
                 $matricula->statuscadastro = 'Ativo';
-                $historico_matricula->dataativacao = $hoje;
+                $historico_matricula->dataativacao = $diaAtual;
                 
             }elseif($matAtivas >= $essanumvaga){
                 $matricula->statuscadastro = 'Espera';
-                $matricula->dataespera = $hoje;
+                $matricula->dataespera = $diaAtual;
                     
             }
         }elseif(empty($essavaga)){
             $matricula->statuscadastro = 'Espera';
-            $matricula->dataespera = $hoje;
+            $matricula->dataespera = $diaAtual;
         }
         
         //return $matricula;

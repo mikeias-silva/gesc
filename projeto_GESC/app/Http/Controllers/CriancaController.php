@@ -154,6 +154,7 @@ class CriancaController extends Controller
         $pprioritario = Request::input('pprioritario');
         $obssaude = Request::input('obssaude');
         $hoje = Carbon::now()->year;
+        $diaAtual = Carbon::now();
       //  $idpessoa = 1; 
 
         $crianca = new Crianca();

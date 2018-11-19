@@ -7,7 +7,7 @@
 
     <form action="adicionaCrianca" method="POST" 
     onsubmit="return validarCrianca(novaCrianca.nomecrianca, novaCrianca.datanascimentocrianca, novaCrianca.rgcrianca, novaCrianca.cpfcrianca,
-        novaCrianca.logradouro, novaCrianca.bairro);" name="novaCrianca">
+        novaCrianca.logradouro, novaCrianca.bairro, novaCrianca);" name="novaCrianca">
             {{ csrf_field() }}
             <div class="form-group">
             
@@ -299,7 +299,8 @@
                         aria-hidden="true"></i></a></span>
                     <table class="table table-bordered table-responsive-md text-center">
                         <h5 class="text-center font-weight-bold text-uppercase py-6">Membros Familia</h5>
-                    
+                        <span id="msgCampoNomeMembro"></span>  
+                        <span id="msgCampoNascimentoMembro"></span>                
                         <tr>
                             
                             <th class="text-center">Nome</th>
@@ -311,11 +312,11 @@
                         </tr> 
                         <tr class="hide">
 
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]" autocomplete="off"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]" autocomplete="off"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]" autocomplete="off"/></td>
                             <td> 
-                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                               <select id="tdedit" name="escolamembro[]" class="custom-select" >
                                    @foreach ($escolas as $escola)
                                        <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
                                    @endforeach

@@ -383,7 +383,7 @@ class ResponsavelController extends Controller
         }
 
         DB::update("update parentesco set idresponsavel = '{$idresponsavel1}' where idcrianca='{$idcrianca}' and idresponsavel='{$idresponsavel}'");
-        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
+        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and anomatricula='{$ano}'");
         //var_dump ($idmatricula);
         //toastr()->success('Troca de responsável efetuada com sucesso!');
         return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
@@ -415,7 +415,7 @@ class ResponsavelController extends Controller
 
         DB::update("update parentesco set idresponsavel = '{$responsavel1->idresponsavel}' where idcrianca='{$idcrianca}' and idresponsavel='{$idresponsavel}'");
         
-        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and EXTRACT(YEAR FROM anomatricula)='{$ano}'");
+        $idmatricula = DB::select("select idmatricula from matriculas where idcrianca='{$idcrianca}' and anomatricula='{$ano}'");
         return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");
 
         //return redirect("editarMatricula_{$idmatricula[0]->idmatricula}");

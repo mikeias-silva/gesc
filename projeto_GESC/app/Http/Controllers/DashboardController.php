@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $mes= date("m");
         $aniversarioMes = DB::select("select pessoa.nomepessoa, DATE_FORMAT(pessoa.datanascimento, '%d/%m/%Y') as datanascimento, YEAR(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(pessoa.datanascimento))) AS idade, turma.GrupoConvivencia from matriculas, crianca, pessoa , turma
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa && matriculas.statuscadastro=1
-        && matriculas.idturma=turma.idturma && EXTRACT(MONTH FROM pessoa.datanascimento)='{$mes}' && EXTRACT(YEAR FROM anomatricula)='{$ano}';");
+        && matriculas.idturma=turma.idturma && EXTRACT(MONTH FROM pessoa.datanascimento)='{$mes}' && anomatricula='{$ano}';");
         
 
         return view('dashboard.dashboard')->with('vagas', $vagas)->with('vagaOcupada', $vagaOcupada)->with('matriculaIdade', $matriculaIdade)

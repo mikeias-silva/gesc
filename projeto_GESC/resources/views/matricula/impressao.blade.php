@@ -510,7 +510,7 @@
             <div class="col-sm-3">
                     <label>Renda familiar</label>
                     <select name="rendafamiliar" id="" class="custom-select form-control">
-                        <option disabled value={{ $familia->rendapercapta }}>{{ $familia->rendapercapta }}</option>
+                        <option disabled selected value={{ $familia[0]->rendapercapta }}>{{ $familia[0]->rendapercapta }}</option>
                     </select>
                 </div>
                   

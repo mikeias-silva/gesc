@@ -388,13 +388,35 @@ class MatriculasController extends Controller
 
         $matricula = Matricula::find(
             Request::input('idmatricula'));
-        
+        $matricula->datasairespera = $hoje;
 
     // $idadedessamatricula = Matricula::idadeMatricula($matricula);
 
         $matricula->update(['statuscadastro'=>'Ativo']);
 
         $historico_matricula = new Historico_Matricula();
+        $datanasci = DB::select('select datanascimento from nomeidadematricula where idmatricula = ?',
+        array(Request::input('idmatricula')));
+
+        $idade = $hoje->diffInYears($datanasci[0]->datanascimento);
+
+        $vagas = Vaga::vagaMatricula();
+        foreach($vagas as $vaga){
+            if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
+                $idademin = $vaga->idademin;
+                $idademax = $vaga->idademax; 
+                $vaga->numvaga;
+                $vaga->anovaga;
+                $vaga->idvaga;
+                $essavaga = $vaga->idvaga;
+                $essanumvaga = $vaga->numvaga;
+            } 
+        }
+
+        $matricula->statuscadastro = 'Ativo';
+        $matricula->datasairespera = $hoje;
+        $matricula->idvaga = $essavaga;
+        $matricula->update(["idvaga" => $essavaga]);
 
         $historico_matricula->dataativacao = $hoje;
         $historico_matricula->idmatricula = Request::input('idmatricula');

@@ -61,7 +61,7 @@ class FichaExport implements FromView, WithEvents
         $this->descricaoatividade = $descricaoatividade;
         $this->obs = $obs;
         $this->mesdesc = $mesdesc;
-        $this->numlinhasativos = count (DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        $this->numlinhasativos = count (DB::select("select * from listaalunosativos where anomatricula='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
         and mesfrequencia='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, bairro, publicoprioritario, totalfaltas, idademin, idademax"));
         $this->desligamentos = count (DB::select("select * from listaalunosdesligados where
         EXTRACT(YEAR FROM datainativacao)='{$ano}' and EXTRACT(MONTH FROM datainativacao)='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, datainativacao, motivoinativacao"));
@@ -77,7 +77,7 @@ class FichaExport implements FromView, WithEvents
         
         $espera=DB::select("select count(idmatricula) as emespera from matriculas where statuscadastro='Espera' and EXTRACT(MONTH FROM dataespera)>='{$this->mes}'");
         
-        $atendidos_mes=DB::select("select count(idmatricula) as atendidosmes from (select idmatricula from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        $atendidos_mes=DB::select("select count(idmatricula) as atendidosmes from (select idmatricula from listaalunosativos where anomatricula='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
         and mesfrequencia='{$this->mes}' group by idmatricula) as lista");
 
         $atendidos_mes_passado=DB::select("select count(matriculas.idmatricula) as atendidosmespassado from historico_matricula, matriculas where matriculas.idmatricula=historico_matricula.idmatricula
@@ -87,7 +87,7 @@ class FichaExport implements FromView, WithEvents
         
         $total_vagas = DB::select("select sum(numvaga) as totalvagas from vagas where anovaga='{$ano}'");
         
-        $toal_matriculas = DB::select("select count(matriculas.idmatricula) as totalmatricula from gesc.matriculas, gesc.crianca where matriculas.statuscadastro='Ativo' and EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}'
+        $toal_matriculas = DB::select("select count(matriculas.idmatricula) as totalmatricula from gesc.matriculas, gesc.crianca where matriculas.statuscadastro='Ativo' and matriculas.anomatricula='{$ano}'
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and crianca.idcrianca=matriculas.idcrianca");
        
         $vagas_disponiveis=$total_vagas[0]->totalvagas-$toal_matriculas[0]->totalmatricula;
@@ -103,20 +103,20 @@ class FichaExport implements FromView, WithEvents
         
         $beneficiarios_pc=DB::select("select count(matriculas.idmatricula) as bebficiariospc from matriculas, crianca, parentesco, responsavel, familia 
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
-        parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.beneficiopc=1
+        parentesco.idresponsavel=responsavel.idresponsavel and familia.idcrianca=crianca.idcrianca and familia.beneficiopc=1
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and matriculas.statuscadastro='Ativo'");
         
         $beneficiarios_bolsafamilia=DB::select("select count(matriculas.idmatricula) as bolsafamilia from matriculas, crianca, parentesco, responsavel, familia 
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
-        parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.bolsafamilia=1
+        parentesco.idresponsavel=responsavel.idresponsavel and familia.idcrianca=crianca.idcrianca and familia.bolsafamilia=1
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and matriculas.statuscadastro='Ativo'");
         
         $beneficiarios_cadunico=DB::select("select count(matriculas.idmatricula) as cadunico from matriculas, crianca, parentesco, responsavel, familia 
         where crianca.idcrianca=matriculas.idcrianca and parentesco.idcrianca=crianca.idcrianca and 
-        parentesco.idresponsavel=responsavel.idresponsavel and familia.idfamilia=responsavel.idfamilia and familia.numnis!=''
+        parentesco.idresponsavel=responsavel.idresponsavel and familia.idcrianca=crianca.idcrianca and familia.numnis!=''
         and EXTRACT(MONTH FROM crianca.datacadastro)<='{$this->mes}' and matriculas.statuscadastro='Ativo'");
         
-        $lista_ativos=DB::select("select * from listaalunosativos where EXTRACT(YEAR FROM anomatricula)='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
+        $lista_ativos=DB::select("select * from listaalunosativos where anomatricula='{$ano}' and EXTRACT(MONTH FROM datacadastro)<='{$this->mes}'
         and mesfrequencia='{$this->mes}' group by idmatricula, datacadastro, anomatricula, nomepessoa, numnis, nomecras, bairro, publicoprioritario, totalfaltas, idademin, idademax order by nomepessoa ASC");
         
         $lista_desligamentos=DB::select("select * from listaalunosdesligados where

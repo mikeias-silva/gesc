@@ -1,4 +1,4 @@
-function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianca, logradouro, bairro){
+function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianca, logradouro, bairro, local){
     var permissao = true;
     var nomecrianca = nomecrianca.value;
     var datanascimentocrianca = datanascimentocrianca.value;
@@ -8,6 +8,44 @@ function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianc
     var dataSelecionada = new Date(datanascimentocrianca);
     var logradouro = logradouro.value;
     var bairro = bairro.value;
+    var localValidar = document.getElementById(local);
+    var nomemembro = document.getElementsByName("nomemembro[]");
+    var nascimentomembro = document.getElementsByName("nascimentomembro[]");
+    var trabmembro = document.getElementsByName("trabmembro[]");
+    var  auxUm=0, auxDois=0;
+
+    if(!(nomemembro[0].value=="" && nascimentomembro[0].value=="" && trabmembro[0].value=="" && nomemembro.length==1)){
+        for (var i=0; i < nomemembro.length; i++){
+            if (nomemembro[i].value == ""){
+                auxUm++;
+            }
+            if (nascimentomembro[i].value != ""){
+                var dataValidacao = new Date(nascimentomembro[i].value);
+                if (dataValidacao >= hoje){
+                    auxDois++;
+                }
+            }
+        }
+    } else {
+        document.getElementById("msgCampoNomeMembro").innerHTML="<font color='red'></font>";
+        document.getElementById("msgCampoNascimentoMembro").innerHTML="<font color='red'></font>";
+    }
+    
+
+    if(auxUm>0){
+        document.getElementById("msgCampoNomeMembro").innerHTML="<font color='red'>É obrigatório informanr o nome de todos os membros da família, por favor verifique<br></font>";
+        permissao = false;
+    } else {
+            document.getElementById("msgCampoNomeMembro").innerHTML="<font color='red'></font>";
+    }
+
+    if(auxDois>0){
+        document.getElementById("msgCampoNascimentoMembro").innerHTML="<font color='red'>Data de nascimento inválida, por favor verifique<br></font>";
+        permissao = false;
+    } else {
+            document.getElementById("msgCampoNascimentoMembro").innerHTML="<font color='red'></font>";
+    }
+
 
     if(nomecrianca==""){
         document.getElementById("msgNomeCrianca").innerHTML="<font color='red'>Campo obrigatório</font>";
@@ -22,7 +60,7 @@ function validarCrianca(nomecrianca, datanascimentocrianca, rgcrianca, cpfcrianc
     } else if(calculaIdade(dataSelecionada)>17){
         document.getElementById("msgDataNascimento").innerHTML="<font color='red'>Idade não pode ser maior que 18 anos, por favor verifique</font>";
         permissao = false;
-    } else if(hoje < dataSelecionada){
+    } else if(hoje <= dataSelecionada){
         document.getElementById("msgDataNascimento").innerHTML="<font color='red'>Data de nascimento inválida, por favor verifique</font>";
         permissao = false;
     }else {

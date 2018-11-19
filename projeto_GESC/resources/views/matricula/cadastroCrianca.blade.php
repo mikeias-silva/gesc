@@ -312,9 +312,9 @@
                         </tr> 
                         <tr class="hide">
 
-                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]" autocomplete="off"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]" autocomplete="off"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]" autocomplete="off"/></td>
                             <td> 
                                <select id="tdedit" name="escolamembro[]" class="custom-select" >
                                    @foreach ($escolas as $escola)

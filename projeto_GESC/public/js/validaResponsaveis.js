@@ -160,6 +160,7 @@ function validarDadosRespTroca(nomeresp1, datanascimentoresp1, cpfresp1, rgresp1
         permissao = false;
     } else if(hoje < dataSelecionada){
         document.getElementById("msgDataResp1").innerHTML="<font color='red'>Data de nascimento inválida, por favor verifique</font>";
+        permissao = false;
     } else {
         document.getElementById("msgDataResp1").innerHTML="";
     }

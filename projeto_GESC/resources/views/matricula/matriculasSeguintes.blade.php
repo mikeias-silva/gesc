@@ -23,11 +23,7 @@
                     swap_vert
                 </i>
             </th>
-            <th>Data Matricula
-                <i class="material-icons float-right">
-                    swap_vert
-                </i>
-            </th>
+            
             <!--     <th>Ações
                 <i class="material-icons float-right">
                 swap_vert
@@ -41,10 +37,10 @@
     
         <tr>
             <td>{{ $matSeg->nomeMatricula() }}</td>
-            <td>{{ $matSeg->grupoconvivencia }}</td>
+            <td>{{ $matSeg->nomeTurma() }}</td>
            
             <td>{{ $matSeg->idadeMatricula() }} anos</td>
-            <td>{{ $matSeg->datamatricula }}</td>
+        
            <!--  <td> 
                 <a class=" text text-dark" id="btn-imprimir" href="" data-target="#imprimir" data-toggle="modal" data-myid="{{ $matSeg->idmatricula }}">
                     <i class="material-icons">

@@ -402,17 +402,18 @@ class MatriculasController extends Controller
 
         $vagas = Vaga::vagaMatricula();
         foreach($vagas as $vaga){
+            
             if($vaga->idademin <= $idade and $vaga->idademax >= $idade){
                 $idademin = $vaga->idademin;
                 $idademax = $vaga->idademax; 
                 $vaga->numvaga;
                 $vaga->anovaga;
                 $vaga->idvaga;
-                $essavaga = $vaga->idvaga;
+                dd($essavaga = $vaga->idvaga);
                 $essanumvaga = $vaga->numvaga;
             } 
         }
-
+     //   return $essavaga;
         $matricula->statuscadastro = 'Ativo';
         $matricula->datasairespera = $hoje;
         $matricula->idvaga = $essavaga;
@@ -945,23 +946,26 @@ class MatriculasController extends Controller
         //         'bolsafamilia'=>Request::input('bolsafamiliar'),
         //         'beneficiopc'=>Request::input('beneficiopc')
         //     ]);
-       $membros[] = Request::input('idmembro');
-       $escolamembro = Request::input('idescola');
-       $nomemembro = Request::input('nomemembro');
-       $trabmembro = Request::input('trabmembro');
-       $nascimento = Request::input('nascimentomembro');
-       $i = 0;
+        if(!empty(Request::input('idmembro'))){
+            $membros = Request::input('idmembro');
+            $escolamembro = Request::input('idescola');
+            $nomemembro = Request::input('nomemembro');
+            $trabmembro = Request::input('trabmembro');
+            $nascimento = Request::input('nascimentomembro');
+            $i = 0;
+            //return $membros;
         foreach ($membros as $membro) {
-            
-            $membrofamilia = Membro_Familia::findOrFail($membro->idmembro);
+            //return $membro[$i];
+            $membrofamilia = Membro_Familia::findOrFail($membros[$i]);
 
-            $membro->update([
-                'idescola'=>$escola[$i],
+            $membrofamilia->update([
+                'idescola'=>1,
                 'nomemembro'=>$nomemembro[$i],
                 'localtrabalho'=>$trabmembro[$i],
                 'datanascimento'=>$nascimento[$i]
             ]);
             $i++;
+        }
         }
         //return $pessoacrianca;
         return redirect()->action('MatriculasController@listaMatriculas');

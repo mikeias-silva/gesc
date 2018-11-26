@@ -609,8 +609,8 @@
                             <td class="pt-3-half"><input name="trabmembro[]" id="tdedit" type="text" value={{ $membro->localtrabalho }} ></td>
                             <td> 
                                <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
-                                   @foreach ($escola as $escolas)
-                                     <option value={{ $escolas->idescola }}>{{ $escolas->nomeescola }}</option>
+                                   @foreach ($escola as $e)
+                                     <option value={{ $e->idescola }}>{{ $e->nomeescola }}</option>
                                    @endforeach
                                     
                                 </select>

@@ -351,7 +351,8 @@
             </div>
             <div class="col-md-12">
                 </br>
-                <p class="text-justify">Nesta tela é realizado o cadastro da criança que está efetuando a matrícula, sendo obrigatório informar o Nome, Data de nascimento e o Sexo. </p>
+                <p class="text-justify">Nesta tela é realizado o cadastro da criança que está efetuando a matrícula, sendo obrigatório informar o Nome, Data de nascimento, Sexo e o endereço. </p>
+                <p class="text-justify">A lista de membros da família é dinâmica, ou seja, é possível adicionar novos espaços para o cadastro dos mesmos, permitindo assim a inclusão de quantos membros for desejado. Também é permitir remover membros da família. </p>
                 <p class="text-justify">Não é necessário informar pontuação nos campos de RG e CPF, somente dígitos.</p>
                 <p class="text-justify">Ao clicar no botão “Próximo” sistema salvar os dados e então existem dois possíveis resultados, caso exista vaga disponível  sistema irá solicitar que o novo aluno matriculado seja alocado em uma turma, caso contrário o mesmo irá para a lista de espera.</p>         
             </div>

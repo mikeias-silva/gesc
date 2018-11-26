@@ -570,24 +570,38 @@
                            <th class="text-center">Data Nascimento</th>
                            <th class="text-center">Local Trabalha</th>
                            <th class="text-center">Escola</th>
-                           <th class="text-center">Opções</th>
                        
                        </tr> 
                        <tr class="hide">
                            @foreach ($membros as $membro)
-                           <input disabled name="idmembro" type="hidden" value={{ $membro->idmembro }}>
-                           <td class="pt-3-half"><input disabled id="tdedit" type="text" value={{ $membro->nomemembro }} name="nomemembro[]"/></td>
-                           <td class="pt-3-half"><input disabled id="tdedit" type="date" value={{ $membro->datanascimento }} name="nascimentomembro[]"/></td>
-                           <td class="pt-3-half"><input disabled id="tdedit" type="text" value={{ $membro->localtrabalho }} name="trabmembro[]"/></td>
-                           <td> 
-                              <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
-                               
-                                  @foreach ($escola as $escola)
-                                      <option disabled value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
-                                  @endforeach
-                                   
-                               </select>
-                           </td>        
+                           <input name="idmembro[]" type="hidden" value={{ $membro->idmembro }}>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="{{ $membro->nomemembro }}" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="{{ $membro->datanascimento }}" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input name="trabmembro[]" id="tdedit" type="text" value="{{ $membro->localtrabalho }}" ></td>
+                            <td> 
+                                <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                    @foreach ($escola as $e)
+                                        @if($membro->idescola==$e->idescola)
+                                            <option selected='selected' value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                        @else
+                                            <option  value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                        @endif 
+                                    @endforeach
+                                </select>
+                            </td>        
+                           
+                            {{-- <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" name="trabmembro[]"/></td>
+                            <td> 
+                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                   @foreach ($escola as $escola)
+                                       <option value="{{ $escola->idescola }}">{{ $escola->nomeescola }}</option>
+                                   @endforeach
+                                    
+                                </select>
+                            </td>              --}}
+                        </tr>
                            @endforeach
                            {{-- <td class="pt-3-half"><input id="tdedit" type="text" value="" name="nomemembro[]"/></td>
                            <td class="pt-3-half"><input id="tdedit" type="date" value="" name="nascimentomembro[]"/></td>

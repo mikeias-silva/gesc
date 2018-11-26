@@ -948,7 +948,7 @@ class MatriculasController extends Controller
         //     ]);
         if(!empty(Request::input('idmembro'))){
             $membros = Request::input('idmembro');
-            $escolamembro = Request::input('idescola');
+            $escolamembro = Request::input('escolamembro');
             $nomemembro = Request::input('nomemembro');
             $trabmembro = Request::input('trabmembro');
             $nascimento = Request::input('nascimentomembro');
@@ -959,7 +959,7 @@ class MatriculasController extends Controller
             $membrofamilia = Membro_Familia::findOrFail($membros[$i]);
 
             $membrofamilia->update([
-                'idescola'=>1,
+                'idescola'=>$escolamembro[$i],
                 'nomemembro'=>$nomemembro[$i],
                 'localtrabalho'=>$trabmembro[$i],
                 'datanascimento'=>$nascimento[$i]

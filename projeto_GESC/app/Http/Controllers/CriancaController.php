@@ -127,8 +127,10 @@ class CriancaController extends Controller
         $pessoacrianca->nomepessoa = $nomecrianca;
         $pessoacrianca->datanascimento = $datanascimentocrianca;
         $pessoacrianca->rg = $rgcrianca;
-        if (!empty(Request::input('cpfcrianca'))) {
+        if (strlen($cpfcrianca)>8) {
             $pessoacrianca->cpf = $cpfcrianca;
+        }else{
+            $pessoacrianca->cpf = null;
         }
         $pessoacrianca->sexo = $sexocrianca;
         $pessoacrianca->cep = $cep;

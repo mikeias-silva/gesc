@@ -287,7 +287,9 @@ class CriancaController extends Controller
 
          //------MEMBRO FAMILIA-------- 
        // return Request::input('nomemembro');
-         if (!empty(Request::input('nomemembro'))) {
+        $membros = Request::input('nomemembro');
+        
+         if (strlen($membros[0])!= 0) {
             $membros = Request::input('nomemembro');
             $nascimentomembro = Request::input('nascimentomembro');
             $localtrabalhamembro = Request::input('trabmembro');

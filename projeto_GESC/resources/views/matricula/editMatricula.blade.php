@@ -604,15 +604,18 @@
                         <tr class="hide">
                            
                             <input name="idmembro[]" type="hidden" value={{ $membro->idmembro }}>
-                            <td class="pt-3-half"><input id="tdedit" type="text" value={{ $membro->nomemembro }} name="nomemembro[]"/></td>
-                            <td class="pt-3-half"><input id="tdedit" type="date" value={{ $membro->datanascimento }} name="nascimentomembro[]"/></td>
-                            <td class="pt-3-half"><input name="trabmembro[]" id="tdedit" type="text" value={{ $membro->localtrabalho }} ></td>
+                            <td class="pt-3-half"><input id="tdedit" type="text" value="{{ $membro->nomemembro }}" name="nomemembro[]"/></td>
+                            <td class="pt-3-half"><input id="tdedit" type="date" value="{{ $membro->datanascimento }}" name="nascimentomembro[]"/></td>
+                            <td class="pt-3-half"><input name="trabmembro[]" id="tdedit" type="text" value="{{ $membro->localtrabalho }}" ></td>
                             <td> 
-                               <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
-                                   @foreach ($escola as $e)
-                                     <option value={{ $e->idescola }}>{{ $e->nomeescola }}</option>
-                                   @endforeach
-                                    
+                                <select id="tdedit" name="escolamembro[]" id="" class="custom-select" >
+                                    @foreach ($escola as $e)
+                                        @if($membro->idescola==$e->idescola)
+                                            <option selected='selected' value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                        @else
+                                            <option  value="{{ $e->idescola }}">{{ $e->nomeescola }}</option>
+                                        @endif 
+                                    @endforeach
                                 </select>
                             </td>        
                            

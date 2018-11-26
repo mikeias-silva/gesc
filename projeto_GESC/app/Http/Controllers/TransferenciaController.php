@@ -80,7 +80,7 @@ class TransferenciaController extends Controller {
         $listaAlunos = DB::select("select pessoa.nomepessoa, matriculas.idmatricula, pessoa.datanascimento from matriculas, crianca, pessoa
         where crianca.idcrianca=matriculas.idcrianca && crianca.idpessoa=pessoa.idpessoa 
         && matriculas.idturma='{$idturma}' && matriculas.statuscadastro=1
-        && EXTRACT(YEAR FROM matriculas.anomatricula)='{$ano}' ORDER BY nomepessoa ASC");
+        && matriculas.anomatricula='{$ano}' ORDER BY nomepessoa ASC");
 
         for ($i=0; $i<count($listaAlunos); $i++){
             //calculaIdade("2000-02-20");

@@ -1,4 +1,4 @@
 # GESC - Gerenciamento de Serviço de Convivência
-Projeto UEPG 2018
+Projeto de software realizado no curso de Engenharia de Software da Universidade Estadual de Ponta Grossa, como pré-requisito para obter titulo de Bacharel em Engenharia de Software.
 
-SOCORRAM ME SUBI NO ONIBUS EM MARROCOS
+

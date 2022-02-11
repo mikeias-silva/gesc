@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.1",
-    "ajv": "^6.5.4",
+    "ajv": "^6.12.3",
     "imagemin": "^5.3.1"
   }
 }
